@@ -1,0 +1,93 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>find_if</h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class UnaryPredicate&gt;   InputIterator find_if (InputIterator first, InputIterator last, UnaryPredicate pred);</pre></div><div id="I_description">Find element in range</div>
+<section id="description">
+Returns an iterator to the first element in the range <code>[first,last)</code> for which <var>pred</var> returns <code>true</code>. If no such element is found, the function returns <var>last</var>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></code></pre></td>
+<td class="source"><pre><code><var>template</var>&lt;<var>class</var> InputIterator, <var>class</var> UnaryPredicate&gt;
+  InputIterator find_if (InputIterator first, InputIterator last, UnaryPredicate pred)
+{
+  <var>while</var> (first!=last) {
+    <var>if</var> (pred(*first)) <var>return</var> first;
+    ++first;
+  }
+  <var>return</var> last;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions in a sequence. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element in the range as argument and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is considered a match in the context of this function.<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the first element in the range for which <var>pred</var> does not return <code>false</code>.<br>
+If <var>pred</var> is <code>false</code> for all elements, the function returns <var>last</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// find_if example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::find_if</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) {
+  <var>return</var> ((i%2)==1);
+}
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; myvector;
+
+  myvector.push_back(10);
+  myvector.push_back(25);
+  myvector.push_back(40);
+  myvector.push_back(55);
+
+  std::vector&lt;<var>int</var>&gt;::iterator it = std::find_if (myvector.begin(), myvector.end(), IsOdd);
+  std::cout &lt;&lt; <kbd>"The first odd value is "</kbd> &lt;&lt; *it &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The first odd value is 25
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Calls <var>pred</var> for each element until a match is found.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Some (or all) of the objects in the range <code>[first,last)</code> are accessed (once at most).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either <var>pred</var> or an operation on an iterator throws.<br>
+Note that invalid parameters cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/find/"><b>find</b></a></dt><dd>Find value in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/for_each/"><b>for_each</b></a></dt><dd>Apply function to range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

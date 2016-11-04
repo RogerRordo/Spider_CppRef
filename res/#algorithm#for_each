@@ -1,0 +1,109 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>for_each</h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class Function&gt;   Function for_each (InputIterator first, InputIterator last, Function fn);</pre></div><div id="I_description">Apply function to range</div>
+<section id="description">
+Applies function <var>fn</var> to each of the elements in the range <code>[first,last)</code>.<br>
+<br>
+The behavior of this template function is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></code></pre></td>
+<td class="source"><pre><code><var>template</var>&lt;<var>class</var> InputIterator, <var>class</var> Function&gt;
+  Function for_each(InputIterator first, InputIterator last, Function fn)
+{
+  <var>while</var> (first!=last) {
+    fn (*first);
+    ++first;
+  }
+  <var>return</var> fn;      <cite>// or, since C++11: return move(fn);</cite>
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions in a sequence. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>fn</dt>
+<dd>Unary function that accepts an element in the range as argument.<br>
+This can either be a function pointer or a <a href="/is_move_constructible">move constructible</a> function object.<br>
+Its return value, if any, is ignored.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+Returns <var>fn</var>.<br>
+</div>
+<div title="C++11">
+Returns <var>fn</var>, as if calling <code><a href="/move">std::move</a>(fn)</code>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br></code></pre></td>
+<td class="source"><pre><code><cite>// for_each example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::for_each</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>void</var> myfunction (<var>int</var> i) {  <cite>// function:</cite>
+  std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; i;
+}
+
+<var>struct</var> myclass {           <cite>// function object type:</cite>
+  <var>void</var> <var>operator</var>() (<var>int</var> i) {std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; i;}
+} myobject;
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; myvector;
+  myvector.push_back(10);
+  myvector.push_back(20);
+  myvector.push_back(30);
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  for_each (myvector.begin(), myvector.end(), myfunction);
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// or:</cite>
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  for_each (myvector.begin(), myvector.end(), myobject);
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 10 20 30
+myvector contains: 10 20 30
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Applies <var>fn</var> to each element.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).<br>
+These objects may be modified if <samp>InputIterator</samp> is a <i>mutable iterator</i> type and <var>fn</var> is not a constant function.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if <var>fn</var> throws or if any of the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/transform/"><b>transform</b></a></dt><dd>Transform range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/find/"><b>find</b></a></dt><dd>Find value in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/search/"><b>search</b></a></dt><dd>Search range for subsequence <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

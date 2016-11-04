@@ -1,0 +1,71 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::count</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>size_t count() const;</pre></div>
+<div title="C++11" class="on">
+<pre>size_t count() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Count bits set</div>
+<section id="description">
+Returns the number of bits in the <samp><a href="/bitset">bitset</a></samp> that are set (i.e., that have a value of <var>one</var>).<br>
+<br>
+For the total number of bits in the <samp><a href="/bitset">bitset</a></samp> (including both <i>zeros</i> and <i>ones</i>), see <samp><a href="/bitset::size">bitset::size</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The number of bits set.<br>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// bitset::count</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;         </dfn><cite>// std::string</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;8&gt; foo (std::string(<kbd>"10110011"</kbd>));
+
+  std::cout &lt;&lt; foo &lt;&lt; <kbd>" has "</kbd>;
+  std::cout &lt;&lt; foo.count() &lt;&lt; <kbd>" ones and "</kbd>;
+  std::cout &lt;&lt; (foo.size()-foo.count()) &lt;&lt; <kbd>" zeros.\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+10110011 has 5 ones and 3 zeros.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The <samp><a href="/bitset">bitset</a></samp> is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <samp><a href="/bitset">bitset</a></samp>.<br>
+If the <i><a href="/bitset::size">bitset size</a></i> is too big to be represented by the return type, <samp><a href="/overflow_error">overflow_error</a></samp> is thrown.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/size/"><b>bitset::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/any/"><b>bitset::any</b></a></dt><dd>Test if any bit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/none/"><b>bitset::none</b></a></dt><dd>Test if no bit is set <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

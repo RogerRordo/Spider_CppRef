@@ -1,0 +1,119 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>lexicographical_compare</h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class InputIterator1, class InputIterator2&gt;  bool lexicographical_compare (InputIterator1 first1, InputIterator1 last1,                                InputIterator2 first2, InputIterator2 last2);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class InputIterator1, class InputIterator2, class Compare&gt;  bool lexicographical_compare (InputIterator1 first1, InputIterator1 last1,                                InputIterator2 first2, InputIterator2 last2,                                Compare comp);</pre></td></tr></table></div><div id="I_description">Lexicographical less-than comparison</div>
+<section id="description">
+Returns <code>true</code> if the range <code>[first1,last1)</code> compares <i>lexicographically less</i> than the range <code>[first2,last2)</code>.<br>
+<br>
+A <i>lexicographical comparison</i> is the kind of comparison generally used to sort words alphabetically in dictionaries; It involves comparing sequentially the elements that have the same position in both ranges against each other until one element is not equivalent to the other. The result of comparing these first non-matching elements is the result of the lexicographical comparison.<br>
+<br>
+If both sequences compare equal until one of them ends, the shorter sequence is <i>lexicographically less</i> than the longer one.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> for the first version, and <var>comp</var> for the second. Two elements, <samp>a</samp> and <samp>b</samp> are considered equivalent if <code>(!(a&lt;b) && !(b&lt;a))</code> or if <code>(!comp(a,b) && !comp(b,a))</code>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator1, <var>class</var> InputIterator2&gt;
+  <var>bool</var> lexicographical_compare (InputIterator1 first1, InputIterator1 last1,
+                                InputIterator2 first2, InputIterator2 last2)
+{
+  <var>while</var> (first1!=last1)
+  {
+    <var>if</var> (first2==last2 || *first2&lt;*first1) <var>return</var> <var>false</var>;
+    <var>else</var> <var>if</var> (*first1&lt;*first2) <var>return</var> <var>true</var>;
+    ++first1; ++first2;
+  }
+  <var>return</var> (first2!=last2);
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first1, last1</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions of the first sequence. The range used is <code>[first1,last1)</code>, which contains all the elements between <var>first1</var> and <var>last1</var>, including the element pointed by <var>first1</var> but not the element pointed by <var>last1</var>.</dd>
+<dt>first2, last2</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions of the second sequence. The range used is <code>[first2,last2)</code>.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two arguments of the types pointed by the iterators, and returns a value convertible to <code>bool</code>. The value returned indicates whether the first argument is considered to go before the second in the specific <i>strict weak ordering</i> it defines.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<code>true</code> if the first range compares <i>lexicographically less</i> than than the second.<br>
+<code>false</code> otherwise (including when all the elements of both ranges are equivalent).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br></code></pre></td>
+<td class="source"><pre><code><cite>// lexicographical_compare example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::boolalpha</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::lexicographical_compare</cite>
+<dfn>#include &lt;cctype&gt;       </dfn><cite>// std::tolower</cite>
+
+<cite>// a case-insensitive comparison function:</cite>
+<var>bool</var> mycomp (<var>char</var> c1, <var>char</var> c2)
+{ <var>return</var> std::tolower(c1)&lt;std::tolower(c2); }
+
+<var>int</var> main () {
+  <var>char</var> foo[]=<kbd>"Apple"</kbd>;
+  <var>char</var> bar[]=<kbd>"apartment"</kbd>;
+
+  std::cout &lt;&lt; std::boolalpha;
+
+  std::cout &lt;&lt; <kbd>"Comparing foo and bar lexicographically (foo&lt;bar):\n"</kbd>;
+
+  std::cout &lt;&lt; <kbd>"Using default comparison (operator&lt;): "</kbd>;
+  std::cout &lt;&lt; std::lexicographical_compare(foo,foo+5,bar,bar+9);
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"Using mycomp as comparison object: "</kbd>;
+  std::cout &lt;&lt; std::lexicographical_compare(foo,foo+5,bar,bar+9,mycomp);
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+The default comparison compares plain ASCII character codes, where <code>'A'</code> (65) compares less than <code>'a'</code> (97).<br>
+Our <samp>mycomp</samp> function transforms the letters to lowercase before comparing them, so here the first letter not matching is the third (<code>'a'</code> vs <code>'p'</code>).<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Comparing foo and bar lexicographically (foo&lt;bar):
+Using default comparison (operator&lt;): true
+Using mycomp as comparison object: false
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<br>
+<h3>Complexity</h3>
+At most, performs <code>2*min(count1,count2)</code> comparisons or applications of <var>comp</var> (where <var>countX</var> is the distance between <var>firstX</var> and <var>lastX</var>).<br>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in <code>2*min(count1,count2)</code> (where <var>countX</var> is the distance between <var>firstX</var> and <var>lastX</var>): Compares elements symmetrically until a mismatch is found.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the ranges <code>[first1,last1)</code> and <code>[first2,last2)</code> are accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either an element comparison or an operation on an iterator throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/mismatch/"><b>mismatch</b></a></dt><dd>Return first position where two ranges differ <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/equal/"><b>equal</b></a></dt><dd>Test whether the elements in two ranges are equal <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/search/"><b>search</b></a></dt><dd>Search range for subsequence <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/find_end/"><b>find_end</b></a></dt><dd>Find last subsequence in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/includes/"><b>includes</b></a></dt><dd>Test whether sorted range includes another sorted range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

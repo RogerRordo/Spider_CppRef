@@ -1,0 +1,23 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cstddef&gt; &lt;cstdlib&gt; &lt;cstring&gt; &lt;cwchar&gt; &lt;ctime&gt; &lt;clocale&gt; &lt;cstdio&gt;</div>
+<h1>NULL</h1>
+<div id="I_description">Null pointer</div>
+<section id="description">
+This macro expands to a <i>null pointer constant</i>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C">
+A <dfn>null-pointer constant</dfn> is an integral constant expression that evaluates to zero (like <code>0</code> or <code>0L</code>), or the cast of such value to type <code>void*</code> (like <code>(void*)0</code>).<br>
+</div>
+<div title="C++98">
+A <dfn>null-pointer constant</dfn> is an integral constant expression that evaluates to zero (such as <code>0</code> or <code>0L</code>).<br>
+</div>
+<div title="C++11">
+A <dfn>null-pointer constant</dfn> is either an integral constant expression that evaluates to zero (such as <code>0</code> or <code>0L</code>), or a value of type <a href="/nullptr_t">nullptr_t</a> (such as <code>nullptr</code>).<br>
+</div>
+</div>
+<br>
+A null pointer constant can be converted to any <i>pointer type</i> (or <i>pointer-to-member type</i>), which acquires a <i>null pointer value</i>. This is a special value that indicates that the pointer is not pointing to any object.<br>
+<div id="CH_bb"></div></div></div>

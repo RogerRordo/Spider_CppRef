@@ -1,0 +1,26 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">object</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>stdout</h1>
+<div class="C_prototype"><pre>FILE * stdout;</pre></div><div id="I_description">Standard output stream</div>
+<section id="description">
+The standard output stream is the default destination of output for applications. In most systems, it is usually directed by default to the text console (generally, on the screen).<br>
+<br>
+<tt>stdout</tt> can be used as an argument for any function that takes an argument of type <tt>FILE*</tt> expecting an output stream, like <a href="/fputs">fputs</a> or <a href="/fprintf">fprintf</a>.<br>
+<br>
+Although it is commonly assumed that the default destination for <tt>stdout</tt> is going to be the screen, this may not be the case even in regular console systems, since <tt>stdout</tt> can generally be redirected on most operating systems at the time of invoking the application. For example, many systems, among them DOS/Windows and most UNIX shells, support the following command syntax:<br>
+<br>
+<tt>myapplication &gt; example.txt</tt>
+<br>
+to redirect the output of <tt>myapplication</tt> to the file <tt>example.txt</tt> instead of the console.<br>
+<br>
+It is also possible to redirect <tt>stdout</tt> to some other source of data from within a program using the <a href="/freopen">freopen</a> function.<br>
+<br>
+If <tt>stdout</tt> is known to not refer to an interactive device, the stream is <i>fully buffered</i>. Otherwise, it is library-dependent whether the stream is <i>line buffered</i> or <i>not buffered</i> by default (see <a href="/setvbuf">setvbuf</a>).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/stdin/"><b>stdin</b></a></dt><dd>Standard input stream <span class="typ">(object)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/stderr/"><b>stderr</b></a></dt><dd>Standard error stream <span class="typ">(object)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

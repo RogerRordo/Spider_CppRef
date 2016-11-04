@@ -1,0 +1,85 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::setf</h1>
+<div class="C_prototype"><table><tr class="odd"><th>set (1)</th><td><pre>fmtflags setf (fmtflags fmtfl);</pre></td></tr><tr class="even"><th>mask (2)</th><td><pre>fmtflags setf (fmtflags fmtfl, fmtflags mask);</pre></td></tr></table></div><div id="I_description">Set specific format flags</div>
+<section id="description">
+The first form <i>(1)</i> sets the stream's <i>format flags</i> whose bits are set in <var>fmtfl</var>, leaving unchanged the rest, as if a call to <code>flags(fmtfl|flags())</code>.<br>
+<br>
+The second form <i>(2)</i> sets the stream's <i>format flags</i> whose bits are set in both <var>fmtfl</var> and <var>mask</var>, and clears the <i>format flags</i> whose bits are set in <var>mask</var> but not in <var>fmtfl</var>, as if a call to <code>flags((fmtfl&mask)|(flags()&~mask))</code>.<br>
+<br>
+Both return the value of the stream's <i>format flags</i> before the call.<br>
+<br>
+The format flags of a stream affect the way data is interpreted in certain input functions and how it is written by certain output functions. See <samp><a href="/ios_base::fmtflags">ios_base::fmtflags</a></samp> for the possible values of this function's arguments.<br>
+<br>
+The first form of <samp>setf</samp> <i>(1)</i> is generally used to set <i>independent format flags</i>: <samp>boolalpha</samp>, <samp>showbase</samp>, <samp>showpoint</samp>, <samp>showpos</samp>, <samp>skipws</samp>, <samp>unitbuf</samp> and <samp>uppercase</samp>, which can also be unset directly with member <a href="/ios_base::unsetf">unsetf</a>.<br>
+<br>
+The second form <i>(2)</i> is generally used to set a value for one of the selective flags, using one of the field bitmasks as the <samp>mask</samp> argument:<br>
+<br>
+<table class="boxed">
+<tr><th><var>fmtfl</var> <br>
+format flag value</th><th><var>mask</var> <br>
+field bitmask</th></tr>
+<tr><td><samp>left</samp>, <samp>right</samp> or <samp>internal</samp></td><td><samp>adjustfield</samp></td></tr>
+<tr><td><samp>dec</samp>, <samp>oct</samp> or <samp>hex</samp></td><td><samp>basefield</samp></td></tr>
+<tr><td><samp>scientific</samp> or <samp>fixed</samp></td><td><samp>floatfield</samp></td></tr>
+</table>
+<br>
+The parameterized manipulator <samp><a href="/setiosflags">setiosflags</a></samp> behaves in a similar way as the first form of this member function <i>(1)</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>fmtfl</dt>
+<dd>Format flags to be set. If the second syntax is used, only the bits set in both <i>fmtfl</i> and <i>mask</i> are set in the stream's format flags; the flags set in <i>mask</i> but not in <i>fmtfl</i> are cleared.</dd>
+<dt>mask</dt>
+<dd>Mask containing the flags to be modified.</dd>
+</dl>
+<br>
+Member type <samp><a href="/ios_base::fmtflags">fmtflags</a></samp> is a bitmask type (see <samp><a href="/ios_base::fmtflags">ios_base::fmtflags</a></samp>).<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The format flags selected in the stream before the call.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// modifying flags with setf/unsetf</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::ios</cite>
+
+<var>int</var> main () {
+  std::cout.setf ( std::ios::hex, std::ios::basefield );  <cite>// set hex as the basefield</cite>
+  std::cout.setf ( std::ios::showbase );                  <cite>// activate showbase</cite>
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout.unsetf ( std::ios::showbase );                <cite>// deactivate showbase</cite>
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>0x64
+64
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/unsetf/"><b>ios_base::unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/fmtflags/"><b>ios_base::fmtflags</b></a></dt><dd>Type for stream format flags <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/iomanip/setiosflags/"><b>setiosflags</b></a></dt><dd>Set format flags <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/iomanip/resetiosflags/"><b>resetiosflags</b></a></dt><dd>Reset format flags <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

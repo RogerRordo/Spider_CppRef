@@ -1,0 +1,35 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strcoll</h1>
+<div class="C_prototype"><pre>int strcoll ( const char * str1, const char * str2 );</pre></div><div id="I_description">Compare two strings using locale</div>
+<section id="description">
+Compares the C string <i>str1</i> to the C string <i>str2</i>, both interpreted appropriately according to the <tt>LC_COLLATE</tt> category of the <a href="/setlocale">C locale</a> currently selected.<br>
+<br>
+This function starts comparing the first character of each string. If they are equal to each other continues with the following pair until the characters differ or until a null-character signaling the end of a string is reached.<br>
+<br>
+The behavior of this function depends on the <tt>LC_COLLATE</tt> category of the selected <a href="/setlocale">C locale</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str1</dt>
+<dd>C string to be compared.</dd>
+<dt>str2</dt>
+<dd>C string to be compared.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns an integral value indicating the relationship between the strings:<br>
+A zero value indicates that both strings are equal.<br>
+A value greater than zero indicates that the first character that does not match has a greater value in <i>str1</i> than in <i>str2</i>; And a value less than zero indicates the opposite.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strcmp/"><b>strcmp</b></a></dt><dd>Compare two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncmp/"><b>strncmp</b></a></dt><dd>Compare characters of two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

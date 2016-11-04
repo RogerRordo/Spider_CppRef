@@ -1,0 +1,86 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;queue&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/queue/queue/">queue</a>::front</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>      value_type&amp; front();const value_type&amp; front() const;</pre></div>
+<div title="C++11" class="on">
+<pre>      reference&amp; front();const_reference&amp; front() const;</pre></div>
+</div>
+</div><div id="I_description">Access next element</div>
+<section id="description">
+Returns a reference to the <i>next element</i> in the <samp><a href="/queue">queue</a></samp>.<br>
+<br>
+The <dfn>next element</dfn> is the "oldest" element in the <samp><a href="/queue">queue</a></samp> and the same element that is popped out from the <samp><a href="/queue">queue</a></samp> when <samp><a href="/queue::pop">queue::pop</a></samp> is called.<br>
+<br>
+This member function effectively calls member <samp><a href="/deque::front">front</a></samp> of the <i>underlying container</i> object.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+A reference to the <i>next element</i> in the <samp><a href="/queue">queue</a></samp>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+Member type <samp>value_type</samp> is the type of the elements in the container (defined as an alias of the first class template parameter, <samp>T</samp>).<br>
+</div>
+<div title="C++11">
+Member types <samp>reference</samp> and <samp>const_reference</samp> are aliases of the <i>underlying container</i>'s types with the same name.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// queue::front</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;queue&gt;          </dfn><cite>// std::queue</cite>
+
+<var>int</var> main ()
+{
+  std::queue&lt;<var>int</var>&gt; myqueue;
+
+  myqueue.push(77);
+  myqueue.push(16);
+
+  myqueue.front() -= myqueue.back();    <cite>// 77-16=61</cite>
+
+  std::cout &lt;&lt; <kbd>"myqueue.front() is now "</kbd> &lt;&lt; myqueue.front() &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myqueue.front() is now 61
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant (calling <samp><a href="/deque::front">front</a></samp> on the <i>underlying container</i>).<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed (neither the const nor the non-const versions modify the container).<br>
+The reference returned can be used to access or modify the next element.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Provides the same level of guarantees as the operation performed on the container (no-throw guarantee for standard non-empty containers).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/queue/queue/pop/"><b>queue::pop</b></a></dt><dd>Remove next element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/queue/queue/back/"><b>queue::back</b></a></dt><dd>Access last element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

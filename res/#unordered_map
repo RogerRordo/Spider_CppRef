@@ -1,0 +1,18 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;unordered_map&gt;<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_description">Unordered map header</div>
+<section id="description">
+Header that defines the <a href="/unordered_map">unordered_map</a> and <a href="/unordered_multimap">unordered_multimap</a> container classes:<br>
+</section>
+<br>
+<section id="types">
+<h3>Classes</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/"><b>unordered_map</b></a></dt><dd>Unordered Map <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/"><b>unordered_multimap</b></a></dt><dd>Unordered Multimap <span class="typ">(class template)</span></dd></dl>
+</section>
+<br>
+<section id="functions">
+<h3>Functions</h3>
+<dl class="links"><dt><a href= "/reference/iterator/begin/"><b>begin</b></a></dt><dd>Iterator to beginning <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/iterator/end/"><b>end</b></a></dt><dd>Iterator to end <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

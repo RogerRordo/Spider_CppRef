@@ -1,0 +1,85 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;queue&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/queue/priority_queue/">priority_queue</a>::push</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>void push (const value_type&amp; val);</pre></div>
+<div title="C++11" class="on">
+<pre>void push (const value_type&amp; val);void push (value_type&amp;&amp; val);</pre></div>
+</div>
+</div><div id="I_description">Insert element</div>
+<section id="description">
+Inserts a new element in the <samp><a href="/priority_queue">priority_queue</a></samp>. The content of this new element is initialized to <var>val</var>.<br>
+<br>
+This member function effectively calls the member function <samp><a href="/vector::push_back">push_back</a></samp> of the <i>underlying container</i> object, and then reorders it to its location in the <i>heap</i> by calling the <samp><a href="/push_heap">push_heap</a></samp> algorithm on the range that includes all the elements of the container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>val</dt>
+<dd>Value to which the inserted element is initialized.<br>
+Member type <samp>value_type</samp> is the type of the elements in the container (defined as an alias of the first class template parameter, <samp>T</samp>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// priority_queue::push/pop</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;queue&gt;          </dfn><cite>// std::priority_queue</cite>
+
+<var>int</var> main ()
+{
+  std::priority_queue&lt;<var>int</var>&gt; mypq;
+
+  mypq.push(30);
+  mypq.push(100);
+  mypq.push(25);
+  mypq.push(40);
+
+  std::cout &lt;&lt; <kbd>"Popping out elements..."</kbd>;
+  <var>while</var> (!mypq.empty())
+  {
+     std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; mypq.top();
+     mypq.pop();
+  }
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Popping out elements... 100 40 30 25
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+One call to <samp><a href="/vector::push_back">push_back</a></samp> on the <i>underlying container</i> and one call to <samp><a href="/push_heap">push_heap</a></samp> on the range that includes all the elements of the <i>underlying container</i>.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container and up to all its contained elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Provides the same level of guarantees as the operations performed on the <i>underlying container</i> object.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/queue/priority_queue/pop/"><b>priority_queue::pop</b></a></dt><dd>Remove top element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/queue/priority_queue/size/"><b>priority_queue::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

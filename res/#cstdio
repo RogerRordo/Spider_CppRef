@@ -1,0 +1,76 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;cstdio&gt; (stdio.h)</h1>
+<div id="I_description">C library to perform Input/Output operations</div>
+<section id="description">
+Input and Output operations can also be performed in C++ using the <b>C</b> <b>St</b>andar<b>d</b> <b>I</b>nput and <b>O</b>utput Library (<b><tt>cstdio</tt></b>, known as <tt>stdio.h</tt> in the C language). This library uses what are called <i>streams</i> to operate with physical devices such as keyboards, printers, terminals or with any other type of files supported by the system. Streams are an abstraction to interact with these in an uniform way; All streams have similar properties independently of the individual characteristics of the physical media they are associated with.<br>
+<br>
+Streams are handled in the <tt>cstdio</tt> library as pointers to <a href="/FILE">FILE</a> objects. A pointer to a <a href="/FILE">FILE</a> object uniquely identifies a stream, and is used as a parameter in the operations involving that stream.<br>
+<br>
+There also exist three standard streams: <a href="/stdin">stdin</a>, <a href="/stdout">stdout</a> and <a href="/stderr">stderr</a>, which are automatically created and opened for all programs using the library.<br>
+</section>
+<br>
+<section id="properties">
+<h3>Stream properties</h3>
+Streams have some properties that define which functions can be used on them and how these will treat the data input or output through them. Most of these properties are defined at the moment the stream is associated with a file (opened) using the <a href="/fopen">fopen</a> function:<br>
+<dl>
+<dt>Read/Write Access</dt>
+<dd>Specifies whether the stream has read or write access (or both) to the physical media they are associated with.</dd>
+<dt>Text / Binary</dt>
+<dd>Text streams are thought to represent a set of text lines, each one ending with a new-line character. Depending on the environment where the application is run, some character translation may occur with text streams to adapt some special characters to the text file specifications of the environment. A binary stream, on the other hand, is a sequence of characters written or read from the physical media with no translation, having a one-to-one correspondence with the characters read or written to the stream.</dd>
+<dt>Buffer</dt>
+<dd>A buffer is a block of memory where data is accumulated before being physically read or written to the associated file or device. Streams can be either <i>fully buffered</i>, <i>line buffered</i> or <i>unbuffered</i>. On fully buffered streams, data is read/written when the buffer is filled, on line buffered streams this happens when a new-line character is encountered, and on unbuffered streams characters are intended to be read/written as soon as possible.</dd>
+<dt>Orientation</dt>
+<dd>On opening, streams have no orientation. As soon as an input/output operation is performed on them, they become either <i>byte-oriented</i> or <i>wide-oriented</i>, depending on the operation performed (generally, functions defined in <tt>&lt;cstdio&gt;</tt> are <i>byte-oriented</i>, while functions in <a href="/cwchar">&lt;cwchar&gt;</a> are <i>wide-oriented</i>). See <a href="/cwchar">cwchar</a> for more info.</dd>
+</dl>
+</section>
+<br>
+<section id="indicators">
+<h3>Indicators</h3>
+Streams have certain internal indicators that specify their current state and which affect the behavior of some input and output operations performed on them:<br>
+<dl>
+<dt>Error indicator</dt>
+<dd>This indicator is set when an error has occurred in an operation related to the stream. This indicator can be checked with the <a href="/ferror">ferror</a> function, and can be reset by calling either to <a href="/clearerr">clearerr</a>, <a href="/freopen">freopen</a> or <a href="/rewind">rewind</a>.</dd>
+<dt>End-Of-File indicator</dt>
+<dd>When set, indicates that the last reading or writing operation performed with the stream reached the <i>End of File</i>. It can be checked with the <a href="/feof">feof</a> function, and can be reset by calling either to <a href="/clearerr">clearerr</a> or <a href="/freopen">freopen</a> or by calling to any repositioning function (<a href="/rewind">rewind</a>, <a href="/fseek">fseek</a> and <a href="/fsetpos">fsetpos</a>).</dd>
+<dt>Position indicator</dt>
+<dd>It is an internal pointer of each stream which points to the next character to be read or written in the next I/O operation. Its value can be obtained by the <a href="/ftell">ftell</a> and <a href="/fgetpos">fgetpos</a> functions, and can be changed using the repositioning functions <a href="/rewind">rewind</a>, <a href="/fseek">fseek</a> and <a href="/fsetpos">fsetpos</a>.</dd>
+</dl>
+</section>
+<br>
+<section id="functions">
+<h3>Functions</h3>
+<b>Operations on files</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/remove/"><b>remove</b></a></dt><dd>Remove file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/rename/"><b>rename</b></a></dt><dd>Rename file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/tmpfile/"><b>tmpfile</b></a></dt><dd>Open a temporary file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/tmpnam/"><b>tmpnam</b></a></dt><dd>Generate temporary filename <span class="typ">(function)</span></dd></dl>
+<br>
+<b>File access</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/fclose/"><b>fclose</b></a></dt><dd>Close file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fflush/"><b>fflush</b></a></dt><dd>Flush stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/freopen/"><b>freopen</b></a></dt><dd>Reopen stream with different file or mode <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/setbuf/"><b>setbuf</b></a></dt><dd>Set stream buffer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/setvbuf/"><b>setvbuf</b></a></dt><dd>Change stream buffering <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Formatted input/output</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/fprintf/"><b>fprintf</b></a></dt><dd>Write formatted data to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fscanf/"><b>fscanf</b></a></dt><dd>Read formatted data from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/printf/"><b>printf</b></a></dt><dd>Print formatted data to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/scanf/"><b>scanf</b></a></dt><dd>Read formatted data from stdin <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/snprintf/"><b>snprintf <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Write formatted output to sized buffer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/sprintf/"><b>sprintf</b></a></dt><dd>Write formatted data to string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/sscanf/"><b>sscanf</b></a></dt><dd>Read formatted data from string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vfprintf/"><b>vfprintf</b></a></dt><dd>Write formatted data from variable argument list to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vfscanf/"><b>vfscanf <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Read formatted data from stream into variable argument list <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vprintf/"><b>vprintf</b></a></dt><dd>Print formatted data from variable argument list to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vscanf/"><b>vscanf <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Read formatted data into variable argument list <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vsnprintf/"><b>vsnprintf <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Write formatted data from variable argument list to sized buffer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vsprintf/"><b>vsprintf</b></a></dt><dd>Write formatted data from variable argument list to string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vsscanf/"><b>vsscanf <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Read formatted data from string into variable argument list <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Character input/output</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/fgetc/"><b>fgetc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fgets/"><b>fgets</b></a></dt><dd>Get string from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fputc/"><b>fputc</b></a></dt><dd>Write character to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fputs/"><b>fputs</b></a></dt><dd>Write string to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/getc/"><b>getc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/getchar/"><b>getchar</b></a></dt><dd>Get character from stdin <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/gets/"><b>gets</b></a></dt><dd>Get string from stdin <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/putc/"><b>putc</b></a></dt><dd>Write character to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/putchar/"><b>putchar</b></a></dt><dd>Write character to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/puts/"><b>puts</b></a></dt><dd>Write string to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ungetc/"><b>ungetc</b></a></dt><dd>Unget character from stream <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Direct input/output</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/fread/"><b>fread</b></a></dt><dd>Read block of data from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fwrite/"><b>fwrite</b></a></dt><dd>Write block of data to stream <span class="typ">(function)</span></dd></dl>
+<br>
+<b>File positioning</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/fgetpos/"><b>fgetpos</b></a></dt><dd>Get current position in stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fseek/"><b>fseek</b></a></dt><dd>Reposition stream position indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fsetpos/"><b>fsetpos</b></a></dt><dd>Set position indicator of stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ftell/"><b>ftell</b></a></dt><dd>Get current position in stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/rewind/"><b>rewind</b></a></dt><dd>Set position of stream to the beginning <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Error-handling</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstdio/clearerr/"><b>clearerr</b></a></dt><dd>Clear error indicators <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/feof/"><b>feof</b></a></dt><dd>Check end-of-file indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ferror/"><b>ferror</b></a></dt><dd>Check error indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/perror/"><b>perror</b></a></dt><dd>Print error message <span class="typ">(function)</span></dd></dl>
+</section>
+<br>
+<section id="macros">
+<h3>Macros</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/BUFSIZ/"><b>BUFSIZ</b></a></dt><dd>Buffer size <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/EOF/"><b>EOF</b></a></dt><dd>End-of-File <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/FILENAME_MAX/"><b>FILENAME_MAX</b></a></dt><dd>Maximum length of file names <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/FOPEN_MAX/"><b>FOPEN_MAX</b></a></dt><dd>Potential limit of simultaneous open streams <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/L_tmpnam/"><b>L_tmpnam</b></a></dt><dd>Minimum length for temporary file name <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/NULL/"><b>NULL</b></a></dt><dd>Null pointer <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/TMP_MAX/"><b>TMP_MAX</b></a></dt><dd>Number of temporary files <span class="typ">(constant)</span></dd></dl>
+Additionally: <a href="/setvbuf">_IOFBF</a>, <a href="/setvbuf">_IOLBF</a>, <a href="/setvbuf">_IONBF</a> (used with <a href="/setvbuf">setvbuf</a>)<br>
+and <a href="/fseek">SEEK_CUR</a>, <a href="/fseek">SEEK_END</a> and <a href="/fseek">SEEK_SET</a> (used with <a href="/fseek">fseek</a>).<br>
+</section>
+<br>
+<section id="types">
+<h3>Types</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/FILE/"><b>FILE</b></a></dt><dd>Object containing information to control a stream <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fpos_t/"><b>fpos_t</b></a></dt><dd>Object containing information to specify a position within a file <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/size_t/"><b>size_t</b></a></dt><dd>Unsigned integral type <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,13 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fpos_t</h1>
+<div id="I_description">Object containing information to specify a position within a file</div>
+<section id="description">
+This type of object is used to specify a position within a file. An object of this type is capable of specifying uniquely any position within a file.<br>
+<br>
+The information in <tt>fpos_t</tt> objects is usually filled by a call to <a href="/fgetpos">fgetpos</a>, which takes a pointer to an object of this type as argument.<br>
+<br>
+The content of an <tt>fpos_t</tt> object is not meant to be read directly, but only to be used as an argument in a call to <a href="/fsetpos">fsetpos</a>.<br>
+<div id="CH_bb"></div></div></div>

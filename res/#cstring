@@ -1,0 +1,29 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;cstring&gt; (string.h)</h1>
+<div id="I_description">C Strings</div>
+This header file defines several functions to manipulate <i>C strings</i> and arrays.<br>
+<br>
+<h3>Functions</h3>
+<b>Copying</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memmove/"><b>memmove</b></a></dt><dd>Move block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strcpy/"><b>strcpy</b></a></dt><dd>Copy string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Concatenation</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstring/strcat/"><b>strcat</b></a></dt><dd>Concatenate strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncat/"><b>strncat</b></a></dt><dd>Append characters from string <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Comparison</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strcmp/"><b>strcmp</b></a></dt><dd>Compare two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strcoll/"><b>strcoll</b></a></dt><dd>Compare two strings using locale <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncmp/"><b>strncmp</b></a></dt><dd>Compare characters of two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strxfrm/"><b>strxfrm</b></a></dt><dd>Transform string using locale <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Searching</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strchr/"><b>strchr</b></a></dt><dd>Locate first occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strcspn/"><b>strcspn</b></a></dt><dd>Get span until character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strpbrk/"><b>strpbrk</b></a></dt><dd>Locate characters in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strrchr/"><b>strrchr</b></a></dt><dd>Locate last occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strspn/"><b>strspn</b></a></dt><dd>Get span of character set in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strstr/"><b>strstr</b></a></dt><dd>Locate substring <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strtok/"><b>strtok</b></a></dt><dd>Split string into tokens <span class="typ">(function)</span></dd></dl>
+<br>
+<b>Other</b>:<br>
+<dl class="links"><dt><a href= "/reference/cstring/memset/"><b>memset</b></a></dt><dd>Fill block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strerror/"><b>strerror</b></a></dt><dd>Get pointer to error message string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strlen/"><b>strlen</b></a></dt><dd>Get string length <span class="typ">(function)</span></dd></dl>
+<br>
+<h3>Macros</h3>
+<dl class="links"><dt><a href= "/reference/cstring/NULL/"><b>NULL</b></a></dt><dd>Null pointer <span class="typ">(macro)</span></dd></dl>
+<br>
+<h3>Types</h3>
+<dl class="links"><dt><a href= "/reference/cstring/size_t/"><b>size_t</b></a></dt><dd>Unsigned integral type <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

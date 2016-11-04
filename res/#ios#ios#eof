@@ -1,0 +1,69 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::eof</h1>
+<div class="C_prototype"><pre>bool eof() const;</pre></div><div id="I_description">Check whether eofbit is set</div>
+<section id="description">
+Returns <code>true</code> if the <samp>eofbit</samp> <i>error state flag</i> is set for the stream.<br>
+<br>
+This flag is set by all standard input operations when the End-of-File is reached in the sequence associated with the stream.<br>
+<br>
+Note that the value returned by this function depends on the last operation performed on the stream (and not on the next).<br>
+<br>
+Operations that attempt to read at the <i>End-of-File</i> fail, and thus both the <samp>eofbit</samp> and the <samp>failbit</samp> end up set. This function can be used to check whether the failure is due to reaching the <i>End-of-File</i> or to some other reason.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>true</code> if the stream's <samp>eofbit</samp> <i>error state flag</i> is set (which signals that the End-of-File has been reached by the last input operation).<br>
+<code>false</code> otherwise. <br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></code></pre></td>
+<td class="source"><pre><code><cite>// ios::eof example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// std::ifstream</cite>
+
+<var>int</var> main () {
+
+  std::ifstream is(<kbd>"example.txt"</kbd>);   <cite>// open file</cite>
+
+  <var>char</var> c;
+  <var>while</var> (is.get(c))                  <cite>// loop getting single characters</cite>
+    std::cout &lt;&lt; c;
+
+  <var>if</var> (is.eof())                      <cite>// check for EOF</cite>
+    std::cout &lt;&lt; <kbd>"[EoF reached]\n"</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; <kbd>"[error reading]\n"</kbd>;
+
+  is.close();                        <cite>// close file</cite>
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/good/"><b>ios::good</b></a></dt><dd>Check whether state of stream is good <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/fail/"><b>ios::fail</b></a></dt><dd>Check whether either failbit or badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/bad/"><b>ios::bad</b></a></dt><dd>Check whether badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/rdstate/"><b>ios::rdstate</b></a></dt><dd>Get error state flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/clear/"><b>ios::clear</b></a></dt><dd>Set error state flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

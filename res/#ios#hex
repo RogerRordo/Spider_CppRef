@@ -1,0 +1,76 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>hex</h1>
+<div class="C_prototype"><pre>ios_base&amp; hex (ios_base&amp; str);</pre></div><div id="I_description">Use hexadecimal base</div>
+<section id="description">
+Sets the <samp>basefield</samp> format flag for the <var>str</var> stream to <samp>hex</samp>.<br>
+<br>
+When <samp>basefield</samp> is set to <samp>hex</samp>, integer values inserted into the stream are expressed in hexadecimal base (i.e., radix 16). For input streams, extracted values are also expected to be expressed in hexadecimal base when this flag is set.<br>
+<br>
+The <samp>basefield</samp> format flag can take any of the following values (each with its own manipulator):<br>
+<table class="boxed">
+<tr><th>flag value</th><th>effect when set</th></tr> <br>
+<tr><td><samp><a href="/dec">dec</a></samp></td><td>read/write integer values using decimal base format.</td></tr>
+<tr><td><samp>hex</samp></td><td>read/write integer values using hexadecimal base format.</td></tr>
+<tr><td><samp><a href="/oct">oct</a></samp></td><td>read/write integer values using octal base format.</td></tr>
+</table>
+<br>
+Notice that the <samp>basefield</samp> flag only affects the insertion/extraction of integer values (floating-point values are always interpreted in decimal base).<br>
+<br>
+Notice also that no base prefix is implicitly prepended to the number unless the <samp><a href="/showbase">showbase</a></samp> format flag is set.<br>
+<br>
+For standard streams, the <samp>basefield</samp> flag is set to <strong><samp><a href="/dec">dec</a></samp></strong> on initialization.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Stream object whose <samp>basefield</samp> <i>format flag</i> is affected.<br>
+Because this function is a manipulator, it is designed to be used alone with no arguments in conjunction with the <i>insertion</i> (<code>&lt;&lt;</code>) and <i>extraction</i> (<code>&gt;&gt;</code>) operations on streams (see example below).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Argument <var>str</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>// modify basefield</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::dec, std::hex, std::oct</cite>
+
+<var>int</var> main () {
+  <var>int</var> n = 70;
+  std::cout &lt;&lt; std::dec &lt;&lt; n &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; std::hex &lt;&lt; n &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; std::oct &lt;&lt; n &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>70
+46
+106</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies <var>str</var>. Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, <var>str</var> is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/dec/"><b>dec</b></a></dt><dd>Use decimal base <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/oct/"><b>oct</b></a></dt><dd>Use octal base <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

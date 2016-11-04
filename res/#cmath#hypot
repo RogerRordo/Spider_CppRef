@@ -1,0 +1,73 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>hypot<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<pre>     double hypot  (double x     , double y);      float hypotf (float x      , float y);long double hypotl (long double x, long double y);</pre></div>
+<div title="C++11" class="on">
+<pre>     double hypot (double x     , double y);      float hypot (float x      , float y);long double hypot (long double x, long double y);     double hypot (Type1 x      , Type2 y);       // additional overloads</pre></div>
+</div>
+</div><div id="I_description">Compute hypotenuse</div>
+<section id="description">
+Returns the <i>hypotenuse</i> of a <i>right-angled triangle</i> whose legs are <var>x</var> and <var>y</var>.<br>
+<br>
+The function returns what would be the square root of the sum of the squares of <var>x</var> and <var>y</var> (as per the Pythagorean theorem), but without incurring in undue overflow or underflow of intermediate values.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for other combinations of <a href="/is_arithmetic">arithmetic types</a> (<samp>Type1</samp> and <samp>Type2</samp>): These overloads effectively cast its arguments to <code>double</code> before calculations, except if at least one of the arguments is of type <code>long double</code> (in which case both are casted to <code>long double</code> instead).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x, y</dt>
+<dd>Floating point values corresponding to the legs of a <i>right-angled triangle</i> for which the hypotenuse is computed.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The <i>square root</i> of <code>(x<sup>2</sup>+y<sup>2</sup>)</code>.<br>
+If the magnitude of the result is too large to be represented by a value of the return type, the function may return <samp><a href="/HUGE_VAL">HUGE_VAL</a></samp> (or <samp><a href="/HUGE_VALF">HUGE_VALF</a></samp> or <samp><a href="/HUGE_VALL">HUGE_VALL</a></samp>) with the proper sign (in which case, an overflow <i>range error</i> occurs):<br>
+<br>
+If an overflow <i>range error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> is raised.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* hypot example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* hypot */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> leg_x, leg_y, result;
+  leg_x = 3;
+  leg_y = 4;
+  result = hypot (leg_x, leg_y);
+  printf (<kbd>"%f, %f and %f form a right-angled triangle.\n"</kbd>,leg_x,leg_y,result);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+3.000000, 4.000000 and 5.000000 form a right-angled triangle.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/sqrt/"><b>sqrt</b></a></dt><dd>Compute square root <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/pow/"><b>pow</b></a></dt><dd>Raise to power <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

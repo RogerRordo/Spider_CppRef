@@ -1,0 +1,41 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">protected member function</div>
+<div id="I_file">&lt;istream&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/istream/iostream/">iostream</a>::operator=<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>copy (1)</th><td><pre>iostream&amp; operator= (const iostream&amp;) = delete;</pre></td></tr><tr class="even"><th>move (2)</th><td><pre>iostream&amp; operator= (iostream&amp;&amp; rhs);</pre></td></tr></table></div><div id="I_description">Move assignment</div>
+<section id="description">
+Exchanges all internal members between <var>rhs</var> and <code>*this</code>, except the pointer to the associated <i><a href="/ios::rdbuf">stream buffers</a></i>: <samp><a href="/ios::rdbuf">rdbuf</a></samp> shall return the same in both objects as before the call.<br>
+<br>
+This is the same behavior as calling member <samp><a href="/iostream::swap">iostream::swap</a></samp>.<br>
+<br>
+Derived classes can call this function to implement move semantics.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>rhs</dt>
+<dd>Another <samp><a href="/istream">istream</a></samp> object.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>*this</code>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies both stream objects (<code>*this</code> and <var>rhs</var>).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/istream/iostream/swap/"><b>iostream::swap</b></a></dt><dd>Swap internals <span class="typ">(protected member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

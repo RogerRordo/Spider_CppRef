@@ -1,0 +1,11 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>MB_CUR_MAX</h1>
+<div id="I_description">Maximum size of multibyte characters</div>
+<section id="description">
+This macro expands to a positive integer expression of type <samp><a href="/size_t">size_t</a></samp>, the value of which is the maximum number of bytes in a multibyte character with the current locale (category <samp>LC_CTYPE</samp>).<br>
+<br>
+Its value is never greater than <samp>MB_LEN_MAX</samp> (see <samp><a href="/climits">&lt;climits&gt;</a></samp>).<br>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,50 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>getchar</h1>
+<div class="C_prototype"><pre>int getchar ( void );</pre></div><div id="I_description">Get character from stdin</div>
+<section id="description">
+Returns the next character from the standard input (<a href="/stdin">stdin</a>).<br>
+<br>
+It is equivalent to calling <a href="/getc">getc</a> with <a href="/stdin">stdin</a> as argument.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+(none) <br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the character read is returned (promoted to an <tt>int</tt> value).<br>
+The return type is <tt>int</tt> to accommodate for the special value <a href="/EOF">EOF</a>, which indicates failure:<br>
+If the standard input was at the <i>end-of-file</i>, the function returns <a href="/EOF">EOF</a> and sets the <i>eof indicator</i> (<a href="/feof">feof</a>) of <a href="/stdin">stdin</a>.<br>
+If some other reading error happens, the function also returns <a href="/EOF">EOF</a>, but sets its <i>error indicator</i> (<a href="/ferror">ferror</a>) instead.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* getchar example : typewriter */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> c;
+  puts (<kbd>"Enter text. Include a dot ('.') in a sentence to exit:"</kbd>);
+  <var>do</var> {
+    c=getchar();
+    putchar (c);
+  } <var>while</var> (c != <kbd>'.'</kbd>);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+A simple typewriter. Every sentence is echoed once ENTER has been pressed until a dot (.) is included in the text.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/getc/"><b>getc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/putchar/"><b>putchar</b></a></dt><dd>Write character to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/scanf/"><b>scanf</b></a></dt><dd>Read formatted data from stdin <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

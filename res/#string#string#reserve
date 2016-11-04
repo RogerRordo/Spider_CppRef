@@ -1,0 +1,89 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::reserve</h1>
+<div class="C_prototype"><pre>void reserve (size_t n = 0);</pre></div><div id="I_description">Request a change in capacity</div>
+<section id="description">
+Requests that the <a href="/string::capacity">string capacity</a> be adapted to a planned change in <a href="/string::size">size</a> to a <a href="/string::length">length</a> of up to <i>n</i> characters.<br>
+<br>
+If <i>n</i> is greater than the current <a href="/string::capacity">string capacity</a>, the function causes the container to increase its <a href="/string::capacity">capacity</a> to <i>n</i> characters (or greater).<br>
+<br>
+In all other cases, it is taken as a non-binding request to shrink the <a href="/string::capacity">string capacity</a>: the container implementation is free to optimize otherwise and leave the <a href="/string">string</a> with a <a href="/string::capacity">capacity</a> greater than <i>n</i>.<br>
+<br>
+This function has no effect on the <a href="/string::length">string length</a> and cannot alter its content.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>Planned <a href="/string::length">length</a> for the <a href="/string">string</a>.<br>
+Note that the resulting <a href="/string::capacity">string capacity</a> may be equal or greater than <i>n</i>.<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::reserve</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;fstream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str;
+
+  std::ifstream file (<kbd>"test.txt"</kbd>,std::ios::in|std::ios::ate);
+  <var>if</var> (file) {
+    std::ifstream::streampos filesize = file.tellg();
+    str.reserve(filesize);
+
+    file.seekg(0);
+    <var>while</var> (!file.eof())
+    {
+      str += file.get();
+    }
+    std::cout &lt;&lt; str;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This example reserves enough capacity in the <a href="/string">string</a> object to store an entire file, which is then read character by character. By reserving a <a href="/string::capacity">capacity</a> for the <a href="/string">string</a> of at least the size of the entire file, we try to avoid all the automatic reallocations that the object <i>str</i> could suffer each time that inserting a new character would make its <a href="/string::length">length</a> surpass its <a href="/string::capacity">capacity</a>.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.<br>
+</section>
+<br>
+<section id="thread">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/string">string</a>.<br>
+<br>
+If <i>n</i> is greater than the <a href="/string::max_size">max_size</a>, a <a href="/length_error">length_error</a> exception is thrown.<br>
+A <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/capacity/"><b>string::capacity</b></a></dt><dd>Return size of allocated storage <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/shrink_to_fit/"><b>string::shrink_to_fit</b></a></dt><dd>Shrink to fit <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/resize/"><b>string::resize</b></a></dt><dd>Resize string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/max_size/"><b>string::max_size</b></a></dt><dd>Return maximum size of string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

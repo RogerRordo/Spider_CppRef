@@ -1,0 +1,45 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;cstdlib&gt; (stdlib.h)</h1>
+<div id="I_description">C Standard General Utilities Library</div>
+<section id="description">
+This header defines several general purpose functions, including dynamic memory management, random number generation, communication with the environment, integer arithmetics, searching, sorting and converting.<br>
+</section>
+<br>
+<section id="functions">
+<h3>Functions</h3>
+<h4>String conversion</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/atof/"><b>atof</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atoi/"><b>atoi</b></a></dt><dd>Convert string to integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atol/"><b>atol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atoll/"><b>atoll <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Convert string to long long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtod/"><b>strtod</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtof/"><b>strtof <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Convert string to float <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtol/"><b>strtol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtold/"><b>strtold <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Convert string to long double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtoll/"><b>strtoll <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Convert string to long long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtoul/"><b>strtoul</b></a></dt><dd>Convert string to unsigned long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtoull/"><b>strtoull <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Convert string to unsigned long long integer <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Pseudo-random sequence generation</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/rand/"><b>rand</b></a></dt><dd>Generate random number <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/srand/"><b>srand</b></a></dt><dd>Initialize random number generator <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Dynamic memory management</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/calloc/"><b>calloc</b></a></dt><dd>Allocate and zero-initialize array <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/free/"><b>free</b></a></dt><dd>Deallocate memory block <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/malloc/"><b>malloc</b></a></dt><dd>Allocate memory block <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/realloc/"><b>realloc</b></a></dt><dd>Reallocate memory block <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Environment</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/abort/"><b>abort</b></a></dt><dd>Abort current process <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atexit/"><b>atexit</b></a></dt><dd>Set function to be executed on exit <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/at_quick_exit/"><b>at_quick_exit <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Set function to be executed on quick exit <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/exit/"><b>exit</b></a></dt><dd>Terminate calling process <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/getenv/"><b>getenv</b></a></dt><dd>Get environment string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/quick_exit/"><b>quick_exit <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Terminate calling process quick <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/system/"><b>system</b></a></dt><dd>Execute system command <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/_Exit/"><b>_Exit <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Terminate calling process <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Searching and sorting</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/bsearch/"><b>bsearch</b></a></dt><dd>Binary search in array <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/qsort/"><b>qsort</b></a></dt><dd>Sort elements of array <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Integer arithmetics</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/abs/"><b>abs</b></a></dt><dd>Absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/div/"><b>div</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/labs/"><b>labs</b></a></dt><dd>Absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/ldiv/"><b>ldiv</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/llabs/"><b>llabs <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/lldiv/"><b>lldiv <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Multibyte characters</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/mblen/"><b>mblen</b></a></dt><dd>Get length of multibyte character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/mbtowc/"><b>mbtowc</b></a></dt><dd>Convert multibyte sequence to wide character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wctomb/"><b>wctomb</b></a></dt><dd>Convert wide character to multibyte sequence <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Multibyte strings</h4>
+<dl class="links"><dt><a href= "/reference/cstdlib/mbstowcs/"><b>mbstowcs</b></a></dt><dd>Convert multibyte string to wide-character string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wcstombs/"><b>wcstombs</b></a></dt><dd>Convert wide-character string to multibyte string <span class="typ">(function)</span></dd></dl>
+</section>
+<br>
+<section id="constants">
+<h3>Macro constants</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/EXIT_FAILURE/"><b>EXIT_FAILURE</b></a></dt><dd>Failure termination code <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/EXIT_SUCCESS/"><b>EXIT_SUCCESS</b></a></dt><dd>Success termination code <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/MB_CUR_MAX/"><b>MB_CUR_MAX</b></a></dt><dd>Maximum size of multibyte characters <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/NULL/"><b>NULL</b></a></dt><dd>Null pointer <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/RAND_MAX/"><b>RAND_MAX</b></a></dt><dd>Maximum value returned by rand <span class="typ">(macro)</span></dd></dl>
+</section>
+<br>
+<section id="types">
+<h3>Types</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/div_t/"><b>div_t</b></a></dt><dd>Structure returned by div <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/ldiv_t/"><b>ldiv_t</b></a></dt><dd>Structure returned by ldiv <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/lldiv_t/"><b>lldiv_t <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Structure returned by lldiv <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstddef/size_t/"><b>size_t</b></a></dt><dd>Unsigned integral type <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

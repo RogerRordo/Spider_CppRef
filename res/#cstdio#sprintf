@@ -1,0 +1,59 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>sprintf</h1>
+<div class="C_prototype"><pre>int sprintf ( char * str, const char * format, ... );</pre></div><div id="I_description">Write formatted data to string</div>
+<section id="description">
+Composes a string with the same text that would be printed if <i>format</i> was used on <a href="/printf">printf</a>, but instead of being printed, the content is stored as a <i>C string</i> in the buffer pointed by <i>str</i>.<br>
+<br>
+The size of the buffer should be large enough to contain the entire resulting string (see <a href="/snprintf">snprintf</a> for a safer version).<br>
+<br>
+A terminating null character is automatically appended after the content.<br>
+<br>
+After the <i>format</i> parameter, the function expects at least as many additional arguments as needed for <i>format</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Pointer to a buffer where the resulting C-string is stored.<br>
+The buffer should be large enough to contain the resulting string.</dd>
+<dt>format</dt>
+<dd>C string that contains a format string that follows the same specifications as <i>format</i> in <a href="/printf">printf</a> (see <a href="/printf">printf</a> for details).</dd>
+<dt>... <i>(additional arguments)</i></dt>
+<dd>Depending on the <i>format</i> string, the function may expect a sequence of additional arguments, each containing a value to be used to replace a <i>format specifier</i> in the <i>format</i> string (or a pointer to a storage location, for <tt>n</tt>).<br>
+There should be at least as many of these arguments as the number of values specified in the <i>format specifiers</i>. Additional arguments are ignored by the function.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the total number of characters written is returned. This count does not include the additional null-character automatically appended at the end of the string.<br>
+On failure, a negative number is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* sprintf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer [50];
+  <var>int</var> n, a=5, b=3;
+  n=sprintf (buffer, <kbd>"%d plus %d is %d"</kbd>, a, b, a+b);
+  printf (<kbd>"[%s] is a string %d chars long\n"</kbd>,buffer,n);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>[5 plus 3 is 8] is a string 13 chars long
+</samp></pre></td></tr></table></div>
+<br>
+<h3>See also</h3>
+<div id="CH_bb"></div></div></div>

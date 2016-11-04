@@ -1,0 +1,134 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::append</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>string&amp; append (const string&amp; str);</pre></td></tr><tr class="even"><th>substring (2)</th><td><pre>string&amp; append (const string&amp; str, size_t subpos, size_t sublen);</pre></td></tr><tr class="odd"><th>c-string (3)</th><td><pre>string&amp; append (const char* s);</pre></td></tr><tr class="even"><th>buffer (4)</th><td><pre>string&amp; append (const char* s, size_t n);</pre></td></tr><tr class="odd"><th>fill (5)</th><td><pre>string&amp; append (size_t n, char c);</pre></td></tr><tr class="even"><th>range (6)</th><td><pre>template &lt;class InputIterator&gt;   string&amp; append (InputIterator first, InputIterator last);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>string (1)</th><td><pre>string&amp; append (const string&amp; str);</pre></td></tr><tr class="even"><th>substring (2)</th><td><pre>string&amp; append (const string&amp; str, size_t subpos, size_t sublen);</pre></td></tr><tr class="odd"><th>c-string (3)</th><td><pre>string&amp; append (const char* s);</pre></td></tr><tr class="even"><th>buffer (4)</th><td><pre>string&amp; append (const char* s, size_t n);</pre></td></tr><tr class="odd"><th>fill (5)</th><td><pre>string&amp; append (size_t n, char c);</pre></td></tr><tr class="even"><th>range (6)</th><td><pre>template &lt;class InputIterator&gt;   string&amp; append (InputIterator first, InputIterator last);</pre></td></tr><tr class="odd"><th>initializer list(7)</th><td><pre>string&amp; append (initializer_list&lt;char&gt; il);</pre></td></tr></table></div>
+<div title="C++14" class="on">
+<table><tr class="even"><th>string (1)</th><td><pre>string&amp; append (const string&amp; str);</pre></td></tr><tr class="odd"><th>substring (2)</th><td><pre>string&amp; append (const string&amp; str, size_t subpos, size_t sublen = npos);</pre></td></tr><tr class="even"><th>c-string (3)</th><td><pre>string&amp; append (const char* s);</pre></td></tr><tr class="odd"><th>buffer (4)</th><td><pre>string&amp; append (const char* s, size_t n);</pre></td></tr><tr class="even"><th>fill (5)</th><td><pre>string&amp; append (size_t n, char c);</pre></td></tr><tr class="odd"><th>range (6)</th><td><pre>template &lt;class InputIterator&gt;   string&amp; append (InputIterator first, InputIterator last);</pre></td></tr><tr class="even"><th>initializer list(7)</th><td><pre>string&amp; append (initializer_list&lt;char&gt; il);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Append to string</div>
+<section id="description">
+Extends the <a href="/string">string</a> by appending additional characters at the end of its current value:<br>
+<br>
+<dl>
+<dt>(1) string</dt>
+<dd>Appends a copy of <i>str</i>.</dd>
+<dt>(2) substring</dt>
+<dd>Appends a copy of a substring of <i>str</i>. The substring is the portion of <i>str</i> that begins at the character position <i>subpos</i> and spans <i>sublen</i> characters (or until the end of <i>str</i>, if either <i>str</i> is too short or if <i>sublen</i> is <a href="/string::npos">string::npos</a>).</dd>
+<dt>(3) c-string</dt>
+<dd>Appends a copy of the string formed by the null-terminated character sequence (C-string) pointed by <i>s</i>.</dd>
+<dt>(4) buffer</dt>
+<dd>Appends a copy of the first <i>n</i> characters in the array of characters pointed by <i>s</i>.</dd>
+<dt>(5) fill</dt>
+<dd>Appends <i>n</i> consecutive copies of character <i>c</i>.</dd>
+<dt>(6) range</dt>
+<dd>Appends a copy of the sequence of characters in the range <tt>[first,last)</tt>, in the same order.</dd>
+<dt>(7) initializer list</dt>
+<dd>Appends a copy of each of the characters in <i>il</i>, in the same order.</dd>
+</dl>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another <a href="/string">string</a> object, whose value is appended.<br>
+</dd>
+<dt>subpos</dt>
+<dd>Position of the first character in <i>str</i> that is copied to the object as a substring.<br>
+If this is greater than <i>str</i>'s <a href="/string::length">length</a>, it throws <a href="/out_of_range">out_of_range</a>.<br>
+Note: The first character in <i>str</i> is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>sublen</dt>
+<dd>Length of the substring to be copied (if the string is shorter, as many characters as possible are copied).<br>
+A value of <a href="/string::npos">string::npos</a> indicates all characters until the end of <i>str</i>.</dd>
+<dt>s</dt>
+<dd>Pointer to an array of characters (such as a <i>c-string</i>).</dd>
+<dt>n</dt>
+<dd>Number of characters to copy.</dd>
+<dt>c</dt>
+<dd>Character value, repeated <i>n</i> times.</dd>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions in a range. The range used is <tt>[first,last)</tt>, which includes all the characters between <i>first</i> and <i>last</i>, including the character pointed by <i>first</i> but not the character pointed by <i>last</i>.<br>
+The function template argument <tt>InputIterator</tt> shall be an <a href="/InputIterator">input iterator</a> type that points to elements of a type convertible to <tt>char</tt>.<br>
+If <tt>InputIterator</tt> is an integral type, the arguments are casted to the proper types so that signature (5) is used instead.</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.</dd>
+</dl>
+<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>*this</tt>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// appending to string</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str;
+  std::string str2=<kbd>"Writing "</kbd>;
+  std::string str3=<kbd>"print 10 and then 5 more"</kbd>;
+
+  <cite>// used in the same order as described above:</cite>
+  str.append(str2);                       <cite>// "Writing "</cite>
+  str.append(str3,6,3);                   <cite>// "10 "</cite>
+  str.append(<kbd>"dots are cool"</kbd>,5);          <cite>// "dots "</cite>
+  str.append(<kbd>"here: "</kbd>);                   <cite>// "here: "</cite>
+  str.append(10u,<kbd>'.'</kbd>);                    <cite>// ".........."</cite>
+  str.append(str3.begin()+8,str3.end());  <cite>// " and then 5 more"</cite>
+  str.append&lt;<var>int</var>&gt;(5,0x2E);                <cite>// "....."</cite>
+
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Writing 10 dots here: .......... and then 5 more.....
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in the new <a href="/string::length">string length</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/string">string</a>.<br>
+<br>
+If <tt>s</tt> does not point to an array long enough, or if the range specified by <tt>[first,last)</tt> is not valid, it causes <i>undefined behavior</i>.<br>
+<br>
+If <i>subpos</i> is greater than <i>str</i>'s <a href="/string::length">length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+If the resulting <a href="/string::length">string length</a> would exceed the <a href="/string::max_size">max_size</a>, a <a href="/length_error">length_error</a> exception is thrown.<br>
+A <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/operator+=/"><b>string::operator+=</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/assign/"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/insert/"><b>string::insert</b></a></dt><dd>Insert into string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,55 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::operator!</h1>
+<div class="C_prototype"><pre>bool operator!() const;</pre></div><div id="I_description">Evaluate stream (not)</div>
+<section id="description">
+Returns <code>true</code> if either <samp><a href="/ios_base::failbit">failbit</a></samp> or <samp><a href="/ios_base::badbit">badbit</a></samp> is set, and <code>false</code> otherwise.<br>
+<br>
+This is equivalent to calling member <samp><a href="/ios::fail">fail</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>true</code> if either <samp><a href="/ios_base::failbit">failbit</a></samp> or <samp><a href="/ios_base::badbit">badbit</a></samp> is set.<br>
+<code>false</code> otherwise. <br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// evaluating a stream (not)</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// std::ifstream</cite>
+
+<var>int</var> main () {
+  std::ifstream is;
+  is.open (<kbd>"test.txt"</kbd>);
+  <var>if</var> (!is)
+    std::cerr &lt;&lt; <kbd>"Error opening 'test.txt'\n"</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/fail/"><b>ios::fail</b></a></dt><dd>Check whether either failbit or badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/good/"><b>ios::good</b></a></dt><dd>Check whether state of stream is good <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

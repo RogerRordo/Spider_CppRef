@@ -1,0 +1,13 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>INFINITY<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_description">Infinity</div>
+<section id="description">
+Macro constant that expands to an expression of type <code>float</code>.<br>
+<br>
+If the implementation supports <i>infinity</i> values, this is defined as the value that represents a positive or unsigned infinity. Otherwise, it is a positive constant that overflows at translation time.<br>
+<br>
+This may be returned by a function that signals a <i>range error</i> by setting <samp><a href="/errno">errno</a></samp> to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;unordered_map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>operators (unordered_multimap)<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>equality (1)</th><td><pre>template &lt;class Key, class T, class Hash, class Pred, class Alloc&gt;  bool operator== ( const unordered_multimap&lt;Key,T,Hash,Pred,Alloc&gt;&amp; lhs,                    const unordered_multimap&lt;Key,T,Hash,Pred,Alloc&gt;&amp; rhs );</pre></td></tr><tr class="even"><th>inequality (2)</th><td><pre>template &lt;class Key, class T, class Hash, class Pred, class Alloc&gt;  bool operator!= ( const unordered_multimap&lt;Key,T,Hash,Pred,Alloc&gt;&amp; lhs,                    const unordered_multimap&lt;Key,T,Hash,Pred,Alloc&gt;&amp; rhs );</pre></td></tr></table></div><div id="I_description">Relational operators for unordered_multimap</div>
+<section id="description">
+These overloaded global operator functions perform the appropriate equality or inequality comparison operation between the <a href="/unordered_multimap">unordered_multimap</a> containers <i>lhs</i> and <i>rhs</i>.<br>
+<br>
+The procedure for the equality comparison is as follows (stopping at any point if the procedure finds a conclusive answer):<br>
+<ul>
+<li>First, the sizes are compared (<a href="/unordered_multimap::size">size</a>).</li>
+<li>For every group with equivalent keys (such as those returned by <a href="/unordered_multimap::equal_range">equal_range</a>):<br>
+<ul>
+<li>sizes are compared (<a href="/unordered_multimap::count">count</a>).</li>
+<li>all possible permutations of each group are compared (<a href="/permutation">permutation</a>).</li>
+</ul>
+<br>
+Note that the <a href="/unordered_multimap::hash_function">unordered_multimap::hash_function</a> and <a href="/unordered_multimap::key_eq">unordered_multimap::key_eq</a> objects are expected to have the same behavior in both <i>lhs</i> and <i>rhs</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>lhs, rhs</dt>
+<dd><a href="/unordered_multimap">unordered_multimap</a> containers (to the left- and right-hand side of the operator, respectively), having both the same template parameters (<tt>Key</tt>, <tt>T</tt>, <tt>Hash</tt>, <tt>Pred</tt> and <tt>Alloc</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if the condition holds, and <tt>false</tt> otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_multimap comparisons</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>typedef</var> std::unordered_multimap&lt;std::string,<var>int</var>&gt; stringmap;
+
+<var>int</var> main ()
+{
+  stringmap a = { {<kbd>"AAPL"</kbd>,100}, {<kbd>"MSFT"</kbd>,200}, {<kbd>"GOOG"</kbd>,50}, {<kbd>"GOOG"</kbd>,20} };
+  stringmap b = { {<kbd>"GOOG"</kbd>,20}, {<kbd>"MSFT"</kbd>,200}, {<kbd>"AAPL"</kbd>,100}, {<kbd>"GOOG"</kbd>,50} };
+  stringmap c = { {<kbd>"GOOG"</kbd>,70}, {<kbd>"MSFT"</kbd>,200}, {<kbd>"AAPL"</kbd>,100} };
+
+  <var>if</var> (a==b) std::cout &lt;&lt; <kbd>"a and b are equal\n"</kbd>;
+  <var>if</var> (b!=c) std::cout &lt;&lt; <kbd>"b and c are not equal\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>a and b are equal
+b and c are not equal
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Average case: linear in number of equivalent groups, where each is up to quadratic in number of elements (general case), but commonly linear if the relative order of elements between the equivalent groups is the same (such as when a container is a copy of another).<br>
+Worst case: quadratic in <a href="/unordered_multimap::size">size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/equal_range/"><b>unordered_multimap::equal_range</b></a></dt><dd>Get range of elements with specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/operator=/"><b>unordered_multimap::operator=</b></a></dt><dd>Assign content <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

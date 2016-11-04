@@ -1,0 +1,85 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>is_heap_until<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class RandomAccessIterator&gt;  RandomAccessIterator is_heap_until (RandomAccessIterator first,                                      RandomAccessIterator last);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class RandomAccessIterator, class Compare&gt;  RandomAccessIterator is_heap_until (RandomAccessIterator first,                                      RandomAccessIterator last                                      Compare comp);</pre></td></tr></table></div><div id="I_description">Find first element not in heap order</div>
+<section id="description">
+Returns an iterator to the first element in the range <code>[first,last)</code> which is not in a valid position if the range is considered a heap (as if constructed with <samp><a href="/make_heap">make_heap</a></samp>).<br>
+<br>
+The range between <var>first</var> and the iterator returned <a href="/is_heap">is a heap</a>.<br>
+<br>
+If the entire range is a valid heap, the function returns <var>last</var>.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> for the first version, and <var>comp</var> for the second.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/RandomAccessIterator">Random-access iterators</a> to the initial and final positions in a sequence. The range checked is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two elements in the range as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered to go before the second in the specific <i>strict weak ordering</i> it defines.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the first element in the range which is not in a valid position for the range to be a heap, or <var>last</var> if all elements are validly positioned or if the range contains less than two elements.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// is_heap example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::is_heap_until, std::sort, std::reverse</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; foo {2,6,9,3,8,4,5,1,7};
+
+  std::sort(foo.begin(),foo.end());
+  std::reverse(foo.begin(),foo.end());
+
+  <var>auto</var> last = std::is_heap_until (foo.begin(),foo.end());
+
+  std::cout &lt;&lt; <kbd>"The "</kbd> &lt;&lt; (last-foo.begin()) &lt;&lt; <kbd>" first elements are a valid heap:"</kbd>;
+  <var>for</var> (<var>auto</var> it=foo.begin(); it!=last; ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Most implementations consider a range sorted in reverse order a valid heap:<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The 9 first elements are a valid heap: 9 8 7 6 5 4 3 2 1
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Compares elements until a mismatch is found.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either <var>comp</var> or an operation on an iterator throws.<br>
+Note that invalid parameters cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/is_heap/"><b>is_heap</b></a></dt><dd>Test if range is heap <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/make_heap/"><b>make_heap</b></a></dt><dd>Make heap from range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/is_sorted_until/"><b>is_sorted_until</b></a></dt><dd>Find first unsorted element in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,59 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;ios&gt;</h1>
+<div id="I_description">Input-Output base classes</div>
+<section id="description">
+Header providing base classes and types for the IOStream hierarchy of classes:<br>
+<br>
+<map name="hierarchymap">
+<area href="/reference/iostream/ios_base/" shape="RECT" coords="21,36,128,62" alt="">
+<area href="/reference/iostream/ios/" shape="RECT" coords="21,95,128,122" alt="">
+<area href="/reference/iostream/istream/" shape="RECT" coords="161,36,268,62" alt="">
+<area href="/reference/iostream/iostream/" shape="RECT" coords="161,95,268,121" alt="">
+<area href="/reference/iostream/ostream/" shape="RECT" coords="161,154,268,180" alt="">
+<area href="/reference/iostream/streambuf/" shape="RECT" coords="161,220,268,246" alt="">
+<area href="/reference/iostream/cin.html" shape="RECT" coords="299,65,406,91" alt="">
+<area href="/reference/iostream/cout.html" shape="RECT" coords="300,183,407,209" alt="">
+<area href="/reference/iostream/ifstream/" shape="RECT" coords="438,26,545,52" alt="">
+<area href="/reference/iostream/fstream/" shape="RECT" coords="438,85,545,111" alt="">
+<area href="/reference/iostream/ofstream/" shape="RECT" coords="438,144,545,170" alt="">
+<area href="/reference/iostream/filebuf/" shape="RECT" coords="438,210,545,236" alt="">
+<area href="/reference/iostream/istringstream/" shape="RECT" coords="577,43,684,69" alt="">
+<area href="/reference/iostream/stringstream/" shape="RECT" coords="577,99,684,125" alt="">
+<area href="/reference/iostream/ostringstream/" shape="RECT" coords="577,159,684,185" alt="">
+<area href="/reference/iostream/stringbuf/" shape="RECT" coords="577,225,684,251" alt="">
+</map>
+<img src="/img/iostream.gif" width="705" height="273" usemap="#hierarchymap" alt="click on an element for detailed information" title="click on an element for detailed information">
+</section>
+<br>
+<section id="types">
+<h3>Types</h3>
+<h4>Class templates</h4>
+<dl class="links"><dt><a href= "/reference/ios/basic_ios/"><b>basic_ios</b></a></dt><dd>Base class for streams (type-dependent components) <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/fpos/"><b>fpos</b></a></dt><dd>Stream position class template <span class="typ">(class template)</span></dd></dl>
+<br>
+<h4>Classes</h4>
+<dl class="links"><dt><a href= "/reference/ios/ios/"><b>ios</b></a></dt><dd>Base class for streams (type-dependent components) <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/"><b>ios_base</b></a></dt><dd>Base class for streams <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/wios/"><b>wios</b></a></dt><dd>Base class for wide character streams <span class="typ">(class)</span></dd></dl>
+<br>
+<h4>Other types</h4>
+<dl class="links"><dt><a href= "/reference/ios/io_errc/"><b>io_errc</b></a></dt><dd>Input/output error conditions <span class="typ">(enum class)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/streamoff/"><b>streamoff</b></a></dt><dd>Stream offset type <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/streampos/"><b>streampos</b></a></dt><dd>Stream position type <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/streamsize/"><b>streamsize</b></a></dt><dd>Stream size type <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/wstreampos/"><b>wstreampos</b></a></dt><dd>Wide stream position type <span class="typ">(type)</span></dd></dl>
+</section>
+<br>
+<section id="functions">
+<h3>Format flag manipulators (functions)</h3>
+<b>Independent flags (switch on)</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/boolalpha/"><b>boolalpha</b></a></dt><dd>Alphanumerical bool values <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/showbase/"><b>showbase</b></a></dt><dd>Show numerical base prefixes <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/showpoint/"><b>showpoint</b></a></dt><dd>Show decimal point <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/showpos/"><b>showpos</b></a></dt><dd>Show positive signs <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/skipws/"><b>skipws</b></a></dt><dd>Skip whitespaces <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/unitbuf/"><b>unitbuf</b></a></dt><dd>Flush buffer after insertions <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/uppercase/"><b>uppercase</b></a></dt><dd>Generate upper-case letters <span class="typ">(function)</span></dd></dl>
+<b>Independent flags (switch off)</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/noboolalpha/"><b>noboolalpha</b></a></dt><dd>No alphanumerical bool values <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/noshowbase/"><b>noshowbase</b></a></dt><dd>Do not show numerical base prefixes <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/noshowpoint/"><b>noshowpoint</b></a></dt><dd>Do not show decimal point <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/noshowpos/"><b>noshowpos</b></a></dt><dd>Do not show positive signs <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/noskipws/"><b>noskipws</b></a></dt><dd>Do not skip whitespaces <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/nounitbuf/"><b>nounitbuf</b></a></dt><dd>Do not force flushes after insertions <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/nouppercase/"><b>nouppercase</b></a></dt><dd>Do not generate upper case letters <span class="typ">(function)</span></dd></dl>
+<b>Numerical base format flags ("basefield" flags)</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/dec/"><b>dec</b></a></dt><dd>Use decimal base <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/hex/"><b>hex</b></a></dt><dd>Use hexadecimal base <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/oct/"><b>oct</b></a></dt><dd>Use octal base <span class="typ">(function)</span></dd></dl>
+<b>Floating-point format flags ("floatfield" flags)</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/fixed/"><b>fixed</b></a></dt><dd>Use fixed floating-point notation <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/scientific/"><b>scientific</b></a></dt><dd>Use scientific floating-point notation <span class="typ">(function)</span></dd></dl>
+<b>Adustment format flags ("adjustfield" flags)</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/internal/"><b>internal</b></a></dt><dd>Adjust field by inserting characters at an internal position <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/left/"><b>left</b></a></dt><dd>Adjust output to the left <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/right/"><b>right</b></a></dt><dd>Adjust output to the right <span class="typ">(function)</span></dd></dl>
+<br>
+<h3>Other functions</h3>
+<dl class="links"><dt><a href= "/reference/ios/iostream_category/"><b>iostream_category <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return iostream category <span class="typ">(function)</span></dd></dl>
+<br>
+Notice that not all standard manipulators are defined in this header. Input streams also support <samp><a href="/ws">ws</a></samp>, and output streams <samp><a href="/endl">endl</a></samp>, <samp><a href="/ends">ends</a></samp> and <samp><a href="/flush">flush</a></samp>. Streams also support an additional set of manipulators, which are parametric and defined apart in header <a href="/iomanip">&lt;iomanip&gt;</a>. These are: <a href="/setiosflags">setiosflags</a>, <a href="/resetiosflags">resetiosflags</a>, <a href="/setbase">setbase</a>, <a href="/setfill">setfill</a>, <a href="/setprecision">setprecision</a>, <a href="/setw">setw</a>
+<div id="CH_bb"></div></div></div>

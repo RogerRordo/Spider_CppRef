@@ -1,0 +1,60 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cctype&gt;</div>
+<h1>tolower</h1>
+<div class="C_prototype"><pre>int tolower ( int c );</pre></div><div id="I_description">Convert uppercase letter to lowercase</div>
+<section id="description">
+Converts <i>c</i> to its lowercase equivalent if <i>c</i> is an uppercase letter and has a lowercase equivalent. If no such conversion is possible, the value returned is <i>c</i> unchanged.<br>
+<br>
+Notice that what is considered a letter may depend on the locale being used; In the default <tt>"C"</tt> locale, an uppercase letter is any of: <tt>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</tt>, which translate respectively to: <tt>a b c d e f g h i j k l m n o p q r s t u v w x y z</tt>.<br>
+<br>
+In other locales, if an uppercase character has more than one correspondent lowercase character, this function always returns the same character for the same value of <i>c</i>.<br>
+<br>
+In C++, a locale-specific template version of this function (<a href="/locale:tolower">tolower</a>) exists in header <a href="/&lt;locale&gt;">&lt;locale&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c</dt>
+<dd>Character to be converted, casted to an <tt>int</tt>, or <tt>EOF</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The lowercase equivalent to <i>c</i>, if such value exists, or <i>c</i> (unchanged) otherwise.<br>
+The value is returned as an <tt>int</tt> value that can be implicitly casted to <tt>char</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>/* tolower example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;ctype.h&gt;</dfn>
+<var>int</var> main ()
+{
+  <var>int</var> i=0;
+  <var>char</var> str[]=<kbd>"Test String.\n"</kbd>;
+  <var>char</var> c;
+  <var>while</var> (str[i])
+  {
+    c=str[i];
+    putchar (tolower(c));
+    i++;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>test string.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cctype/toupper/"><b>toupper</b></a></dt><dd>Convert lowercase letter to uppercase <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isupper/"><b>isupper</b></a></dt><dd>Check if character is uppercase letter <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/islower/"><b>islower</b></a></dt><dd>Check if character is lowercase letter <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isalpha/"><b>isalpha</b></a></dt><dd>Check if character is alphabetic <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

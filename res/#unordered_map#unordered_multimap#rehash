@@ -1,0 +1,85 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_map/unordered_multimap/">unordered_multimap</a>::rehash<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>void rehash( size_type n );</pre></div><div id="I_description">Set number of buckets</div>
+<section id="description">
+Sets the number of buckets in the container to <i>n</i> or more.<br>
+<br>
+If <i>n</i> is greater than the current number of buckets in the container (<a href="/unordered_multimap::bucket_count">bucket_count</a>), a rehash is forced. The new <a href="/unordered_multimap::bucket_count">bucket count</a> can either be equal or greater than <i>n</i>.<br>
+<br>
+If <i>n</i> is lower than the current number of buckets in the container (<a href="/unordered_multimap::bucket_count">bucket_count</a>), the function may have no effect on the <a href="/unordered_multimap::bucket_count">bucket count</a> and may not force a rehash.<br>
+<br>
+A <dfn>rehash</dfn> is the reconstruction of the hash table: All the elements in the container are rearranged according to their hash value into the new set of buckets. This may alter the order of iteration of elements within the container, although the relative order of the elements with equivalent keys is preserved.<br>
+<br>
+Rehashes are automatically performed by the container whenever its <a href="/unordered_multimap::load_factor">load factor</a> is going to surpass its <a href="/unordered_multimap::max_load_factor">max_load_factor</a> in an operation.<br>
+<br>
+Notice that this function expects the number of buckets as argument. A similar function exists, <a href="/unordered_multimap::reserve">unordered_multimap::reserve</a>, that expects the number of elements in the container as argument.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>The minimum number of buckets for the container hash table.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_multimap::max_load_factor</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>int</var> main ()
+{
+
+  std::unordered_multimap&lt;std::string,std::string&gt; myumm;
+
+  myumm.rehash(20);
+
+  myumm.insert({{<kbd>"apple"</kbd>,<kbd>"NY"</kbd>},{<kbd>"apple"</kbd>,<kbd>"WA"</kbd>},{<kbd>"peach"</kbd>,<kbd>"GA"</kbd>}});
+  myumm.insert({{<kbd>"orange"</kbd>,<kbd>"FL"</kbd>},{<kbd>"cherry"</kbd>,<kbd>"UT"</kbd>}});
+  myumm.insert({{<kbd>"strawberry"</kbd>,<kbd>"LA"</kbd>},{<kbd>"strawberry"</kbd>,<kbd>"NC"</kbd>}});
+
+  std::cout &lt;&lt; <kbd>"current bucket_count: "</kbd> &lt;&lt; myumm.bucket_count() &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>current bucket_count: 23
+</samp></pre></td></tr></table></div>
+<br>
+By calling <tt>rehash</tt> to reserve a certain minimum amount of buckets in the hash table, we avoid the multiple rehashes that the expansion of the container may cause.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+In case of rehash,<br>
+Average case: linear in <a href="/unordered_multimap::size">container size</a>.<br>
+Worst case: quadratic in <a href="/unordered_multimap::size">container size</a>. <br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+If a rehash happens, all iterators are invalidated, but references and pointers to individual elements remain valid.<br>
+The relative order of iteration of equivalent elements is preserved.<br>
+If no actual rehash happens, no changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/reserve/"><b>unordered_multimap::reserve</b></a></dt><dd>Request a capacity change <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/bucket_count/"><b>unordered_multimap::bucket_count</b></a></dt><dd>Return number of buckets <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/max_load_factor/"><b>unordered_multimap::max_load_factor</b></a></dt><dd>Get or set maximum load factor <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/size/"><b>unordered_multimap::size</b></a></dt><dd>Return container size <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

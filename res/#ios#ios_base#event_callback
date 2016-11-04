@@ -1,0 +1,32 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::event_callback</h1>
+<div id="I_description">Event callback function type</div>
+<section id="description">
+Type for <i>callback functions</i> registered with member <samp><a href="/ios_base::register_callback">register_callback</a></samp>.<br>
+<br>
+It is defined as a member type of <samp><a href="/ios_base">ios_base</a></samp> as:<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>&nbsp;</code></pre></td>
+<td class="source"><pre><code><var>typedef</var> <var>void</var> (*event_callback) (event ev, ios_base&amp; obj, <var>int</var> index);</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+Therefore it is a function returning no value and having taking three arguments:<br>
+<dl>
+<dt>ev</dt>
+<dd>An object of enum member type <samp><a href="/ios_base::event">event</a></samp>. When the <i>callback function</i> is called, this is set to one of the three possible values to indicate what type of event triggered the function call.</dd>
+<dt>obj</dt>
+<dd>When the <i>callback function</i> is called, this is a reference to the stream object on which the even is triggered (<code>*this</code>).</dd>
+<dt>index</dt>
+<dd>When the <i>callback function</i> is called, this is set to the same value used as <var>index</var> argument when the function was registered with member <samp><a href="/ios_base::register_callback">register_callback</a></samp>.</dd>
+</dl>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/register_callback/"><b>ios_base::register_callback</b></a></dt><dd>Register event callback function <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

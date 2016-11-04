@@ -1,0 +1,91 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>ldexp</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double ldexp (double x, int exp);</pre></div>
+<div title="C99" class="on">
+<pre>     double ldexp  (double x     , int exp);      float ldexpf (float x      , int exp);long double ldexpl (long double x, int exp);</pre></div>
+<div title="C++98" class="on">
+<pre>     double ldexp (double x     , int exp);      float ldexp (float x      , int exp);long double ldexp (long double x, int exp);</pre></div>
+<div title="C++11" class="on">
+<pre>     double ldexp (double x     , int exp);      float ldexp (float x      , int exp);long double ldexp (long double x, int exp);     double ldexp (T x          , int exp); // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Generate value from significand and exponent</div>
+<section id="description">
+Returns the result of multiplying <var>x</var> (the significand) by <code>2</code> raised to the power of <var>exp</var> (the exponent).<br>
+<br>
+<code>lexpr(x,exp)</code> = <var>x</var> * 2 <sup><var>exp</var></sup>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Floating point value representing the <i>significand</i>.</dd>
+<dt>exp</dt>
+<dd>Value of the <i>exponent</i>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The function returns:<br>
+<br>
+<var>x</var> * 2 <sup><var>exp</var></sup> <br>
+<br>
+If the magnitude of the result is too large to be represented by a value of the return type, the function returns <samp><a href="/HUGE_VAL">HUGE_VAL</a></samp> (or <samp><a href="/HUGE_VALF">HUGE_VALF</a></samp> or <samp><a href="/HUGE_VALL">HUGE_VALL</a></samp>) with the proper sign, and an overflow <i>range error</i> occurs:<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C90 (C++98)">
+If an overflow <i>range error</i> occurs, the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+</div>
+<div title="C99 (C+11)">
+If an overflow <i>range error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> is raised.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* ldexp example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* ldexp */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> param, result;
+  <var>int</var> n;
+
+  param = 0.95;
+  n = 4;
+  result = ldexp (param , n);
+  printf (<kbd>"%f * 2^%d = %f\n"</kbd>, param, n, result);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+0.950000 * 2^4 = 15.200000
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/frexp/"><b>frexp</b></a></dt><dd>Get significand and exponent <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/log/"><b>log</b></a></dt><dd>Compute natural logarithm <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/pow/"><b>pow</b></a></dt><dd>Raise to power <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,18 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>TMP_MAX</h1>
+<div id="I_description">Number of temporary files</div>
+<section id="description">
+This macro expands to the minimum number of unique temporary file names that are guaranteed to be possible to generate using <a href="/tmpnam">tmpnam</a>.<br>
+<br>
+This value cannot be lower than <tt>25</tt>.<br>
+<br>
+Particular library implementations may count file names used by files created with <a href="/tmpfile">tmpfile</a> towards this limit.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/FOPEN_MAX/"><b>FOPEN_MAX</b></a></dt><dd>Potential limit of simultaneous open streams <span class="typ">(constant)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

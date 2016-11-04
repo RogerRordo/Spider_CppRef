@@ -1,0 +1,62 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;cctype&gt; (ctype.h)</h1>
+<div id="I_description">Character handling functions</div>
+<section id="description">
+This header declares a set of functions to classify and transform individual characters.<br>
+</section>
+<br>
+<section id="functions">
+<h3>Functions</h3>
+These functions take the <tt>int</tt> equivalent of one character as parameter and return an <tt>int</tt> that can either be another character or a value representing a boolean value: an <tt>int</tt> value of <tt>0</tt> means false, and an <tt>int</tt> value different from <tt>0</tt> represents true.<br>
+<br>
+There are two sets of functions:<br>
+<br>
+<h4>Character classification functions</h4>
+They check whether the character passed as parameter belongs to a certain category:<br>
+<br>
+<dl class="links"><dt><a href= "/reference/cctype/isalnum/"><b>isalnum</b></a></dt><dd>Check if character is alphanumeric <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isalpha/"><b>isalpha</b></a></dt><dd>Check if character is alphabetic <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isblank/"><b>isblank <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Check if character is blank <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/iscntrl/"><b>iscntrl</b></a></dt><dd>Check if character is a control character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isdigit/"><b>isdigit</b></a></dt><dd>Check if character is decimal digit <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isgraph/"><b>isgraph</b></a></dt><dd>Check if character has graphical representation <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/islower/"><b>islower</b></a></dt><dd>Check if character is lowercase letter <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isprint/"><b>isprint</b></a></dt><dd>Check if character is printable <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/ispunct/"><b>ispunct</b></a></dt><dd>Check if character is a punctuation character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isspace/"><b>isspace</b></a></dt><dd>Check if character is a white-space <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isupper/"><b>isupper</b></a></dt><dd>Check if character is uppercase letter <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isxdigit/"><b>isxdigit</b></a></dt><dd>Check if character is hexadecimal digit <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Character conversion functions</h4>
+Two functions that convert between letter cases:<br>
+<dl class="links"><dt><a href= "/reference/cctype/tolower/"><b>tolower</b></a></dt><dd>Convert uppercase letter to lowercase <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/toupper/"><b>toupper</b></a></dt><dd>Convert lowercase letter to uppercase <span class="typ">(function)</span></dd></dl>
+<br>
+For the first set, here is a map of how the original 127-character ASCII set is considered by each function (an x indicates that the function returns true on that character)<br>
+<br>
+<table class="boxed">
+<tr><th>ASCII values</th><th>characters</th><th><a href="/iscntrl">iscntrl</a></th><th><a href="/isblank">isblank</a></th><th><a href="/isspace">isspace</a></th><th><a href="/isupper">isupper</a></th><th><a href="/islower">islower</a></th><th><a href="/isalpha">isalpha</a></th><th><a href="/isdigit">isdigit</a></th><th><a href="/isxdigit">isxdigit</a></th><th><a href="/isalnum">isalnum</a></th><th><a href="/ispunct">ispunct</a></th><th><a href="/isgraph">isgraph</a></th><th><a href="/isprint">isprint</a></th></tr>
+<tr><td>0x00 .. 0x08</td><td>NUL, (other control codes)</td>
+<td>x</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td>0x09</td><td>tab (<tt>'\t'</tt>)</td>
+<td>x</td><td>x</td><td>x</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td>0x0A .. 0x0D</td><td>(white-space control codes: <tt>'\f'</tt>,<tt>'\v'</tt>,<tt>'\n'</tt>,<tt>'\r'</tt>)</td>
+<td>x</td><td> </td><td>x</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td>0x0E .. 0x1F</td><td>(other control codes)</td>
+<td>x</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+<tr><td>0x20</td><td>space (<tt>' '</tt>)</td>
+<td> </td><td>x</td><td>x</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>x</td></tr>
+<tr><td>0x21 .. 0x2F</td><td><tt>!"#$%&'()*+,-./</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td>x</td></tr>
+<tr><td>0x30 .. 0x39</td><td><tt>0123456789</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td>x</td><td> </td><td>x</td><td>x</td></tr>
+<tr><td>0x3a .. 0x40</td><td><tt>:;&lt;=&gt;?@</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td>x</td></tr>
+<tr><td>0x41 .. 0x46</td><td><tt>ABCDEF</tt></td>
+<td> </td><td> </td><td> </td><td>x</td><td> </td><td>x</td><td> </td><td>x</td><td>x</td><td> </td><td>x</td><td>x</td></tr>
+<tr><td>0x47 .. 0x5A</td><td><tt>GHIJKLMNOPQRSTUVWXYZ</tt></td>
+<td> </td><td> </td><td> </td><td>x</td><td> </td><td>x</td><td> </td><td> </td><td>x</td><td> </td><td>x</td><td>x</td></tr>
+<tr><td>0x5B .. 0x60</td><td><tt>[\]^_`</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td>x</td></tr>
+<tr><td>0x61 .. 0x66</td><td><tt>abcdef</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td> </td><td>x</td><td>x</td><td> </td><td>x</td><td>x</td></tr>
+<tr><td>0x67 .. 0x7A</td><td><tt>ghijklmnopqrstuvwxyz</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td> </td><td> </td><td>x</td><td> </td><td>x</td><td>x</td></tr>
+<tr><td>0x7B .. 0x7E</td><td><tt>{|}~</tt></td>
+<td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>x</td><td>x</td><td>x</td></tr>
+<tr><td>0x7F</td><td>(DEL)</td>
+<td>x</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+</table>
+<br>
+The characters in the extended character set (above 0x7F) may belong to diverse categories depending on the locale and the platform. As a general rule, <a href="/ispunct">ispunct</a>, <a href="/isgraph">isgraph</a> and <a href="/isprint">isprint</a> return true on these for the standard C locale on most platforms supporting extended character sets.<br>
+<div id="CH_bb"></div></div></div>

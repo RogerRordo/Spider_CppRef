@@ -1,0 +1,100 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::emplace<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class... Args&gt;iterator emplace (const_iterator position, Args&amp;&amp;... args);</pre></div><div id="I_description">Construct and insert element</div>
+<section id="description">
+The container is extended by inserting a new element at <i>position</i>. This new element is constructed in place using <i>args</i> as the arguments for its construction.<br>
+<br>
+This effectively increases the container <a href="/vector::size">size</a> by one.<br>
+<br>
+An automatic reallocation of the allocated storage space happens if -and only if- the new vector <a href="/vector::size">size</a> surpasses the current vector <a href="/vector::capacity">capacity</a>.<br>
+<br>
+Because vectors use an array as their underlying storage, inserting elements in positions other than the <a href="/vector::end">vector end</a> causes the container to shift all the elements that were after <i>position</i> by one to their new positions. This is generally an inefficient operation compared to the one performed by other kinds of sequence containers (such as <a href="/list">list</a> or <a href="/forward_list">forward_list</a>). See <a href="/vector::emplace_back">emplace_back</a> for a member function that extends the container directly at the <a href="/vector::end">end</a>.<br>
+<br>
+The element is constructed in-place by calling <a href="/allocator_traits::construct">allocator_traits::construct</a> with <i>args</i> forwarded.<br>
+<br>
+A similar member function exists, <a href="/vector::insert">insert</a>, which either copies or moves existing objects into the container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>position</dt>
+<dd>Position in the container where the new element is inserted.<br>
+Member type <tt>const_iterator</tt> is a <a href="/RandomAccessIterator">random access iterator</a> type that points to a const element.</dd>
+<dt>args</dt>
+<dd>Arguments forwarded to construct the new element.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator that points to the newly emplaced element.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/RandomAccessIterator">random access iterator</a> type that points to an element.<br>
+<br>
+If a reallocation happens, the storage is allocated using the container's <a href="/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="/allocator">allocator</a>, <tt>bad_alloc</tt> is thrown if the allocation request does not succeed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector::emplace</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector = {10,20,30};
+
+  <var>auto</var> it = myvector.emplace ( myvector.begin()+1, 100 );
+  myvector.emplace ( it, 200 );
+  myvector.emplace ( myvector.end(), 300 );
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (<var>auto</var>&amp; x: myvector)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; x;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 10 200 100 20 30 300
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear on the number of elements after <i>position</i> (moving).<br>
+<br>
+If a reallocation happens, the reallocation is itself up to linear in the entire <a href="/vector::size">size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+If a reallocation happens, all iterators, pointers and references related to this container are invalidated.<br>
+Otherwise, only those pointing to <i>position</i> and beyond are invalidated, with all iterators, pointers and references to elements before <i>position</i> guaranteed to keep referring to the same elements they were referring to before the call.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is modified.<br>
+If a reallocation happens, all contained elements are modified.<br>
+Otherwise, none of the elements before <i>position</i> is accessed, and concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <i>position</i> is <a href="/vector::end">end</a>, and no reallocations happen, there are no changes in the container in case of exception (strong guarantee).<br>
+If a reallocation happens, the strong guarantee is also given if the type of the elements is either <i>copyable</i> or <i>no-throw moveable</i>.<br>
+Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>
+If <a href="/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, or if <i>position</i> is not valid, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/emplace_back/"><b>vector::emplace_back</b></a></dt><dd>Construct and insert element at the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/insert/"><b>vector::insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/erase/"><b>vector::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/assign/"><b>vector::assign</b></a></dt><dd>Assign vector content <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

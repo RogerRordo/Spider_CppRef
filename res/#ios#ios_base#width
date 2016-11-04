@@ -1,0 +1,73 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::width</h1>
+<div class="C_prototype"><table><tr class="odd"><th>get (1)</th><td><pre>streamsize width() const;</pre></td></tr><tr class="even"><th>set (2)</th><td><pre>streamsize width (streamsize wide);</pre></td></tr></table></div><div id="I_description">Get/set field width</div>
+<section id="description">
+The first form <i>(1)</i> returns the current value of the <i>field width</i>.<br>
+The second form <i>(2)</i> also sets a new <i>field width</i> for the stream.<br>
+<br>
+The <dfn>field width</dfn> determines the minimum number of characters to be written in some output representations. If the standard width of the representation is shorter than the field width, the representation is padded with <i>fill characters</i> at a point determined by the format flag <samp>adjustfield</samp> (one of <samp>left</samp>, <samp>right</samp> or <samp>internal</samp>). <br>
+<br>
+The <i>fill character</i> can be retrieved or changed by calling the member function <samp><a href="/ios::fill">fill</a></samp>.<br>
+<br>
+The format flag <samp>adjustfield</samp> can be modified by calling the member functions <samp><a href="/ios_base::flags">flags</a></samp> or <samp><a href="/ios_base::setf">setf</a></samp>, by inserting one of the following manipulators: <samp><a href="/left">left</a></samp>, <samp><a href="/right">right</a></samp> and <samp><a href="/internal">internal</a></samp>, or by inserting the parameterized manipulator <samp><a href="/setiosflags">setiosflags</a></samp>.<br>
+<br>
+The <i>field width</i> can also be modified using the parameterized manipulator <samp><a href="/setw">setw</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>wide</dt>
+<dd>New value for the stream's <i>field width</i>.<br>
+<samp><a href="/streamsize">streamsize</a></samp> in signed integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The value of the <i>field width</i> before the call. <br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>// field width</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::left</cite>
+
+<var>int</var> main () {
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout.width(10);
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout.fill(<kbd>'x'</kbd>);
+  std::cout.width(15);
+  std::cout &lt;&lt; std::left &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+100
+       100
+100xxxxxxxxxxxx
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses <i>(1)</i> or modifies <i>(2)</i> the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/iomanip/setw/"><b>setw</b></a></dt><dd>Set field width <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/fill/"><b>ios::fill</b></a></dt><dd>Get/set fill character <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

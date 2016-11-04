@@ -1,0 +1,19 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>float_t</h1>
+<div id="I_description">Floating-point type</div>
+<section id="description">
+Alias of one of the fundamental floating-point types at least as wide as <code>float</code>.<br>
+<br>
+It is the type used by the implementation to evaluate values of type <code>float</code>, as determined by <samp><a href="/&lt;cfloat&gt;">FLT_EVAL_METHOD</a></samp>:<br>
+<br>
+<table class="boxed">
+<tr><th><samp><a href="/&lt;cfloat&gt;">FLT_EVAL_METHOD</a></samp></th><th><samp>float_t</samp></th><th><samp><a href="/double_t">double_t</a></samp></th></tr>
+<tr><td><code>0</code></td><td><code>float</code></td><td><code>double</code></td></tr>
+<tr><td><code>1</code></td><td><code>double</code></td><td><code>double</code></td></tr>
+<tr><td><code>2</code></td><td><code>long double</code></td><td><code>long double</code></td></tr>
+<tr><td><i>other</i></td><td><i>implementation-defined</i></td><td><i>implementation-defined</i></td></tr>
+</table>
+<div id="CH_bb"></div></div></div>

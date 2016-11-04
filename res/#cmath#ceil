@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>ceil</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double ceil (double x);</pre></div>
+<div title="C99" class="on">
+<pre>     double ceil  (double x);      float ceilf (float x);long double ceill (long double x);</pre></div>
+<div title="C++98" class="on">
+<pre>     double ceil (double x);      float ceil (float x);long double ceil (long double x);</pre></div>
+<div title="C++11" class="on">
+<pre>     double ceil (double x);      float ceil (float x);long double ceil (long double x);     double ceil (T x);           // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Round up value</div>
+<section id="description">
+Rounds <var>x</var> upward, returning the smallest integral value that is not less than <var>x</var>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Value to round up.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The smallest integral value that is not less than <var>x</var> (as a floating-point value).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>/* ceil example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* ceil */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  printf ( <kbd>"ceil of 2.3 is %.1f\n"</kbd>, ceil(2.3) );
+  printf ( <kbd>"ceil of 3.8 is %.1f\n"</kbd>, ceil(3.8) );
+  printf ( <kbd>"ceil of -2.3 is %.1f\n"</kbd>, ceil(-2.3) );
+  printf ( <kbd>"ceil of -3.8 is %.1f\n"</kbd>, ceil(-3.8) );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+ceil of 2.3 is 3.0
+ceil of 3.8 is 4.0
+ceil of -2.3 is -2.0
+ceil of -3.8 is -3.0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/floor/"><b>floor</b></a></dt><dd>Round down value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/fabs/"><b>fabs</b></a></dt><dd>Compute absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/modf/"><b>modf</b></a></dt><dd>Break into fractional and integral parts <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

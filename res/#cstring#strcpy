@@ -1,0 +1,58 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strcpy</h1>
+<div class="C_prototype"><pre>char * strcpy ( char * destination, const char * source );</pre></div><div id="I_description">Copy string</div>
+<section id="description">
+Copies the C string pointed by <i>source</i> into the array pointed by <i>destination</i>, including the terminating null character (and stopping at that point).<br>
+<br>
+To avoid overflows, the size of the array pointed by <i>destination</i> shall be long enough to contain the same C string as <i>source</i> (including the terminating null character), and should not overlap in memory with <i>source</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>destination</dt>
+<dd>Pointer to the destination array where the content is to be copied.</dd>
+<dt>source</dt>
+<dd>C string to be copied.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>destination</i> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strcpy example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str1[]=<kbd>"Sample string"</kbd>;
+  <var>char</var> str2[40];
+  <var>char</var> str3[40];
+  strcpy (str2,str1);
+  strcpy (str3,<kbd>"copy successful"</kbd>);
+  printf (<kbd>"str1: %s\nstr2: %s\nstr3: %s\n"</kbd>,str1,str2,str3);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+str1: Sample string
+str2: Sample string
+str3: copy successful
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memmove/"><b>memmove</b></a></dt><dd>Move block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memset/"><b>memset</b></a></dt><dd>Fill block of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

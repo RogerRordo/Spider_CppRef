@@ -1,0 +1,111 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>lower_bound</h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class ForwardIterator, class T&gt;  ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last,                               const T&amp; val);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class ForwardIterator, class T, class Compare&gt;  ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last,                               const T&amp; val, Compare comp);</pre></td></tr></table></div><div id="I_description">Return iterator to lower bound</div>
+<section id="description">
+Returns an iterator pointing to the first element in the range <code>[first,last)</code> which does not compare less than <var>val</var>.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> for the first version, and <var>comp</var> for the second. The elements in the range shall already be <a href="/is_sorted">sorted</a> according to this same criterion (<code>operator&lt;</code> or <var>comp</var>), or at least <a href="/is_partitioned">partitioned</a> with respect to <var>val</var>.<br>
+<br>
+The function optimizes the number of comparisons performed by comparing non-consecutive elements of the sorted range, which is specially efficient for <a href="/RandomAccessIterator">random-access iterators</a>.<br>
+<br>
+Unlike <samp><a href="/upper_bound">upper_bound</a></samp>, the value pointed by the iterator returned by this function may also be equivalent to <var>val</var>, and not only greater.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> ForwardIterator, <var>class</var> T&gt;
+  ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, <var>const</var> T&amp; val)
+{
+  ForwardIterator it;
+  iterator_traits&lt;ForwardIterator&gt;::difference_type count, step;
+  count = distance(first,last);
+  <var>while</var> (count&gt;0)
+  {
+    it = first; step=count/2; advance (it,step);
+    <var>if</var> (*it&lt;val) {                 <cite>// or: if (comp(*it,val)), for version (2)</cite>
+      first=++it;
+      count-=step+1;
+    }
+    <var>else</var> count=step;
+  }
+  <var>return</var> first;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions of a <a href="/is_sorted">sorted</a> (or properly <a href="/is_partitioned">partitioned</a>) sequence. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>val</dt>
+<dd>Value of the lower bound to search for in the range.<br>
+For <i>(1)</i>, <samp>T</samp> shall be a type supporting being compared with elements of the range <code>[first,last)</code> as the right-hand side operand of <code>operator&lt;</code>.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two arguments (the first of the type pointed by <samp>ForwardIterator</samp>, and the second, always <var>val</var>), and returns a value convertible to <code>bool</code>. The value returned indicates whether the first argument is considered to go before the second.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the lower bound of <var>val</var> in the range.<br>
+If all the element in the range compare less than <var>val</var>, the function returns <var>last</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// lower_bound/upper_bound example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::lower_bound, std::upper_bound, std::sort</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  <var>int</var> myints[] = {10,20,30,30,20,10,10,20};
+  std::vector&lt;<var>int</var>&gt; v(myints,myints+8);           <cite>// 10 20 30 30 20 10 10 20</cite>
+
+  std::sort (v.begin(), v.end());                <cite>// 10 10 10 20 20 20 30 30</cite>
+
+  std::vector&lt;<var>int</var>&gt;::iterator low,up;
+  low=std::lower_bound (v.begin(), v.end(), 20); <cite>//          ^</cite>
+  up= std::upper_bound (v.begin(), v.end(), 20); <cite>//                   ^</cite>
+
+  std::cout &lt;&lt; <kbd>"lower_bound at position "</kbd> &lt;&lt; (low- v.begin()) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"upper_bound at position "</kbd> &lt;&lt; (up - v.begin()) &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>lower_bound at position 3
+upper_bound at position 6
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+On average, logarithmic in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Performs approximately <code>log<sub>2</sub>(N)+1</code> element comparisons (where <var>N</var> is this distance).<br>
+On <i>non-<a href="/RandomAccessIterator">random-access</a> iterators</i>, the iterator <a href="/advance">advances</a> produce themselves an additional linear complexity in <var>N</var> on average.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either an element comparison or an operation on an iterator throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/upper_bound/"><b>upper_bound</b></a></dt><dd>Return iterator to upper bound <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/equal_range/"><b>equal_range</b></a></dt><dd>Get subrange of equal elements <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/binary_search/"><b>binary_search</b></a></dt><dd>Test if value exists in sorted sequence <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/min_element/"><b>min_element</b></a></dt><dd>Return smallest element in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

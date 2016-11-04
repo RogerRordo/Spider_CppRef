@@ -1,0 +1,75 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>nexttoward<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<pre>     double nexttoward  (double x     , long double y);      float nexttowardf (float x      , long double y);long double nexttowardl (long double x, long double y);</pre></div>
+<div title="C++11" class="on">
+<pre>     double nexttoward (double x     , long double y);      float nexttoward (float x      , long double y);long double nexttoward (long double x, long double y);     double nexttoward (T x          , long double y);  // additional overloads</pre></div>
+</div>
+</div><div id="I_description">Next representable value toward precise value</div>
+<section id="description">
+Returns the next representable value after <var>x</var> in the direction of <var>y</var>.<br>
+<br>
+This function behaves as <samp><a href="/nextafter">nextafter</a></samp>, but with a potentially more precise <var>y</var>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Base value.</dd>
+<dt>y</dt>
+<dd>Value toward which the return value is approximated.</dd>
+</dl>
+If both parameters compare equal, the function returns <var>y</var> (converted to the return type).<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The next representable value after <var>x</var> in the direction of <var>y</var>.<br>
+<br>
+If <var>x</var> is the largest finite value representable in the type, and the result is infinite or not representable, an overflow <i>range error</i> occurs.<br>
+<br>
+If an overflow <i>range error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> is raised.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>/* nexttoward example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* nexttoward */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  printf (<kbd>"first representable value greater than zero: %e\n"</kbd>, nexttoward(0.0,1.0L));
+  printf (<kbd>"first representable value less than zero: %e\n"</kbd>, nexttoward(0.0,-1.0L));
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+first representable value greater than zero: 4.940656e-324
+first representable value less than zero: -4.940656e-324
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/nextafter/"><b>nextafter</b></a></dt><dd>Next representable value <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,50 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_set/">unordered_set</a>::equal_range<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>pair&lt;iterator,iterator&gt;   equal_range ( const key_type&amp; k );pair&lt;const_iterator,const_iterator&gt;   equal_range ( const key_type&amp; k ) const;</pre></div><div id="I_description">Get range of elements with a specific key</div>
+<section id="description">
+Returns the bounds of a range that includes all the elements that compare equal to <i>k</i>. In <a href="/unordered_set">unordered_set</a> containers, where keys are unique, the range will include one element at most.<br>
+<br>
+If <i>k</i> does not match any element in the container, the range returned has <a href="/unordered_set::end">end</a> as both its lower and upper range bounds.<br>
+<br>
+All iterators in an <a href="/unordered_set">unordered_set</a> have const access to the elements (even those whose type is not prefixed with <tt>const_</tt>): Elements can be inserted or removed, but not modified while in the container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>k</dt>
+<dd>Value to be compared.<br>
+Member type <tt>key_type</tt> is the type of the elements in the container. In <a href="/unordered_set">unordered_set</a> containers it is the same as <tt>value_type</tt>, defined as an alias of the class's first template parameter (<tt>Key</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The function returns a <a href="/pair">pair</a>, where its member <tt>pair::first</tt> is an iterator to the lower bound of the range, and <tt>pair::second</tt> is an iterator to its upper bound. The elements in the range are those between these two iterators, including <tt>pair::first</tt>, but not <tt>pair::second</tt>.<br>
+<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are <a href="/ForwardIterator">forward iterator</a> types. Both may be aliases of the same iterator type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+See <a href="/unordered_multiset::equal_range">unordered_multiset::equal_range</a>.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Average case: constant.<br>
+Worst case: linear in <a href="/unordered_set::size">container size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/count/"><b>unordered_set::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/find/"><b>unordered_set::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

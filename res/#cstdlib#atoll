@@ -1,0 +1,69 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>atoll<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>long long int atoll ( const char * str );</pre></div><div id="I_description">Convert string to long long integer</div>
+<section id="description">
+Parses the C-string <var>str</var> interpreting its content as an integral number, which is returned as a value of type <code>long long int</code>.<br>
+<br>
+This function operates like <samp><a href="/atol">atol</a></samp> to interpret the string, but produces numbers of type <code>long long int</code> (see <samp><a href="/atol">atol</a></samp> for details on the interpretation process).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C-string containing the representation of an integral number.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted integral number as a <code>long long int</code> value.<br>
+If no valid conversion could be performed, a zero value is returned.<br>
+If the converted value would be out of the range of representable values by a <code>long long int</code>, it causes <i>undefined behavior</i>. See <samp><a href="/strtoll">strtoll</a></samp> for a more robust cross-platform alternative when this is a possibility.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* atoll example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf, fgets */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* atoll */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>long</var> <var>long</var> <var>int</var> lli;
+  <var>char</var> buffer[256];
+  printf (<kbd>"Enter a long number: "</kbd>);
+  fgets (buffer, 256, stdin);
+  lli = atoll(buffer);
+  printf (<kbd>"The value entered is %lld. Its double is %lld.\n"</kbd>,lli,lli*2);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Enter a number: 9275806
+The value entered is 9275806. Its double is 18551612.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The array pointed by <var>str</var> is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+<br>
+If <var>str</var> does not point to a valid C-string, or if the converted value would be out of the range of values representable by a <code>long long int</code>, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/atoi/"><b>atoi</b></a></dt><dd>Convert string to integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atol/"><b>atol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtoll/"><b>strtoll</b></a></dt><dd>Convert string to long long integer <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

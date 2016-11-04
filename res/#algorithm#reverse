@@ -1,0 +1,89 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>reverse</h1>
+<div class="C_prototype"><pre>template &lt;class BidirectionalIterator&gt;  void reverse (BidirectionalIterator first, BidirectionalIterator last);</pre></div><div id="I_description">Reverse range</div>
+<section id="description">
+Reverses the order of the elements in the range <code>[first,last)</code>.<br>
+<br>
+The function calls <samp><a href="/iter_swap">iter_swap</a></samp> to swap the elements to their new locations.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> BidirectionalIterator&gt;
+  <var>void</var> reverse (BidirectionalIterator first, BidirectionalIterator last)
+{
+  <var>while</var> ((first!=last)&amp;&amp;(first!=--last)) {
+    std::iter_swap (first,last);
+    ++first;
+  }
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/BidirectionalIterator">Bidirectional iterators</a> to the initial and final positions of the sequence to be reversed. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+<samp>BidirectionalIterator</samp> shall point to a type for which <samp><a href="/swap">swap</a></samp> is properly defined.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></code></pre></td>
+<td class="source"><pre><code><cite>// reverse algorithm example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::reverse</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; myvector;
+
+  <cite>// set some values:</cite>
+  <var>for</var> (<var>int</var> i=1; i&lt;10; ++i) myvector.push_back(i);   <cite>// 1 2 3 4 5 6 7 8 9</cite>
+
+  std::reverse(myvector.begin(),myvector.end());    <cite>// 9 8 7 6 5 4 3 2 1</cite>
+
+  <cite>// print out content:</cite>
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (std::vector&lt;<var>int</var>&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 9 8 7 6 5 4 3 2 1
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in half the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Swaps elements.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either an element swap or an operation on an iterator throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/reverse_copy/"><b>reverse_copy</b></a></dt><dd>Copy range reversed <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/rotate/"><b>rotate</b></a></dt><dd>Rotate left the elements in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/random_shuffle/"><b>random_shuffle</b></a></dt><dd>Randomly rearrange elements in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/utility/swap/"><b>swap</b></a></dt><dd>Exchange values of two objects <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

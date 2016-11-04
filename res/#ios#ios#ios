@@ -1,0 +1,43 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::ios</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>intialization (1)</th><td><pre>   public: explicit ios (streambuf* sb);</pre></td></tr><tr class="even"><th>default (2)</th><td><pre>protected: ios();</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>intialization (1)</th><td><pre>   public: explicit ios (streambuf* sb);</pre></td></tr><tr class="even"><th>default (2)</th><td><pre>protected: ios();</pre></td></tr><tr class="odd"><th>copy (3)</th><td><pre>ios (const ios&amp;) = delete;ios&amp; operator= (const ios&amp;) = delete;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Construct object</div>
+<section id="description">
+The initialization constructor <i>(1)</i> initializes the stream object by calling <code><a href="/ios::init">init</a>(sb)</code>.<br>
+<br>
+If invoked by a derived class using the default constructor <i>(2)</i>, it constructs an object leaving its members uninitialized. In this case the object shall be explicitly initialized by calling <samp><a href="/ios::init">init</a></samp> at some point before its first use or before it is destroyed (if never used).<br>
+<br>
+The <i>copy constructor (3)</i> is explicitly deleted (as well as the <i>copy assignment</i> overload of <code>operator=</code>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>sb</dt>
+<dd>pointer to an object of type <samp><a href="/streambuf">streambuf</a></samp>.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object pointed by <var>sb</var> may be accessed and/or modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If an exception is thrown, the only side effects may come from accessing/modifying <var>sb</var>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/init/"><b>ios::init</b></a></dt><dd>Initialize object <span class="typ">(protected member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/ios_base/"><b>ios_base::ios_base</b></a></dt><dd>Construct object <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

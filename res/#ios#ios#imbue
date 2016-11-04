@@ -1,0 +1,62 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::imbue</h1>
+<div class="C_prototype"><pre>locale imbue (const locale&amp; loc);</pre></div><div id="I_description">Imbue locale</div>
+<section id="description">
+Associates <var>loc</var> to both the stream and its associated <i><a href="/ios::rdbuf">stream buffer</a></i> (if any) as the new locale object to be used with locale-sensitive operations.<br>
+<br>
+This function calls its inherited homonym <code><a href="/ios_base::imbue">ios_base::imbue</a>(loc)</code> and, if the stream is associated with a <i>stream buffer</i>, it also calls <code><a href="/ios::rdbuf">rdbuf</a>()-&gt;<a href="/streambuf::pubimbue">pubimbue</a>(loc)</code>.<br>
+<br>
+All callback functions registered with member <samp><a href="/ios_base::register_callback">register_callback</a></samp> are called by <samp><a href="/ios_base::imbue">ios_base::imbue</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>loc</dt>
+<dd><samp><a href="/locale">locale</a></samp> object to be imbued as the new locale for the stream.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The <samp><a href="/locale">locale</a></samp> object associated with the stream before the call.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// imbue example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;locale&gt;       </dfn><cite>// std::locale</cite>
+
+<var>int</var> main()
+{
+  std::locale mylocale(<kbd>""</kbd>);   <cite>// get global locale</cite>
+  std::cout.imbue(mylocale);  <cite>// imbue global locale</cite>
+  std::cout &lt;&lt; 3.14159 &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This code writes a floating point number using the global locale given by the environment. For example, in a system configured with a Spanish locale as default, this could write the number using a comma decimal separator:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>3,14159</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/imbue/"><b>ios_base::imbue</b></a></dt><dd>Imbue locale <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/getloc/"><b>ios_base::getloc</b></a></dt><dd>Get current locale <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

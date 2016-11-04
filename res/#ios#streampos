@@ -1,0 +1,20 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>streampos</h1>
+<div class="C_prototype"><pre>typedef fpos&lt;mbstate_t&gt; streampos;</pre></div><div id="I_description">Stream position type</div>
+<section id="description">
+Instantiation of <samp><a href="/fpos">fpos</a></samp> used to represent positions in narrow-oriented streams.<br>
+<br>
+Objects of this class support construction and conversion from <code>int</code>, and allow consistent conversions to/from <samp><a href="/streamoff">streamoff</a></samp> values (as well as being added or subtracted a value of this type).<br>
+<br>
+Two objects of this type can be compared with operators <samp>==</samp> and <samp>!=</samp>. They can also be subtracted, which yields a value of type <samp><a href="/streamoff">streamoff</a></samp>.<br>
+<br>
+<samp>streampos</samp> and <samp><a href="/wstreampos">wstreampos</a></samp> are synonyms: both are <i>typedefs</i> of <code>fpos&lt;mbstate_t&gt;</code>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/fpos/"><b>fpos</b></a></dt><dd>Stream position class template <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/streamoff/"><b>streamoff</b></a></dt><dd>Stream offset type <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/streamsize/"><b>streamsize</b></a></dt><dd>Stream size type <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

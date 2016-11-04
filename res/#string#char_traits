@@ -1,0 +1,84 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class template</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>char_traits</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>template &lt;class charT&gt; struct char_traits;template &lt;&gt; struct char_traits&lt;char&gt;;template &lt;&gt; struct char_traits&lt;wchar_t&gt;;</pre></div>
+<div title="C++11" class="on">
+<pre>template &lt;class charT&gt; struct char_traits;template &lt;&gt; struct char_traits&lt;char&gt;;template &lt;&gt; struct char_traits&lt;wchar_t&gt;;template &lt;&gt; struct char_traits&lt;char16_t&gt;;template &lt;&gt; struct char_traits&lt;char32_t&gt;;</pre></div>
+</div>
+</div><div id="I_description">Character traits</div>
+<section id="description">
+Character traits classes specify character properties and provide specific semantics for certain operations on characters and sequences of characters.<br>
+<br>
+The standard library includes a standard set of <i>character traits classes</i> that can be instantiated from the <tt>char_traits</tt> template, and which are used by default both for the <a href="/basic_string">basic_string</a> objects and for the <a href="/iolibrary">input/output stream</a> objects. But any other class that follows the requirements of a <i>character traits class</i> can be used instead. This reference attempts to describe both the definition of the standard <tt>char_traits</tt> and the requirements for custom <i>character traits classes</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Template parameters</h3>
+<dl>
+<dt>charT</dt>
+<dd>Character type.<br>
+The class defines the standard <i>character traits</i> for this character type.<br>
+This shall be one of the types for which an specialization is provided.<br>
+Aliased as member type <tt>char_traits::char_type</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="specializations">
+<h3>Template specializations</h3>
+The <tt>char_traits</tt> standard template supports to be instantiated with at least the following character types:<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+<table class="boxed">
+<tr><th>type</th><th>Description</th></tr>
+<tr><td><tt>char</tt></td><td>Basic character set (size of 1 byte)</td></tr>
+<tr><td><tt>wchar_t</tt></td><td>Wide character set (same size, signedness, and alignment as another integral type)</tr>
+</table>
+</div>
+<div title="C++11">
+<table class="boxed">
+<tr><td><tt>char</tt></td><td>Basic character set (size of 1 byte)</td></tr>
+<tr><td><tt>wchar_t</tt></td><td>Widest character set (same size, signedness, and alignment as another integral type)</tr>
+<tr><td><tt>char16_t</tt></td><td>Represents 16-bit code units (same size, signedness, and alignment as <tt><a href="/&lt;cstdint&gt;">uint_least16_t</a></tt>)</tr>
+<tr><td><tt>char32_t</tt></td><td>Represents any of the 32-bit code points (same size, signedness, and alignment as <tt><a href="/&lt;cstdint&gt;">uint_least32_t</a></tt>)</tr>
+</table>
+</div>
+</div>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+<table class="boxed">
+<tr><th rowspan="2">member type</th><th rowspan="2">description for <i>character traits types</i></th><th colspan="2">definition</th></tr>
+<tr><th>char</th><th>wchar_t</th></tr>
+<tr><td><tt>char_type</tt></td><td>The template parameter (<tt>charT</tt>)</td><td><tt>char</tt></td><td><tt>wchar_t</tt></td></tr>
+<tr><td><tt>int_type</tt></td><td>Integral type that can represent all <tt>charT</tt> values, as well as <a href="/char_traits::eof">eof()</a></td><td><tt>int</tt></td><td><tt>wint_t</tt></td></tr>
+<tr><td><tt>off_type</tt></td><td>A type that behaves like <a href="/streamoff">streamoff</a></td><td><tt>streamoff</tt></td><td><tt>streamoff</tt></td></tr>
+<tr><td><tt>pos_type</tt></td><td>A type that behaves like <a href="/streampos">streampos</a></td><td><tt>streampos</tt></td><td><tt>wstreampos</tt></td></tr>
+<tr><td><tt>state_type</tt></td><td>Multibyte transformation state type, such as <a href="/mbstate_t">mbstate_t</a></td><td><tt>mbstate_t</tt></td><td><tt>mbstate_t</tt></td></tr>
+</table>
+</div>
+<div title="C++11">
+<table class="boxed">
+<tr><th rowspan="2">member type</th><th rowspan="2">description for <i>character traits types</i></th><th colspan="4">definition</th></tr>
+<tr><th>char</th><th>wchar_t</th><th>char16_t</th><th>char32_t</th></tr>
+<tr><td><tt>char_type</tt></td><td>The template parameter (<tt>charT</tt>)</td><td><tt>char</tt></td><td><tt>wchar_t</tt></td><td><tt>char16_t</tt></td><td><tt>char32_t</tt></td></tr>
+<tr><td><tt>int_type</tt></td><td>Integral type that can represent all <tt>charT</tt> values, as well as <a href="/char_traits::eof">eof()</a></td><td><tt>int</tt></td><td><tt>wint_t</tt></td><td><tt>uint_least16_t</tt></td><td><tt>uint_least32_t</tt></td></tr>
+<tr><td><tt>off_type</tt></td><td>A type that behaves like <a href="/streamoff">streamoff</a></td><td><tt>streamoff</tt></td><td><tt>streamoff</tt></td><td><tt>streamoff</tt></td><td><tt>streamoff</tt></td></tr>
+<tr><td><tt>pos_type</tt></td><td>A type that behaves like <a href="/streampos">streampos</a></td><td><tt>streampos</tt></td><td><tt>wstreampos</tt></td><td><tt>u16streampos</tt></td><td><tt>u32streampos</tt></td></tr>
+<tr><td><tt>state_type</tt></td><td>Multibyte transformation state type, such as <a href="/mbstate_t">mbstate_t</a></td><td><tt>mbstate_t</tt></td><td><tt>mbstate_t</tt></td><td><tt>mbstate_t</tt></td><td><tt>mbstate_t</tt></td></tr>
+</table>
+</div>
+</div>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/eq/"><b>eq</b></a></dt><dd>Compare characters for equality <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/lt/"><b>lt</b></a></dt><dd>Compare characters for inequality <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/length/"><b>length</b></a></dt><dd>Get length of null-terminated string <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/assign/"><b>assign</b></a></dt><dd>Assign character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/compare/"><b>compare</b></a></dt><dd>Compare sequences of characters <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/find/"><b>find</b></a></dt><dd>Find first occurrence of character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/move/"><b>move</b></a></dt><dd>Move character sequence <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/copy/"><b>copy</b></a></dt><dd>Copy character sequence <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/eof/"><b>eof</b></a></dt><dd>End-of-File character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/not_eof/"><b>not_eof</b></a></dt><dd>Not End-of-File character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/to_char_type/"><b>to_char_type</b></a></dt><dd>To char type <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/to_int_type/"><b>to_int_type</b></a></dt><dd>To int type <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/eq_int_type/"><b>eq_int_type</b></a></dt><dd>Compare int_type values <span class="typ">( public static member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

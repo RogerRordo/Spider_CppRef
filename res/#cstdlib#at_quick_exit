@@ -1,0 +1,82 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>at_quick_exit<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C11">
+<pre>int at_quick_exit (void (*func)(void));</pre></div>
+<div title="C++11" class="on">
+<pre>extern &quot;C&quot; int at_quick_exit (void (*func)(void)) noexcept;extern &quot;C++&quot; int at_quick_exit (void (*func)(void)) noexcept;</pre></div>
+</div>
+</div><div id="I_description">Set function to be executed on quick exit</div>
+<section id="description">
+The function pointed by <var>func</var> is automatically called (without arguments) when <samp><a href="/quick_exit">quick_exit</a></samp> is called.<br>
+<br>
+If more than one <samp>at_quick_exit</samp> function has been specified by different calls to this function, they are all executed in reverse order.<br>
+<br>
+If a function registered with <samp>at_quick_exit</samp> throws an exception for which it does not provide a handler while called by <samp><a href="/quick_exit">quick_exit</a></samp>, <samp><a href="/terminate">terminate</a></samp> is automatically called (C++).<br>
+<br>
+Notice that the <samp>at_quick_exit</samp> stack of functions is separate from the <samp><a href="/atexit">atexit</a></samp> stack (and each is triggered by different circumstances), but the same function may be passed to both functions so that it is called in both cases.<br>
+<br>
+Particular library implementations may impose a limit on the number of functions that can be registered with <samp>at_quick_exit</samp>, but this cannot be less than 32 functions.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>function</dt>
+<dd>Function to be called. The function shall return no value and take no arguments.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A zero value is returned if the function was successfully registered.<br>
+If it failed, a non-zero value is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>/* at_quick_exit example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* puts */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* at_quick_exit, quick_exit, EXIT_SUCCESS */</cite><dfn></dfn>
+
+<var>void</var> fnQExit (<var>void</var>)
+{
+  puts (<kbd>"Quick exit function."</kbd>);
+}
+
+<var>int</var> main ()
+{
+  at_quick_exit (fnQExit);
+  puts (<kbd>"Main function: Beginning"</kbd>);
+  quick_exit (EXIT_SUCCESS);
+  puts (<kbd>"Main function: End"</kbd>);  <cite>// never executed</cite>
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Main function: Beginning
+Quick exit function.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Concurrently calling this function introduces no data races: Calls are properly synchronized at the process level, although notice that the relative order of calls from different threads is indeterminate.<br>
+Calls to <samp>at_quick_exit</samp> that do not complete before a call to <samp><a href="/quick_exit">quick_exit</a></samp> may not succeed (depends on particular library implementation).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/atexit/"><b>atexit</b></a></dt><dd>Set function to be executed on exit <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/quick_exit/"><b>quick_exit</b></a></dt><dd>Terminate calling process quick <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/abort/"><b>abort</b></a></dt><dd>Abort current process <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

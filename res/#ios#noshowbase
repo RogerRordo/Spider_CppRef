@@ -1,0 +1,64 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>noshowbase</h1>
+<div class="C_prototype"><pre>ios_base&amp; noshowbase (ios_base&amp; str);</pre></div><div id="I_description">Do not show numerical base prefixes</div>
+<section id="descritpion">
+Clears the <samp>showbase</samp> format flag for the <i>str</i> stream.<br>
+<br>
+When the <samp>showbase</samp> format flag is not set, numerical values are inserted into the stream without prefixing them with any numerical base prefix (i.e., <tt>0x</tt> for hexadecimal values, <tt>0</tt> for octal values and no prefix for decimal-base values).<br>
+<br>
+This flag can be set with the <samp><a href="/showbase">showbase</a></samp> manipulator, which forces the prefixing of numerical integer values with their respective numerical base prefix.<br>
+<br>
+For standard streams, the <samp>showbase</samp> flag is <strong>not set</strong> on initialization.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Stream object whose <i>format flag</i> is affected.<br>
+Because this function is a manipulator, it is designed to be used alone with no arguments in conjunction with the <i>insertion</i> (<code>&lt;&lt;</code>) and <i>extraction</i> (<code>&gt;&gt;</code>) operations on streams (see example below).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Argument <var>str</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></code></pre></td>
+<td class="source"><pre><code><cite>// modify showbase flag</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::showbase, std::noshowbase</cite>
+
+<var>int</var> main () {
+  <var>int</var> n = 20;
+  std::cout &lt;&lt; std::hex &lt;&lt; std::showbase &lt;&lt; n &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; std::hex &lt;&lt; std::noshowbase &lt;&lt; n &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>0x14
+14</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies <var>str</var>. Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, <var>str</var> is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/showbase/"><b>showbase</b></a></dt><dd>Show numerical base prefixes <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/unsetf/"><b>ios_base::unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

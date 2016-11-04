@@ -1,0 +1,94 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/multimap/">multimap</a>::key_comp</h1>
+<div class="C_prototype"><pre>key_compare key_comp() const;</pre></div><div id="I_description">Return key comparison object</div>
+<section id="description">
+Returns a copy of the <i>comparison object</i> used by the container to compare <i>keys</i>.<br>
+<br>
+By default, this is a <a href="/less">less</a> object, which returns the same as <tt>operator&lt;</tt>.<br>
+<br>
+This object determines the order of the elements in the container: it is a function pointer or a function object that takes two arguments of the same type as the element keys, and returns <tt>true</tt> if the first argument is considered to go before the second in the <i>strict weak ordering</i> it defines, and <tt>false</tt> otherwise.<br>
+<br>
+Two keys are considered equivalent if <tt>key_comp</tt> returns <tt>false</tt> reflexively (i.e., no matter the order in which the keys are passed as arguments).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The comparison object.<br>
+Member type <tt>key_compare</tt> is the type of the <i>comparison object</i> associated to the container, defined in <a href="/multimap">multimap</a> as an alias of its third template parameter (<tt>Compare</tt>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// multimap::key_comp</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt; mymultimap;
+
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt;::key_compare mycomp = mymultimap.key_comp();
+
+  mymultimap.insert (std::make_pair(<kbd>'a'</kbd>,100));
+  mymultimap.insert (std::make_pair(<kbd>'b'</kbd>,200));
+  mymultimap.insert (std::make_pair(<kbd>'b'</kbd>,211));
+  mymultimap.insert (std::make_pair(<kbd>'c'</kbd>,300));
+
+  std::cout &lt;&lt; <kbd>"mymultimap contains:\n"</kbd>;
+
+  <var>char</var> highest = mymultimap.rbegin()-&gt;first;     <cite>// key value of last element</cite>
+
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt;::iterator it = mymultimap.begin();
+  <var>do</var> {
+    std::cout &lt;&lt; (*it).first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; (*it).second &lt;&lt; <kbd>'\n'</kbd>;
+  } <var>while</var> ( mycomp((*it++).first, highest) );
+
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mymultimap contains:
+a =&gt; 100
+b =&gt; 200
+b =&gt; 211
+c =&gt; 300
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+No contained elements are accessed: concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the container.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/multimap/value_comp/"><b>multimap::value_comp</b></a></dt><dd>Return value comparison object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/find/"><b>multimap::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/count/"><b>multimap::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/lower_bound/"><b>multimap::lower_bound</b></a></dt><dd>Return iterator to lower bound <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/upper_bound/"><b>multimap::upper_bound</b></a></dt><dd>Return iterator to upper bound <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

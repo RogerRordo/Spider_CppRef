@@ -1,0 +1,69 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>iostream_category<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++11">
+<pre>const error_category&amp; iostream_category();</pre></div>
+<div title="C++14" class="on">
+<pre>const error_category&amp; iostream_category() noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return iostream category</div>
+<section id="description">
+Returns a reference to the static object of the <samp><a href="/error_category">error_category</a></samp> type that has the following characteristics:<br>
+<ul>
+<li>Its <samp><a href="/error_category::name">name</a></samp> member function returns a pointer to the character sequence <code>"iostream"</code></li>
+<li>Its <samp><a href="/error_category::equivalent">equivalent</a></samp> and <samp><a href="/error_category::default_error_condition">default_error_condition</a></samp> member functions behave as specified for the base <samp><a href="/error_category">error_category</a></samp> class.</li>
+</ul>
+<br>
+<samp><a href="/error_condition">error_condition</a></samp> objects describing errors that correspond to the enum type <samp><a href="/io_errc">io_errc</a></samp> are associated to this category. What constitutes one of these correspondences depends on the operating system and the particular library implementation.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+A reference to the <i>iostream</i> <samp><a href="/error_category">error_category</a></samp> object.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// io_errc example</cite>
+<cite>// iostream_category example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cin, std::cerr, std::ios,</cite>
+                        <cite>// std::iostream_category</cite>
+<var>int</var> main () {
+  std::cin.exceptions (std::ios::failbit|std::ios::badbit);
+  <var>try</var> {
+    std::cin.rdbuf(<var>nullptr</var>);    <cite>// throws</cite>
+  } <var>catch</var> (std::ios::failure&amp; e) {
+    std::cerr &lt;&lt; <kbd>"failure caught: "</kbd>;
+    <var>if</var> ( e.code().category() == std::iostream_category() )
+      std::cerr &lt;&lt; <kbd>"error code of the iostream category\n"</kbd>; 
+    <var>else</var>
+      std::cerr &lt;&lt; <kbd>"error code of some other category\n"</kbd>;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+failure caught: error code of the iostream category
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/io_errc/"><b>io_errc</b></a></dt><dd>Input/output error conditions <span class="typ">(enum class)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

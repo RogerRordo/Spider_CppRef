@@ -1,0 +1,83 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::length</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>size_type length() const;</pre></div>
+<div title="C++11" class="on">
+<pre>size_type length() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return length of string</div>
+<section id="description">
+Returns the length of the string, in terms of number of characters.<br>
+<br>
+This is the number of actual characters that conform the contents of the <a href="/basic_string">basic_string</a>, which is not necessarily equal to its storage <a href="/basic_string::capacity">capacity</a>.<br>
+<br>
+Both <a href="/basic_string::size">basic_string::size</a> and <tt>basic_string::length</tt> are synonyms and return the same value.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The number of characters in the string.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::length</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"Test string"</kbd>);
+  std::cout &lt;&lt; <kbd>"The size of str is "</kbd> &lt;&lt; str.length() &lt;&lt; <kbd>" characters.\n"</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The size of str is 11 characters
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+Unspecified.<br>
+</div>
+<div title="C++11">
+Constant.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/size/"><b>basic_string::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/resize/"><b>basic_string::resize</b></a></dt><dd>Resize string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/max_size/"><b>basic_string::max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/capacity/"><b>basic_string::capacity</b></a></dt><dd>Return size of allocated storage <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

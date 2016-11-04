@@ -1,0 +1,87 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>atof</h1>
+<div class="C_prototype"><pre>double atof (const char* str);</pre></div><div id="I_description">Convert string to double</div>
+<section id="description">
+Parses the C string <var>str</var>, interpreting its content as a floating point number and returns its value as a <code>double</code>.<br>
+<br>
+The function first discards as many whitespace characters (as in <samp><a href="/isspace">isspace</a></samp>) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals (see below), and interprets them as a numerical value. The rest of the string after the last valid character is ignored and has no effect on the behavior of this function.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C90 (C++98)">
+A valid floating point number for <samp>atof</samp> using the <code>"C"</code> locale is formed by an optional sign character (<code>+</code> or <code>-</code>), followed by a sequence of digits, optionally containing a decimal-point character (<code>.</code>), optionally followed by an exponent part (an <code>e</code> or <code>E</code> character followed by an optional sign and a sequence of digits).<br>
+</div>
+<div title="C99/C11 (C++11)">
+A valid floating point number for <samp>atof</samp> using the <code>"C"</code> locale is formed by an optional sign character (<code>+</code> or <code>-</code>), followed by one of:<br>
+- A sequence of digits, optionally containing a decimal-point character (<code>.</code>), optionally followed by an exponent part (an <code>e</code> or <code>E</code> character followed by an optional sign and a sequence of digits).<br>
+- A <code>0x</code> or <code>0X</code> prefix, then a sequence of hexadecimal digits (as in <samp><a href="/isxdigit">isxdigit</a></samp>) optionally containing a period which separates the whole and fractional number parts. Optionally followed by a power of 2 exponent (a <code>p</code> or <code>P</code> character followed by an optional sign and a sequence of hexadecimal digits).<br>
+- <code>INF</code> or <code>INFINITY</code> (ignoring case).<br>
+- <code>NAN</code> or <code>NAN</code><i>sequence</i> (ignoring case), where <i>sequence</i> is a sequence of characters, where each character is either an alphanumeric character (as in <samp><a href="/isalnum">isalnum</a></samp>) or the underscore character (<code>_</code>).<br>
+</div>
+</div>
+<br>
+If the first sequence of non-whitespace characters in <var>str</var> does not form a valid floating-point number as just defined, or if no such sequence exists because either <var>str</var> is empty or contains only whitespace characters, no conversion is performed and the function returns <code>0.0</code>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C-string beginning with the representation of a floating-point number.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted floating point number as a <code>double</code> value.<br>
+If no valid conversion could be performed, the function returns zero (<code>0.0</code>).<br>
+If the converted value would be out of the range of representable values by a <code>double</code>, it causes <i>undefined behavior</i>. See <samp><a href="/strtod">strtod</a></samp> for a more robust cross-platform alternative when this is a possibility.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>/* atof example: sine calculator */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf, fgets */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* atof */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* sin */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> n,m;
+  <var>double</var> pi=3.1415926535;
+  <var>char</var> buffer[256];
+  printf (<kbd>"Enter degrees: "</kbd>);
+  fgets (buffer,256,stdin);
+  n = atof (buffer);
+  m = sin (n*pi/180);
+  printf (<kbd>"The sine of %f degrees is %f\n"</kbd> , n, m);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Enter degrees: 45
+The sine of 45.000000 degrees is 0.707101
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The array pointed by <var>str</var> is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+<br>
+If <var>str</var> does not point to a valid C-string, or if the converted value would be out of the range of values representable by a <code>double</code>, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/strtod/"><b>strtod</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atoi/"><b>atoi</b></a></dt><dd>Convert string to integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atol/"><b>atol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

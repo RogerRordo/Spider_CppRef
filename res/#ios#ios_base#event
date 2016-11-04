@@ -1,0 +1,26 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::event</h1>
+<div class="C_prototype"><pre>enum event;</pre></div><div id="I_description">Type to indicate event type</div>
+<section id="description">
+Enum type used as the first parameter in functions registered with <a href="/ios_base::register_callback">ios_base::register_callback</a>. This argument identifies the type of event that triggered the function call.<br>
+<br>
+<table class="boxed">
+<tr><th>value</th><th>event triggered</th></tr>
+<tr><td><samp>copyfmt_event</samp></td><td> on a call to <samp><a href="/ios::copyfmt">ios::copyfmt</a></samp> (at the moment where all format flags have been copied, but before the exception mask is)</td></tr>
+<tr><td><samp>erase_event</samp></td><td> on a call to the stream destructor (also called at the beginning of <samp><a href="/ios::copyfmt">ios::copyfmt</a></samp>).</td></tr>
+<tr><td><tt>imbue_event</tt></td><td> on a call to <samp><a href="/ios_base::imbue">ios_base::imbue</a></samp> (just before the function returns).</td></tr>
+</table>
+<br>
+This member enum type is defined within <samp><a href="/ios_base">ios_base</a></samp> as:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>&nbsp;</code></pre></td>
+<td class="source"><pre><code><var>enum</var> event { erase_event, imbue_event, copyfmt_event };</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/register_callback/"><b>ios_base::register_callback</b></a></dt><dd>Register event callback function <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

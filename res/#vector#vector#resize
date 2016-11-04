@@ -1,0 +1,108 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::resize</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>void resize (size_type n, value_type val = value_type());</pre></div>
+<div title="C++11" class="on">
+<pre>void resize (size_type n);void resize (size_type n, const value_type&amp; val);</pre></div>
+</div>
+</div><div id="I_description">Change size</div>
+<section id="description">
+Resizes the container so that it contains <i>n</i> elements.<br>
+<br>
+If <i>n</i> is smaller than the current container <a href="/vector::size">size</a>, the content is reduced to its first <i>n</i> elements, removing those beyond (and destroying them).<br>
+<br>
+If <i>n</i> is greater than the current container <a href="/vector::size">size</a>, the content is expanded by inserting at the end as many elements as needed to reach a size of <i>n</i>. If <i>val</i> is specified, the new elements are initialized as copies of <i>val</i>, otherwise, they are value-initialized.<br>
+<br>
+If <i>n</i> is also greater than the current container <a href="/vector::capacity">capacity</a>, an automatic reallocation of the allocated storage space takes place.<br>
+<br>
+Notice that this function changes the actual content of the container by inserting or erasing elements from it.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>New container size, expressed in number of elements.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+<dt>val</dt>
+<dd>Object whose content is copied to the added elements in case that <i>n</i> is greater than the current container <a href="/vector::size">size</a>.<br>
+If not specified, the default constructor is used instead.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/vector">vector</a> as an alias of the first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+<br>
+If a reallocation happens, the storage is allocated using the container's <a href="/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="/allocator">allocator</a>, <tt>bad_alloc</tt> is thrown if the allocation request does not succeed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// resizing vector</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector;
+
+  <cite>// set some initial content:</cite>
+  <var>for</var> (<var>int</var> i=1;i&lt;10;i++) myvector.push_back(i);
+
+  myvector.resize(5);
+  myvector.resize(8,100);
+  myvector.resize(12);
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (<var>int</var> i=0;i&lt;myvector.size();i++)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; myvector[i];
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 1 2 3 4 5 100 100 100 0 0 0 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear on the number of elements inserted/erased (constructions/destructions).<br>
+<br>
+If a reallocation happens, the reallocation is itself up to linear in the entire <a href="/vector::size">vector size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+In case the container shrinks, all iterators, pointers and references to elements that have not been removed remain valid after the resize and refer to the same elements they were referring to before the call.<br>
+<br>
+If the container expands, the <a href="/vector::end">end iterator</a> is invalidated and, if it has to reallocate storage, all iterators, pointers and references related to this container are also invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is modified.<br>
+If a reallocation happens, all contained elements are modified.<br>
+Otherwise, none of the elements before <i>n</i> is accessed, and concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <i>n</i> is less than or equal to the <a href="/vector::size">size</a> of the container, the function never throws exceptions (no-throw guarantee).<br>
+If <i>n</i> is greater and a reallocation happens, there are no changes in the container in case of exception (strong guarantee) if the type of the elements is either <i>copyable</i> or <i>no-throw moveable</i>.<br>
+Otherwise, if an exception is thrown, the container is left with a valid state (basic guarantee).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/size/"><b>vector::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/clear/"><b>vector::clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/max_size/"><b>vector::max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

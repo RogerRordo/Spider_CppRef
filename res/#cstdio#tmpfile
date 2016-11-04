@@ -1,0 +1,60 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>tmpfile</h1>
+<div class="C_prototype"><pre>FILE * tmpfile ( void );</pre></div><div id="I_description">Open a temporary file</div>
+<section id="description">
+Creates a temporary binary file, open for update (<tt>"wb+"</tt> mode, see <a href="/fopen">fopen</a> for details) with a filename guaranteed to be different from any other existing file.<br>
+<br>
+The temporary file created is automatically deleted when the stream is closed (<a href="/fclose">fclose</a>) or when the program terminates normally. If the program terminates abnormally, whether the file is deleted depends on the specific system and library implementation.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If successful, the function returns a stream pointer to the temporary file created.<br>
+On failure, <a href="/NULL">NULL</a> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br></code></pre></td>
+<td class="source"><pre><code><cite>/* tmpfile example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer [256];
+  FILE * pFile;
+  pFile = tmpfile ();
+
+  <var>do</var> {
+    <var>if</var> (!fgets(buffer,256,stdin)) <var>break</var>;
+    fputs (buffer,pFile);
+  } <var>while</var> (strlen(buffer)&gt;1);
+
+  rewind(pFile);
+
+  <var>while</var> (!feof(pFile)) {
+    <var>if</var> (fgets (buffer,256,pFile) == NULL) <var>break</var>;
+    fputs (buffer,stdout);
+  }
+
+  fclose (pFile);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This program creates a temporary file to store the lines entered by the user. When the user enters an empty line, the program rewinds the temporary file and prints its contents to <a href="/stdout">stdout</a>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/tmpnam/"><b>tmpnam</b></a></dt><dd>Generate temporary filename <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

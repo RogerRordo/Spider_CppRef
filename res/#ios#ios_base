@@ -1,0 +1,65 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>ios_base</h1>
+<div class="C_prototype"><pre>class ios_base;</pre></div><div id="I_description">Base class for streams</div>
+<section id="description">
+<div class="hierarchy">
+<ul>
+<li><b>ios_base</b></li>
+<li><b><a href="/basic_ios">basic_ios</a></b></li>
+</ul>
+</div>
+<br>
+Base class for the entire hierarchy of stream classes in the standard input/output library, describing the most basic part of a stream which is common to all stream objects, independently of their character type.<br>
+<br>
+It has no public constructors, and thus no objects of this class can be declared.<br>
+<br>
+Both <samp>ios_base</samp> and its derived class <samp><a href="/basic_ios">basic_ios</a></samp> define the components of streams that do not depend on whether the stream is an input or an output stream: <samp>ios_base</samp> describes the members that are independent of the template parameters (i.e. the character type and traits), while <samp><a href="/basic_ios">basic_ios</a></samp> describes the members that do depend on them.<br>
+<br>
+More specifically, the <samp>ios_base</samp> class maintains the following information of a stream:<br>
+<br>
+<table class="boxed">
+<tr><th></th><th>field</th><th>member functions</th><th>description</th></tr>
+<tr><td rowspan="4"><i>Formatting</i></td><td>format flags</td><td><samp><a href="/ios_base::flags">flags</a></samp><br><samp><a href="/ios_base::setf">setf</a></samp><br><samp><a href="/ios_base::unsetf">unsetf</a></samp></td><td>A set of internal flags that affect how certain input/output operations are interpreted or generated.<br>
+See member type <samp><a href="/ios_base::fmtflags">fmtflags</a></samp>.</td></tr>
+<tr><td>field width</td><td><samp><a href="/ios_base::width">width</a></samp></td><td>Width of the next formatted element to insert.</td></tr>
+<tr><td>display precision</td><td><samp><a href="/ios_base::precision">precision</a></samp></td><td>Decimal precision for the next floating-point value inserted.</td></tr>
+<tr><td>locale</td><td><samp><a href="/ios_base::getloc">getloc</a></samp><br><samp><a href="/ios_base::imbue">imbue</a></td><td>The <samp><a href="/locale">locale</a></samp> object used by the function for formatted input/output operations affected by localization properties.</td></tr>
+<tr><td rowspan="2"><i>Other</i></td><td>callback stack</td><td><samp><a href="/ios_base::register_callback">register_callback</a></samp></td><td>Stack of pointers to functions that are called when certain events occur.</td></tr>
+<tr><td>extensible arrays</td><td><samp><a href="/ios_base::iword">iword</a></samp><br><samp><a href="/ios_base::pword">pword</a></samp><br><samp><a href="/ios_base::xalloc">xalloc</a></samp></td><td>Internal arrays to store objects of type <code>long</code> and <code>void*</code>.</td></tr>
+</table>
+</section>
+<br>
+<section id="functions">
+<h3>Member Functions</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/ios_base/"><b>(constructor)</b></a></dt><dd>Construct object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/~ios_base/"><b>(destructor)</b></a></dt><dd>Destruct object <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Formatting</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/unsetf/"><b>unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/precision/"><b>precision</b></a></dt><dd>Get/Set floating-point decimal precision <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/width/"><b>width</b></a></dt><dd>Get/set field width <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Locales</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/imbue/"><b>imbue</b></a></dt><dd>Imbue locale <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/getloc/"><b>getloc</b></a></dt><dd>Get current locale <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Internal extensible array</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/xalloc/"><b>xalloc</b></a></dt><dd>Get new index for extensible array [static] <span class="typ">(public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/iword/"><b>iword</b></a></dt><dd>Get integer element of extensible array <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/pword/"><b>pword</b></a></dt><dd>Get pointer element of extensible array <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Others</b>:<br>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/register_callback/"><b>register_callback</b></a></dt><dd>Register event callback function <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/sync_with_stdio/"><b>sync_with_stdio</b></a></dt><dd>Toggle synchronization with cstdio streams [static] <span class="typ">(public static member function)</span></dd></dl>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/event/"><b>event</b></a></dt><dd>Type to indicate event type <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/event_callback/"><b>event_callback</b></a></dt><dd>Event callback function type <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/fmtflags/"><b>fmtflags</b></a></dt><dd>Type for stream format flags <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/iostate/"><b>iostate</b></a></dt><dd>Type for stream state flags <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/openmode/"><b>openmode</b></a></dt><dd>Type for stream opening mode flags <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/seekdir/"><b>seekdir</b></a></dt><dd>Type for stream seeking direction flag <span class="typ">(public member type)</span></dd></dl>
+</section>
+<br>
+<section id="classes">
+<h3>Member classes</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/failure/"><b>failure</b></a></dt><dd>Base class for stream exceptions <span class="typ">(public member class)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/Init/"><b>Init</b></a></dt><dd>Initialize standard stream objects <span class="typ">(public member class)</span></dd></dl>
+</section>
+<br>
+<section id="constants">
+<h3>Member constants</h3>
+Streams have member constants with the possible values for member types <samp><a href="/ios_base::fmtflags">fmtflags</a></samp>, <samp><a href="/ios_base::iostate">iostate</a></samp>, <samp><a href="/ios_base::openmode">openmode</a></samp> and <samp><a href="/ios_base::seekdir">seekdir</a></samp> (see the description of each type for more info).<br>
+<div id="CH_bb"></div></div></div>

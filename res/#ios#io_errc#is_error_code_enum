@@ -1,0 +1,42 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>is_error_code_enum (io_errc)<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;&gt;struct is_error_code_enum&lt;io_errc&gt; : public true_type {};</pre></div><div id="I_description">error_code enum flag for io_errc</div>
+<section id="description">
+<div class="hierarchy">
+<ul>
+<li><b><a href="/integral_constant">integral_constant</a></b></li>
+<li><b>is_error_code_enum</b></li>
+</div>
+<br>
+This traits specializations identifies <samp><a href="/io_errc">io_errc</a></samp> as an <i>error code enum</i> type. Enabling it to be used to construct or assign values of this type to objects of type <samp><a href="/error_code">error_code</a></samp>.<br>
+<br>
+For <samp><a href="/io_errc">io_errc</a></samp> it inherits from <samp><a href="/true_type">true_type</a></samp>.<br>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+Inherited from <samp><a href="/integral_constant">integral_constant</a></samp> (<samp><a href="/is_true">is_true</a></samp> is a typedef of an instantiation of <samp><a href="/integral_constant">integral_constant</a></samp>):<br>
+<table class="boxed">
+<tr><th>member type</th><th>definition</th></tr>
+<tr><td><samp>value_type</samp></td><td><code>bool</code></td></tr>
+<tr><td><samp>type</samp></td><td><samp><a href="/true_type">true_type</a></samp></td></tr>
+</table>
+</section>
+<br>
+<section id="constants">
+<h3>Member constants</h3>
+Inherited from <samp><a href="/integral_constant">integral_constant</a></samp> (<samp><a href="/is_true">is_true</a></samp> is a typedef of an instantiation of <samp><a href="/integral_constant">integral_constant</a></samp>):<br>
+<table class="boxed">
+<tr><th>member constant</th><th>definition</th></tr>
+<tr><td><samp>value</samp></td><td><code>true</code></td></tr>
+</table>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+Inherited from <samp><a href="/integral_constant">integral_constant</a></samp> (<samp><a href="/is_true">is_true</a></samp> is a typedef of an instantiation of <samp><a href="/integral_constant">integral_constant</a></samp>):<br>
+<dl class="links"><dt><a href= "/reference/type_traits/integral_constant/operator value_type/"><b>operator bool</b></a></dt><dd>Returns value <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

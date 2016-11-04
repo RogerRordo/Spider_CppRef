@@ -1,0 +1,75 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fseek</h1>
+<div class="C_prototype"><pre>int fseek ( FILE * stream, long int offset, int origin );</pre></div><div id="I_description">Reposition stream position indicator</div>
+<section id="description">
+Sets the position indicator associated with the <i>stream</i> to a new position.<br>
+<br>
+For streams open in binary mode, the new position is defined by adding <i>offset</i> to a reference position specified by <i>origin</i>.<br>
+<br>
+For streams open in text mode, <i>offset</i> shall either be zero or a value returned by a previous call to <a href="/ftell">ftell</a>, and <i>origin</i> shall necessarily be <tt>SEEK_SET</tt>.<br>
+<br>
+If the function is called with other values for these arguments, support depends on the particular system and library implementation (non-portable).<br>
+<br>
+The <i>end-of-file internal indicator</i> of the <i>stream</i> is cleared after a successful call to this function, and all effects from previous calls to <a href="/ungetc">ungetc</a> on this <i>stream</i> are dropped.<br>
+<br>
+On streams open for update (read+write), a call to <tt>fseek</tt> allows to switch between reading and writing.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies the stream.</dd>
+<dt>offset</dt>
+<dd>Binary files: Number of bytes to offset from <i>origin</i>.<br>
+Text files: Either zero, or a value returned by <a href="/ftell">ftell</a>.</dd>
+<dt>origin</dt>
+<dd>Position used as reference for the <i>offset</i>. It is specified by one of the following constants defined in <a href="/cstdio">&lt;cstdio&gt;</a> exclusively to be used as arguments for this function:<br>
+<table class="boxed">
+<tr><th>Constant</th><th>Reference position</th></tr>
+<tr><td>SEEK_SET</td><td>Beginning of file</td></tr>
+<tr><td>SEEK_CUR</td><td>Current position of the file pointer</td></tr>
+<tr><td>SEEK_END</td><td>End of file *</td></tr>
+</table>
+* Library implementations are allowed to not meaningfully support <tt>SEEK_END</TT> (therefore, code using it has no real standard portability).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If successful, the function returns zero.<br>
+Otherwise, it returns non-zero value.<br>
+If a read or write error occurs, the <i>error indicator</i> (<a href="/ferror">ferror</a>) is set.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fseek example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  pFile = fopen ( <kbd>"example.txt"</kbd> , <kbd>"wb"</kbd> );
+  fputs ( <kbd>"This is an apple."</kbd> , pFile );
+  fseek ( pFile , 9 , SEEK_SET );
+  fputs ( <kbd>" sam"</kbd> , pFile );
+  fclose ( pFile );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+After this code is successfully executed, the file <tt>example.txt</tt> contains:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>This is a sample.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/ftell/"><b>ftell</b></a></dt><dd>Get current position in stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fsetpos/"><b>fsetpos</b></a></dt><dd>Set position indicator of stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/rewind/"><b>rewind</b></a></dt><dd>Set position of stream to the beginning <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

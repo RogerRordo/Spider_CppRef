@@ -1,0 +1,96 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>mblen</h1>
+<div class="C_prototype"><pre>int mblen (const char* pmb, size_t max);</pre></div><div id="I_description">Get length of multibyte character</div>
+<section id="description">
+Returns the size of the multibyte character pointed by <var>pmb</var>, examining at most <var>max</var> bytes.<br>
+<br>
+<samp>mblen</samp> has its own internal <i>shift state</i>, which is altered as necessary only by calls to this function. A call to the function with a null pointer as <var>pmb</var> resets the state (and returns whether multibyte characters are state-dependent).<br>
+<br>
+The behavior of this function depends on the <samp>LC_CTYPE</samp> category of the selected <a href="/clocale">C locale</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pmb</dt>
+<dd>Pointer to the first byte of a multibyte character.<br>
+Alternativelly, the function may be called with a <i>null pointer</i>, in which case the function resets its internal shift state to the initial value and returns whether multibyte characters use a state-dependent encoding.</dd>
+<dt>max</dt>
+<dd>Maximum number of bytes of <var>pmb</var> to consider for the multibyte character.<br>
+No more than <samp><a href="/MB_CUR_MAX">MB_CUR_MAX</a></samp> characters are examined in any case.<br>
+<samp><a href="/cstdlib:size_t">size_t</a></samp> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value </h3>
+If the argument passed as <var>pmb</var> is not a <i>null pointer</i>, the size in bytes of the character pointed by <var>pmb</var> is returned when it forms a valid multibyte character and is not the <i>terminating null character</i>. If it is the <i>terminating null character</i>, the function returns zero, and in the case they do not form a valid multibyte character, <code>-1</code> is returned.<br>
+<br>
+If the argument passed as <var>pmb</var> is a <i>null pointer</i>, the function returns a nonzero value if multibyte character encodings are state-dependent, and zero otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br></code></pre></td>
+<td class="source"><pre><code><cite>/* mblen example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* mblen, mbtowc, wchar_t(C) */</cite><dfn></dfn>
+
+<var>void</var> printbuffer (<var>const</var> <var>char</var>* pt, size_t max)
+{
+  <var>int</var> length;
+  <var>wchar_t</var> dest;
+
+  mblen (NULL, 0);         <cite>/* reset mblen */</cite>
+  mbtowc (NULL, NULL, 0);  <cite>/* reset mbtowc */</cite>
+
+  <var>while</var> (max&gt;0) {
+    length = mblen (pt, max);
+    <var>if</var> (length&lt;1) <var>break</var>;
+    mbtowc(&amp;dest,pt,length);
+    printf (<kbd>"[%lc]"</kbd>,dest);
+    pt+=length; max-=length;
+  }
+}
+
+<var>int</var> main()
+{
+  <var>const</var> <var>char</var> str [] = <kbd>"test string"</kbd>;
+
+  printbuffer (str,<var>sizeof</var>(str));
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<samp>printbuffer</samp> prints a multibyte string character by character.<br>
+<br>
+The example uses a trivial string using the <code>"C"</code> locale, but locales that interpret multibyte string are supported by the function.<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+[t][e][s][t][ ][s][t][r][i][n][g]
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The function accesses the array pointed by <var>pmb</var>.<br>
+The function also accesses and modifies an internal state object, which may cause data races on concurrent calls to this function (see <samp><a href="/mbrlen">mbrlen</a></samp> for an alternative that may use an external state object).<br>
+Concurrently changing locale settings may also introduce data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If <var>pmb</var> is neither a <i>null pointer</i> nor a pointer to an array long enough (as described above), it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/mbtowc/"><b>mbtowc</b></a></dt><dd>Convert multibyte sequence to wide character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wctomb/"><b>wctomb</b></a></dt><dd>Convert wide character to multibyte sequence <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/mbstowcs/"><b>mbstowcs</b></a></dt><dd>Convert multibyte string to wide-character string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wcstombs/"><b>wcstombs</b></a></dt><dd>Convert wide-character string to multibyte string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

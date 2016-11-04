@@ -1,0 +1,108 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::fmtflags</h1>
+<div id="I_description">Type for stream format flags</div>
+<section id="description">
+Bitmask type to represent stream <i>format flags</i>.<br>
+This type is used as its parameter and/or return value by the member functions <samp><a href="/ios_base::flags">flags</a></samp>, <samp><a href="/ios_base::setf">setf</a></samp> and <samp><a href="/ios_base::unsetf">unsetf</a></samp>.<br>
+<br>
+The values passed and retrieved by these functions can be any valid combination of the following member constants: <br>
+<table class="boxed">
+<tr><th>field</th><th>member constant</th><th>effect when set</th></tr> <br>
+<tr><td rowspan="7"><i>independent flags</i></td><td><samp>boolalpha</samp></td><td>read/write bool elements as alphabetic strings (<code>true</code> and <code>false</code>).</td></tr>
+<tr><td><samp>showbase</samp></td><td>write integral values preceded by their corresponding numeric base prefix.</td></tr>
+<tr><td><samp>showpoint</samp></td><td>write floating-point values including always the decimal point.</td></tr>
+<tr><td><samp>showpos</samp></td><td>write non-negative numerical values preceded by a plus sign (+).</td></tr>
+<tr><td><samp>skipws</samp></td><td>skip leading whitespaces on certain input operations.</td></tr>
+<tr><td><samp>unitbuf</samp></td><td>flush output after each inserting operation.</td></tr> <br>
+<tr><td><samp>uppercase</samp></td><td>write uppercase letters replacing lowercase letters in certain insertion operations.</td></tr>
+<tr><td rowspan="3"><i>numerical base</i> <br>
+(<samp>basefield</samp>)</td><td><samp>dec</samp></td><td>read/write integral values using decimal base format.</td></tr>
+<tr><td><samp>hex</samp></td><td>read/write integral values using hexadecimal base format.</td></tr>
+<tr><td><samp>oct</samp></td><td>read/write integral values using octal base format.</td></tr>
+<tr><td rowspan="2"><i>float format</i> <br>
+(<samp>floatfield</samp>)</td><td><samp>fixed</samp></td><td>write floating point values in fixed-point notation.</td></tr>
+<tr><td><samp>scientific</samp></td><td>write floating-point values in scientific notation.</td></tr>
+<tr><td rowspan="3"><i>adjustment</i> <br>
+(<samp>adjustfield</samp>)</td><td><samp>internal</samp></td><td>the output is padded to the <i>field width</i> by inserting <i>fill characters</i> at a specified internal point.</td></tr>
+<tr><td><samp>left</samp></td><td>the output is padded to the <i>field width</i> appending <i>fill characters</i> at the end.</td></tr>
+<tr><td><samp>right</samp></td><td>the output is padded to the <i>field width</i> by inserting <i>fill characters</i> at the beginning. </td></tr>
+</table>
+<br>
+Three additional bitmask constants made of the combination of the values of each of the three groups of selective flags can also be used:<br>
+<table class="boxed">
+<tr><th>flag value</th><th>equivalent to</th></tr> <br>
+<tr><td><samp>adjustfield</samp></td><td><samp>left | right | internal</samp></td></tr>
+<tr><td><samp>basefield</samp></td><td><samp>dec | oct | hex</samp></td></tr>
+<tr><td><samp>floatfield</samp></td><td><samp>scientific | fixed</samp></td></tr>
+</table>
+<br>
+The values of these constants can be combined into a single <samp>fmtflags</samp> value using the OR bitwise operator (<samp>|</samp>).<br>
+<br>
+These constants are defined as public members in the <samp><a href="/ios_base">ios_base</a></samp> class. Therefore, they can be refered to either directly by their name as <samp><a href="/ios_base">ios_base</a></samp> members (like <samp>ios_base::hex</samp>) or by using any of their inherited classes or instantiated objects, like for example <code>ios::left</code> or <code>cout.oct</code>.<br>
+<br>
+These values of type <samp>ios_base::fmtflags</samp> should not be confused with the manipulators that have the same name but in the global scope, because they are used in different circumstances. The manipulators cannot be used as values for <samp>ios_base::fmtflags</samp>, as well as these constants shouldn't be used instead of the manipulators. Notice the difference:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code>ios_base::skipws     <cite>// constant value of type ios_base::fmtflags</cite>
+skipws               <cite>// manipulator (global function) </cite></code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Notice that several <a href="/manipulators">manipulators</a> have the same name as these member constants (but as global functions instead) - see <a href="/manipulators">manipulators</a>. The behavior of these manipulators generally corresponds to the same as setting or unsetting them with <samp><a href="/ios_base::setf">ios_base::setf</a></samp> or <samp><a href="/ios_base::unsetf">ios_base::unsetf</a></samp>, but they should not be confused! Manipulators are global functions and these constants are member constants. For example, <samp>showbase</samp> is a manipulator, while <samp>ios_base::showbase</samp> is a constant value that can be used as parameter with <samp><a href="/ios_base::setf">ios_base::setf</a></samp>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br></code></pre></td>
+<td class="source"><pre><code><cite>// using ios_base::fmtflags</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::ios_base, std::ios,</cite>
+                        <cite>// std::hex, std::showbase</cite>
+<var>int</var> main () {
+
+  <cite>// using fmtflags as class member constants:</cite>
+  std::cout.setf (std::ios_base::hex , std::ios_base::basefield);
+  std::cout.setf (std::ios_base::showbase);
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// using fmtflags as inherited class member constants:</cite>
+  std::cout.setf (std::ios::hex , std::ios::basefield);
+  std::cout.setf (std::ios::showbase);
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// using fmtflags as object member constants:</cite>
+  std::cout.setf (std::cout.hex , std::cout.basefield);
+  std::cout.setf (std::cout.showbase);
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// using fmtflags as a type:</cite>
+  std::ios_base::fmtflags ff;
+  ff = std::cout.flags();
+  ff &amp;= ~std::cout.basefield;   <cite>// unset basefield bits</cite>
+  ff |= std::cout.hex;          <cite>// set hex</cite>
+  ff |= std::cout.showbase;     <cite>// set showbase</cite>
+  std::cout.flags(ff);
+  std::cout &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// not using fmtflags, but using manipulators:</cite>
+  std::cout &lt;&lt; std::hex &lt;&lt; std::showbase &lt;&lt; 100 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+The code shows some different ways of printing the same result, using both the <samp>fmtflags</samp> member constants and their homonymous manipulators.<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>0x64
+0x64
+0x64
+0x64
+0x64
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/unsetf/"><b>ios_base::unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/iomanip/setiosflags/"><b>setiosflags</b></a></dt><dd>Set format flags <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

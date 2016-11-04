@@ -1,0 +1,101 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;deque&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/deque/deque/">deque</a>::resize</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>void resize (size_type n, value_type val = value_type());</pre></div>
+<div title="C++11" class="on">
+<pre>void resize (size_type n);void resize (size_type n, const value_type&amp; val);</pre></div>
+</div>
+</div><div id="I_description">Change size</div>
+<section id="description">
+Resizes the container so that it contains <i>n</i> elements.<br>
+<br>
+If <i>n</i> is smaller than the current container <a href="/deque::size">size</a>, the content is reduced to its first <i>n</i> elements, removing those beyond (and destroying them).<br>
+<br>
+If <i>n</i> is greater than the current container <a href="/deque::size">size</a>, the content is expanded by inserting at the end as many elements as needed to reach a size of <i>n</i>. If <i>val</i> is specified, the new elements are initialized as copies of <i>val</i>, otherwise, they are value-initialized.<br>
+<br>
+Notice that this function changes the actual content of the container by inserting or erasing elements from it.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>New container size, expressed in number of elements.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+<dt>val</dt>
+<dd>Object whose content is copied to the added elements in case that <i>n</i> is greater than the current container <a href="/deque::size">size</a>.<br>
+If not specified, the default constructor is used instead.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/deque">deque</a> as an alias of the first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+<br>
+In case of growth, the storage for the new elements is allocated using the container's <a href="/deque::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="/allocator">allocator</a>, <tt>bad_alloc</tt> is thrown if the allocation request does not succeed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// resizing deque</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;deque&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::deque&lt;<var>int</var>&gt; mydeque;
+  std::deque&lt;<var>int</var>&gt;::iterator it;
+
+  <cite>// set some initial content:</cite>
+  <var>for</var> (<var>int</var> i=1; i&lt;10; ++i) mydeque.push_back(i);
+
+  mydeque.resize(5);
+  mydeque.resize(8,100);
+  mydeque.resize(12);
+
+  std::cout &lt;&lt; <kbd>"mydeque contains:"</kbd>;
+  <var>for</var> (std::deque&lt;<var>int</var>&gt;::iterator it = mydeque.begin(); it != mydeque.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+The code sets a sequence of 9 numbers as the initial content for <tt>mydeque</tt>. It then uses <tt>resize</tt> first to set the container size to <tt>5</tt>, then to extend its size to <tt>8</tt> with values of <tt>100</tt> for its new elements, and finally it extends its size to <tt>12</tt> with their default values (for <tt>int</tt> elements this is zero). Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mydeque contains: 1 2 3 4 5 100 100 100 0 0 0 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear on the number of elements inserted/erased (constructions/destructions). </section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+In case the container shrinks, all iterators, pointers and references to elements that have not been removed remain valid after the resize and refer to the same elements they were referring to before the call.<br>
+If the container expands, all iterators are invalidated, but existing pointers and references remain valid, referring to the same elements they were referring to before.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is modified.<br>
+Removed elements are modified (see <i>iterator validity</i> above).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <i>n</i> is less than or equal to the <a href="/deque::size">size</a> of the container, the function never throws exceptions (no-throw guarantee).<br>
+Otherwise, if an exception is thrown, the container is left with a valid state (basic guarantee): Constructing elements or allocating storage may throw.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/deque/deque/size/"><b>deque::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/clear/"><b>deque::clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/erase/"><b>deque::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/max_size/"><b>deque::max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

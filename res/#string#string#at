@@ -1,0 +1,102 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::at</h1>
+<div class="C_prototype"><pre>      char&amp; at (size_t pos);const char&amp; at (size_t pos) const;</pre></div><div id="I_description">Get character in string</div>
+<section id="description">
+Returns a reference to the character at position <i>pos</i> in the <a href="/string">string</a>.<br>
+<br>
+The function automatically checks whether <i>pos</i> is the valid position of a character in the string (i.e., whether <i>pos</i> is less than the <a href="/string::length">string length</a>), throwing an <a href="/out_of_range">out_of_range</a> exception if it is not.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pos</dt>
+<dd>Value with the position of a character within the string.<br>
+Note: The first character in a <a href="/string">string</a> is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+If it is not the position of a character, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The character at the specified position in the string.<br>
+<br>
+If the <a href="/string">string</a> object is const-qualified, the function returns a <tt>const char&</tt>. Otherwise, it returns a <tt>char&</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::at</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"Test string"</kbd>);
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;str.length(); ++i)
+  {
+    std::cout &lt;&lt; str.at(i);
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This code prints out the content of a string character by character using the <tt>at</tt> member function:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Test string
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Generally, no changes.<br>
+On some implementations, the non-const version may invalidate all iterators, pointers and references on the first access to string characters after the object has been constructed or modified.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed, and in some implementations, the non-const version modifies it on the first access to string characters after the object has been constructed or modified.<br>
+The reference returned can be used to access or modify characters.<br>
+</section>
+</div>
+<div title="C++11">
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed (neither the const nor the non-const versions modify it).<br>
+The reference returned can be used to access or modify characters. Concurrently accessing or modifying different characters is safe.<br>
+</section>
+</div>
+</div>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/string">string</a>.<br>
+<br>
+If <i>pos</i> is not less than the <a href="/string::length">string length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/operator[]/"><b>string::operator[]</b></a></dt><dd>Get character of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/substr/"><b>string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find/"><b>string::find</b></a></dt><dd>Find content in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

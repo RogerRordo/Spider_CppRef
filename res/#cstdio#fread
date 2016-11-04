@@ -1,0 +1,82 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fread</h1>
+<div class="C_prototype"><pre>size_t fread ( void * ptr, size_t size, size_t count, FILE * stream );</pre></div><div id="I_description">Read block of data from stream</div>
+<section id="description">
+Reads an array of <i>count</i> elements, each one with a size of <i>size</i> bytes, from the <i>stream</i> and stores them in the block of memory specified by <i>ptr</i>.<br>
+<br>
+The position indicator of the stream is advanced by the total amount of bytes read.<br>
+<br>
+The total amount of bytes read if successful is <tt>(size*count)</tt>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl><dt>ptr</dt>
+<dd>Pointer to a block of memory with a size of at least <tt>(size*count)</tt> bytes, converted to a <tt>void*</tt>.</dd>
+<dt>size</dt>
+<dd>Size, in bytes, of each element to be read.<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.</dd>
+<dt>count</dt>
+<dd>Number of elements, each one with a size of <i>size</i> bytes.<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.</dd>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that specifies an input stream.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The total number of elements successfully read is returned.<br>
+If this number differs from the <i>count</i> parameter, either a reading error occurred or the <i>end-of-file</i> was reached while reading. In both cases, the proper indicator is set, which can be checked with <a href="/ferror">ferror</a> and <a href="/feof">feof</a>, respectively.<br>
+If either <i>size</i> or <i>count</i> is zero, the function returns zero and both the stream state and the content pointed by <i>ptr</i> remain unchanged.<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.<br>
+</Section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fread example: read an entire file */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;stdlib.h&gt;</dfn>
+
+<var>int</var> main () {
+  FILE * pFile;
+  <var>long</var> lSize;
+  <var>char</var> * buffer;
+  size_t result;
+
+  pFile = fopen ( <kbd>"myfile.bin"</kbd> , <kbd>"rb"</kbd> );
+  <var>if</var> (pFile==NULL) {fputs (<kbd>"File error"</kbd>,stderr); exit (1);}
+
+  <cite>// obtain file size:</cite>
+  fseek (pFile , 0 , SEEK_END);
+  lSize = ftell (pFile);
+  rewind (pFile);
+
+  <cite>// allocate memory to contain the whole file:</cite>
+  buffer = (<var>char</var>*) malloc (<var>sizeof</var>(<var>char</var>)*lSize);
+  <var>if</var> (buffer == NULL) {fputs (<kbd>"Memory error"</kbd>,stderr); exit (2);}
+
+  <cite>// copy the file into the buffer:</cite>
+  result = fread (buffer,1,lSize,pFile);
+  <var>if</var> (result != lSize) {fputs (<kbd>"Reading error"</kbd>,stderr); exit (3);}
+
+  <cite>/* the whole file is now loaded in the memory buffer. */</cite>
+
+  <cite>// terminate</cite>
+  fclose (pFile);
+  free (buffer);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This code loads <tt>myfile.bin</tt> into a dynamically allocated memory buffer, which can be used to manipulate the content of a file as an array.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fwrite/"><b>fwrite</b></a></dt><dd>Write block of data to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fgetc/"><b>fgetc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fscanf/"><b>fscanf</b></a></dt><dd>Read formatted data from stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

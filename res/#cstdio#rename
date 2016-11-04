@@ -1,0 +1,71 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>rename</h1>
+<div class="C_prototype"><pre>int rename ( const char * oldname, const char * newname );</pre></div><div id="I_description">Rename file</div>
+<section id="description">
+Changes the name of the file or directory specified by <i>oldname</i> to <i>newname</i>.<br>
+<br>
+This is an operation performed directly on a file; No streams are involved in the operation.<br>
+<br>
+If <i>oldname</i> and <i>newname</i> specify different paths and this is supported by the system, the file is moved to the new location.<br>
+<br>
+If <i>newname</i> names an existing file, the function may either fail or override the existing file, depending on the specific system and library implementation.<br>
+<br>
+Proper file access shall be available.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>oldname</dt>
+<dd>C string containing the name of an existing file to be renamed and/or moved.<br>
+Its value shall follow the file name specifications of the running environment and can include a path (if supported by the system).<br>
+</dd>
+<dt>newname</dt>
+<dd>C string containing the new name for the file.<br>
+Its value shall follow the file name specifications of the running environment and can include a path (if supported by the system).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+If the file is successfully renamed, a zero value is returned.<br>
+On failure, a nonzero value is returned.<br>
+On most library implementations, the <a href="/errno">errno</a> variable is also set to a system-specific error code on failure.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* rename example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> result;
+  <var>char</var> oldname[] =<kbd>"oldname.txt"</kbd>;
+  <var>char</var> newname[] =<kbd>"newname.txt"</kbd>;
+  result= rename( oldname , newname );
+  <var>if</var> ( result == 0 )
+    puts ( <kbd>"File successfully renamed"</kbd> );
+  <var>else</var>
+    perror( <kbd>"Error renaming file"</kbd> );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+If the file <tt>oldname.txt</tt> could be successfully renamed to <tt>newname.txt</tt> the following message would be written to <tt>stdout</tt>:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>File successfully renamed
+</samp></pre></td></tr></table></div>
+<br>
+Otherwise, a message similar to this will be written to <tt>stderr</tt>:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Error renaming file: Permission denied
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/remove/"><b>remove</b></a></dt><dd>Remove file <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

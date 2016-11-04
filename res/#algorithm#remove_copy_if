@@ -1,0 +1,102 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>remove_copy_if</h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class OutputIterator, class UnaryPredicate&gt;  OutputIterator remove_copy_if (InputIterator first, InputIterator last,                                 OutputIterator result, UnaryPredicate pred);</pre></div><div id="I_description">Copy range removing values</div>
+<section id="description">
+Copies the elements in the range <code>[first,last)</code> to the range beginning at <var>result</var>, except those elements for which <var>pred</var> returns <code>true</code>.<br>
+<br>
+The resulting range is shorter than <code>[first,last)</code> by as many elements as matches, which are "removed".<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator, <var>class</var> OutputIterator, <var>class</var> UnaryPredicate&gt;
+  OutputIterator remove_copy_if (InputIterator first, InputIterator last,
+                                 OutputIterator result, UnaryPredicate pred)
+{
+  <var>while</var> (first!=last) {
+    <var>if</var> (!pred(*first)) {
+      *result = *first;
+      ++result;
+    }
+    ++first;
+  }
+  <var>return</var> result;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions in a sequence. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>result</dt>
+<dd><a href="/OutputIterator">Output iterator</a> to the initial position of the range where the resulting sequence is stored.<br>
+The pointed type shall support being assigned the value of an element in the range <code>[first,last)</code>.</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is to be removed from the copy (if <code>true</code>, it is not copied).<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+<br>
+The ranges shall not overlap.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator pointing to the end of the copied range, which includes all the elements in <code>[first,last)</code> except those for which <var>pred</var> returns <code>true</code>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// remove_copy_if example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::remove_copy_if</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) { <var>return</var> ((i%2)==1); }
+
+<var>int</var> main () {
+  <var>int</var> myints[] = {1,2,3,4,5,6,7,8,9};
+  std::vector&lt;<var>int</var>&gt; myvector (9);
+
+  std::remove_copy_if (myints,myints+9,myvector.begin(),IsOdd);
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (std::vector&lt;<var>int</var>&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 2 4 6 8 0 0 0 0 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Applies <var>pred</var> to each element, and performs an assignment operation for those not removed.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed.<br>
+The objects in the range between <var>result</var> and the returned value are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of <var>pred</var>, the element assignments or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/remove/"><b>remove</b></a></dt><dd>Remove value from range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/remove_copy/"><b>remove_copy</b></a></dt><dd>Copy range removing value <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/replace_copy_if/"><b>replace_copy_if</b></a></dt><dd>Copy range replacing value <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/count/"><b>count</b></a></dt><dd>Count appearances of value in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/copy/"><b>copy</b></a></dt><dd>Copy range of elements <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

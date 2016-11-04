@@ -1,0 +1,58 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>gets</h1>
+<div class="C_prototype"><pre>char * gets ( char * str );</pre></div><div id="I_description">Get string from stdin</div>
+<section id="description">
+Reads characters from the <i>standard input</i> (<a href="/stdin">stdin</a>) and stores them as a C string into <i>str</i> until a newline character or the <i>end-of-file</i> is reached.<br>
+<br>
+The newline character, if found, is not copied into <i>str</i>.<br>
+<br>
+A terminating null character is automatically appended after the characters copied to <i>str</i>.<br>
+<br>
+Notice that <tt>gets</tt> is quite different from <a href="/fgets">fgets</a>: not only <tt>gets</tt> uses <a href="/stdin">stdin</a> as source, but it does not include the ending newline character in the resulting string and does not allow to specify a maximum size for <i>str</i> (which can lead to buffer overflows).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Pointer to a block of memory (array of <tt>char</tt>) where the string read is copied as a <i>C string</i>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns <i>str</i>.<br>
+If the <i>end-of-file</i> is encountered while attempting to read a character, the <i>eof indicator</i> is set (<a href="/feof">feof</a>). If this happens before any characters could be read, the pointer returned is a null pointer (and the contents of <i>str</i> remain unchanged).<br>
+If a read error occurs, the <i>error indicator</i> (<a href="/ferror">ferror</a>) is set and a null pointer is also returned (but the contents pointed by <i>str</i> may have changed).<br>
+</section>
+<br>
+<section id="compatibility">
+<h3>Compatibility</h3>
+The most recent revision of the C standard (2011) has definitively removed this function from its specification.<br>
+The function is deprecated in C++ (as of 2011 standard, which follows C99+TC3).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* gets example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main()
+{
+  <var>char</var> string [256];
+  printf (<kbd>"Insert your full address: "</kbd>);
+  gets (string);     <cite>// warning: unsafe (see fgets instead)</cite>
+  printf (<kbd>"Your address is: %s\n"</kbd>,string);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fgets/"><b>fgets</b></a></dt><dd>Get string from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/getchar/"><b>getchar</b></a></dt><dd>Get character from stdin <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/scanf/"><b>scanf</b></a></dt><dd>Read formatted data from stdin <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,120 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>partition_copy<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class OutputIterator1,          class OutputIterator2, class UnaryPredicate pred&gt;  pair&lt;OutputIterator1,OutputIterator2&gt;    partition_copy (InputIterator first, InputIterator last,                    OutputIterator1 result_true, OutputIterator2 result_false,                    UnaryPredicate pred);</pre></div><div id="I_description">Partition range into two</div>
+<section id="description">
+Copies the elements in the range <code>[first,last)</code> for which <var>pred</var> returns <code>true</code> into the range pointed by <var>result_true</var>, and those for which it does not into the range pointed by <var>result_false</var>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator, <var>class</var> OutputIterator1,
+          <var>class</var> OutputIterator2, <var>class</var> UnaryPredicate pred&gt;
+  pair&lt;OutputIterator1,OutputIterator2&gt;
+    partition_copy (InputIterator first, InputIterator last,
+                    OutputIterator1 result_true, OutputIterator2 result_false,
+                    UnaryPredicate pred)
+{
+  <var>while</var> (first!=last) {
+    <var>if</var> (pred(*first)) {
+      *result_true = *first;
+      ++result_true;
+    }
+    <var>else</var> {
+      *result_false = *first;
+      ++result_false;
+    }
+    ++first;
+  }
+  <var>return</var> std::make_pair (result_true,result_false);
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions of the range to be copy-partitioned. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+</dd>
+<dt>result_true</dt>
+<dd><a href="/OutputIterator">Output iterator</a> to the initial position of the range where the elements for which <var>pred</var> returns <code>true</code> are stored.<br>
+</dd>
+<dt>result_false</dt>
+<dd><a href="/OutputIterator">Output iterator</a> to the initial position of the range where the elements for which <var>pred</var> returns <code>false</code> are stored.<br>
+</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element pointed by <samp>InputIterator</samp> as argument, and returns a value convertible to <code>bool</code>. The value returned indicates on which result range the element is copied.<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+<br>
+The ranges shall not overlap.<br>
+The type pointed by the <i>output iterator</i> types shall support being assigned the value of an element in the range <code>[first,last)</code>.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+A <samp><a href="/pair">pair</a></samp> of iterators with the end of the generated sequences pointed by <var>result_true</var> and <var>result_false</var>, respectivelly.<br>
+<br>
+Its member <samp>first</samp> points to the element that follows the last element copied to the sequence of elements for which <i>pred</i> returned <code>true</code>.<br>
+Its member <samp>second</samp> points to the element that follows the last element copied to the sequence of elements for which <i>pred</i> returned <code>false</code>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// partition_copy example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::partition_copy, std::count_if</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) { <var>return</var> (i%2)==1; }
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; foo {1,2,3,4,5,6,7,8,9};
+  std::vector&lt;<var>int</var>&gt; odd, even;
+
+  <cite>// resize vectors to proper size:</cite>
+  <var>unsigned</var> n = std::count_if (foo.begin(), foo.end(), IsOdd);
+  odd.resize(n); even.resize(foo.size()-n);
+
+  <cite>// partition:</cite>
+  std::partition_copy (foo.begin(), foo.end(), odd.begin(), even.begin(), IsOdd);
+
+  <cite>// print contents:</cite>
+  std::cout &lt;&lt; <kbd>"odd: "</kbd>;  <var>for</var> (<var>int</var>&amp; x:odd)  std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; x; std::cout &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"even: "</kbd>; <var>for</var> (<var>int</var>&amp; x:even) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; x; std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>odd: 1 3 5 7 9
+even: 2 4 6 8
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Calls <var>pred</var> and performs an assignment once for each element.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed (each exactly once).<br>
+The objects in the ranges pointed by <var>result_true</var> and <var>result_false</var> up to the elements pointed by the iterators returned are modified (each exactly once).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of <var>pred</var>, the element assignments or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/partition/"><b>partition</b></a></dt><dd>Partition range in two <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/stable_partition/"><b>stable_partition</b></a></dt><dd>Partition range in two - stable ordering <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/is_partitioned/"><b>is_partitioned</b></a></dt><dd>Test whether range is partitioned <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/partition_point/"><b>partition_point</b></a></dt><dd>Get partition point <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

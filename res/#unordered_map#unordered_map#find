@@ -1,0 +1,84 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_map/unordered_map/">unordered_map</a>::find<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>      iterator find ( const key_type&amp; k );const_iterator find ( const key_type&amp; k ) const;</pre></div><div id="I_description">Get iterator to element</div>
+<section id="description">
+Searches the container for an element with <i>k</i> as key and returns an iterator to it if found, otherwise it returns an iterator to <a href="/unordered_map::end">unordered_map::end</a> (the element past the end of the container).<br>
+<br>
+Another member function, <a href="/unordered_map::count">unordered_map::count</a>, can be used to just check whether a particular key exists.<br>
+<br>
+The mapped value can also be accessed directly by using member functions <a href="/unordered_map::at">at</a> or <tt>operator[]</tt>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>k</dt>
+<dd>Key to be searched for.<br>
+Member type <tt>key_type</tt> is the type of the keys for the elements in the container, defined in <a href="/unordered_map">unordered_map</a> as an alias of its first template parameter (<tt>Key</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the element, if the specified key value is found, or <a href="/unordered_map::end">unordered_map::end</a> if the specified key is not found in the container.<br>
+<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are <a href="/ForwardIterator">forward iterator</a> types.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_map::find</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_map&lt;std::string,<var>double</var>&gt; mymap = {
+     {<kbd>"mom"</kbd>,5.4},
+     {<kbd>"dad"</kbd>,6.1},
+     {<kbd>"bro"</kbd>,5.9} };
+
+  std::string input;
+  std::cout &lt;&lt; <kbd>"who? "</kbd>;
+  getline (std::cin,input);
+
+  std::unordered_map&lt;std::string,<var>double</var>&gt;::const_iterator got = mymap.find (input);
+
+  <var>if</var> ( got == mymap.end() )
+    std::cout &lt;&lt; <kbd>"not found"</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; got-&gt;first &lt;&lt; <kbd>" is "</kbd> &lt;&lt; got-&gt;second;
+
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>who? dad
+dad is 6.1
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Average case: constant.<br>
+Worst case: linear in <a href="/unordered_map::size">container size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/count/"><b>unordered_map::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/operator[]/"><b>unordered_map::operator[]</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/at/"><b>unordered_map::at</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

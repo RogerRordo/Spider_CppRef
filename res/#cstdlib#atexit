@@ -1,0 +1,90 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>atexit</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C">
+<pre>int atexit (void (*func)(void));</pre></div>
+<div title="C++98" class="on">
+<pre>extern &quot;C&quot; int atexit (void (*func)(void));extern &quot;C++&quot; int atexit (void (*func)(void));</pre></div>
+<div title="C++11" class="on">
+<pre>extern &quot;C&quot; int atexit (void (*func)(void)) noexcept;extern &quot;C++&quot; int atexit (void (*func)(void)) noexcept;</pre></div>
+</div>
+</div><div id="I_description">Set function to be executed on exit</div>
+<section id="description">
+The function pointed by <var>func</var> is automatically called without arguments when the program terminates normally.<br>
+<br>
+If more than one <samp>atexit</samp> function has been specified by different calls to this function, they are all executed in reverse order as a stack (i.e. the last function specified is the first to be executed at exit).<br>
+<br>
+A single function can be registered to be executed at exit more than once.<br>
+<br>
+If <samp>atexit</samp> is called after <samp><a href="/exit">exit</a></samp>, the call may or may not succeed depending on the particular system and library implementation (<i>unspecified behavior</i>).<br>
+<br>
+If a function registered with <samp>atexit</samp> throws an exception for which it does not provide a handler when called on termination, <samp><a href="/terminate">terminate</a></samp> is automatically called (C++).<br>
+<br>
+Particular library implementations may impose a limit on the number of functions call that can be registered with <samp>atexit</samp>, but this cannot be less than 32 function calls.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>function</dt>
+<dd>Function to be called. The function shall return no value and take no arguments.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A zero value is returned if the function was successfully registered.<br>
+If it failed, a non-zero value is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></code></pre></td>
+<td class="source"><pre><code><cite>/* atexit example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* puts */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* atexit */</cite><dfn></dfn>
+
+<var>void</var> fnExit1 (<var>void</var>)
+{
+  puts (<kbd>"Exit function 1."</kbd>);
+}
+
+<var>void</var> fnExit2 (<var>void</var>)
+{
+  puts (<kbd>"Exit function 2."</kbd>);
+}
+
+<var>int</var> main ()
+{
+  atexit (fnExit1);
+  atexit (fnExit2);
+  puts (<kbd>"Main function."</kbd>);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Main function.
+Exit function 2.
+Exit function 1.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Concurrently calling this function introduces no data races (C++): Calls are properly synchronized at the process level.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/exit/"><b>exit</b></a></dt><dd>Terminate calling process <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/abort/"><b>abort</b></a></dt><dd>Abort current process <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

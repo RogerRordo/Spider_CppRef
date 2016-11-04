@@ -1,0 +1,87 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::resize</h1>
+<div class="C_prototype"><pre>void resize (size_type n);void resize (size_type n, charT c);</pre></div><div id="I_description">Resize string</div>
+<section id="description">
+Resizes the string to a <a href="/basic_string::length">length</a> of <i>n</i> characters.<br>
+<br>
+If <i>n</i> is smaller than the current <a href="/basic_string::length">string length</a>, the current value is shortened to its first <i>n</i> character, removing the characters beyond the <i>n</i>th.<br>
+<br>
+If <i>n</i> is greater than the current <a href="/basic_string::length">string length</a>, the current content is extended by inserting at the end as many characters as needed to reach a size of <i>n</i>. If <i>c</i> is specified, the new elements are initialized as copies of <i>c</i>, otherwise, they are <i>value-initialized characters</i> (null characters).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>New <a href="/basic_string::length">string length</a>, expressed in number of characters.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+<dt>c</dt>
+<dd>Character used to fill the new character space added to the string (in case the string is expanded).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// resizing string</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"I like to code in C"</kbd>);
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::string::size_type sz = str.size();
+
+  str.resize (sz+2,<kbd>'+'</kbd>);
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+
+  str.resize (14);
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>I like to code in C
+I like to code in C++
+I like to code
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in the new <a href="/basic_string::length">string length</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/basic_string">basic_string</a>.<br>
+<br>
+If <i>n</i> is greater than <a href="/basic_string::max_size">max_size</a>, a <a href="/length_error">length_error</a> exception is thrown.<br>
+If the type uses the <a href="/allocator">default allocator</a>, a <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/size/"><b>basic_string::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/clear/"><b>basic_string::clear</b></a></dt><dd>Clear string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/max_size/"><b>basic_string::max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

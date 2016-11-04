@@ -1,0 +1,61 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>rewind</h1>
+<div class="C_prototype"><pre>void rewind ( FILE * stream );</pre></div><div id="I_description">Set position of stream to the beginning</div>
+<section id="description">
+Sets the position indicator associated with <i>stream</i> to the beginning of the file.<br>
+<br>
+The <i>end-of-file</i> and <i>error</i> internal indicators associated to the <i>stream</i> are cleared after a successful call to this function, and all effects from previous calls to <a href="/ungetc">ungetc</a> on this <i>stream</i> are dropped.<br>
+<br>
+On streams open for update (read+write), a call to <tt>rewind</tt> allows to switch between reading and writing.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies the stream.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>/* rewind example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> n;
+  FILE * pFile;
+  <var>char</var> buffer [27];
+
+  pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"w+"</kbd>);
+  <var>for</var> ( n=<kbd>'A'</kbd> ; n&lt;=<kbd>'Z'</kbd> ; n++)
+    fputc ( n, pFile);
+  rewind (pFile);
+  fread (buffer,1,26,pFile);
+  fclose (pFile);
+  buffer[26]=<kbd>'\0'</kbd>;
+  puts (buffer);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+A file called <tt>myfile.txt</tt> is created for reading and writing and filled with the alphabet. The file is then rewinded, read and its content is stored in a buffer, that then is written to the standard output:<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fseek/"><b>fseek</b></a></dt><dd>Reposition stream position indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fsetpos/"><b>fsetpos</b></a></dt><dd>Set position indicator of stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fflush/"><b>fflush</b></a></dt><dd>Flush stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,100 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/set/set/">set</a>::swap</h1>
+<div class="C_prototype"><pre>void swap (set&amp; x);</pre></div><div id="I_description">Swap content</div>
+<section id="description">
+Exchanges the content of the container by the content of <i>x</i>, which is another <a href="/set">set</a> of the same type. Sizes may differ.<br>
+<br>
+After the call to this member function, the elements in this container are those which were in <i>x</i> before the call, and the elements of <i>x</i> are those which were in <tt>this</tt>. All iterators, references and pointers remain valid for the swapped objects.<br>
+<br>
+Notice that a non-member function exists with the same name, <a href="/set:swap">swap</a>, overloading that algorithm with an optimization that behaves like this member function.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+Whether the internal container <a href="/set::get_allocator">allocators</a> and <a href="/set::key_comp">comparison objects</a> are swapped is undefined.<br>
+</div>
+<div title="C++11">
+Whether the internal container <a href="/set::get_allocator">allocators</a> are swapped is not defined, unless in the case the appropriate <a href="/allocator_trait">allocator trait</a> indicates explicitly that they shall <a href="/allocator_traits#types">propagate</a>.<br>
+<br>
+The internal <a href="/set::key_comp">comparison objects</a> are always exchanged, using  <a href="/swap">swap</a>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Another <a href="/set">set</a> container of the same type as this (i.e., with the same template parameters, <tt>T</tt>, <tt>Compare</tt> and <tt>Alloc</tt>) whose content is swapped with that of this container.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// swap sets</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+
+main ()
+{
+  <var>int</var> myints[]={12,75,10,32,20,25};
+  std::set&lt;<var>int</var>&gt; first (myints,myints+3);     <cite>// 10,12,75</cite>
+  std::set&lt;<var>int</var>&gt; second (myints+3,myints+6);  <cite>// 20,25,32</cite>
+
+  first.swap(second);
+
+  std::cout &lt;&lt; <kbd>"first contains:"</kbd>;
+  <var>for</var> (std::set&lt;<var>int</var>&gt;::iterator it=first.begin(); it!=first.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"second contains:"</kbd>;
+  <var>for</var> (std::set&lt;<var>int</var>&gt;::iterator it=second.begin(); it!=second.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>first contains: 20 25 32
+second contains: 10 12 75
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references referring to elements in both containers remain valid, but now are referring to elements in the other container, and iterate in it.<br>
+Note that the <i>end iterators</i> do not refer to elements and may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both the container and <i>x</i> are modified.<br>
+No contained elements are accessed by the call (although see <i>iterator validity</i> above).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If the allocators in both containers compare equal, or if their <a href="/allocator_traits">allocator traits</a> indicate that the allocators shall <a href="/allocator_traits#types">propagate</a>, the function never throws exceptions (no-throw guarantee).<br>
+Otherwise, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/set/set/swap-free/"><b>swap (set)</b></a></dt><dd>Exchanges the contents of two sets <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/swap_ranges/"><b>swap_ranges</b></a></dt><dd>Exchange values of two ranges <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

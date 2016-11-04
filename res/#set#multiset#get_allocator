@@ -1,0 +1,88 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/set/multiset/">multiset</a>::get_allocator</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>allocator_type get_allocator() const;</pre></div>
+<div title="C++11" class="on">
+<pre>allocator_type get_allocator() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Get allocator</div>
+<section id="description">
+Returns a copy of the allocator object associated with the <a href="/multiset">multiset</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The allocator.<br>
+<br>
+Member type <tt>allocator_type</tt> is the type of the allocator used by the container, defined in <a href="/multiset">multiset</a> as an alias of its third template parameter (<tt>Alloc</tt>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// multiset::get_allocator</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multiset&lt;<var>int</var>&gt; mymultiset;
+  <var>int</var> * p;
+  <var>unsigned</var> <var>int</var> i;
+
+  <cite>// allocate an array of 5 elements using myset's allocator:</cite>
+  p=mymultiset.get_allocator().allocate(5);
+
+  <cite>// assign some values to array</cite>
+  <var>for</var> (i=0; i&lt;5; i++) p[i]=(i+1)*10;
+
+  std::cout &lt;&lt; <kbd>"The allocated array contains:"</kbd>;
+  <var>for</var> (i=0; i&lt;5; i++) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; p[i];
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  mymultiset.get_allocator().deallocate(p,5);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+The example shows an elaborate way to allocate memory for an array of <tt>int</tt>s using the same allocator used by the container.<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The allocated array contains: 10 20 30 40 50
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+Concurrently accessing the elements of a <a href="/multiset">multiset</a> is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+Copying any instantiation of the <a href="/allocator">default allocator</a> is also guaranteed to never throw.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/memory/allocator/"><b>allocator</b></a></dt><dd>Default allocator <span class="typ">(class template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

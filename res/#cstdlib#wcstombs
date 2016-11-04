@@ -1,0 +1,83 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>wcstombs</h1>
+<div class="C_prototype"><pre>size_t wcstombs (char* dest, const wchar_t* src, size_t max);</pre></div><div id="I_description">Convert wide-character string to multibyte string</div>
+<section id="description">
+Translates wide characters from the sequence pointed by <var>src</var> to the multibyte equivalent sequence (which is stored at the array pointed by <var>dest</var>), up until either <var>max</var> bytes have been translated or until a wide characters translates into a <i>null character</i>.<br>
+<br>
+If <var>max</var> bytes are successfully translated, the resulting string stored in <var>dest</var> is not null-terminated.<br>
+<br>
+The resulting multibyte sequence begins in the initial shift state (if any).<br>
+<br>
+The behavior of this function depends on the <samp>LC_CTYPE</samp> category of the selected <a href="/setlocale">C locale</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>dest</dt>
+<dd>Pointer to an array of <code>char</code> elements long enough to contain the resulting sequence (at most, <var>max</var> bytes).</dd>
+<dt>src</dt>
+<dd>C wide string to be translated.</dd>
+<dt>max</dt>
+<dd>Maximum number of bytes to be written to <var>dest</var>.<br>
+<samp><a href="/cstdlib:size_t">size_t</a></samp> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value </h3>
+The number of bytes written to <var>dest</var>, not including the eventual ending null-character.<br>
+If a wide character that does not correspond to a valid multibyte character is encountered, a <code>(<a href="/cstdlib:size_t">size_t</a>)-1</code> value is returned.<br>
+Notice that <samp><a href="/cstdlib:size_t">size_t</a></samp> is an unsigned integral type, and thus none of the values possibly returned is less than zero.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>/* wcstombs example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* wcstombs, wchar_t(C) */</cite><dfn></dfn>
+
+<var>int</var> main() {
+  <var>const</var> <var>wchar_t</var> str[] = L<kbd>"wcstombs example"</kbd>;
+  <var>char</var> buffer[32];
+  <var>int</var> ret;
+
+  printf (<kbd>"wchar_t string: %ls \n"</kbd>,str);
+
+  ret = wcstombs ( buffer, str, <var>sizeof</var>(buffer) );
+  <var>if</var> (ret==32) buffer[31]=<kbd>'\0'</kbd>;
+  <var>if</var> (ret) printf (<kbd>"multibyte string: %s \n"</kbd>,buffer);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+wchar_t string: wcstombs example 
+multibyte string:  wcstombs example 
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The function accesses the array pointed by <var>src</var>, and modifies the array pointed by <var>dest</var>.<br>
+The function may also access and modify an internal state object, which may cause data races on concurrent calls to this function if the implementation uses a static object (see <samp><a href="/wcsrtombs">wcsrtombs</a></samp> for an alternative that can use an external state object).<br>
+Concurrently changing locale settings may also introduce data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If <var>dest</var> does not point to an array long enough to contain the translated sequence, or if <var>src</var> is either not null-terminated or does not contain enough wide characters to generate a sequence of <var>max</var> multibyte characters, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/mblen/"><b>mblen</b></a></dt><dd>Get length of multibyte character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wctomb/"><b>wctomb</b></a></dt><dd>Convert wide character to multibyte sequence <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/mbstowcs/"><b>mbstowcs</b></a></dt><dd>Convert multibyte string to wide-character string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

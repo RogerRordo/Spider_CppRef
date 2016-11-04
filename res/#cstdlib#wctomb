@@ -1,0 +1,84 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>wctomb</h1>
+<div class="C_prototype"><pre>int wctomb (char* pmb, wchar_t wc);</pre></div><div id="I_description">Convert wide character to multibyte sequence</div>
+<section id="description">
+The wide character <var>wc</var> is translated to its multibyte equivalent and stored in the array pointed by <var>pmb</var>. The function returns the length in bytes of the equivalent multibyte sequence pointed by <var>pmb</var> after the call.<br>
+<br>
+<samp>wctomb</samp> has its own internal <i>shift state</i>, which is altered as necessary only by calls to this function. A call to the function with a null pointer as <var>pmb</var> resets the state (and returns whether multibyte sequences are state-dependent).<br>
+<br>
+The behavior of this function depends on the <samp>LC_CTYPE</samp> category of the selected <a href="/clocale">C locale</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pmb</dt>
+<dd>Pointer to an array large enough to hold a multibyte sequence.<br>
+The maximum length of a multibyte sequence for a character in the current locale is <samp><a href="/MB_CUR_MAX">MB_CUR_MAX</a></samp> bytes.<br>
+Alternativelly, the function may be called with a <i>null pointer</i>, in which case the function resets its internal shift state to the initial value and returns whether multibyte sequences use a state-dependent encoding.</dd>
+<dt>wc</dt>
+<dd>Wide character of type <code>wchar_t</code>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value </h3>
+If the argument passed as <var>pmb</var> is not a null pointer, the size in bytes of the character written to <var>pmb</var> is returned. If there is no character correspondence, <code>-1</code> is returned.<br>
+<br>
+If the argument passed as <var>pmb</var> is a null pointer, the function returns a nonzero value if multibyte character encodings are state-dependent, and zero otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>/* wctomb example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* wctomb, wchar_t(C) */</cite><dfn></dfn>
+
+<var>int</var> main() {
+  <var>const</var> <var>wchar_t</var> str[] = L<kbd>"wctomb example"</kbd>;
+  <var>const</var> <var>wchar_t</var>* pt;
+  <var>char</var> buffer [MB_CUR_MAX];
+  <var>int</var> i,length;
+
+  pt = str;
+  <var>while</var> (*pt) {
+    length = wctomb(buffer,*pt);
+    <var>if</var> (length&lt;1) <var>break</var>;
+    <var>for</var> (i=0;i&lt;length;++i) printf (<kbd>"[%c]"</kbd>,buffer[i]);
+    ++pt;
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+The example prints the multibyte characters that a wide character string translates to, using the selected locale (in this case, the default <code>"C"</code> locale).<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+[w][c][t][o][m][b][ ][e][x][a][m][p][l][e]
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The function modifies the array pointed by <var>pmb</var>.<br>
+The function also accesses and modifies an internal state object, which may cause data races on concurrent calls to this function (see <samp><a href="/wcrtomb">wcrtomb</a></samp> for an alternative that may use an external state object).<br>
+Concurrently changing locale settings may also introduce data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If <var>pmb</var> is neither a <i>null pointer</i> nor a pointer to an array long enough for the translated character, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/mblen/"><b>mblen</b></a></dt><dd>Get length of multibyte character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/mbtowc/"><b>mbtowc</b></a></dt><dd>Convert multibyte sequence to wide character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/mbstowcs/"><b>mbstowcs</b></a></dt><dd>Convert multibyte string to wide-character string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wcstombs/"><b>wcstombs</b></a></dt><dd>Convert wide-character string to multibyte string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

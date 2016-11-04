@@ -1,0 +1,99 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>relational operators (basic_string)</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>(1)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator== (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator== (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator== (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="even"><th>(2)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator!= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator!= (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator!= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="odd"><th>(3)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;  (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="even"><th>(4)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;= (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="odd"><th>(5)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;  (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="even"><th>(6)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;= (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr></table></div>
+<div title="C++14" class="on">
+<table><tr class="odd"><th>(1)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator== (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs) noexcept;template &lt;class charT, class traits, class Alloc&gt;  bool operator== (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator== (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="even"><th>(2)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator!= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs) noexcept;template &lt;class charT, class traits, class Alloc&gt;  bool operator!= (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator!= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="odd"><th>(3)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs) noexcept;template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;  (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="even"><th>(4)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs) noexcept;template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;= (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&lt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="odd"><th>(5)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs) noexcept;template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;  (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;  (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr><tr class="even"><th>(6)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs,                   const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs) noexcept;template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;= (const charT* lhs, const basic_string&lt;charT,traits,Alloc&gt;&amp; rhs);template &lt;class charT, class traits, class Alloc&gt;  bool operator&gt;= (const basic_string&lt;charT,traits,Alloc&gt;&amp; lhs, const charT* rhs);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Relational operators for basic_string</div>
+<section id="description">
+Performs the appropriate comparison operation between the <a href="/basic_string">basic_string</a> objects <i>lhs</i> and <i>rhs</i>.<br>
+<br>
+The functions use <a href="/basic_string::compare">basic_string::compare</a> for the comparison, which depends on the <a href="/char_traits::compare">compare</a> member of its <a href="/char_traits">character traits</a>.<br>
+<br>
+These operators are overloaded in header <a href="/&lt;string&gt;">&lt;string&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>lhs, rhs</dt>
+<dd>Arguments to the left- and right-hand side of the operator, respectively.<br>
+If of type <tt>charT*</tt>, it shall point to a null-terminated character sequence.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// string comparisons</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string foo = <kbd>"alpha"</kbd>;
+  std::string bar = <kbd>"beta"</kbd>;
+
+  <var>if</var> (foo==bar) std::cout &lt;&lt; <kbd>"foo and bar are equal\n"</kbd>;
+  <var>if</var> (foo!=bar) std::cout &lt;&lt; <kbd>"foo and bar are not equal\n"</kbd>;
+  <var>if</var> (foo&lt; bar) std::cout &lt;&lt; <kbd>"foo is less than bar\n"</kbd>;
+  <var>if</var> (foo&gt; bar) std::cout &lt;&lt; <kbd>"foo is greater than bar\n"</kbd>;
+  <var>if</var> (foo&lt;=bar) std::cout &lt;&lt; <kbd>"foo is less than or equal to bar\n"</kbd>;
+  <var>if</var> (foo&gt;=bar) std::cout &lt;&lt; <kbd>"foo is greater than or equal to bar\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo and bar are not equal
+foo is less than bar
+foo is less than or equal to bar
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if the condition holds, and <tt>false</tt> otherwise.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in both <i>lhs</i> and <i>rhs</i>'s <a href="/basic_string::length">lengths</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both objects, <i>lhs</i> and <i>rhs</i>, are accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+If an argument of type <code>char*</code> does not point to null-terminated character sequence, it causes <i>undefined behavior</i>.<br>
+Otherwise, if an exception is thrown, there are no changes in the <samp><a href="/basic_string">basic_string</a></samp> (strong guarantee).<br>
+</div>
+<div title="C++14">
+If an argument of type <code>char*</code> does not point to null-terminated character sequence, it causes <i>undefined behavior</i>.<br>
+For operations between <samp><a href="/basic_string">basic_string</a></samp> objects, exceptions are never thrown (no-throw guarantee).<br>
+For other cases, if an exception is thrown, there are no changes in the <samp><a href="/basic_string">basic_string</a></samp> (strong guarantee).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/compare/"><b>basic_string::compare</b></a></dt><dd>Compare strings <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/find/"><b>basic_string::find</b></a></dt><dd>Find first occurrence in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/operator=/"><b>basic_string::operator=</b></a></dt><dd>String assignment <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/swap/"><b>basic_string::swap</b></a></dt><dd>Swap string values <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

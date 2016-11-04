@@ -1,0 +1,65 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strstr</h1>
+<div class="C_prototype"><pre>const char * strstr ( const char * str1, const char * str2 );      char * strstr (       char * str1, const char * str2 );</pre></div><div id="I_description">Locate substring</div>
+<section id="description">
+Returns a pointer to the first occurrence of <i>str2</i> in <i>str1</i>, or a null pointer if <i>str2</i> is not part of <i>str1</i>.<br>
+<br>
+The matching process does not include the terminating null-characters, but it stops there.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str1</dt>
+<dd>C string to be scanned.</dd>
+<dt>str2</dt>
+<dd>C string containing the sequence of characters to match.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A pointer to the first occurrence in <i>str1</i> of the entire sequence of characters specified in <i>str2</i>, or a null pointer if the sequence is not present in <i>str1</i>.<br>
+</section>
+<br>
+<section id="portability">
+<h3>Portability</h3>
+In C, this function is only declared as:<br>
+<br>
+<span class="auto"><code class="source"><var>char</var> * strstr ( <var>const</var> <var>char</var> *, <var>const</var> <var>char</var> * );</code></span> <br>
+<br>
+instead of the two overloaded versions provided in C++.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strstr example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str[] =<kbd>"This is a simple string"</kbd>;
+  <var>char</var> * pch;
+  pch = strstr (str,<kbd>"simple"</kbd>);
+  strncpy (pch,<kbd>"sample"</kbd>,6);
+  puts (str);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+This example searches for the <tt>"simple"</tt> substring in <i>str</i> and replaces that word for <tt>"sample"</tt>.<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+This is a sample string
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strspn/"><b>strspn</b></a></dt><dd>Get span of character set in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strpbrk/"><b>strpbrk</b></a></dt><dd>Locate characters in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strchr/"><b>strchr</b></a></dt><dd>Locate first occurrence of character in string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

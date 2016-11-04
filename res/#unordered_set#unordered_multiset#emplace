@@ -1,0 +1,84 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_multiset/">unordered_multiset</a>::emplace<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class... Args&gt; iterator emplace ( Args&amp;&amp;... args );</pre></div><div id="I_description">Construct and insert element</div>
+<section id="description">
+Inserts a new element in the <a href="/unordered_multiset">unordered_multiset</a>. This new element is constructed in place using <i>args</i> as the arguments for the element's constructor.<br>
+<br>
+This effectively increases the container <a href="/unordered_multiset::size">size</a> by one.<br>
+<br>
+A similar member function exists, <a href="/unordered_multiset::insert">insert</a>, which either copies or moves existing objects into the container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>args</dt>
+<dd>Arguments passed to the constructor of the a new element to be inserted.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the newly inserted element.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/ForwardIterator">forward iterator</a> type.<br>
+<br>
+All iterators in an <a href="/unordered_multiset">unordered_multiset</a> have const access to the elements: Elements can be inserted or removed, but not modified while in the container.<br>
+<br>
+The storage for the new element is allocated using <tt>allocator_traits&lt;allocator_type&gt;::construct()</tt>, which may throw exceptions on failure (for the default <a href="/allocator">allocator</a>, <tt>bad_alloc</tt> is thrown if the allocation request does not succeed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_multiset::emplace</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_multiset&lt;std::string&gt; myums;
+
+  myums.emplace (<kbd>"milk"</kbd>);
+  myums.emplace (<kbd>"tea"</kbd>);
+  myums.emplace (<kbd>"coffee"</kbd>);
+  myums.emplace (<kbd>"milk"</kbd>);
+
+  std::cout &lt;&lt; <kbd>"myums contains:"</kbd>;
+  <var>for</var> (<var>const</var> std::string&amp; x: myums) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x;
+
+  std::cout &lt;&lt; std::endl;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myset contains: tea coffee milk milk
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Average case: constant.<br>
+Worst case: linear in container size.<br>
+May trigger a <a href="/unordered_multiset::rehash">rehash</a> (not included).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+On most cases, all iterators in the container remain valid after the insertion. The only exception being when the growth of the container forces a rehash. In this case, all iterators in the container are invalidated.<br>
+<br>
+A rehash is forced if the new container <a href="/unordered_multiset::size">size</a> after the insertion operation would increase above its capacity threshold (calculated as the container's <a href="/unordered_multiset::bucket_count">bucket_count</a> multiplied by its <a href="/unordered_multiset::max_load_factor">max_load_factor</a>).<br>
+<br>
+References to elements in the <a href="/unordered_multiset">unordered_multiset</a> container remain valid in all cases, even after a rehash.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_multiset/insert/"><b>unordered_multiset::insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_multiset/find/"><b>unordered_multiset::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

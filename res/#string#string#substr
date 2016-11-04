@@ -1,0 +1,90 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::substr</h1>
+<div class="C_prototype"><pre>string substr (size_t pos = 0, size_t len = npos) const;</pre></div><div id="I_description">Generate substring</div>
+<section id="description">
+Returns a newly constructed <samp><a href="/string">string</a></samp> object with its value initialized to a copy of a substring of this object.<br>
+<br>
+The substring is the portion of the object that starts at character position <var>pos</var> and spans <var>len</var> characters (or until the end of the string, whichever comes first).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pos</dt>
+<dd>Position of the first character to be copied as a substring.<br>
+If this is equal to the <i><a href="/string::length">string length</a></i>, the function returns an empty string.<br>
+If this is greater than the <i><a href="/string::length">string length</a></i>, it throws <a href="/out_of_range">out_of_range</a>.<br>
+Note: The first character is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>len</dt>
+<dd>Number of characters to include in the substring (if the string is shorter, as many characters as possible are used).<br>
+A value of <a href="/string::npos">string::npos</a> indicates all characters until the end of the string.</dd>
+</dl>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A <a href="/string">string</a> object with a substring of this object.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::substr</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str=<kbd>"We think in generalities, but we live in details."</kbd>;
+                                           <cite>// (quoting Alfred N. Whitehead)</cite>
+
+  std::string str2 = str.substr (3,5);     <cite>// "think"</cite>
+
+  std::size_t pos = str.find(<kbd>"live"</kbd>);      <cite>// position of "live" in str</cite>
+
+  std::string str3 = str.substr (pos);     <cite>// get from "live" to the end</cite>
+
+  std::cout &lt;&lt; str2 &lt;&lt; <kbd>' '</kbd> &lt;&lt; str3 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>think live in details.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally linear in the <a href="/string::length">length</a> of the returned object.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/string">string</a>.<br>
+<br>
+If <i>pos</i> is greater than the <a href="/string::length">string length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+A <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/data/"><b>string::data</b></a></dt><dd>Get string data <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find/"><b>string::find</b></a></dt><dd>Find content in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/assign/"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/string/"><b>string::string</b></a></dt><dd>Construct string object <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

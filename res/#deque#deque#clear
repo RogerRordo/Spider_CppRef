@@ -1,0 +1,90 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;deque&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/deque/deque/">deque</a>::clear</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>void clear();</pre></div>
+<div title="C++11" class="on">
+<pre>void clear() noexcept;</pre></div>
+</div>
+</div><div id="I_description">Clear content</div>
+<section id="description">
+Removes all elements from the <a href="/deque">deque</a> (which are destroyed), leaving the container with a <a href="/deque::size">size</a> of <tt>0</tt>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// clearing deques</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;deque&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>unsigned</var> <var>int</var> i;
+  std::deque&lt;<var>int</var>&gt; mydeque;
+  mydeque.push_back (100);
+  mydeque.push_back (200);
+  mydeque.push_back (300);
+
+  std::cout &lt;&lt; <kbd>"mydeque contains:"</kbd>;
+  <var>for</var> (std::deque&lt;<var>int</var>&gt;::iterator it = mydeque.begin(); it!=mydeque.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  mydeque.clear();
+  mydeque.push_back (1101);
+  mydeque.push_back (2202);
+
+  std::cout &lt;&lt; <kbd>"mydeque contains:"</kbd>;
+  <var>for</var> (std::deque&lt;<var>int</var>&gt;::iterator it = mydeque.begin(); it!=mydeque.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mydeque contains: 100 200 300
+mydeque contains: 1101 2202
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in <a href="/deque::size">size</a> (destructions).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references related to this container are invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is modified.<br>
+All contained elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/deque/deque/erase/"><b>deque::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/resize/"><b>deque::resize</b></a></dt><dd>Change size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/pop_back/"><b>deque::pop_back</b></a></dt><dd>Delete last element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/pop_front/"><b>deque::pop_front</b></a></dt><dd>Delete first element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/empty/"><b>deque::empty</b></a></dt><dd>Test whether container is empty <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

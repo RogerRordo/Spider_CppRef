@@ -1,0 +1,14 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;cstddef&gt; &lt;cstdio&gt; &lt;cstdlib&gt; &lt;cstring&gt; &lt;ctime&gt; &lt;cwchar&gt;</div>
+<h1>size_t</h1>
+<div id="I_description">Unsigned integral type</div>
+<section id="description">
+Alias of one of the fundamental unsigned integer types.<br>
+<br>
+It is a type able to represent the size of any object in bytes: <samp>size_t</samp> is the type returned by the <code>sizeof</code> operator and is widely used in the standard library to represent sizes and counts.<br>
+<br>
+In <a href="/cstdio">&lt;cstdio&gt;</a>, it is used as the type of some parameters in the functions <a href="/fread">fread</a>, <a href="/fwrite">fwrite</a> and <a href="/setvbuf">setvbuf</a>, and in the case of <a href="/fread">fread</a> and <a href="/fwrite">fwrite</a> also as its returning type.<br>
+</section>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,77 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>strtoul</h1>
+<div class="C_prototype"><pre>unsigned long int strtoul (const char* str, char** endptr, int base);</pre></div><div id="I_description">Convert string to unsigned long integer</div>
+<section id="description">
+Parses the C-string <var>str</var>, interpreting its content as an integral number of the specified <var>base</var>, which is returned as an value of type <code>unsigned long int</code>.<br>
+<br>
+This function operates like <samp><a href="/strtol">strtol</a></samp> to interpret the string, but produces numbers of type <code>unsigned long int</code> (see <samp><a href="/strtol">strtol</a></samp> for details on the interpretation process).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C-string containing the representation of an integral number.</dd>
+<dt>endptr</dt>
+<dd>Reference to an object of type <code>char*</code>, whose value is set by the function to the next character in <var>str</var> after the numerical value.<br>
+This parameter can also be a <i>null pointer</i>, in which case it is not used.</dd>
+<dt>base</dt>
+<dd>Numerical base (radix) that determines the valid characters and their interpretation.<br>
+If this is <code>0</code>, the base used is determined by the format in the sequence (see <samp><a href="/strtol">strtol</a></samp> for details).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted integral number as an <code>unsigned long int</code> value.<br>
+If no valid conversion could be performed, a zero value is returned.<br>
+If the value read is out of the range of representable values by an <code>unsigned long int</code>, the function returns <samp>ULONG_MAX</samp> (defined in <samp><a href="/climits">&lt;climits&gt;</a></samp>), and <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strtoul example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf, NULL */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* strtoul */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer [256];
+  <var>unsigned</var> <var>long</var> ul;
+  printf (<kbd>"Enter an unsigned number: "</kbd>);
+  fgets (buffer, 256, stdin);
+  ul = strtoul (buffer, NULL, 0);
+  printf (<kbd>"Value entered: %lu. Its double: %lu\n"</kbd>,ul,ul*2);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Enter an unsigned number: 30003
+Value entered: 30003. Its double: 60006
+</samp></pre></td></tr></table></div>
+<br>
+For an example with the <var>endptr</var> parameter in action see <samp><a href="/strtol">strtol</a></samp>.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The array pointed by <var>str</var> is accessed, and the pointer pointed by <var>endptr</var> is modified (if not null).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+<br>
+If <var>str</var> does not point to a valid C-string, or if <var>endptr</var> does not point to a valid pointer object, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/atol/"><b>atol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtol/"><b>strtol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtod/"><b>strtod</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

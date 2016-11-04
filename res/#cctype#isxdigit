@@ -1,0 +1,58 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cctype&gt;</div>
+<h1>isxdigit</h1>
+<div class="C_prototype"><pre>int isxdigit ( int c );</pre></div><div id="I_description">Check if character is hexadecimal digit</div>
+<section id="description">
+Checks whether <i>c</i> is a hexdecimal digit character.<br>
+<br>
+Hexadecimal digits are any of: <tt>0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F</tt> <br>
+<br>
+For a detailed chart on what the different <tt>ctype</tt> functions return for each character of the standard ANSII character set, see the reference for the &lt;<a href="/cctype">cctype</a>&gt; header.<br>
+<br>
+In C++, a locale-specific template version of this function (<a href="/locale:isxdigit">isxdigit</a>) exists in header <a href="/&lt;locale&gt;">&lt;locale&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c</dt>
+<dd>Character to be checked, casted to an <tt>int</tt>, or <tt>EOF</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A value different from zero (i.e., <tt>true</tt>) if indeed <i>c</i> is a hexadecimal digit. Zero (i.e., <tt>false</tt>) otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* isxdigit example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;stdlib.h&gt;</dfn>
+<dfn>#include &lt;ctype.h&gt;</dfn>
+<var>int</var> main ()
+{
+  <var>char</var> str[]=<kbd>"ffff"</kbd>;
+  <var>long</var> <var>int</var> number;
+  <var>if</var> (isxdigit(str[0]))
+  {
+    number = strtol (str,NULL,16);
+    printf (<kbd>"The hexadecimal number %lx is %ld.\n"</kbd>,number,number);
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<tt>isxdigit</tt> is used to check if the first character in <tt>str</tt> is a valid hexadecimal digit and therefore a valid candidate to be converted by <a href="/strtol">strtol</a> into an integral value. Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The hexadecimal number ffff is 65535.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cctype/isdigit/"><b>isdigit</b></a></dt><dd>Check if character is decimal digit <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isalnum/"><b>isalnum</b></a></dt><dd>Check if character is alphanumeric <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isalpha/"><b>isalpha</b></a></dt><dd>Check if character is alphabetic <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

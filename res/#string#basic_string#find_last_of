@@ -1,0 +1,114 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::find_last_of</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>size_type find_last_of (const basic_string&amp; str, size_type pos = npos) const;</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>size_type find_last_of (const charT* s, size_type pos = npos) const;</pre></td></tr><tr class="odd"><th>buffer (3)</th><td><pre>size_type find_last_of (const charT* s, size_type pos, size_type n) const;</pre></td></tr><tr class="even"><th>character (4)</th><td><pre>size_type find_last_of (charT c, size_type pos = npos) const;</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>string (1)</th><td><pre>size_type find_last_of (const basic_string&amp; str, size_type pos = npos) const noexcept;</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>size_type find_last_of (const charT* s, size_type pos = npos) const;</pre></td></tr><tr class="odd"><th>buffer (3)</th><td><pre>size_type find_last_of (const charT* s, size_type pos, size_type n) const;</pre></td></tr><tr class="even"><th>character (4)</th><td><pre>size_type find_last_of (charT c, size_type pos = npos) const noexcept;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Find character in string from the end</div>
+<section id="description">
+Searches the <a href="/basic_string">basic_string</a> for the last character that matches <b>any</b> of the characters specified in its arguments.<br>
+<br>
+When <i>pos</i> is specified, the search only includes characters at or before position <i>pos</i>, ignoring any possible occurrences after <i>pos</i>.<br>
+<br>
+The function uses <a href="/char_traits::eq">traits_type::eq</a> to determine character equivalences.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another <a href="/basic_string">basic_string</a> with the characters to search for.</dd>
+<dt>pos</dt>
+<dd>Position of the last character in the string to be considered in the search.<br>
+Any value greater or equal than the <a href="/basic_string::length">string length</a> (including <a href="/basic_string::npos">basic_string::npos</a>) means that the entire string is searched.<br>
+Note: The first character is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>s</dt>
+<dd>Pointer to an array of characters.<br>
+If argument <i>n</i> is specified <i>(3)</i>, the first <i>n</i> characters in the array are searched for.<br>
+Otherwise <i>(2)</i>, a null-terminated sequence is expected: the length of the sequence with the characters to match is determined by the first occurrence of a null character.<br>
+</dd>
+<dt>n</dt>
+<dd>Number of character values to search for.</dd>
+<dt>c</dt>
+<dd>Individual character to be searched for.</dd>
+</dl>
+<br>
+<tt>charT</tt> is <a href="/basic_string">basic_string</a>'s character type (i.e., its first template parameter).<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The position of the last character that matches.<br>
+If no matches are found, the function returns <a href="/basic_string::npos">basic_string::npos</a>.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::find_last_of</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>void</var> SplitFilename (<var>const</var> std::string&amp; str)
+{
+  std::cout &lt;&lt; <kbd>"Splitting: "</kbd> &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+  std::string::size_type found = str.find_last_of(<kbd>"/\\"</kbd>);
+  std::cout &lt;&lt; <kbd>" path: "</kbd> &lt;&lt; str.substr(0,found) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>" file: "</kbd> &lt;&lt; str.substr(found+1) &lt;&lt; <kbd>'\n'</kbd>;
+}
+
+<var>int</var> main ()
+{
+  std::string str1 (<kbd>"/usr/bin/man"</kbd>);
+  std::string str2 (<kbd>"c:\\windows\\winhelp.exe"</kbd>);
+
+  SplitFilename (str1);
+  SplitFilename (str2);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Splitting: /usr/bin/man
+ path: /usr/bin
+ file: man
+Splitting: c:\windows\winhelp.exe
+ path: c:\windows
+ file: winhelp.exe
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in the <a href="/basic_string::length">string length</a> (or <i>pos</i>) times the number of characters to match (worst case).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <tt>s</tt> does not point to an array long enough, it causes <i>undefined behavior</i>.<br>
+Otherwise, the function never throws exceptions (no-throw guarantee).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/find/"><b>basic_string::find</b></a></dt><dd>Find first occurrence in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/rfind/"><b>basic_string::rfind</b></a></dt><dd>Find last occurrence in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/find_first_of/"><b>basic_string::find_first_of</b></a></dt><dd>Find character in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/find_last_not_of/"><b>basic_string::find_last_not_of</b></a></dt><dd>Find non-matching character in string from the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/replace/"><b>basic_string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/substr/"><b>basic_string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

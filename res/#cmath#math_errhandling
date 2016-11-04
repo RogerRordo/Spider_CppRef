@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>math_errhandling<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>int</pre></div><div id="I_description">Error handling</div>
+<section id="description">
+Expands to an expression that identifies the error handling mechanism employed by the functions in the <samp><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></samp> header:<br>
+<br>
+<table class="boxed">
+<tr><th>constant</th><th>value</th><th>description</th></tr>
+<tr><td><samp>MATH_ERRNO</samp></td><td><code>1</code></td><td><samp><a href="/errno">errno</a></samp> is used to signal errors:<br>
+- On <i>domain error</i>: <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/EDOM">EDOM</a></samp>.<br>
+- On <i>range error</i> (including <i>pole error</i>, <i>overflow</i>, and possibly <i>underflow</i>): <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+</td></tr>
+<tr><td><samp>MATH_ERREXCEPT</samp></td><td><code>2</code></td><td>The proper C exception is raised:<br>
+- On <i>domain error</i>: <samp><a href="/FE_INVALID">FE_INVALID</a></samp> is raised.<br>
+- On <i>pole error</i>: <samp><a href="/FE_DIVBYZERO">FE_DIVBYZERO</a></samp> is raised.<br>
+- On <i>overflow</i>: <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> is raised.<br>
+- On <i>underflow</i>: <samp><a href="/FE_UNDERFLOW">FE_UNDERFLOW</a></samp> may be raised.<br>
+</td></tr>
+<tr><td><samp>MATH_ERRNO|MATH_ERREXCEPT</samp></td><td><code>3</code></td><td>Both of the above</td></tr>
+</table>
+<br>
+Both <samp>MATH_ERRNO</samp> and <samp>MATH_ERREXCEPT</samp> are macro constant expressions defined in <samp><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></samp> as <code>1</code> and <code>2</code> respectivelly.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>/* math_errhandling example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* math_errhandling */</cite><dfn></dfn>
+<dfn>#include &lt;errno.h&gt;      </dfn><cite>/* errno, EDOM */</cite><dfn></dfn>
+<dfn>#include &lt;fenv.h&gt;       </dfn><cite>/* feclearexcept, fetestexcept, FE_ALL_EXCEPT, FE_INVALID */</cite><dfn></dfn>
+<dfn>#pragma STDC FENV_ACCESS on</dfn>
+
+<var>int</var> main () {
+  errno = 0;
+  <var>if</var> (math_errhandling &amp; MATH_ERREXCEPT) feclearexcept(FE_ALL_EXCEPT);
+
+  printf (<kbd>"Error handling: %d"</kbd>,math_errhandling);
+
+  sqrt (-1);
+  <var>if</var> (math_errhandling &amp; MATH_ERRNO) {
+    <var>if</var> (errno==EDOM) printf(<kbd>"errno set to EDOM\n"</kbd>);
+  }
+  <var>if</var> (math_errhandling  &amp;MATH_ERREXCEPT) {
+    <var>if</var> (fetestexcept(FE_INVALID)) printf(<kbd>"FE_INVALID raised\n"</kbd>);
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Error handling: 3
+errno set to EDOM
+FE_INVALID raised
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Libraries that support multi-threading shall implement <samp><a href="/errno">errno</a></samp> and/or floating-point <i>exception state</i> in a per-thread basis: With each thread having its own local <samp>errno</samp> and floating-point state.<br>
+This is a requirement for libraries compliant with C11 and C++11 standards.<br>
+</section>
+<br>
+<section id="see">
+<dl class="links"><dt><a href= "/reference/cerrno/errno/"><b>errno</b></a></dt><dd>Last error number <span class="typ">(macro)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

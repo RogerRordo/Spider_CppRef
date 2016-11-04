@@ -1,0 +1,19 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::~ios_base</h1>
+<div class="C_prototype"><pre>virtual ~ios_base();</pre></div><div id="I_description">Destruct object</div>
+<section id="description">
+Before the object is destroyed, all callback functions registered with member <samp><a href="/ios_base::register_callback">register_callback</a></samp> are called with <samp>erase_event</samp> as first argument.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> never throws exceptions.<br>
+<div id="CH_bb"></div></div></div>

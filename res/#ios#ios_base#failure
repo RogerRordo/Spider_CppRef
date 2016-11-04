@@ -1,0 +1,64 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member class</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::failure</h1>
+<div class="C_prototype"><pre>class failure;</pre></div><div id="I_description">Base class for stream exceptions</div>
+<section id="description">
+<div class="C_SwitchCases">
+<div title="C++98">
+This embedded class inherits from <samp><a href="/exception">exception</a></samp> and serves as the base class for the <i>exceptions</i> thrown by the elements of the standard input/output library.<br>
+<br>
+It is defined as:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br></code></pre></td>
+<td class="source"><pre><code><var>class</var> ios_base::failure : <var>public</var> exception {
+<var>public</var>:
+  <var>explicit</var> failure (<var>const</var> string&amp; msg);
+  <var>virtual</var> ~failure();
+  <var>virtual</var> <var>const</var> <var>char</var>* what() <var>const</var> <var>throw</var>();
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Member <samp>what</samp> returns the <var>msg</var> with which the exception is constructed.<br>
+<br>
+The specific value for <var>msg</var> is entirely implementation-defined.<br>
+</div>
+<div title="C++11">
+<div class="hierarchy">
+This embedded class inherits from <samp><a href="/system_error">system_error</a></samp> and serves as the base class for the <i>exceptions</i> thrown by the elements of the standard input/output library.<br>
+</div>
+<br>
+It is defined as:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br></code></pre></td>
+<td class="source"><pre><code><var>class</var> ios_base::failure : <var>public</var> system_error {
+<var>public</var>:
+  <var>explicit</var> failure (<var>const</var> string&amp; msg, <var>const</var> error_code&amp; ec = io_errc::stream);
+  <var>explicit</var> failure (<var>const</var> <var>char</var>*   msg, <var>const</var> error_code&amp; ec = io_errc::stream);
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+These errors are typically categorized either in the <samp><a href="/iostream_category">iostream_category</a></samp> (if they relate to the operations of the library) or in the <samp><a href="/system_category">system_category</a></samp> (if the error arises from the system). Although the specifics are implementation-defined.<br>
+<br>
+The library implementation may use values of type <samp><a href="/io_errc">io_errc</a></samp> to portably identify <i><a href="/error_condition">error conditions</a></i> of the <samp><a href="/iostream_category">iostream_category</a></samp>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+<h4>Inherited from <samp><a href="/exception">exception</a></samp></h4>
+<dl class="links"><dt><a href= "/reference/exception/exception/what/"><b>what</b></a></dt><dd>Get string identifying exception <span class="typ">( public member function)</span></dd></dl>
+</div>
+<div title="C++11">
+<h4>Inherited from <samp><a href="/system_error">system_error</a></samp></h4>
+<dl class="links"><dt><a href= "/reference/system_error/system_error/code/"><b>code <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Get error code <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/system_error/system_error/what/"><b>what <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Get message associated to exception <span class="typ">(public member function)</span></dd></dl>
+</div>
+</div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/exception/exception/"><b>exception</b></a></dt><dd>Standard exception class <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "/reference/system_error/system_error/"><b>system_error</b></a></dt><dd>System error exception <span class="typ">(class)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

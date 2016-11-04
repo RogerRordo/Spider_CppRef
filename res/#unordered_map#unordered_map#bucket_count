@@ -1,0 +1,87 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_map/unordered_map/">unordered_map</a>::bucket_count<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>size_type bucket_count() const noexcept;</pre></div><div id="I_description">Return number of buckets</div>
+<section id="description">
+Returns the number of buckets in the <a href="/unordered_map">unordered_map</a> container.<br>
+<br>
+A bucket is a slot in the container's internal hash table to which elements are assigned based on the hash value of their key.<br>
+<br>
+The number of buckets influences directly the <a href="/unordered_map::load_factor">load factor</a> of the container's hash table (and thus the probability of collision). The container automatically increases the number of buckets to keep the load factor below a specific threshold (its <a href="/unordered_map::max_load_factor">max_load_factor</a>), causing a <a href="/unordered_map::rehash">rehash</a> each time the number of buckets needs to be increased.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The current amount of buckets.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_map::bucket_count</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_map&lt;std::string,std::string&gt; mymap = {
+            {<kbd>"house"</kbd>,<kbd>"maison"</kbd>},
+            {<kbd>"apple"</kbd>,<kbd>"pomme"</kbd>},
+            {<kbd>"tree"</kbd>,<kbd>"arbre"</kbd>},
+            {<kbd>"book"</kbd>,<kbd>"livre"</kbd>},
+            {<kbd>"door"</kbd>,<kbd>"porte"</kbd>},
+            {<kbd>"grapefruit"</kbd>,<kbd>"pamplemousse"</kbd>}
+  };
+
+  <var>unsigned</var> n = mymap.bucket_count();
+
+  std::cout &lt;&lt; <kbd>"mymap has "</kbd> &lt;&lt; n &lt;&lt; <kbd>" buckets.\n"</kbd>;
+
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;n; ++i) {
+    std::cout &lt;&lt; <kbd>"bucket #"</kbd> &lt;&lt; i &lt;&lt; <kbd>" contains: "</kbd>;
+    <var>for</var> (<var>auto</var> it = mymap.begin(i); it!=mymap.end(i); ++it)
+      std::cout &lt;&lt; <kbd>"["</kbd> &lt;&lt; it-&gt;first &lt;&lt; <kbd>":"</kbd> &lt;&lt; it-&gt;second &lt;&lt; <kbd>"] "</kbd>;
+    std::cout &lt;&lt; <kbd>"\n"</kbd>;
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mymap has 7 buckets.
+bucket #0 contains: [book:livre] [house:maison] 
+bucket #1 contains: 
+bucket #2 contains: 
+bucket #3 contains: [grapefruit:pamplemousse] [tree:arbre]
+bucket #4 contains: 
+bucket #5 contains: [apple:pomme]
+bucket #6 contains: [door:porte]
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/bucket/"><b>unordered_map::bucket</b></a></dt><dd>Locate element's bucket <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/bucket_size/"><b>unordered_map::bucket_size</b></a></dt><dd>Return bucket size <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/load_factor/"><b>unordered_map::load_factor</b></a></dt><dd>Return load factor <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/max_bucket_count/"><b>unordered_map::max_bucket_count</b></a></dt><dd>Return maximum number of buckets <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,59 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>sscanf</h1>
+<div class="C_prototype"><pre>int sscanf ( const char * s, const char * format, ...);</pre></div><div id="I_description">Read formatted data from string</div>
+<section id="description">
+Reads data from <i>s</i> and stores them according to parameter <i>format</i> into the locations given by the additional arguments, as if <a href="/scanf">scanf</a> was used, but reading from <i>s</i> instead of the standard input (<a href="/stdin">stdin</a>).<br>
+<br>
+The additional arguments should point to already allocated objects of the type specified by their corresponding format specifier within the <i>format</i> string.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>s</dt>
+<dd>C string that the function processes as its source to retrieve the data.</dd>
+<dt>format</dt>
+<dd>C string that contains a format string that follows the same specifications as <i>format</i> in <a href="/scanf">scanf</a> (see <a href="/scanf">scanf</a> for details).</dd>
+<dt>... <i>(additional arguments)</i></dt>
+<dd>Depending on the <i>format</i> string, the function may expect a sequence of additional arguments, each containing a pointer to allocated storage where the interpretation of the extracted characters is stored with the appropriate type.<br>
+There should be at least as many of these arguments as the number of values stored by the <i>format specifiers</i>. Additional arguments are ignored by the function.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the number of items in the argument list successfully filled. This count can match the expected number of items or be less (even zero) in the case of a matching failure.<br>
+In the case of an input failure before any data could be successfully interpreted, <a href="/EOF">EOF</a> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* sscanf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> sentence []=<kbd>"Rudolph is 12 years old"</kbd>;
+  <var>char</var> str [20];
+  <var>int</var> i;
+
+  sscanf (sentence,<kbd>"%s %*s %d"</kbd>,str,&amp;i);
+  printf (<kbd>"%s -&gt; %d\n"</kbd>,str,i);
+  
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Rudolph -&gt; 12
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/scanf/"><b>scanf</b></a></dt><dd>Read formatted data from stdin <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/sprintf/"><b>sprintf</b></a></dt><dd>Write formatted data to string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

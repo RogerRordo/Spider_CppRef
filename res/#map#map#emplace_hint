@@ -1,0 +1,108 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/map/">map</a>::emplace_hint<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class... Args&gt;  iterator emplace_hint (const_iterator position, Args&amp;&amp;... args);</pre></div><div id="I_description">Construct and insert element with hint</div>
+<section id="description">
+Inserts a new element in the <a href="/map">map</a> if its key is unique, with a hint on the insertion <i>position</i>. This new element is constructed in place using <i>args</i> as the arguments for the construction of a <tt>value_type</tt> (which is an object of a <a href="/pair">pair</a> type).<br>
+<br>
+The insertion only takes place if no other element in the container has a key equivalent to the one being emplaced (elements in a <a href="/map">map</a> container are unique).<br>
+<br>
+If inserted, this effectively increases the container <a href="/map::size">size</a> by one.<br>
+<br>
+The value in <i>position</i> is used as a hint on the insertion point. The element will nevertheless be inserted at its corresponding position following the order described by its internal <a href="/map::key_comp">comparison object</a>, but this hint is used by the function to begin its search for the insertion point, speeding up the process considerably when the actual insertion point is either <i>position</i> or close to it.<br>
+<br>
+The element is constructed in-place by calling <a href="/allocator_traits::construct">allocator_traits::construct</a> with <i>args</i> forwarded.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>position</dt>
+<dd>Hint for the position where the element can be inserted.<br>
+The function optimizes its insertion time if <i>position</i> points to the element that will follow the inserted element (or to the <a href="/map::end">end</a>, if it would be the last).<br>
+Notice that this does not force the new element to be in that position within the <a href="/map">map</a> container (the elements in a <a href="/map">map</a> always follow a specific order).<br>
+<tt>const_iterator</tt> is a member type, defined as a <a href="/BidirectionalIterator">bidirectional iterator</a> type that points to elements.</dd>
+<dt>args</dt>
+<dd><div class="C_SwitchCases">
+<div title="C++11">
+Arguments used to construct a new object of the <i>mapped type</i> for the inserted element.<br>
+</div>
+<div title="C++14">
+Arguments forwarded to construct the new element (of type <code><a href="/pair">pair</a>&lt;const key_type, mapped_type&gt;</code>).<br>
+This can be one of:<br>
+- Two arguments: one for the <i>key</i>, the other for the <i>mapped value</i>.<br>
+- A single argument of a <code><a href="/pair">pair</a></code> type with a value for the <i>key</i> as first member, and a value for the <i>mapped value</i> as second.<br>
+- <samp><a href="/piecewise_construct">piecewise_construct</a></samp> as first argument, and two additional arguments with <a href="/tuple">tuples</a> to be forwarded as arguments for the <i>key value</i> and for the <i>mapped value</i> respectivelly.<br>
+See <samp><a href="/pair::pair">pair::pair</a></samp> for more info.<br>
+</div>
+</div></dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+If the function successfully inserts the element (because no equivalent element existed already in the <a href="/map">map</a>), the function returns an iterator to the newly inserted element.<br>
+<br>
+Otherwise, it returns an iterator to the equivalent element within the container.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/BidirectionalIterator">bidirectional iterator</a> type that points to an element.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// map::emplace_hint</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::map&lt;<var>char</var>,<var>int</var>&gt; mymap;
+  <var>auto</var> it = mymap.end();
+
+  it = mymap.emplace_hint(it,<kbd>'b'</kbd>,10);
+  mymap.emplace_hint(it,<kbd>'a'</kbd>,12);
+  mymap.emplace_hint(mymap.end(),<kbd>'c'</kbd>,14);
+
+  std::cout &lt;&lt; <kbd>"mymap contains:"</kbd>;
+  <var>for</var> (<var>auto</var>&amp; x: mymap)
+    std::cout &lt;&lt; <kbd>" ["</kbd> &lt;&lt; x.first &lt;&lt; <kbd>':'</kbd> &lt;&lt; x.second &lt;&lt; <kbd>']'</kbd>;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mymap contains: [a:12] [b:10] [c:14]
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Generally, logarithmic in the container <a href="/map::size">size</a>.<br>
+Amortized constant if the insertion point for the element is <i>position</i>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is modified.<br>
+Concurrently accessing existing elements is safe, although iterating ranges in the container is not.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the container.<br>
+If <a href="/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/map/emplace/"><b>map::emplace</b></a></dt><dd>Construct and insert element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/insert/"><b>map::insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/erase/"><b>map::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

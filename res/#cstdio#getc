@@ -1,0 +1,65 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>getc</h1>
+<div class="C_prototype"><pre>int getc ( FILE * stream );</pre></div><div id="I_description">Get character from stream</div>
+<section id="description">
+Returns the character currently pointed by the internal file position indicator of the specified <i>stream</i>. The internal file position indicator is then advanced to the next character.<br>
+<br>
+If the stream is at the end-of-file when called, the function returns <a href="/EOF">EOF</a> and sets the <i>end-of-file indicator</i> for the stream (<a href="/feof">feof</a>).<br>
+<br>
+If a read error occurs, the function returns <a href="/EOF">EOF</a> and sets the <i>error indicator</i> for the stream (<a href="/ferror">ferror</a>).<br>
+<br>
+<tt>getc</tt> and <a href="/fgetc">fgetc</a> are equivalent, except that <tt>getc</tt> may be implemented as a macro in some libraries. See <a href="/getchar">getchar</a> for a similar function that reads directly from <a href="/stdin">stdin</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies an input stream.<br>
+Because some libraries may implement this function as a macro, and this may evaluate the <i>stream</i> expression more than once, this should be an expression without side effects.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the character read is returned (promoted to an <tt>int</tt> value).<br>
+The return type is <tt>int</tt> to accommodate for the special value <a href="/EOF">EOF</a>, which indicates failure:<br>
+If the position indicator was at the <i>end-of-file</i>, the function returns <a href="/EOF">EOF</a> and sets the <i>eof indicator</i> (<a href="/feof">feof</a>) of <i>stream</i>.<br>
+If some other reading error happens, the function also returns <a href="/EOF">EOF</a>, but sets its <i>error indicator</i> (<a href="/ferror">ferror</a>) instead.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>/* getc example: money counter */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<var>int</var> main ()
+{
+  FILE * pFile;
+  <var>int</var> c;
+  <var>int</var> n = 0;
+  pFile=fopen (<kbd>"myfile.txt"</kbd>,<kbd>"r"</kbd>);
+  <var>if</var> (pFile==NULL) perror (<kbd>"Error opening file"</kbd>);
+  <var>else</var>
+  {
+    <var>do</var> {
+      c = getc (pFile);
+      <var>if</var> (c == <kbd>'$'</kbd>) n++;
+    } <var>while</var> (c != EOF);
+    fclose (pFile);
+    printf (<kbd>"File contains %d$.\n"</kbd>,n);
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This program reads an existing file called <tt>myfile.txt</tt> character by character and uses the <tt>n</tt> variable to count how many dollar characters (<tt>$</tt>) does the file contain. <br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fgetc/"><b>fgetc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fputc/"><b>fputc</b></a></dt><dd>Write character to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fread/"><b>fread</b></a></dt><dd>Read block of data from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fwrite/"><b>fwrite</b></a></dt><dd>Write block of data to stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

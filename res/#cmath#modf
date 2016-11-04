@@ -1,0 +1,73 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>modf</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double modf (double x, double* intpart);</pre></div>
+<div title="C99" class="on">
+<pre>     double modf  (double x     , double* intpart);      float modff (float x      , float* intpart);long double modfl (long double x, long double* intpart);</pre></div>
+<div title="C++98" class="on">
+<pre>     double modf (double x     , double* intpart);      float modf (float x      , float* intpart);long double modf (long double x, long double* intpart);</pre></div>
+<div title="C++11" class="on">
+<pre>     double modf (double x     , double* intpart);      float modf (float x      , float* intpart);long double modf (long double x, long double* intpart);     double modf (T x          , double* intpart);       // additional overloads</pre></div>
+</div>
+</div><div id="I_description">Break into fractional and integral parts</div>
+<section id="description">
+Breaks <var>x</var> into an integral and a fractional part.<br>
+<br>
+The integer part is stored in the object pointed by <var>intpart</var>, and the fractional part is returned by the function.<br>
+<br>
+Both parts have the same sign as <var>x</var>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Floating point value to break into parts.</dd>
+<dt>intpart</dt>
+<dd>Pointer to an object (of the same type as <var>x</var>) where the integral part is stored with the same sign as <var>x</var>.</dd>
+</dl>
+</Section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The fractional part of <var>x</var>, with the same sign.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* modf example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* modf */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> param, fractpart, intpart;
+
+  param = 3.14159265;
+  fractpart = modf (param , &amp;intpart);
+  printf (<kbd>"%f = %f + %f \n"</kbd>, param, intpart, fractpart);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+3.141593 = 3.000000 + 0.141593
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/ldexp/"><b>ldexp</b></a></dt><dd>Generate value from significand and exponent <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/frexp/"><b>frexp</b></a></dt><dd>Get significand and exponent <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

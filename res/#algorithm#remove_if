@@ -1,0 +1,127 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>remove_if</h1>
+<div class="C_prototype"><pre>template &lt;class ForwardIterator, class UnaryPredicate&gt;  ForwardIterator remove_if (ForwardIterator first, ForwardIterator last,                             UnaryPredicate pred);</pre></div><div id="I_description">Remove elements from range</div>
+<section id="description">
+Transforms the range <code>[first,last)</code> into a range with all the elements for which <var>pred</var> returns <code>true</code> removed, and returns an iterator to the new end of that range.<br>
+<br>
+The function cannot alter the properties of the object containing the range of elements (i.e., it cannot alter the size of an array or a container): The removal is done by replacing the elements for which <var>pred</var> returns <code>true</code> by the next element for which it does not, and signaling the new size of the shortened range by returning an iterator to the element that should be considered its new <i>past-the-end</i> element.<br>
+<br>
+The relative order of the elements not removed is preserved, while the elements between the returned iterator and <var>last</var> are left in a valid but unspecified state.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> ForwardIterator, <var>class</var> UnaryPredicate&gt;
+  ForwardIterator remove_if (ForwardIterator first, ForwardIterator last,
+                             UnaryPredicate pred)
+{
+  ForwardIterator result = first;
+  <var>while</var> (first!=last) {
+    <var>if</var> (!pred(*first)) {
+      *result = *first;
+      ++result;
+    }
+    ++first;
+  }
+  <var>return</var> result;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</div>
+<div title="C++11">
+The elements are replaced by <i>move-assigning</i> them their new values.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> ForwardIterator, <var>class</var> UnaryPredicate&gt;
+  ForwardIterator remove_if (ForwardIterator first, ForwardIterator last,
+                             UnaryPredicate pred)
+{
+  ForwardIterator result = first;
+  <var>while</var> (first!=last) {
+    <var>if</var> (!pred(*first)) {
+      *result = std::move(*first);
+      ++result;
+    }
+    ++first;
+  }
+  <var>return</var> result;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions in a sequence of <i><a href="/is_move_assignable">move-assignable</a></i> elements. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is to be removed (if <code>true</code>, it is removed).<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the element that follows the last element not removed.<br>
+The range between <var>first</var> and this iterator includes all the elements in the sequence for which <var>pred</var> does not return <code>true</code>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// remove_if example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::remove_if</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) { <var>return</var> ((i%2)==1); }
+
+<var>int</var> main () {
+  <var>int</var> myints[] = {1,2,3,4,5,6,7,8,9};            <cite>// 1 2 3 4 5 6 7 8 9</cite>
+
+  <cite>// bounds of range:</cite>
+  <var>int</var>* pbegin = myints;                          <cite>// ^</cite>
+  <var>int</var>* pend = myints+<var>sizeof</var>(myints)/<var>sizeof</var>(<var>int</var>); <cite>// ^                 ^</cite>
+
+  pend = std::remove_if (pbegin, pend, IsOdd);   <cite>// 2 4 6 8 ? ? ? ? ?</cite>
+                                                 <cite>// ^       ^</cite>
+  std::cout &lt;&lt; <kbd>"the range contains:"</kbd>;
+  <var>for</var> (<var>int</var>* p=pbegin; p!=pend; ++p)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *p;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>the range contains: 2 4 6 8
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Applies <var>pred</var> to each element, and possibly performs assignments on some of them.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed and potentially modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+throws if any of <var>pred</var>, the element assignments or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/remove/"><b>remove</b></a></dt><dd>Remove value from range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/remove_copy/"><b>remove_copy</b></a></dt><dd>Copy range removing value <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/replace_if/"><b>replace_if</b></a></dt><dd>Replace values in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/transform/"><b>transform</b></a></dt><dd>Transform range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/find_if/"><b>find_if</b></a></dt><dd>Find element in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

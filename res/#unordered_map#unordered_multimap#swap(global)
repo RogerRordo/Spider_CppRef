@@ -1,0 +1,76 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;unordered_map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>swap (unordered_multimap)<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class Key, class T, class Hash, class Pred, class Alloc&gt;  void swap ( unordered_multimap&lt;Key,T,Hash,Pred,Alloc&gt;&amp; lhs,              unordered_multimap&lt;Key,T,Hash,Pred,Alloc&gt;&amp; rhs );</pre></div><div id="I_description">Exchanges contents of two unordered_multimap containers</div>
+<section id="description">
+The contents of container <i>lhs</i> are exchanged with those of <i>rhs</i>. Both container objects must be of the same type (same template parameters), although sizes may differ.<br>
+<br>
+After the call to this member function, the elements in <i>lhs</i> are those which were in <i>rhs</i> before the call, and the elements of <i>rhs</i> are those which were in <i>lhs</i>. Other objects kept internally by the containers (such as their <tt>hasher</tt> or <tt>key_equal</tt> objects) are also swapped.<br>
+<br>
+This is a specialization of the generic algorithm <a href="/swap">swap</a> that improves its performance by exchanging internal pointers to data, without actually performing any copies or moves on the individual elements.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>lhs,rhs</dt>
+<dd><a href="/unordered_multimap">unordered_multimap</a> containers (to the left- and right-hand side of the operator, respectively), having both the same template parameters (<tt>Key</tt>, <tt>T</tt>, <tt>Hash</tt>, <tt>Pred</tt> and <tt>Alloc</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// swap (unordered_multimap specialization)</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_multimap&lt;std::string,std::string&gt;
+     a = {{<kbd>"orange"</kbd>,<kbd>"FL"</kbd>},{<kbd>"apple"</kbd>,<kbd>"NY"</kbd>},{<kbd>"apple"</kbd>,<kbd>"WA"</kbd>}},
+     b  = {{<kbd>"strawberry"</kbd>,<kbd>"LA"</kbd>},{<kbd>"strawberry"</kbd>,<kbd>"NC"</kbd>},{<kbd>"pear"</kbd>,<kbd>"OR"</kbd>}};
+
+  swap(a,b);
+
+  std::cout &lt;&lt; <kbd>"a: "</kbd>;
+  <var>for</var> (<var>auto</var>&amp; x: a) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x.first &lt;&lt; <kbd>":"</kbd> &lt;&lt; x.second;
+  std::cout &lt;&lt; std::endl;
+
+  std::cout &lt;&lt; <kbd>"b: "</kbd>;
+  <var>for</var> (<var>auto</var>&amp; x: b) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x.first &lt;&lt; <kbd>":"</kbd> &lt;&lt; x.second;
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>a:  pear:OR strawberry:LA strawberry:NC
+b:  orange:FL apple:NY apple:WA
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references remain valid, but now are referring to elements in the other container, and iterate in it.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_multimap/swap/"><b>unordered_multimap::swap</b></a></dt><dd>Swap content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/utility/swap/"><b>swap</b></a></dt><dd>Exchange values of two objects <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/swap_ranges/"><b>swap_ranges</b></a></dt><dd>Exchange values of two ranges <span class="typ">(function template)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

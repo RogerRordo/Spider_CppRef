@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>tanh</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double tanh (double x);</pre></div>
+<div title="C99" class="on">
+<pre>     double tanh  (double x);      float tanhf (float x);long double tanhl (long double x);</pre></div>
+<div title="C++" class="on">
+<pre>     double tanh (double x);      float tanh (float x);long double tanh (long double x);     double tanh (T x);           // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Compute hyperbolic tangent</div>
+<section id="description">
+Returns the hyperbolic tangent of <var>x</var>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++98">
+This function is overloaded in <code><a href="/&lt;complex&gt;">&lt;complex&gt;</a></code> and <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/complex:tanh">complex tanh</a> and <a href="/valarray:tanh">valarray tanh</a>).<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+<br>
+This function is also overloaded in <code><a href="/&lt;complex&gt;">&lt;complex&gt;</a></code> and <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/complex:tanh">complex tanh</a> and <a href="/valarray:tanh">valarray tanh</a>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Value representing a hyperbolic angle.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Hyperbolic tangent of <var>x</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>/* tanh example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* tanh, log */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> param, result;
+  param = log(2.0);
+  result = tanh (param);
+  printf (<kbd>"The hyperbolic tangent of %f is %f.\n"</kbd>, param, result);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+The hyperbolic tangent of 0.693147 is 0.600000.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/sinh/"><b>sinh</b></a></dt><dd>Compute hyperbolic sine <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/cosh/"><b>cosh</b></a></dt><dd>Compute hyperbolic cosine <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

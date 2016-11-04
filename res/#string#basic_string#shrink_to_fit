@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::shrink_to_fit<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>void shrink_to_fit();</pre></div><div id="I_description">Shrink to fit</div>
+<section id="description">
+Requests the <a href="/basic_string">basic_string</a> to reduce its <a href="/basic_string::capacity">capacity</a> to fit its <a href="/basic_string::size">size</a>.<br>
+<br>
+The request is non-binding, and the container implementation is free to optimize otherwise and leave the <a href="/basic_string">basic_string</a> with a <a href="/basic_string::capacity">capacity</a> greater than its <a href="/basic_string::size">size</a>.<br>
+<br>
+This function has no effect on the <a href="/basic_string::length">string length</a> and cannot alter its content.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::shrink_to_fit</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (100,<kbd>'x'</kbd>);
+  std::cout &lt;&lt; <kbd>"1. capacity of str: "</kbd> &lt;&lt; str.capacity() &lt;&lt; <kbd>'\n'</kbd>;
+
+  str.resize(10);
+  std::cout &lt;&lt; <kbd>"2. capacity of str: "</kbd> &lt;&lt; str.capacity() &lt;&lt; <kbd>'\n'</kbd>;
+
+  str.shrink_to_fit();
+  std::cout &lt;&lt; <kbd>"3. capacity of str: "</kbd> &lt;&lt; str.capacity() &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>1. capacity of str: 100
+2. capacity of str: 100
+3. capacity of str: 10
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/basic_string">basic_string</a>.<br>
+<br>
+If the type uses the <a href="/allocator">default allocator</a>, a <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/capacity/"><b>basic_string::capacity</b></a></dt><dd>Return size of allocated storage <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/reserve/"><b>basic_string::reserve</b></a></dt><dd>Request a change in capacity <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/resize/"><b>basic_string::resize</b></a></dt><dd>Resize string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/clear/"><b>basic_string::clear</b></a></dt><dd>Clear string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

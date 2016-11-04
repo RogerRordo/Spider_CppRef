@@ -1,0 +1,21 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::seekdir</h1>
+<div id="I_description">Type for stream seeking direction flag</div>
+<section id="description">
+Enumerated type to represent the seeking direction of a stream <i>seeking operation</i>.<br>
+<br>
+The possible values for this type are one of the following member constants:<br>
+<br>
+<table class="boxed">
+<tr><th>member constant</th><th>seeking relative to</th></tr>
+<tr><td><samp>beg</samp></td><td>beginning of sequence.</td></tr>
+<tr><td><samp>cur</samp></td><td>current position within sequence.</td></tr>
+<tr><td><samp>end</samp></td><td>end of sequence.</td></tr>
+</table>
+<br>
+These constants are defined in the <samp><a href="/ios_base">ios_base</a></samp> class as public members. Therefore, they can be referred to either directly by their name as members of <samp><a href="/ios_base">ios_base</a></samp> (like <samp>ios_base::beg</samp>) or by using any of their inherited classes or instantiated objects, like for example <code>ios::end</code> or <code>cin.cur</code>.<br>
+</section>
+<div id="CH_bb"></div></div></div>

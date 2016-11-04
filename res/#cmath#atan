@@ -1,0 +1,81 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>atan</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double atan(double x);</pre></div>
+<div title="C99" class="on">
+<pre>     double atan  (double x);      float atanf (float x);long double atanl (long double x);</pre></div>
+<div title="C++98" class="on">
+<pre>     double atan (double x);      float atan (float x);long double atan (long double x);</pre></div>
+<div title="C++11" class="on">
+<pre>     double atan (double x);      float atan (float x);long double atan (long double x);     double atan (T x);           // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Compute arc tangent</div>
+<section id="description">
+Returns the principal value of the arc tangent of <var>x</var>, expressed in radians.<br>
+<br>
+In trigonometrics, <i>arc tangent</i> is the inverse operation of <i><a href="/tan">tangent</a></i>.<br>
+<br>
+Notice that because of the sign ambiguity, the function cannot determine with certainty in which quadrant the angle falls only by its tangent value. See <samp><a href="/atan2">atan2</a></samp> for an alternative that takes a fractional argument instead.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++98">
+This function is overloaded in <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/valarray:acos">valarray atan</a>).<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+<br>
+This function is also overloaded in <code><a href="/&lt;complex&gt;">&lt;complex&gt;</a></code> and <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/complex:atan">complex atan</a> and <a href="/valarray:atan">valarray atan</a>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Value whose arc tangent is computed.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Principal arc tangent of <i>x</i>, in the interval [-pi/2,+pi/2] radians.<br>
+One <i>radian</i> is equivalent to <code>180/PI</code> <i>degrees</i>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* atan example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* atan */</cite><dfn></dfn>
+
+<dfn>#define PI 3.14159265</dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> param, result;
+  param = 1.0;
+  result = atan (param) * 180 / PI;
+  printf (<kbd>"The arc tangent of %f is %f degrees\n"</kbd>, param, result );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+The arc tangent of 1.000000 is 45.000000 degrees.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/atan2/"><b>atan2</b></a></dt><dd>Compute arc tangent with two parameters <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/tan/"><b>tan</b></a></dt><dd>Compute tangent <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/sin/"><b>sin</b></a></dt><dd>Compute sine <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/cos/"><b>cos</b></a></dt><dd>Compute cosine <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

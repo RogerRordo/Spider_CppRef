@@ -1,0 +1,131 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;queue&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/queue/priority_queue/">priority_queue</a>::priority_queue</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>initialize (1)</th><td><pre>explicit priority_queue (const Compare&amp; comp = Compare(),                         const Container&amp; ctnr = Container());</pre></td></tr><tr class="even"><th>range (2)</th><td><pre>template &lt;class InputIterator&gt;         priority_queue (InputIterator first, InputIterator last,                         const Compare&amp; comp = Compare(),                         const Container&amp; ctnr = Container());</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>initialize (1)</th><td><pre>priority_queue (const Compare&amp; comp, const Container&amp; ctnr);</pre></td></tr><tr class="even"><th>range (2)</th><td><pre>template &lt;class InputIterator&gt;  priority_queue (InputIterator first, InputIterator last,                  const Compare&amp; comp, const Container&amp; ctnr);</pre></td></tr><tr class="odd"><th>move-initialize (3)</th><td><pre>explicit priority_queue (const Compare&amp; comp = Compare(),                         Container&amp;&amp; ctnr = Container());</pre></td></tr><tr class="even"><th>move-range (4)</th><td><pre>template &lt;class InputIterator&gt;  priority_queue (InputIterator first, InputIterator last,                  const Compare&amp; comp, Container&amp;&amp; ctnr = Container());</pre></td></tr><tr class="odd"><th>allocator versions (5)</th><td><pre>template &lt;class Alloc&gt; explicit priority_queue (const Alloc&amp; alloc);template &lt;class Alloc&gt; priority_queue (const Compare&amp; comp, const Alloc&amp; alloc);template &lt;class Alloc&gt; priority_queue (const Compare&amp; comp, const Container&amp; ctnr,                                       const Alloc&amp; alloc);template &lt;class Alloc&gt; priority_queue (const Compare&amp; comp, Container&amp;&amp; ctnr,                                       const Alloc&amp; alloc);template &lt;class Alloc&gt; priority_queue (const priority_queue&amp; x, const Alloc&amp; alloc);template &lt;class Alloc&gt; priority_queue (priority_queue&amp;&amp; x, const Alloc&amp; alloc);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Construct priority queue</div>
+<section id="description">
+Constructs a <samp><a href="/priority_queue">priority_queue</a></samp> container adaptor object.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+A <samp><a href="/priority_queue">priority_queue</a></samp> keeps internally a comparing function and a container object as data, which are copies of <var>comp</var> and <var>ctnr</var> respectively.<br>
+<br>
+The <i>range version (2)</i>, on top that, inserts the elements between <var>first</var> and <var>last</var> (before the container is converted into a <i>heap</i>).<br>
+</div>
+<div title="C++11">
+A <samp><a href="/priority_queue">priority_queue</a></samp> keeps internally a comparing function and a container object as data. The comparing function is a copy of <var>comp</var> and the <i>underlying container</i> depends on the constructor used:<br>
+<br>
+<dl>
+<dt>(1) initialization constructor</dt>
+<dd>The <i>underlying container</i> is a copy of <var>ctnr</var>, sorted by the <samp><a href="/make_heap">make_heap</a></samp> algorithm.</dd>
+<dt>(2) range initialization constructor</dt>
+<dd>The <i>underlying container</i> is a copy of <var>ctnr</var>, with the insertion of the elements in the range <code>[first,last)</code>, and then sorted by <samp><a href="/make_heap">make_heap</a></samp>.</dd>
+<dt>(3) move-initialization constructor</dt>
+<dd>The <i>underlying container</i> acquires the value of <var>ctnr</var> by <i>move-constructing</i> it. The elements are sorted by <samp><a href="/make_heap">make_heap</a></samp>.</dd>
+<dt>(4) move-range initialization constructor</dt>
+<dd>The <i>underlying container</i> acquires the value of <var>ctnr</var> by <i>move-constructing</i>. It also inserts the elements in the range <code>[first,last)</code> and then sorts them with <samp><a href="/make_heap">make_heap</a></samp>.</dd>
+<dt>(5) allocator constructors</dt>
+<dd>Constructs a <samp><a href="/priority_queue">priority_queue</a></samp> using a specific <i>allocator</i> value.</dd>
+</dl>
+</div>
+</div>
+<br>
+The constructor effectively initializes the comparison and container objects and then calls algorithm <samp><a href="/make_heap">make_heap</a></samp> on the range that includes all its elements before returning.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>comp</dt>
+<dd>Comparison object to be used to order the <i>heap</i>.<br>
+This may be a function pointer or function object able to perform a <i>strict weak ordering</i> by comparing its two arguments.<br>
+<samp>Compare</samp> is the third class template paramete ( by default: <code><a href="/less">less</a>&lt;T&gt;</code>).</dd>
+<dt>ctnr</dt>
+<dd>Container object.<br>
+<samp>Container</samp> is the second class template parameter (the type of the <i>underlying container</i> for the <samp><a href="/priority_queue">priority_queue</a></samp>; by default: <code><a href="/vector">vector</a>&lt;T&gt;</code>).<br>
+</dd>
+<dt>first,last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions in a sequence. The elements in this sequence are inserted into the <i>underlying container</i> before sorting it.<br>
+The range used is <code>[first,last)</code>, which includes all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br></code></pre></td>
+<td class="source"><pre><code><cite>// constructing priority queues</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;queue&gt;          </dfn><cite>// std::priority_queue</cite>
+<dfn>#include &lt;vector&gt;         </dfn><cite>// std::vector</cite>
+<dfn>#include &lt;functional&gt;     </dfn><cite>// std::greater</cite>
+
+<var>class</var> mycomparison
+{
+  <var>bool</var> reverse;
+<var>public</var>:
+  mycomparison(<var>const</var> <var>bool</var>&amp; revparam=<var>false</var>)
+    {reverse=revparam;}
+  <var>bool</var> <var>operator</var>() (<var>const</var> <var>int</var>&amp; lhs, <var>const</var> <var>int</var>&amp;rhs) <var>const</var>
+  {
+    <var>if</var> (reverse) <var>return</var> (lhs&gt;rhs);
+    <var>else</var> <var>return</var> (lhs&lt;rhs);
+  }
+};
+
+<var>int</var> main ()
+{
+  <var>int</var> myints[]= {10,60,50,20};
+
+  std::priority_queue&lt;<var>int</var>&gt; first;
+  std::priority_queue&lt;<var>int</var>&gt; second (myints,myints+4);
+  std::priority_queue&lt;<var>int</var>, std::vector&lt;<var>int</var>&gt;, std::greater&lt;<var>int</var>&gt; &gt;
+                            third (myints,myints+4);
+  <cite>// using mycomparison:</cite>
+  <var>typedef</var> std::priority_queue&lt;<var>int</var>,std::vector&lt;<var>int</var>&gt;,mycomparison&gt; mypq_type;
+
+  mypq_type fourth;                       <cite>// less-than comparison</cite>
+  mypq_type fifth (mycomparison(<var>true</var>));   <cite>// greater-than comparison</cite>
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+The example does not produce any output, but it constructs different <samp><a href="/priority_queue">priority_queue</a></samp> objects:<br>
+- First is empty.<br>
+- Second contains the four ints defined for <samp>myints</samp>, with <code>60</code> (the highest) at its top.<br>
+- Third has the same four ints, but because it uses <samp><a href="/greater">greater</a></samp> instead of the default (which is <samp><a href="/less">less</a></samp>), it has 10 as its top element.<br>
+- Fourth and fifth are very similar to first: they are both empty, except that these use <samp>mycomparison</samp> for comparisons, which is a special stateful comparison function that behaves differently depending on a flag set on construction.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+One container construction, and one call to <samp><a href="/make_heap">make_heap</a></samp>, plus linear in the number of elements in the range <code>[first,last)</code> (if specified).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+<i>Moving constructors</i> may invalidate all iterators, pointers and references related to their moved argument.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+All copied elements are accessed.<br>
+The <i>moving constructors</i> may modify their rvalue reference argument.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Provides the same level of guarantees as the operation performed on the container.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/queue/priority_queue/push/"><b>priority_queue::push</b></a></dt><dd>Insert element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

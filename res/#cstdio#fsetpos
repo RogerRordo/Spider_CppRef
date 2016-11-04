@@ -1,0 +1,64 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fsetpos</h1>
+<div class="C_prototype"><pre>int fsetpos ( FILE * stream, const fpos_t * pos );</pre></div><div id="I_description">Set position indicator of stream</div>
+<section id="description">
+Restores the current position in the <i>stream</i> to <i>pos</i>.<br>
+<br>
+The <i>internal file position indicator</i> associated with <i>stream</i> is set to the position represented by <i>pos</i>, which is a pointer to an <a href="/fpos_t">fpos_t</a> object whose value shall have been previously obtained by a call to <a href="/fgetpos">fgetpos</a>.<br>
+<br>
+The <i>end-of-file internal indicator</i> of the <i>stream</i> is cleared after a successful call to this function, and all effects from previous calls to <a href="/ungetc">ungetc</a> on this <i>stream</i> are dropped.<br>
+<br>
+On streams open for update (read+write), a call to <tt>fsetpos</tt> allows to switch between reading and writing.<br>
+<br>
+A similar function, <a href="/fseek">fseek</a>, can be used to set arbitrary positions on streams open in binary mode.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies the stream.</dd>
+<dt>position</dt>
+<dd>Pointer to a <a href="/fpos_t">fpos_t</a> object containing a position previously obtained with <a href="/fgetpos">fgetpos</a>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If successful, the function returns zero.<br>
+On failure, a non-zero value is returned and <a href="/errno">errno</a> is set to a system-specific positive value.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fsetpos example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  fpos_t position;
+
+  pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"w"</kbd>);
+  fgetpos (pFile, &amp;position);
+  fputs (<kbd>"That is a sample"</kbd>,pFile);
+  fsetpos (pFile, &amp;position);
+  fputs (<kbd>"This"</kbd>,pFile);
+  fclose (pFile);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+After this code is successfully executed, a file called <tt>myfile.txt</tt> will contain:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>This is a sample
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fgetpos/"><b>fgetpos</b></a></dt><dd>Get current position in stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fseek/"><b>fseek</b></a></dt><dd>Reposition stream position indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/rewind/"><b>rewind</b></a></dt><dd>Set position of stream to the beginning <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

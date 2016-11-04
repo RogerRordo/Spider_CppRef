@@ -1,0 +1,70 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>operator&lt;&lt; (string)</h1>
+<div class="C_prototype"><pre>ostream&amp; operator&lt;&lt; (ostream&amp; os, const string&amp; str);</pre></div><div id="I_description">Insert string into stream</div>
+<section id="description">
+Inserts the sequence of characters that conforms value of <i>str</i> into <i>os</i>.<br>
+<br>
+This function overloads <tt>operator&lt;&lt;</tt> to behave as described in <a href="/ostream::operator&lt;&lt;">ostream::operator&lt;&lt;</a> for c-strings, but applied to <a href="/string">string</a> objects.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>os</dt>
+<dd><a href="/ostream">ostream</a> object where characters are inserted.</dd>
+<dt>str</dt>
+<dd><a href="/string">string</a> object with the content to insert.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The same as parameter <i>os</i>.<br>
+<br>
+If some error happens during the output operation, the stream's <i>badbit</i> flag is set, and if the appropriate flag has been set with <a href="/ios::exceptions">ios::exceptions</a>, an exception is thrown.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>// inserting strings into output streams</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+main ()
+{
+  std::string str = <kbd>"Hello world!"</kbd>;
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally linear in <i>str</i>'s <a href="/string::length">length</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Objects <i>os</i> is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, both <i>is</i> and <i>str</i> end up in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ostream/ostream/operator<</"><b>ostream::operator&lt;&lt;</b></a></dt><dd>Insert formatted output <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/operator>>/"><b>operator&gt;&gt; (string)</b></a></dt><dd>Extract string from stream <span class="typ">(function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

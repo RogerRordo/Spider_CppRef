@@ -1,0 +1,54 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class template</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>bitset</h1>
+<div class="C_prototype"><pre>template &lt;size_t N&gt; class bitset;</pre></div><div id="I_description">Bitset</div>
+<section id="description">
+A <samp>bitset</samp> stores bits (elements with only two possible values: 0 or 1, <code>true</code> or <code>false</code>, ...).<br>
+<br>
+The class emulates an array of <code>bool</code> elements, but optimized for space allocation: generally, each element occupies only one bit (which, on most systems, is eight times less than the smallest elemental type: <code>char</code>).<br>
+<br>
+Each bit position can be accessed individually: for example, for a given bitset named <code>foo</code>, the expression <code>foo[3]</code> accesses its fourth bit, just like a regular array accesses its elements. But because no elemental type is a single bit in most C++ environments, the individual elements are accessed as special references type (see <samp><a href="/bitset::reference">bitset::reference</a></samp>).<br>
+<br>
+Bitsets have the feature of being able to be constructed from and converted to both integer values and binary strings (see its <i><a href="/bitset::bitset">constructor</a></i> and members <samp><a href="/bitset::to_ulong">to_ulong</a></samp> and <samp><a href="/bitset::to_string">to_string</a></samp>). They can also be directly inserted and extracted from streams in binary format (see <i><a href="/bitset::operator">applicable operators</a></i>).<br>
+<br>
+The <samp><a href="/bitset::size">size</a></samp> of a bitset is fixed at compile-time (determined by its template parameter). For a class that also optimizes for space allocation and allows for dynamic resizing, see the <code>bool</code> specialization of <samp><a href="/vector&lt;bool&gt;">vector</a></samp> (<code><a href="/vector&lt;bool&gt;">vector&lt;bool&gt;</a></code>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Template parameters</h3>
+<dl>
+<dt>N</dt>
+<dd>Size of the bitset, in terms of number of bits.<br>
+It is returned by member function <samp><a href="/bitset::size">bitset::size</a></samp>.<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/reference/"><b>reference</b></a></dt><dd>Reference-like type <span class="typ">(public member class)</span></dd></dl>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/bitset/"><b>(constructor)</b></a></dt><dd>Construct bitset <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/operators/"><b>applicable operators</b></a></dt><dd>Bitset operators <span class="typ">(function)</span></dd></dl>
+<br>
+<h4>Bit access</h4>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/operator[]/"><b>operator[]</b></a></dt><dd>Access bit <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/count/"><b>count</b></a></dt><dd>Count bits set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/size/"><b>size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/test/"><b>test</b></a></dt><dd>Return bit value <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/any/"><b>any</b></a></dt><dd>Test if any bit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/none/"><b>none</b></a></dt><dd>Test if no bit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/all/"><b>all <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Test if all bits are set <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Bit operations</h4>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/set/"><b>set</b></a></dt><dd>Set bits <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/reset/"><b>reset</b></a></dt><dd>Reset bits <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/flip/"><b>flip</b></a></dt><dd>Flip bits <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Bitset operations</h4>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/to_string/"><b>to_string</b></a></dt><dd>Convert to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/to_ulong/"><b>to_ulong</b></a></dt><dd>Convert to unsigned long integer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/to_ullong/"><b>to_ullong <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Convert to unsigned long long <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h3>Non-member function overloads</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/operators/"><b>applicable operators</b></a></dt><dd>Bitset operators <span class="typ">(function)</span></dd></dl>
+</section>
+<br>
+<section id="specializations">
+<h3>Non-member class specializations</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/hash/"><b>hash&lt;bitset&gt; <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Hash for bitset <span class="typ">(class template specialization)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

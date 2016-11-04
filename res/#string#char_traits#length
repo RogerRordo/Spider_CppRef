@@ -1,0 +1,68 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::length</h1>
+<div class="C_prototype"><pre>static size_t length (const char_type* s);</pre></div><div id="I_description">Get length of null-terminated string</div>
+<section id="description">
+Returns the length of the <i>null-terminated</i> character sequence <i>s</i>.<br>
+<br>
+The behavior implemented by all <i>character traits</i> types shall be to return the position of the first character for which <a href="/char_traits::eq">member eq</a> returns false when compared against <tt>charT()</tt>.<br>
+<br>
+This function is equivalent to <a href="/strlen">strlen</a> (for <tt>char</tt>) and <a href="/wcslen">wcslen</a> (for <tt>wchar_t</tt>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>s</dt>
+<dd>Pointer to a null-terminated character sequence.<br>
+Member type <tt>char_type</tt> is the <i>character type</i> (i.e., the class template parameter in <a href="/char_traits">char_traits</a>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns the length of <i>s</i>.<br>
+<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>// char_traits::length</cite>
+<dfn>#include &lt;iostream&gt;   </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;     </dfn><cite>// std::char_traits</cite>
+
+<var>int</var> main ()
+{
+  <var>const</var> <var>char</var> * foo = <kbd>"String literal"</kbd>;
+  std::cout &lt;&lt; <kbd>"foo has a length of "</kbd>;
+  std::cout &lt;&lt; std::char_traits&lt;<var>char</var>&gt;::length(foo);
+  std::cout &lt;&lt; <kbd>" characters.\n"</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo has a length of 14 characters.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the returned value.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <i>s</i> points a null-terminated character sequence, this member function never throws exceptions (no-throw guarantee) in any of the standard specializations.<br>
+Otherwise, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/eof/"><b>char_traits::eof</b></a></dt><dd>End-of-File character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strlen/"><b>strlen</b></a></dt><dd>Get string length <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cwchar/wcslen/"><b>wcslen</b></a></dt><dd>Get wide string length <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

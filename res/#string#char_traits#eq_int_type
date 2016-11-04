@@ -1,0 +1,49 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::eq_int_type</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>static bool eq_int_type (const int_type&amp; x, const int_type&amp; y);</pre></div>
+<div title="C++11" class="on">
+<pre>static constexpr bool eq_int_type (int_type x, int_type y) noexcept;</pre></div>
+</div>
+</div><div id="I_description">Compare int_type values</div>
+<section id="description">
+Returns whether <i>x</i> and <i>y</i> are considered equal.<br>
+<br>
+If both <i>x</i> and <i>y</i> represent valid characters, the function returns the same as <a href="/chair_traits::eq">member eq</a> would for their <tt>char_type</tt> transformations.<br>
+<br>
+Also, if both <i>x</i> and <i>y</i> are copies of <a href="/char_traits::eof">eof()</a>, the function returns <tt>true</tt>. If only one of them is a copy of <a href="/char_traits::eof">eof()</a>, the function returns <tt>false</tt>.<br>
+<br>
+In all other cases, the returned valued is unspecified.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dt>x, y</dt>
+<dd>Values to compare.<br>
+Member type <tt>int_type</tt> is an integral type that can represent <a href="/char_traits::eof">eof()</a> or any valid character value.<br>
+</dd>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if <i>x</i> is considered equal to <i>y</i>.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/to_char_type/"><b>char_traits::to_char_type</b></a></dt><dd>To char type <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/to_int_type/"><b>char_traits::to_int_type</b></a></dt><dd>To int type <span class="typ">( public static member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

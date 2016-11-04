@@ -1,0 +1,42 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::narrow</h1>
+<div class="C_prototype"><pre>char narrow (char c, char dfault) const;</pre></div><div id="I_description">Narrow character</div>
+<section id="description">
+Returns the transformation of <var>c</var> to its equivalent using the <samp><a href="/ctype::narrow">ctype::narrow</a></samp> facet of the <samp><a href="/locale">locale</a></samp> object currently <i><a href="/ios::imbue">imbued</a></i> in the stream, if such an equivalence exists, or <var>dfault</var> otherwise.<br>
+<br>
+This function is designed for instantiations of <samp><a href="/basic_ios">basic_ios</a></samp> that use a different (wider) character type: see <samp><a href="/basic_ios::narrow">basic_ios::narrow</a></samp>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c</dt>
+<dd>Character to be <i>"narrowed"</i>.</dd>
+<dt>dfault</dt>
+<dd>Character returned if <var>c</var> has no standard equivalent.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The narrow equivalent of <var>c</var>, if any. Otherwise, it returns <var>dfault</var>.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/widen/"><b>ios::widen</b></a></dt><dd>Widen character <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

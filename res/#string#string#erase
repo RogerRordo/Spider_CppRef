@@ -1,0 +1,130 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::erase</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>sequence (1)</th><td><pre> string&amp; erase (size_t pos = 0, size_t len = npos);</pre></td></tr><tr class="even"><th>character (2)</th><td><pre>iterator erase (iterator p);</pre></td></tr><tr class="odd"><th>range (3)</th><td><pre>     iterator erase (iterator first, iterator last);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>sequence (1)</th><td><pre> string&amp; erase (size_t pos = 0, size_t len = npos);</pre></td></tr><tr class="odd"><th>character (2)</th><td><pre>iterator erase (const_iterator p);</pre></td></tr><tr class="even"><th>range (3)</th><td><pre>iterator erase (const_iterator first, const_iterator last);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Erase characters from string</div>
+<section id="description">
+Erases part of the <a href="/string">string</a>, reducing its <a href="/string::length">length</a>:<br>
+<br>
+<dl>
+<dt>(1) sequence</dt>
+<dd>Erases the portion of the string value that begins at the character position <i>pos</i> and spans <i>len</i> characters (or until the <i>end of the string</i>, if either the content is too short or if <i>len</i> is <a href="/string::npos">string::npos</a>.<br>
+Notice that the default argument erases all characters in the string (like member function <a href="/string::clear">clear</a>).<br>
+</dd>
+<dt>(2) character</dt>
+<dd>Erases the character pointed by <i>p</i>.<br>
+<dt>(3) range</dt>
+<dd>Erases the sequence of characters in the range <tt>[first,last)</tt>.<br>
+</dl>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pos</dt>
+<dd>Position of the first character to be erased.<br>
+If this is greater than the <a href="/string::length">string length</a>, it throws <a href="/out_of_range">out_of_range</a>.<br>
+Note: The first character in <i>str</i> is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>len</dt>
+<dd>Number of characters to erase (if the string is shorter, as many characters as possible are erased).<br>
+A value of <a href="/string::npos">string::npos</a> indicates all characters until the end of the string.</dd>
+<dt>p</dt>
+<dd>Iterator to the character to be removed.</dd>
+<dt>first, last</dt>
+<dd>Iterators specifying a range within the <a href="/string">string</a>] to be removed: <tt>[first,last)</tt>. i.e., the range includes all the characters between <i>first</i> and <i>last</i>, including the character pointed by <i>first</i> but not the one pointed by <i>last</i>.<br>
+</dd>
+</dl>
+<br>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are <a href="/RandomAccessIterator">random access iterator</a> types that point to characters of the <a href="/string">string</a>.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The <i>sequence version (1)</i> returns <tt>*this</tt>.<br>
+The others return an iterator referring to the character that now occupies the position of the first character erased, or <a href="/string::end">string::end</a> if no such character exists.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/RandomAccessIterator">random access iterator</a> type that points to characters of the <a href="/string">string</a>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::erase</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"This is an example sentence."</kbd>);
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+                                           <cite>// "This is an example sentence."</cite>
+  str.erase (10,8);                        <cite>//            ^^^^^^^^</cite>
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+                                           <cite>// "This is an sentence."</cite>
+  str.erase (str.begin()+9);               <cite>//           ^</cite>
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+                                           <cite>// "This is a sentence."</cite>
+  str.erase (str.begin()+5, str.end()-9);  <cite>//       ^^^^^</cite>
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+                                           <cite>// "This sentence."</cite>
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>This is an example sentence.
+This is an sentence.
+This is a sentence.
+This sentence.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in the new <a href="/string::length">string length</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/string">string</a>.<br>
+<br>
+If <i>pos</i> is greater than the <a href="/string::length">string length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+<br>
+An invalid <i>p</i> in <i>(2)</i>, or an invalid range in <i>(3)</i>, causes <i>undefined behavior</i>.<br>
+</div>
+<div title="C++14">
+For <i>(1)</i> and <i>(3)</i>, if an exception is thrown, there are no changes in the <samp><a href="/string">string</a></samp> (strong guarantee).<br>
+For <i>(2)</i>, it never throws exceptions (no-throw guarantee).<br>
+<br>
+If <i>pos</i> is greater than the <a href="/string::length">string length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+<br>
+An invalid range in <i>(3)</i>, causes <i>undefined behavior</i>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/clear/"><b>string::clear</b></a></dt><dd>Clear string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/insert/"><b>string::insert</b></a></dt><dd>Insert into string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/assign/"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/append/"><b>string::append</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

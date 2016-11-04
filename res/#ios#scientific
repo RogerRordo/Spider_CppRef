@@ -1,0 +1,120 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>scientific</h1>
+<div class="C_prototype"><pre>ios_base&amp; scientific (ios_base&amp; str);</pre></div><div id="I_description">Use scientific floating-point notation</div>
+<section id="description">
+Sets the <samp>floatfield</samp> format flag for the <var>str</var> stream to <samp>scientific</samp>.<br>
+<br>
+When <samp>floatfield</samp> is set to <samp>scientific</samp>, floating-point values are written using scientific notation: the value is represented always with only one digit before the decimal point, followed by the decimal point and as many decimal digits as the <i>precision field</i> (<samp><a href="/ios_base::precision">precision</a></samp>). Finally, this notation always includes an exponential part consisting on the letter <code>e</code> followed by an optional sign and three exponential digits.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+The <samp>floatfield</samp> format flag is both a selective and a toggle flag: it can take one or more of the following values:<br>
+<table class="boxed">
+<tr><th>flag value</th><th>effect when set</th></tr> <br>
+<tr><td><samp><a href="/fixed">fixed</a></samp></td><td>write floating-point values in fixed-point notation</td></tr>
+<tr><td><samp>scientific</samp></td><td>write floating-point values in scientific notation.</td></tr>
+<tr><td class="cpp11"><i>(none)</i></td><td>write floating-point values in default floating-point notation.</td></tr>
+</table>
+The default notation <i>(none)</i> is a different <samp>floatfield</samp> value than either <samp><a href="/fixed">fixed</a></samp> or <samp>scientific</samp>. The default notation can be selected by calling <code>str.<a href="/ios_base::unsetf">unsetf</a>(<a href="/ios_base::floatfield">ios_base::floatfield</a>)</code>.<br>
+<br>
+For standard streams, no <samp>floatfield</samp> is set on initialization (default notation).<br>
+</div>
+<div title="C++11">
+The <samp>floatfield</samp> format flag is both a selective and a toggle flag: it can take any of the following values, or none:<br>
+<table class="boxed">
+<tr><th>flag value</th><th>effect when set</th></tr> <br>
+<tr><td><samp><a href="/fixed">fixed</a></samp></td><td>write floating-point values in fixed-point notation.</td></tr>
+<tr><td><samp>scientific</samp></td><td>write floating-point values in scientific notation.</td></tr>
+<tr class="cpp11"><td><samp><a href="/hexfloat">hexfloat</a></samp></td><td>write floating-point values in hexadecimal format.<br>
+The value of this is the same as <code>(fixed|scientific)</code></td></tr>
+<tr class="cpp11"><td><samp><a href="/defaultfloat">defaultfloat</a></samp></td><td>write floating-point values in default floating-point notation. This is the value by default (same as none, before any other <samp>floatfield</samp> bit is set).</td></tr>
+</table>
+<br>
+For standard streams, the <samp>floatfield</samp> format flag is set to <samp><a href="/defaultfloat">defaultfloat</a></samp> on initialization.<br>
+</div>
+</div>
+<br>
+The <i>precision field</i> can be modified using member <samp><a href="/ios_base::precision">precision</a></samp>.<br>
+<br>
+Notice that the treatment of the <i>precision field</i> differs between the default floating-point notation and the fixed and scientific notations (see <samp><a href="/ios_base::precision">precision</a></samp>). On the default floating-point notation, the <i>precision field</i> specifies the maximum number of meaningful digits to display both before and after the decimal point, while in both the fixed and scientific notations, the <i>precision field</i> specifies exactly how many digits to display <em>after</em> the decimal point, even if they are trailing decimal zeros.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Stream object whose <samp>floatfield</samp> <i>format flag</i> is affected.<br>
+Because this function is a manipulator, it is designed to be used alone with no arguments in conjunction with the <i>insertion</i> (<code>&lt;&lt;</code>) and <i>extraction</i> (<code>&gt;&gt;</code>) operations on streams (see example below).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Argument <var>str</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// modify floatfield</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::fixed, std::scientific</cite>
+
+<var>int</var> main () {
+  <var>double</var> a = 3.1415926534;
+  <var>double</var> b = 2006.0;
+  <var>double</var> c = 1.0e-10;
+
+  std::cout.precision(5);
+
+  std::cout &lt;&lt; <kbd>"default:\n"</kbd>;
+  std::cout &lt;&lt; a &lt;&lt; <kbd>'\n'</kbd> &lt;&lt; b &lt;&lt; <kbd>'\n'</kbd> &lt;&lt; c &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"fixed:\n"</kbd> &lt;&lt; std::fixed;
+  std::cout &lt;&lt; a &lt;&lt; <kbd>'\n'</kbd> &lt;&lt; b &lt;&lt; <kbd>'\n'</kbd> &lt;&lt; c &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"scientific:\n"</kbd> &lt;&lt; std::scientific;
+  std::cout &lt;&lt; a &lt;&lt; <kbd>'\n'</kbd> &lt;&lt; b &lt;&lt; <kbd>'\n'</kbd> &lt;&lt; c &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>default:
+3.1416
+2006
+1e-010
+
+fixed:
+3.14159
+2006.00000
+0.00000
+
+scientific:
+3.14159e+000
+2.00600e+003
+1.00000e-010
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies <var>str</var>. Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, <var>str</var> is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/scientific/"><b>scientific</b></a></dt><dd>Use scientific floating-point notation <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/unsetf/"><b>ios_base::unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

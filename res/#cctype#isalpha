@@ -1,0 +1,62 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cctype&gt;</div>
+<h1>isalpha</h1>
+<div class="C_prototype"><pre>int isalpha ( int c );</pre></div><div id="I_description">Check if character is alphabetic</div>
+<section id="description">
+Checks whether <i>c</i> is an alphabetic letter.<br>
+<br>
+Notice that what is considered a letter depends on the locale being used; In the default <tt>"C"</tt> locale, what constitutes a letter is only what returns true by either <a href="/isupper">isupper</a> or <a href="/islower">islower</a>.<br>
+<br>
+Using other locales, an alphabetic character is a character for which <a href="/isupper">isupper</a> or <a href="/islower">islower</a> would return true, or another character explicitly considered alphabetic by the locale (in this case, the character cannot be <a href="/iscntrl">iscntrl</a>, <a href="/isdigit">isdigit</a>, <a href="/ispunct">ispunct</a> or <a href="/isspace">isspace</a>).<br>
+<br>
+For a detailed chart on what the different <tt>ctype</tt> functions return for each character of the standard ANSII character set, see the reference for the &lt;<a href="/cctype">cctype</a>&gt; header.<br>
+<br>
+In C++, a locale-specific template version of this function (<a href="/locale:isalpha">isalpha</a>) exists in header <a href="/&lt;locale&gt;">&lt;locale&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c</dt>
+<dd>Character to be checked, casted to an <tt>int</tt>, or <tt>EOF</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A value different from zero (i.e., <tt>true</tt>) if indeed <i>c</i> is an alphabetic letter. Zero (i.e., <tt>false</tt>) otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* isalpha example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;ctype.h&gt;</dfn>
+<var>int</var> main ()
+{
+  <var>int</var> i=0;
+  <var>char</var> str[]=<kbd>"C++"</kbd>;
+  <var>while</var> (str[i])
+  {
+    <var>if</var> (isalpha(str[i])) printf (<kbd>"character %c is alphabetic\n"</kbd>,str[i]);
+    <var>else</var> printf (<kbd>"character %c is not alphabetic\n"</kbd>,str[i]);
+    i++;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>character C is alphabetic
+character + is not alphabetic
+character + is not alphabetic
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cctype/isalnum/"><b>isalnum</b></a></dt><dd>Check if character is alphanumeric <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isdigit/"><b>isdigit</b></a></dt><dd>Check if character is decimal digit <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,78 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>setvbuf</h1>
+<div class="C_prototype"><pre>int setvbuf ( FILE * stream, char * buffer, int mode, size_t size );</pre></div><div id="I_description">Change stream buffering</div>
+<section id="description">
+Specifies a <i>buffer</i> for <i>stream</i>. The function allows to specify the <i>mode</i> and <i>size</i> of the buffer (in bytes).<br>
+<br>
+If <i>buffer</i> is a null pointer, the function automatically allocates a buffer (using <i>size</i> as a hint on the size to use). Otherwise, the array pointed by <i>buffer</i> may be used as a buffer of <i>size</i> bytes.<br>
+<br>
+This function should be called once the <i>stream</i> has been associated with an open file, but before any input or output operation is performed with it.<br>
+<br>
+A <dfn>stream buffer</dfn> is a block of data that acts as intermediary between the i/o operations and the physical file associated to the stream: For output buffers, data is output to the buffer until its maximum capacity is reached, then it is <a href="/fflush">flushed</a> (i.e.: all data is sent to the physical file at once and the buffer cleared). Likewise, input buffers are filled from the physical file, from which data is sent to the operations until exhausted, at which point new data is acquired from the file to fill the buffer again.<br>
+<br>
+Stream buffers can be explicitly flushed by calling <a href="/fflush">fflush</a>. They are also automatically flushed by <a href="/fclose">fclose</a> and <a href="/freopen">freopen</a>, or when the program terminates normally.<br>
+<br>
+All files are opened with a default allocated buffer (<i>fully buffered</i>) if they are known to not refer to an interactive device. This function can be used to either redefine the buffer <i>size</i> or <i>mode</i>, to define a user-allocated buffer or to disable buffering for the stream.<br>
+<br>
+The default streams <a href="/stdin">stdin</a> and <a href="/stdout">stdout</a> are <i>fully buffered</i> by default if they are known to not refer to an interactive device. Otherwise, they may either be <i>line buffered</i> or <i>unbuffered</i> by default, depending on the system and library implementation. The same is true for <a href="/stderr">stderr</a>, which is  always either <i>line buffered</i> or <i>unbuffered</i> by default.<br>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <tt>FILE</tt> object that identifies an open stream.</dd>
+<dt>buffer</dt>
+<dd>User allocated buffer. Shall be at least <i>size</i> bytes long.<br>
+If set to a null pointer, the function automatically allocates a buffer.</dd>
+<dt>mode</dt>
+<dd>Specifies a mode for file buffering. Three special macro constants (<tt>_IOFBF</tt>, <tt>_IOLBF</tt> and <tt>_IONBF</tt>) are defined in <a href="/cstdio">&lt;cstdio&gt;</a> to be used as the value for this parameter:<br>
+<table class="boxed"><tr><td><tt>_IOFBF</tt></td><td><b>Full buffering:</b> On output, data is written once the buffer is full (or <a href="/fflush">flushed</a>). On Input, the buffer is filled when an input operation is requested and the buffer is empty.</td></tr>
+<tr><td><tt>_IOLBF</tt></td><td><b>Line buffering:</b> On output, data is written when a newline character is inserted into the stream or when the buffer is full (or <a href="/fflush">flushed</a>), whatever happens first. On Input, the buffer is filled up to the next newline character when an input operation is requested and the buffer is empty.</td></tr>
+<tr><td><tt>_IONBF</tt></td><td><b>No buffering:</b> No buffer is used. Each I/O operation is written as soon as possible. In this case, the <i>buffer</i> and <i>size</i> parameters are ignored.</td></tr></table>
+</dd>
+<dt>size</dt>
+<dd>
+Buffer size, in bytes.<br>
+If the <i>buffer</i> argument is a null pointer, this value may determine the size automatically allocated by the function for the buffer.</dd></dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If the buffer is correctly assigned to the file, a zero value is returned.<br>
+Otherwise, a non-zero value is returned; This may be due to an invalid <i>mode</i> parameter or to some other error allocating or assigning the buffer.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>/* setvbuf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE *pFile;
+
+  pFile=fopen (<kbd>"myfile.txt"</kbd>,<kbd>"w"</kbd>);
+
+  setvbuf ( pFile , NULL , _IOFBF , 1024 );
+
+  <cite>// File operations here</cite>
+
+  fclose (pFile);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+In this example, a file called <tt>myfile.txt</tt> is created and a full buffer of 1024 bytes is requested for the associated stream, so the data output to this stream should only be written to the file each time the 1024-byte buffer is filled. <br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/setbuf/"><b>setbuf</b></a></dt><dd>Set stream buffer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fflush/"><b>fflush</b></a></dt><dd>Flush stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

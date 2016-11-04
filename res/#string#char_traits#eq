@@ -1,0 +1,84 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::eq</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>static bool eq (const char_type&amp; c, const char_type&amp; d);</pre></div>
+<div title="C++11" class="on">
+<pre>static constexpr bool eq (char_type c, char_type d) noexcept;</pre></div>
+</div>
+</div><div id="I_description">Compare characters for equality</div>
+<section id="description">
+Returns whether characters <i>c</i> and <i>d</i> are considered equal.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+In the standard specializations of <a href="/char_traits">char_traits</a>, this function behaves as the built-in <tt>operator==</tt>, but custom <i>character traits</i> classes may provide an alternative behavior.<br>
+</div>
+<div title="C++11">
+In the standard specializations of <a href="/char_traits">char_traits</a>, this function behaves as the built-in <tt>operator==</tt> for type <tt>unsigned char</tt>, but custom <i>character traits</i> classes may provide an alternative behavior.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c, d</dt>
+<dd>Character values.<br>
+Member type <tt>char_type</tt> is the <i>character type</i> (i.e., the class template parameter in <a href="/char_traits">char_traits</a>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if <i>c</i> is considered equal to <i>d</i>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// char_traits::eq</cite>
+<dfn>#include &lt;iostream&gt;   </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;     </dfn><cite>// std::basic_string, std::char_traits</cite>
+<dfn>#include &lt;cctype&gt;     </dfn><cite>// std::tolower</cite>
+<dfn>#include &lt;cstddef&gt;    </dfn><cite>// std::size_t</cite>
+
+<cite>// traits with case-insensitive eq:</cite>
+<var>struct</var> custom_traits: std::char_traits&lt;<var>char</var>&gt; {
+  <var>static</var> <var>bool</var> eq (<var>char</var> c, <var>char</var> d) { <var>return</var> std::tolower(c)==std::tolower(d); }
+  <cite>// some (non-conforming) implementations of basic_string::find call this instead of eq:</cite>
+  <var>static</var> <var>const</var> <var>char</var>* find (<var>const</var> <var>char</var>* s, std::size_t n, <var>char</var> c)
+  { <var>while</var>( n-- &amp;&amp; (!eq(*s,c)) ) ++s; <var>return</var> s; }
+};
+
+<var>int</var> main ()
+{
+  std::basic_string&lt;<var>char</var>,custom_traits&gt; str (<kbd>"Test"</kbd>);
+  std::cout &lt;&lt; <kbd>"T found at position "</kbd> &lt;&lt; str.find(<kbd>'t'</kbd>) &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>T found at position 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions in any of the standard specializations.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/lt/"><b>char_traits::lt</b></a></dt><dd>Compare characters for inequality <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/compare/"><b>char_traits::compare</b></a></dt><dd>Compare sequences of characters <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/find/"><b>char_traits::find</b></a></dt><dd>Find first occurrence of character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/eq_int_type/"><b>char_traits::eq_int_type</b></a></dt><dd>Compare int_type values <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/functional/equal_to/"><b>equal_to</b></a></dt><dd>Function object class for equality comparison <span class="typ">(class template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

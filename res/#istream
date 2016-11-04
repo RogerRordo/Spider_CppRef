@@ -1,0 +1,24 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;istream&gt;</h1>
+<div id="I_description">Input stream</div>
+<section id="description">
+Header providing the standard input and combined input/output stream classes:<br>
+</section>
+<br>
+<section id="types">
+<h3>Class templates</h3>
+<dl class="links"><dt><a href= "/reference/istream/basic_istream/"><b>basic_istream</b></a></dt><dd>Input stream <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/basic_iostream/"><b>basic_iostream</b></a></dt><dd>Input/output stream <span class="typ">(class template)</span></dd></dl>
+</section>
+<br>
+<section id="classes">
+<h3>Classes</h3>
+<dl class="links"><dt><a href= "/reference/istream/istream/"><b>istream</b></a></dt><dd>Input stream <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/iostream/"><b>iostream</b></a></dt><dd>Input/output stream <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/wistream/"><b>wistream</b></a></dt><dd>Input stream (wide) <span class="typ">(class)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/wiostream/"><b>wiostream</b></a></dt><dd>Input/output stream (wide) <span class="typ">(class)</span></dd></dl>
+</section>
+<br>
+<section id="functions">
+<h3>Input manipulators (functions)</h3>
+<dl class="links"><dt><a href= "/reference/istream/ws/"><b>ws</b></a></dt><dd>Extract whitespaces <span class="typ">(function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,32 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>ldiv_t</h1>
+<div id="I_description">Structure returned by ldiv</div>
+<section id="description">
+Structure to represent the result value of an integral division performed by function <samp><a href="/ldiv">ldiv</a></samp> (and, in C++, possibly also by <samp><a href="/div">div</a></samp>).<br>
+<br>
+It has two data members of type <code>long int</code>: <samp>quot</samp> and <samp>rem</samp>, defined in either order. A possible definition could be:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><var>typedef</var> <var>struct</var> {
+  <var>long</var> <var>int</var> quot;
+  <var>long</var> <var>int</var> rem;
+} ldiv_t;</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Members</h3>
+<dl>
+<dt>quot</dt>
+<dd>Represents the <i>quotient</i> of the integral division operation performed by <samp><a href="/ldiv">ldiv</a></samp>, which is the integer of lesser magnitude that is nearest to the algebraic quotient.</dd>
+<dt>rem</dt>
+<dd>Represents the <i>remainder</i> of the integral division operation performed by <samp><a href="/ldiv">ldiv</a></samp>, which is the integer resulting from subtracting <i>quot</i> to the numerator of the operation.</dd>
+</dl>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/div_t/"><b>div_t</b></a></dt><dd>Structure returned by div <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/div/"><b>div</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/ldiv/"><b>ldiv</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,105 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::find_first_not_of</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>size_type find_first_not_of (const basic_string&amp; str, size_type pos = 0) const;</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>size_type find_first_not_of (const charT* s, size_type pos = 0) const;</pre></td></tr><tr class="odd"><th>buffer (3)</th><td><pre>size_type find_first_not_of (const charT* s, size_type pos, size_type n) const;</pre></td></tr><tr class="even"><th>character (4)</th><td><pre>size_type find_first_not_of (charT c, size_type pos = 0) const;</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>string (1)</th><td><pre>size_type find_first_not_of (const basic_string&amp; str, size_type pos = 0) const noexcept;</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>size_type find_first_not_of (const charT* s, size_type pos = 0) const;</pre></td></tr><tr class="odd"><th>buffer (3)</th><td><pre>size_type find_first_not_of (const charT* s, size_type pos, size_type n) const;</pre></td></tr><tr class="even"><th>character (4)</th><td><pre>size_type find_first_not_of (charT c, size_type pos = 0) const noexcept;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Find non-matching character in string</div>
+<section id="description">
+Searches the <a href="/basic_string">basic_string</a> for the first character that does not match any of the characters specified in its arguments.<br>
+<br>
+When <i>pos</i> is specified, the search only includes characters at or after position <i>pos</i>, ignoring any possible occurrences before that character.<br>
+<br>
+The function uses <a href="/char_traits::eq">traits_type::eq</a> to determine character equivalences.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another <a href="/basic_string">basic_string</a> with the set of characters to be used in the search.</dd>
+<dt>pos</dt>
+<dd>Position of the first character in the string to be considered in the search.<br>
+If this is greater than the <a href="/basic_string::length">string length</a>, the function never finds matches.<br>
+Note: The first character is denoted by a value of <tt>0</tt> (not <tt>1</tt>): A value of <tt>0</tt> means that the entire string is searched.<br>
+</dd>
+<dt>s</dt>
+<dd>Pointer to an array of characters.<br>
+If argument <i>n</i> is specified <i>(3)</i>, the first <i>n</i> characters in the array are used in the search.<br>
+Otherwise <i>(2)</i>, a null-terminated sequence is expected: the length of the sequence with the characters used in the search is determined by the first occurrence of a null character.<br>
+</dd>
+<dt>n</dt>
+<dd>Number of character values to search for.</dd>
+<dt>c</dt>
+<dd>Individual character to be searched for.</dd>
+</dl>
+<br>
+<tt>charT</tt> is <a href="/basic_string">basic_string</a>'s character type (i.e., its first template parameter).<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The position of the first character that does not match.<br>
+If no such characters are found, the function returns <a href="/basic_string::npos">basic_string::npos</a>.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::find_first_not_of</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"look for non-alphabetic characters..."</kbd>);
+
+  std::string::size_type found = str.find_first_not_of(<kbd>"abcdefghijklmnopqrstuvwxyz "</kbd>);
+
+  <var>if</var> (found!=std::string::npos)
+  {
+    std::cout &lt;&lt; <kbd>"The first non-alphabetic character is "</kbd> &lt;&lt; str[found];
+    std::cout &lt;&lt; <kbd>" at position "</kbd> &lt;&lt; found &lt;&lt; <kbd>'\n'</kbd>;
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The first non-alphabetic character is - at position 12
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in <tt><a href="/basic_string::length">length()</a>-pos</tt> times the number of characters to match (worst case).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <tt>s</tt> does not point to an array long enough, it causes <i>undefined behavior</i>.<br>
+Otherwise, the function never throws exceptions (no-throw guarantee).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/find/"><b>basic_string::find</b></a></dt><dd>Find first occurrence in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/find_first_of/"><b>basic_string::find_first_of</b></a></dt><dd>Find character in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/find_last_not_of/"><b>basic_string::find_last_not_of</b></a></dt><dd>Find non-matching character in string from the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/replace/"><b>basic_string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/substr/"><b>basic_string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

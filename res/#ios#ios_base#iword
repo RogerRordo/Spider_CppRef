@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::iword</h1>
+<div class="C_prototype"><pre>long&amp; iword (int idx);</pre></div><div id="I_description">Get integer element of extensible array</div>
+<section id="description">
+Returns a reference to the object of type <samp>long</samp> which corresponds to index <var>idx</var> in the <i>internal extensible array</i>.<br>
+<br>
+If <var>idx</var> is an index to a new element and the internal extensible array is not long enough (or is not yet allocated), the function extends it (or allocates it) with as many zero-initialized elements as necessary.<br>
+<br>
+The reference returned is guaranteed to be valid at least until another operation is performed on the stream object, including another call to <samp>iword</samp>. Once another operation is performed, the reference may become invalid, although a subsequent call to this same function with the same <var>idx</var> argument returns a reference to the same value within the <i>internal extensible array</i>.<br>
+<br>
+The <dfn>internal extensible array</dfn> is a general-purpose array of objects of type <code>long</code> (if accessed with member <samp><a href="/ios_base::iword">iword</a></samp>) or <code>void*</code> (if accessed with member <samp><a href="/ios_base::pword">pword</a></samp>). Libraries may implement this array in diverse ways: <samp><a href="/ios_base::iword">iword</a></samp> and <samp><a href="/ios_base::pword">pword</a></samp> may or may not share a unique array, and they may not even be arrays, but some other data structure.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>idx</dt>
+<dd>An index value for an element of the <i>internal extensible array</i>.<br>
+Some implementations expect <var>idx</var> to be a value previously returned by member <samp><a href="/ios_base::xalloc">xalloc</a></samp>.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A reference to the element in the internal extensible array whose index is <var>idx</var>.<br>
+This value is returned as a reference to an object of type <code>long</code>.<br>
+On failure, a valid <code>long&</code> initialized to <code>0L</code> is returned, and (if the stream object inherits from <samp><a href="/basic_ios">basic_ios</a></samp>) the <samp>badbit</samp> <i>state flag</i> is set.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// internal extensible array</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::cerr</cite>
+
+<cite>// custom manipulator with per-stream static data:</cite>
+std::ostream&amp; Counter (std::ostream&amp; os) {
+  <var>const</var> <var>static</var> <var>int</var> index = os.xalloc();
+  <var>return</var> os &lt;&lt; ++os.iword(index);
+}
+
+<var>int</var> main()
+{
+  std::cout &lt;&lt; Counter &lt;&lt; <kbd>": first line\n"</kbd>;
+  std::cout &lt;&lt; Counter &lt;&lt; <kbd>": second line\n"</kbd>;
+  std::cout &lt;&lt; Counter &lt;&lt; <kbd>": third line\n"</kbd>;
+  <cite>// cerr has its own count</cite>
+  std::cerr &lt;&lt; Counter &lt;&lt; <kbd>": error line\n"</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>1: first line
+2: second line
+3: third line
+1: error line
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+May modify the stream object. The returned value may also be used to modify it.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/xalloc/"><b>ios_base::xalloc</b></a></dt><dd>Get new index for extensible array [static] <span class="typ">(public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/pword/"><b>ios_base::pword</b></a></dt><dd>Get pointer element of extensible array <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

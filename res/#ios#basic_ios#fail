@@ -1,0 +1,57 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/basic_ios/">basic_ios</a>::fail</h1>
+<div class="C_prototype"><pre>bool fail() const;</pre></div><div id="I_description">Check whether failbit or badbit is set</div>
+<section id="description">
+Returns <code>true</code> if either (or both) the <samp>failbit</samp> or the <samp>badbit</samp> <i>error state flags</i> is set for the stream.<br>
+<br>
+At least one of these flags is set when an error occurs during an input operation.<br>
+<br>
+<samp>failbit</samp> is generally set by an operation when the error is related to the internal logic of the operation itself, and further operations on the stream may be possible. While <samp>badbit</samp> is generally set when the error involves the loss of integrity of the stream, which is likely to persist even if a different operation is attempted on the stream. <samp>badbit</samp> can be checked independently by calling member function <samp><a href="/basic_ios::bad">bad</a></samp>:<br>
+<br>
+<table class="boxed">
+<tr><th rowspan="2"><samp><a href="/ios_base::iostate">iostate</a></samp> value<br>
+(member constants)</th><th rowspan="2">indicates</th><th colspan="5"><samp></samp>functions to check state flags</th></tr>
+<tr><th><samp><a href="/basic_ios::good">good()</a></samp></th><th><samp><a href="/basic_ios::eof">eof()</a></samp></th><th><samp><a href="/basic_ios::fail">fail()</a></samp></th><th><samp><a href="/basic_ios::bad">bad()</a></samp></th><th><samp><a href="/basic_ios::rdstate">rdstate()</a></samp></th></tr>
+<tr><th><samp>goodbit</samp></th><td>No errors (zero value <samp><a href="/ios_base::iostate">iostate</a></samp>)</td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td><samp>goodbit</samp></td></tr>
+<tr><th><samp>eofbit</samp></th><td>End-of-File reached on input operation</td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td><samp>eofbit</samp></td></tr>
+<tr><th><samp>failbit</samp></th><td>Logical error on i/o operation</td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td><samp>failbit</samp></td></tr>
+<tr><th><samp>badbit</samp></th><td>Read/writing error on i/o operation</td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="yes"><code>true</code></td><td><samp>badbit</samp></td></tr>
+</table>
+<samp>eofbit</samp>, <samp>failbit</samp> and <samp>badbit</samp> are member constants with implementation-defined values that can be combined (as if with the bitwise OR operator).<br>
+<br>
+<samp>goodbit</samp> is zero, indicating that none of the other bits is set.<br>
+<br>
+Note that failing to read due to reaching the <i>End-of-File</i> sets both the <samp>eofbit</samp> and the <samp>failbit</samp>.<br>
+<br>
+This function is a synonym of <samp><a href="/basic_ios::operator!">basic_ios::operator!</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>true</code> if <samp>badbit</samp> and/or <samp>failbit</samp> are set.<br>
+<code>false</code> otherwise.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/iostate/"><b>ios_base::iostate</b></a></dt><dd>Type for stream state flags <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/good/"><b>basic_ios::good</b></a></dt><dd>Check whether state of stream is good <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/bad/"><b>basic_ios::bad</b></a></dt><dd>Check whether badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/eof/"><b>basic_ios::eof</b></a></dt><dd>Check whether eofbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/rdstate/"><b>basic_ios::rdstate</b></a></dt><dd>Get error state flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/clear/"><b>basic_ios::clear</b></a></dt><dd>Set error state flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

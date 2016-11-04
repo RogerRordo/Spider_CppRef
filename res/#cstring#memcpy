@@ -1,0 +1,73 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>memcpy</h1>
+<div class="C_prototype"><pre>void * memcpy ( void * destination, const void * source, size_t num );</pre></div><div id="I_description">Copy block of memory</div>
+<section id="description">
+Copies the values of <i>num</i> bytes from the location pointed to by <i>source</i> directly to the memory block pointed to by <i>destination</i>.<br>
+<br>
+The underlying type of the objects pointed to by both the <i>source</i> and <i>destination</i> pointers are irrelevant for this function; The result is a binary copy of the data.<br>
+<br>
+The function does not check for any terminating null character in <i>source</i> - it always copies exactly <i>num</i> bytes.<br>
+<br>
+To avoid overflows, the size of the arrays pointed to by both the <i>destination</i> and <i>source</i> parameters, shall be at least <i>num</i> bytes, and should not overlap (for overlapping memory blocks, <a href="/memmove">memmove</a> is a safer approach).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>destination</dt>
+<dd>Pointer to the destination array where the content is to be copied, type-casted to a pointer of type <tt>void*</tt>.</dd>
+<dt>source</dt>
+<dd>Pointer to the source of data to be copied, type-casted to a pointer of type <tt>const void*</tt>.</dd>
+<dt>num</dt>
+<dd>Number of bytes to copy.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>destination</i> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>/* memcpy example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>struct</var> {
+  <var>char</var> name[40];
+  <var>int</var> age;
+} person, person_copy;
+
+<var>int</var> main ()
+{
+  <var>char</var> myname[] = <kbd>"Pierre de Fermat"</kbd>;
+
+  <cite>/* using memcpy to copy string: */</cite>
+  memcpy ( person.name, myname, strlen(myname)+1 );
+  person.age = 46;
+
+  <cite>/* using memcpy to copy structure: */</cite>
+  memcpy ( &amp;person_copy, &amp;person, <var>sizeof</var>(person) );
+
+  printf (<kbd>"person_copy: %s, %d \n"</kbd>, person_copy.name, person_copy.age );
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+person_copy: Pierre de Fermat, 46 
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/memmove/"><b>memmove</b></a></dt><dd>Move block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memset/"><b>memset</b></a></dt><dd>Fill block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

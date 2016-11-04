@@ -1,0 +1,85 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::empty</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>bool empty() const;</pre></div>
+<div title="C++11" class="on">
+<pre>bool empty() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Test whether vector is empty</div>
+<section id="description">
+Returns whether the <a href="/vector">vector</a> is empty (i.e. whether its <a href="/vector::size">size</a> is <tt>0</tt>).<br>
+<br>
+This function does not modify the container in any way. To clear the content of a <a href="/vector">vector</a>, see <a href="/vector::clear">vector::clear</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if the container <a href="/vector::size">size</a> is <tt>0</tt>, <tt>false</tt> otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector::empty</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector;
+  <var>int</var> sum (0);
+
+  <var>for</var> (<var>int</var> i=1;i&lt;=10;i++) myvector.push_back(i);
+
+  <var>while</var> (!myvector.empty())
+  {
+     sum += myvector.back();
+     myvector.pop_back();
+  }
+
+  std::cout &lt;&lt; <kbd>"total: "</kbd> &lt;&lt; sum &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+The example initializes the content of the vector to a sequence of numbers (form 1 to 10). It then pops the elements one by one until it is empty and calculates their sum.<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>total: 55
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+No contained elements are accessed: concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/clear/"><b>vector::clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/erase/"><b>vector::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/size/"><b>vector::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

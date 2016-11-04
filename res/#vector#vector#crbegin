@@ -1,0 +1,73 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::crbegin<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>const_reverse_iterator crbegin() const noexcept;</pre></div><div id="I_description">Return const_reverse_iterator to reverse beginning</div>
+<section id="description">
+Returns a <tt>const_reverse_iterator</tt> pointing to the last element in the container (i.e., its <i>reverse beginning</i>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A <tt>const_reverse_iterator</tt> to the <i>reverse beginning</i> of the sequence.<br>
+<br>
+Member type <tt>const_reverse_iterator</tt> is a reverse <a href="/RandomAccessIterator">random access iterator</a> type that points to a const element (see <a href="/vector#types">vector member types</a>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector::crbegin/crend</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector = {1,2,3,4,5};
+
+  std::cout &lt;&lt; <kbd>"myvector backwards:"</kbd>;
+  <var>for</var> (<var>auto</var> rit = myvector.crbegin(); rit != myvector.crend(); ++rit)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *rit;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector backwards: 5 4 3 2 1
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+No contained elements are accessed by the call, but the iterator returned can be used to access them. Concurrently accessing or modifying different elements is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+The copy construction or assignment of the returned iterator is also guaranteed to never throw.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/begin/"><b>vector::begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/crend/"><b>vector::crend</b></a></dt><dd>Return const_reverse_iterator to reverse end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/rbegin/"><b>vector::rbegin</b></a></dt><dd>Return reverse iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

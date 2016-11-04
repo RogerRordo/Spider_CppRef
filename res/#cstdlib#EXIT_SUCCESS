@@ -1,0 +1,11 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>EXIT_SUCCESS</h1>
+<div id="I_description">Success termination code</div>
+<section id="description">
+This macro expands to a system-dependent integral expression that, when used as the argument for function <samp><a href="/exit">exit</a></samp>, signifies that the application was successful.<br>
+<br>
+The opposite meaning can be specified with <samp><a href="/EXIT_FAILURE">EXIT_FAILURE</a></samp>.<br>
+<div id="CH_bb"></div></div></div>

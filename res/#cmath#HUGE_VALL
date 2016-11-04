@@ -1,0 +1,13 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>HUGE_VALL<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div id="I_description">Huge long double value</div>
+<section id="description">
+Macro constant that expands to a positive expression of type <code>long double</code>.<br>
+<br>
+A function returns this value when the result of a mathematical operation yields a value that is too large in magnitude to be representable with its return type. This is one of the possible <i>range errors</i>, and is signaled by setting <samp><a href="/errno">errno</a></samp> to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+<br>
+Actually, functions may either return a positive or a negative <samp>HUGE_VALL</samp> (<samp>HUGE_VALL</samp> or <samp>-HUGE_VALL</samp>) to indicate the sign of the result.<br>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,123 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;deque&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/deque/deque/">deque</a>::assign</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>range (1)</th><td><pre>template &lt;class InputIterator&gt;  void assign (InputIterator first, InputIterator last);</pre></td></tr><tr class="even"><th>fill (2)</th><td><pre>void assign (size_type n, const value_type&amp; val);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>range (1)</th><td><pre>template &lt;class InputIterator&gt;  void assign (InputIterator first, InputIterator last);</pre></td></tr><tr class="even"><th>fill (2)</th><td><pre>void assign (size_type n, const value_type&amp; val);</pre></td></tr><tr class="odd"><th>initializer list (3)</th><td><pre>void assign (initializer_list&lt;value_type&gt; il);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Assign container content</div>
+<section id="description">
+Assigns new contents to the <a href="/deque">deque</a> container, replacing its current contents, and modifying its <a href="/deque::size">size</a> accordingly.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+In the <i>range version</i> (1), the new contents are elements constructed from each of the elements in the range between <i>first</i> and <i>last</i>, in the same order.<br>
+<br>
+In the <i>fill version</i> (2), the new contents are <i>n</i> elements, each initialized to a copy of <i>val</i>.<br>
+<br>
+If needed, the container uses its <a href="/deque::get_allocator">internal allocator</a> to allocate additional storage.<br>
+</div>
+<div title="C++11">
+In the <i>range version</i> (1), the new contents are elements constructed from each of the elements in the range between <i>first</i> and <i>last</i>, in the same order.<br>
+<br>
+In the <i>fill version</i> (2), the new contents are <i>n</i> elements, each initialized to a copy of <i>val</i>.<br>
+<br>
+In the <i>initializer list version</i> (3), the new contents are copies of the values passed as initializer list, in the same order.<br>
+<br>
+If there are changes in storage, the <a href="/deque::get_allocator">internal allocator</a> is used (through its <a href="/allocator_traits">traits</a>). It is also used to <a href="/allocator_traits::destroy">destroy</a> all existing elements, and to <a href="/allocator_traits::construct">construct</a> the new ones.<br>
+</div>
+</div>
+<br>
+Any elements held in the container before the call are <i>destroyed</i> and replaced by newly constructed elements (no assignments of elements take place).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd>Input iterators to the initial and final positions in a sequence. The range used is <tt>[first,last)</tt>, which includes all the elements between <i>first</i> and <i>last</i>, including the element pointed by <i>first</i> but not the element pointed by <i>last</i>.<br>
+The function template argument <tt>InputIterator</tt> shall be an <a href="/InputIterator">input iterator</a> type that points to elements of a type from which <tt>value_type</tt> objects can be constructed.</dd>
+<dt>n</dt>
+<dd>New size for the container.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+<dt>val</dt>
+<dd>Value to fill the container with. Each of the <i>n</i> elements in the container will be initialized to a copy of this value.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/deque">deque</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/deque">deque</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br></code></pre></td>
+<td class="source"><pre><code><cite>// deque::assign</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;deque&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::deque&lt;<var>int</var>&gt; first;
+  std::deque&lt;<var>int</var>&gt; second;
+  std::deque&lt;<var>int</var>&gt; third;
+
+  first.assign (7,100);             <cite>// 7 ints with a value of 100</cite>
+
+  std::deque&lt;<var>int</var>&gt;::iterator it;
+  it=first.begin()+1;
+
+  second.assign (it,first.end()-1); <cite>// the 5 central values of first</cite>
+
+  <var>int</var> myints[] = {1776,7,4};
+  third.assign (myints,myints+3);   <cite>// assigning from array.</cite>
+
+  std::cout &lt;&lt; <kbd>"Size of first: "</kbd> &lt;&lt; <var>int</var> (first.size()) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"Size of second: "</kbd> &lt;&lt; <var>int</var> (second.size()) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"Size of third: "</kbd> &lt;&lt; <var>int</var> (third.size()) &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Size of first: 7
+Size of second: 5
+Size of third: 3
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in initial and final <a href="/deque::size">sizes</a> (destructions, constructions).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references related to this container are invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+All copied elements are accessed.<br>
+The container is modified.<br>
+All contained elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the container is in a valid state.<br>
+If <a href="/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if the range specified by <tt>[first,last)</tt> is not valid, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/deque/deque/operator=/"><b>deque::operator=</b></a></dt><dd>Assign content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/resize/"><b>deque::resize</b></a></dt><dd>Change size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

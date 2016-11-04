@@ -1,0 +1,49 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::not_eof</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>static int_type not_eof(const int_type&amp; c);</pre></div>
+<div title="C++11" class="on">
+<pre>static constexpr int_type not_eof(int_type c) noexcept;</pre></div>
+</div>
+</div><div id="I_description">Not End-of-File character</div>
+<section id="description">
+Returns a value that is guaranteed to not be an <i>End-of-File</i>.<br>
+<br>
+If <i>c</i> is not an <i>End-of-File</i> character, it always returns <i>c</i> unchanged. Otherwise, some implementation-defined value that is not an <i>End-of-File</i> character.<br>
+<br>
+All <i>character traits</i> types shall implement the function so that the returned value compares different from <a href="/char_traits::eof">eof()</a> using <a href="/char_traits::eq_int_type">member eq_int_type</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dt>c</dt>
+<dd>Value.<br>
+Member type <tt>int_type</tt> is an integral type that can represent <a href="/char_traits::eof">eof()</a> or any valid character value.<br>
+</dd>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>c</i> if <i>c</i> is not an <i>End-of-File</i> value, and some other value otherwise.<br>
+<br>
+Member type <tt>int_type</tt> is an integral type that can represent <a href="/char_traits::eof">eof()</a> or any valid character value.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/eof/"><b>char_traits::eof</b></a></dt><dd>End-of-File character <span class="typ">( public static member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

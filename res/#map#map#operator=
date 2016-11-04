@@ -1,0 +1,116 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/map/">map</a>::operator=</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>copy (1)</th><td><pre> map&amp; operator= (const map&amp; x);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>copy (1)</th><td><pre>map&amp; operator= (const map&amp; x);</pre></td></tr><tr class="odd"><th>move (2)</th><td><pre>map&amp; operator= (map&amp;&amp; x);</pre></td></tr><tr class="even"><th>initializer list (3)</th><td><pre>map&amp; operator= (initializer_list&lt;value_type&gt; il);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Copy container content</div>
+<section id="description">
+Assigns new contents to the container, replacing its current content.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+Copies all the elements from <i>x</i> into the container, changing its <a href="/map::size">size</a> accordingly.<br>
+<br>
+The container preserves its <a href="/map::get_allocator">current allocator</a>, which is used to allocate additional storage if needed.<br>
+</div>
+<div title="C++11">
+The <i>copy assignment</i> (1) copies all the elements from <i>x</i> into the container (with <i>x</i> preserving its contents).<br>
+<br>
+The <i>move assignment</i> (2) moves the elements of <i>x</i> into the container (<i>x</i> is left in an unspecified but valid state).<br>
+<br>
+The <i>initializer list assignment</i> (3) copies the elements of <i>il</i> into the container.<br>
+<br>
+The new container <a href="/map::size">size</a> is the same as the <a href="/map::size">size</a> of <i>x</i> (or <i>il</i>) before the call.<br>
+<br>
+The container preserves its <a href="/map::get_allocator">current allocator</a>, except if the <a href="/allocator_traits">allocator traits</a> indicate <i>x</i>'s allocator should <a href="/allocator_traits#types">propagate</a>. This <a href="/map::get_allocator">allocator</a> is used (through its <a href="/allocator_traits">traits</a>) to <a href="/allocator_traits::allocate">allocate</a> or <a href="/allocator_traits::deallocate">deallocate</a> if there are changes in storage requirements, and to <a href="/allocator_traits::construct">construct</a> or <a href="/allocator_traits::destroy">destroy</a> elements, if needed.<br>
+</div>
+</div>
+<br>
+The elements stored in the container before the call are either assigned to or destroyed.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>A <a href="/map">map</a> object of the same type (i.e., with the same template parameters, <tt>key</tt>, <tt>T</tt>, <tt>Compare</tt> and <tt>Alloc</tt>).</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/map">map</a> as an alias of <tt><a href="/pair">pair</a>&lt;const key_type, mapped_type&gt;</tt> (see <a href="/map#types">map member types</a>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<tt>*this</tt>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// assignment operator with maps</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::map&lt;<var>char</var>,<var>int</var>&gt; first;
+  std::map&lt;<var>char</var>,<var>int</var>&gt; second;
+
+  first[<kbd>'x'</kbd>]=8;
+  first[<kbd>'y'</kbd>]=16;
+  first[<kbd>'z'</kbd>]=32;
+
+  second=first;                <cite>// second now contains 3 ints</cite>
+  first=std::map&lt;<var>char</var>,<var>int</var>&gt;();  <cite>// and first is now empty</cite>
+
+  std::cout &lt;&lt; <kbd>"Size of first: "</kbd> &lt;&lt; first.size() &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"Size of second: "</kbd> &lt;&lt; second.size() &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Size of first: 0
+Size of second: 3
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+For the <i>copy assignment (1)</i>: Linear in sizes (destructions, copies).<br>
+For the <i>move assignment (2)</i>: Linear in current container <a href="/map::size">size</a> (destructions).* <br>
+For the <i>initializer list assignment (3)</i>: Up to logarithmic in sizes (destructions, move-assignments) -- linear if <i>il</i> is already sorted.<br>
+* <small>Additional complexity for assignments if allocators do not <i><a href="/allocator_traits#types">propagate</a></i></small>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, references and pointers related to this container are invalidated.<br>
+<br>
+In the <i>move assignment</i>, iterators, pointers and references referring to elements in <i>x</i> are also invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+All copied elements are accessed.<br>
+The <i>move assignment (2)</i> modifies <i>x</i>.<br>
+The container and all its elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the container is in a valid state.<br>
+If <a href="/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if <tt>value_type</tt> is not <a href="/is_copy_assignable">copy assignable</a> (or <a href="/is_move_assignable">move assignable</a> for <i>(2)</i>), it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/map/insert/"><b>map::insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/operator[]/"><b>map::operator[]</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/map/"><b>map::map</b></a></dt><dd>Construct map <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

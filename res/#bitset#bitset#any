@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::any</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>bool any() const;</pre></div>
+<div title="C++11" class="on">
+<pre>bool any() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Test if any bit is set</div>
+<section id="description">
+Returns whether any of the bits is set (i.e., whether at least one bit in the <samp><a href="/bitset">bitset</a></samp> is set to <i>one</i>).<br>
+<br>
+This is the opposite of <samp><a href="/bitset::none">bitset::none</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<code>true</code> if any of the bits in the <samp><a href="/bitset">bitset</a></samp> is set (to <i>one</i>), and <code>false</code> otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// bitset::any</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cin, std::cout</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;16&gt; foo;
+
+  std::cout &lt;&lt; <kbd>"Please, enter a binary number: "</kbd>;
+  std::cin &gt;&gt; foo;
+
+  <var>if</var> (foo.any())
+    std::cout &lt;&lt; foo &lt;&lt; <kbd>" has "</kbd> &lt;&lt; foo.count() &lt;&lt; <kbd>" bits set.\n"</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; foo &lt;&lt; <kbd>" has no bits set.\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Please, enter a binary number: 10110
+0000000000010110 has 3 bits set.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The <samp><a href="/bitset">bitset</a></samp> is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/count/"><b>bitset::count</b></a></dt><dd>Count bits set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/none/"><b>bitset::none</b></a></dt><dd>Test if no bit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/test/"><b>bitset::test</b></a></dt><dd>Return bit value <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

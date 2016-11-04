@@ -1,0 +1,68 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>fmin<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<pre>     double fmin  (double x     , double y);      float fminf (float x      , float y);long double fminl (long double x, long double y);</pre></div>
+<div title="C++11" class="on">
+<pre>     double fmin (double x     , double y);      float fmin (float x      , float y);long double fmin (long double x, long double y);     double fmin (Type1 x      , Type2 y);       // additional overloads</pre></div>
+</div>
+</div><div id="I_description">Minimum value</div>
+<section id="description">
+Returns the smaller of its arguments: either <var>x</var> or <var>y</var>.<br>
+<br>
+If one of the arguments in a <i>NaN</i>, the other is returned.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for other combinations of <a href="/is_arithmetic">arithmetic types</a> (<samp>Type1</samp> and <samp>Type2</samp>): These overloads effectively cast its arguments to <code>double</code> before calculations, except if at least one of the arguments is of type <code>long double</code> (in which case both are casted to <code>long double</code> instead).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x, y</dt>
+<dd>Values among which the function selects a minimum.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The minimum numeric value of its arguments.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fmin example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* fmin */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  printf (<kbd>"fmin (100.0, 1.0) = %f\n"</kbd>, fmin(100.0,1.0));
+  printf (<kbd>"fmin (-100.0, 1.0) = %f\n"</kbd>, fmin(-100.0,1.0));
+  printf (<kbd>"fmin (-100.0, -1.0) = %f\n"</kbd>, fmin(-100.0,-1.0));
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+fmin (100.0, 1.0) = 1.000000
+fmin (-100.0, 1.0) = -100.000000
+fmin (-100.0,-1.0) = -100.000000
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/fmax/"><b>fmax</b></a></dt><dd>Maximum value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/fdim/"><b>fdim</b></a></dt><dd>Positive difference <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

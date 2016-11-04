@@ -1,0 +1,100 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::register_callback</h1>
+<div class="C_prototype"><pre>void register_callback (event_callback fn, int index);</pre></div><div id="I_description">Register event callback function</div>
+<section id="description">
+Registers <var>fn</var> as a callback function to be called automatically with <var>index</var> as argument when a <i>stream event</i> occurs.<br>
+<br>
+If more than one callback function is registered, they are all called, in the inverse order of registration.<br>
+<br>
+The callback function shall be of a type convertible to <samp><a href="/ios_base::event_callback">event_callback</a></samp>. And it is called by an expression equivalent to:<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>&nbsp;</code></pre></td>
+<td class="source"><pre><code>(*fn)(ev,stream,index)</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+where <var>index</var> is the <var>index</var> argument passed when the callback function is registered with this function, <var>stream</var> is a pointer to the stream object suffering the event, and <var>ev</var> is an object of member enum type <samp><a href="/ios_base::event">event</a></samp> indicating which event occurred. It can be one of the following member values:<br>
+<br>
+<table class="boxed">
+<tr><th>member constant</th><th>event triggered</th></tr>
+<tr><td><samp>copyfmt_event</samp></td><td> on a call to member <samp><a href="/basic_ios::copyfmt">copyfmt</a></samp> (at the moment where all format flags have been copied, but before the exception mask is)</td></tr>
+<tr><td><samp>erase_event</samp></td><td> on a call to the stream destructor (also called at the beginning of <samp><a href="/basic_ios::copyfmt">basic_ios::copyfmt</a></samp>).</td></tr>
+<tr><td><samp>imbue_event</samp></td><td> on a call to <samp><a href="/ios_base::imbue">imbue</a></samp> (just before the function returns).</td></tr>
+</table>
+<br>
+All registered functions are called on all of the cases above. The function itself can use the <var>ev</var> parameter to discern which event triggered the function call.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>fn</dt>
+<dd>Pointer to the function to be called.<br>
+The <samp><a href="/ios_base::event_callback">event_callback</a></samp> member type is defined as:<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>&nbsp;</code></pre></td>
+<td class="source"><pre><code><var>typedef</var> <var>void</var> (*event_callback) (event ev, ios_base&amp; ios, <var>int</var> index);</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</dd>
+<dt>index</dt>
+<dd>Integer value passed as parameter to the callback function.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none <br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// stream callbacks</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::ios_base</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// ofstream</cite>
+
+<var>void</var> testfn (std::ios::event ev, std::ios_base&amp; stream, <var>int</var> index)
+{
+  <var>switch</var> (ev)
+  {
+    <var>case</var> stream.copyfmt_event:
+      std::cout &lt;&lt; <kbd>"copyfmt_event\n"</kbd>; <var>break</var>;
+    <var>case</var> stream.imbue_event:
+      std::cout &lt;&lt; <kbd>"imbue_event\n"</kbd>; <var>break</var>;
+    <var>case</var> stream.erase_event:
+      std::cout &lt;&lt; <kbd>"erase_event\n"</kbd>; <var>break</var>;
+  }
+}
+
+<var>int</var> main () {
+  std::ofstream filestr;
+  filestr.register_callback (testfn,0);
+  filestr.imbue (std::cout.getloc());
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>imbue_event
+erase_event
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/imbue/"><b>ios_base::imbue</b></a></dt><dd>Imbue locale <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/copyfmt/"><b>ios::copyfmt</b></a></dt><dd>Copy formatting information <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/event/"><b>ios_base::event</b></a></dt><dd>Type to indicate event type <span class="typ">(public member type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

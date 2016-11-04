@@ -1,0 +1,53 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>mbstowcs</h1>
+<div class="C_prototype"><pre>size_t mbstowcs (wchar_t* dest, const char* src, size_t max);</pre></div><div id="I_description">Convert multibyte string to wide-character string</div>
+<section id="description">
+Translates the multibyte sequence pointed by <var>src</var> to the equivalent sequence of wide-characters (which is stored in the array pointed by <var>dest</var>), up until either <var>max</var> wide characters have been translated or until a null character is encountered in the multibyte sequence <var>src</var> (which is also translated and stored, but not counted in the length returned by the function).<br>
+<br>
+If <var>max</var> characters are successfully translated, the resulting string stored in <var>dest</var> is not null-terminated.<br>
+<br>
+The behavior of this function depends on the <samp>LC_CTYPE</samp> category of the selected <a href="/clocale">C locale</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>dest</dt>
+<dd>Pointer to an array of <code>wchar_t</code> elements long enough to contain the resulting sequence (at most, <var>max</var> wide characters).</dd>
+<dt>src</dt>
+<dd>C-string with the multibyte characters to be interpreted.<br>
+The multibyte sequence shall begin in the initial shift state.</dd>
+<dt>max</dt>
+<dd>Maximum number of <code>wchar_t</code> characters to write to <var>dest</var>.<br>
+<samp><a href="/cstdlib:size_t">size_t</a></samp> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value </h3>
+The number of wide characters written to <var>dest</var>, not including the eventual <i>terminating null character</i>.<br>
+If an invalid multibyte character is encountered, a value of <code>(<a href="/cstdlib:size_t">size_t</a>)-1</code> is returned.<br>
+Notice that <samp><a href="/cstdlib:size_t">size_t</a></samp> is an unsigned integral type, and thus none of the values possibly returned is less than zero.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The function accesses the array pointed by <var>src</var>, and modifies the array pointed by <var>dest</var>.<br>
+The function may also access and modify an internal state object, which may cause data races on concurrent calls to this function if the implementation uses a static object (see <samp><a href="/mbsrtowcs">mbsrtowcs</a></samp> for an alternative that can use an external state object).<br>
+Concurrently changing locale settings may also introduce data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If <var>dest</var> does not point to an array long enough to contain the translated sequence, or if <var>src</var> is either not null-terminated or does not contain enough bytes to generate <var>max</var> wide characters (or if it does not begin in the initial shift state), it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/mblen/"><b>mblen</b></a></dt><dd>Get length of multibyte character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/mbtowc/"><b>mbtowc</b></a></dt><dd>Convert multibyte sequence to wide character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/wcstombs/"><b>wcstombs</b></a></dt><dd>Convert wide-character string to multibyte string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

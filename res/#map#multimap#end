@@ -1,0 +1,92 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/multimap/">multimap</a>::end</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>      iterator end();const_iterator end() const;</pre></div>
+<div title="C++11" class="on">
+<pre>      iterator end() noexcept;const_iterator end() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return iterator to end</div>
+<section id="description">
+Returns an iterator referring to the <i>past-the-end</i> element in the <a href="/multimap">multimap</a> container.<br>
+<br>
+The <dfn>past-the-end</dfn> element is the theoretical element that would follow the last element in the <a href="/multimap">multimap</a> container. It does not point to any element, and thus shall not be dereferenced.<br>
+<br>
+Because the ranges used by functions of the standard library do not include the element pointed by their closing iterator, this function is often used in combination with <a href="/multimap::begin">multimap::begin</a> to specify a range including all the elements in the container.<br>
+<br>
+If the container is <a href="/multimap::empty">empty</a>, this function returns the same as <a href="/multimap::begin">multimap::begin</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+An iterator to the <i>past-the-end</i> element in the container.<br>
+<br>
+If the <a href="/multimap">multimap</a> object is const-qualified, the function returns a <tt>const_iterator</tt>. Otherwise, it returns an <tt>iterator</tt>.<br>
+<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are <a href="/BidirectionalIterator">bidirectional iterator</a> types pointing to elements.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// multimap::begin/end</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt; mymultimap;
+
+  mymultimap.insert (std::pair&lt;<var>char</var>,<var>int</var>&gt;(<kbd>'a'</kbd>,10));
+  mymultimap.insert (std::pair&lt;<var>char</var>,<var>int</var>&gt;(<kbd>'b'</kbd>,20));
+  mymultimap.insert (std::pair&lt;<var>char</var>,<var>int</var>&gt;(<kbd>'b'</kbd>,150));
+
+  <cite>// show content:</cite>
+  <var>for</var> (std::multimap&lt;<var>char</var>,<var>int</var>&gt;::iterator it=mymultimap.begin(); it!=mymultimap.end(); ++it)
+    std::cout &lt;&lt; (*it).first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; (*it).second &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>a =&gt; 10
+b =&gt; 20
+b =&gt; 150
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed (neither the const nor the non-const versions modify the container).<br>
+No contained elements are accessed by the call, but the iterator returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+The copy construction or assignment of the returned iterator is also guaranteed to never throw.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/multimap/begin/"><b>multimap::begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/rbegin/"><b>multimap::rbegin</b></a></dt><dd>Return reverse iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/rend/"><b>multimap::rend</b></a></dt><dd>Return reverse iterator to reverse end <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

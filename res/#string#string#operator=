@@ -1,0 +1,101 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::operator=</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>string&amp; operator= (const string&amp; str);</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>string&amp; operator= (const char* s);</pre></td></tr><tr class="odd"><th>character (3)</th><td><pre>string&amp; operator= (char c);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>string (1)</th><td><pre>string&amp; operator= (const string&amp; str);</pre></td></tr><tr class="odd"><th>c-string (2)</th><td><pre>string&amp; operator= (const char* s);</pre></td></tr><tr class="even"><th>character (3)</th><td><pre>string&amp; operator= (char c);</pre></td></tr><tr class="odd"><th>initializer list (4)</th><td><pre>string&amp; operator= (initializer_list&lt;char&gt; il);</pre></td></tr><tr class="even"><th>move (5)</th><td><pre>string&amp; operator= (string&amp;&amp; str) noexcept;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">String assignment</div>
+<section id="description">
+Assigns a new value to the string, replacing its current contents.<br>
+<br>
+(See member function <a href="/string::assign">assign</a> for additional assignment options).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>A <a href="/string">string</a> object, whose value is either copied <i>(1)</i> or moved <i>(5)</i> if different from <tt>*this</tt> (if moved, <i>str</i> is left in an unspecified but valid state).<br>
+</dd>
+<dt>s</dt>
+<dd>Pointer to a null-terminated sequence of characters.<br>
+The sequence is copied as the new value for the string.</dd>
+<dt>c</dt>
+<dd>A character.<br>
+The string value is set to a single copy of this character (the <a href="/string::length">string length</a> becomes <tt>1</tt>).</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.<br>
+The characters are copied, in the same order.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>*this</tt>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// string assigning</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str1, str2, str3;
+  str1 = <kbd>"Test string: "</kbd>;   <cite>// c-string</cite>
+  str2 = <kbd>'x'</kbd>;               <cite>// single character</cite>
+  str3 = str1 + str2;       <cite>// string</cite>
+
+  std::cout &lt;&lt; str3  &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Test string: x
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+Unspecified.<br>
+</div>
+<div title="C++11">
+Unspecified, but generally linear in the new <a href="/string::length">string length</a> (and constant for the <i>move version</i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+The <i>move assignment (5)</i> modifies <var>str</var>.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+For the <i>move assignment (5)</i>, the function does not throw exceptions (no-throw guarantee).<br>
+In all other cases, there are no effects in case an exception is thrown (strong guarantee).<br>
+<br>
+If the resulting <a href="/string::length">string length</a> would exceed the <a href="/string::max_size">max_size</a>, a <a href="/length_error">length_error</a> exception is thrown.<br>
+A <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/assign/"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/operator+=/"><b>string::operator+=</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/insert/"><b>string::insert</b></a></dt><dd>Insert into string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/string/"><b>string::string</b></a></dt><dd>Construct string object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/compare/"><b>string::compare</b></a></dt><dd>Compare strings <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

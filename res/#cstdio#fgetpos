@@ -1,0 +1,75 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fgetpos</h1>
+<div class="C_prototype"><pre>int fgetpos ( FILE * stream, fpos_t * pos );</pre></div><div id="I_description">Get current position in stream</div>
+<section id="description">
+Retrieves the current position in the <i>stream</i>.<br>
+<br>
+The function fills the <a href="/fpos_t">fpos_t</a> object pointed by <i>pos</i> with the information needed from the <i>stream</i>'s <i>position indicator</i> to restore the <i>stream</i> to its current position (and multibyte state, if <i>wide-oriented</i>) with a call to <a href="/fsetpos">fsetpos</a>.<br>
+<br>
+The <a href="/ftell">ftell</a> function can be used to retrieve the current position in the <i>stream</i> as an integer value.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies the stream.</dd>
+<dt>pos</dt>
+<dd>Pointer to a <a href="/fpos_t">fpos_t</a> object.<br>
+This should point to an object already allocated.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns zero.<br>
+In case of error, <a href="/errno">errno</a> is set to a platform-specific positive value and the function returns a non-zero value.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fgetpos example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<var>int</var> main ()
+{
+   FILE * pFile;
+   <var>int</var> c;
+   <var>int</var> n;
+   fpos_t pos;
+
+   pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"r"</kbd>);
+   <var>if</var> (pFile==NULL) perror (<kbd>"Error opening file"</kbd>);
+   <var>else</var>
+   {
+     c = fgetc (pFile);
+     printf (<kbd>"1st character is %c\n"</kbd>,c);
+     fgetpos (pFile,&amp;pos);
+     <var>for</var> (n=0;n&lt;3;n++)
+     {
+        fsetpos (pFile,&amp;pos);
+        c = fgetc (pFile);
+        printf (<kbd>"2nd character is %c\n"</kbd>,c);
+     }
+     fclose (pFile);
+   }
+   <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Possible output (with <tt>myfile.txt</tt> containing <tt>ABC</tt>):<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>1st character is A
+2nd character is B
+2nd character is B
+2nd character is B
+</samp></pre></td></tr></table></div>
+<br>
+The example opens <tt>myfile.txt</tt>, then reads the first character once, and then reads 3 times the same second character.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fsetpos/"><b>fsetpos</b></a></dt><dd>Set position indicator of stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ftell/"><b>ftell</b></a></dt><dd>Get current position in stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fseek/"><b>fseek</b></a></dt><dd>Reposition stream position indicator <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

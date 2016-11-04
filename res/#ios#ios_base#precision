@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::precision</h1>
+<div class="C_prototype"><table><tr class="odd"><th>get (1)</th><td><pre>streamsize precision() const;</pre></td></tr><tr class="even"><th>set (2)</th><td><pre>streamsize precision (streamsize prec);</pre></td></tr></table></div><div id="I_description">Get/Set floating-point decimal precision</div>
+<section id="description">
+The first form <i>(1)</i> returns the value of the current floating-point precision field for the stream.<br>
+The second form <i>(2)</i> also sets it to a new value.<br>
+<br>
+The <dfn>floating-point precision</dfn> determines the maximum number of digits to be written on insertion operations to express floating-point values. How this is interpreted depends on whether the <samp>floatfield</samp> <a href="/ios_base::fmtflags">format flag</a> is set to a specific notation (either <samp><a href="/fixed">fixed</a></samp> or <samp><a href="/scientific">scientific</a></samp>) or it is unset (using the <i>default notation</i>, which is not necessarily equivalent to either <samp><a href="/fixed">fixed</a></samp> nor <samp><a href="/scientific">scientific</a></samp>).<br>
+<br>
+For the default locale:<br>
+<ul>
+<li>Using the default floating-point notation, the precision field specifies the maximum number of meaningful digits to display in total counting both those before and those after the decimal point. Notice that it is not a minimum, and therefore it does not pad the displayed number with trailing zeros if the number can be displayed with less digits than the <i>precision</i>.</li>
+<li>In both the <samp><a href="/fixed">fixed</a></samp> and <samp><a href="/scientific">scientific</a></samp> notations, the precision field specifies exactly how many digits to display after the decimal point, even if this includes trailing decimal zeros. The digits before the decimal point are not relevant for the <i>precision</i> in this case.</li>
+</ul>
+<br>
+This <i>decimal precision</i> can also be modified using the parameterized manipulator <samp><a href="/setprecision">setprecision</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>prec</dt>
+<dd>New value for the floating-point precision.<br>
+<samp><a href="/streamsize">streamsize</a></samp> is a signed integral value.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The <i>precision</i> selected in the stream before the call.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// modify precision</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::ios</cite>
+
+<var>int</var> main () {
+  <var>double</var> f = 3.14159;
+  std::cout.unsetf ( std::ios::floatfield );                <cite>// floatfield not set</cite>
+  std::cout.precision(5);
+  std::cout &lt;&lt; f &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout.precision(10);
+  std::cout &lt;&lt; f &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout.setf( std::ios::fixed, std:: ios::floatfield ); <cite>// floatfield set to fixed</cite>
+  std::cout &lt;&lt; f &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>3.1416
+3.14159
+3.1415900000
+</samp></pre></td></tr></table></div>
+<br>
+Notice how the first number written is just 5 digits long, while the second is 6, but not more, even though the stream's precision is now 10. That is because <samp>precision</samp> with the default <samp>floatfield</samp> only specifies the <i>maximum</i> number of digits to be displayed, but not the minimum.<br>
+The third number printed displays 10 digits after the decimal point because the <samp>floatfield</samp> format flag is in this case set to <samp>fixed</samp>.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses <i>(1)</i> or modifies <i>(2)</i> the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/iomanip/setprecision/"><b>setprecision</b></a></dt><dd>Set decimal precision <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/width/"><b>ios_base::width</b></a></dt><dd>Get/set field width <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

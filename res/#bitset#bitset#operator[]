@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::operator[]</h1>
+<div class="C_prototype"><pre>     bool operator[] (size_t pos) const;reference operator[] (size_t pos);</pre></div><div id="I_description">Access bit</div>
+<section id="description">
+The function returns the value (or a reference) to the bit at position <var>pos</var>.<br>
+<br>
+With this operator, no range check is performed. Use <samp><a href="/bitset::test">bitset::test</a></samp> to access the value with <samp><a href="/bitset">bitset</a></samp> bounds checked.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pos</dt>
+<dd>Order position of the bit whose value is accessed.<br>
+Order positions are counted from the rightmost bit, which is order position <code>0</code>.<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The bit at position <var>pos</var>.<br>
+<br>
+If the <samp><a href="/bitset">bitset</a></samp> object is const-qualified, the function returns a <code>bool</code> value. Otherwise, it returns a value of the special member type <samp><a href="/bitset::reference">reference</a></samp>, which emulates a <code>bool</code> value with <i>reference-semantics</i> with respect to one bit in the <samp><a href="/bitset">bitset</a></samp> (see <samp><a href="/bitset::reference">bitset::reference</a></samp>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// bitset::operator[]</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;4&gt; foo;
+
+  foo[1]=1;             <cite>// 0010</cite>
+  foo[2]=foo[1];        <cite>// 0110</cite>
+
+  std::cout &lt;&lt; <kbd>"foo: "</kbd> &lt;&lt; foo &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+foo: 0110
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The <samp><a href="/bitset">bitset</a></samp> is accessed (neither the const nor the non-const versions modify the container).<br>
+The reference returned by the non-const version can be used to access or modify the bits in the <samp><a href="/bitset">bitset</a></samp>. Notice that modifying a single bit may have effects on an undetermined number of other bits in the <samp><a href="/bitset">bitset</a></samp>, thus rendering concurrent access/modification of different bits not thread-safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <var>pos</var> is not a valid bit position, it causes <i>undefined behavior</i>.<br>
+Otherwise, if an exception is thrown by this member function, the <samp><a href="/bitset">bitset</a></samp> is left in a valid state (basic guarantee).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/test/"><b>bitset::test</b></a></dt><dd>Return bit value <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

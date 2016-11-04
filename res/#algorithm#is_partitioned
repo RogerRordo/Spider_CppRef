@@ -1,0 +1,108 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>is_partitioned<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class UnaryPredicate&gt;  bool is_partitioned (InputIterator first, InputIterator last, UnaryPredicate pred);</pre></div><div id="I_description">Test whether range is partitioned</div>
+<section id="description">
+Returns <code>true</code> if all the elements in the range <code>[first,last)</code> for which <var>pred</var> returns <code>true</code> precede those for which it returns <code>false</code>.<br>
+<br>
+If the range is empty, the function returns <code>true</code>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator, <var>class</var> UnaryPredicate&gt;
+  <var>bool</var> is_partitioned (InputIterator first, InputIterator last, UnaryPredicate pred)
+{
+  <var>while</var> (first!=last &amp;&amp; pred(*first)) {
+    ++first;
+  }
+  <var>while</var> (first!=last) {
+    <var>if</var> (pred(*first)) <var>return</var> <var>false</var>;
+    ++first;
+  }
+  <var>return</var> <var>true</var>;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions of the sequence. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element belongs to the first group (if <code>true</code>, the element is expected before all the elements for which it returns <code>false</code>).<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<code>true</code> if all the elements in the range <code>[first,last)</code> for which <var>pred</var> returns <code>true</code> precede those for which it returns <code>false</code>.<br>
+Otherwise it returns <code>false</code>.<br>
+<br>
+If the range is empty, the function returns <code>true</code>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br></code></pre></td>
+<td class="source"><pre><code><cite>// is_partitioned example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::is_partitioned</cite>
+<dfn>#include &lt;array&gt;        </dfn><cite>// std::array</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) { <var>return</var> (i%2)==1; }
+
+<var>int</var> main () {
+  std::array&lt;<var>int</var>,7&gt; foo {1,2,3,4,5,6,7};
+
+  <cite>// print contents:</cite>
+  std::cout &lt;&lt; <kbd>"foo:"</kbd>; <var>for</var> (<var>int</var>&amp; x:foo) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; x;
+  <var>if</var> ( std::is_partitioned(foo.begin(),foo.end(),IsOdd) )
+    std::cout &lt;&lt; <kbd>" (partitioned)\n"</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; <kbd>" (not partitioned)\n"</kbd>;
+
+  <cite>// partition array:</cite>
+  std::partition (foo.begin(),foo.end(),IsOdd);
+
+  <cite>// print contents again:</cite>
+  std::cout &lt;&lt; <kbd>"foo:"</kbd>; <var>for</var> (<var>int</var>&amp; x:foo) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; x;
+  <var>if</var> ( std::is_partitioned(foo.begin(),foo.end(),IsOdd) )
+    std::cout &lt;&lt; <kbd>" (partitioned)\n"</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; <kbd>" (not partitioned)\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo: 1 2 3 4 5 6 7 (not partitioned)
+foo: 1 7 3 5 4 6 2 (partitioned)
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Calls <var>pred</var> for each element until a mismatch is found.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Some (or all) of the objects in the range <code>[first,last)</code> are accessed (once at most).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either <var>pred</var> or an operation on an iterator throws.<br>
+Note that invalid parameters cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/partition/"><b>partition</b></a></dt><dd>Partition range in two <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/partition_point/"><b>partition_point</b></a></dt><dd>Get partition point <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

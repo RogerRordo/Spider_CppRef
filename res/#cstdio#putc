@@ -1,0 +1,59 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>putc</h1>
+<div class="C_prototype"><pre>int putc ( int character, FILE * stream );</pre></div><div id="I_description">Write character to stream</div>
+<section id="description">
+Writes a <i>character</i> to the <i>stream</i> and advances the position indicator.<br>
+<br>
+The character is written at the position indicated by the <i>internal position indicator</i> of the <i>stream</i>, which is then automatically advanced by one.<br>
+<br>
+<tt>putc</tt> and <a href="/fputc">fputc</a> are equivalent, except that <tt>putc</tt> may be implemented as a macro in some libraries. See <a href="/putchar">putchar</a> for a similar function that writes directly to <a href="/stdout">stdout</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>character</dt>
+<dd>The <tt>int</tt> promotion of the character to be written.<br>
+The value is internally converted to an <tt>unsigned char</tt> when written.<br>
+Because some libraries may implement this function as a macro, and this may evaluate the <i>stream</i> expression more than once, this should be an expression without side effects.</dd>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies an output stream.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the <i>character</i> written is returned.<br>
+If a writing error occurs, <a href="/EOF">EOF</a> is returned and the <i>error indicator</i> (<a href="/ferror">ferror</a>) is set.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* putc example: alphabet writer */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  <var>char</var> c;
+
+  pFile=fopen(<kbd>"alphabet.txt"</kbd>,<kbd>"wt"</kbd>);
+  <var>for</var> (c = <kbd>'A'</kbd> ; c &lt;= <kbd>'Z'</kbd> ; c++) {
+    putc (c , pFile);
+    }
+  fclose (pFile);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This example program creates a file called <tt>alphabet.txt</tt> and writes ABCDEFGHIJKLMNOPQRSTUVWXYZ to it. <br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/putchar/"><b>putchar</b></a></dt><dd>Write character to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fputc/"><b>fputc</b></a></dt><dd>Write character to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/getc/"><b>getc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fwrite/"><b>fwrite</b></a></dt><dd>Write block of data to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fprintf/"><b>fprintf</b></a></dt><dd>Write formatted data to stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

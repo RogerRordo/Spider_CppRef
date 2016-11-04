@@ -1,0 +1,76 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>lgamma<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<pre>     double lgamma  (double x);      float lgammaf (float x);long double lgammal (long double x);</pre></div>
+<div title="C++11" class="on">
+<pre>     double lgamma (double x);      float lgamma (float x);long double lgamma (long double x);     double lgamma (T x);           // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Compute log-gamma function</div>
+<section id="description">
+<img src="lgamma.png" alt="log-gamma function" title="log-gamma function" width="300" height="270" class="floatright">
+Returns the natural logarithm of the absolute value of the <i>gamma function</i> of <var>x</var>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Parameter for the <i>log-gamma</i> function.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Log-gamma function of <var>x</var>.<br>
+If <var>x</var> is too large, an overflow <i>range error</i> occurs.<br>
+If <var>x</var> is zero or a negative integer for which the function is asymptotic, it may cause a <i>pole error</i> (depending on implementation).<br>
+<br>
+If an overflow <i>range error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> is raised.<br>
+<br>
+If a <i>pole error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_DIVBYZERO">FE_DIVBYZERO</a></samp> is raised.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>/* lgamma example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* lgamma */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> param, result;
+  param = 0.5;
+  result = lgamma (param);
+  printf (<kbd>"lgamma(%f) = %f\n"</kbd>, param, result );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+lgamma (0.500000) = 0.572365
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/tgamma/"><b>tgamma</b></a></dt><dd>Compute gamma function <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/erf/"><b>erf</b></a></dt><dd>Compute error function <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/erfc/"><b>erfc</b></a></dt><dd>Compute complementary error function <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

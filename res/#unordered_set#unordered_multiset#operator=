@@ -1,0 +1,86 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_multiset/">unordered_multiset</a>::operator=<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>copy (1)</th><td><pre>unordered_multiset&amp; operator= ( const unordered_multiset&amp; ums );</pre></td></tr><tr class="even"><th>move (2)</th><td><pre>unordered_multiset&amp; operator= ( unordered_multiset&amp;&amp; ums );</pre></td></tr><tr class="odd"><th>initializer list (3)</th><td><pre>unordered_multiset&amp; operator= ( intitializer_list&lt;value_type&gt; il );</pre></td></tr></table></div><div id="I_description">Assign content</div>
+<section id="description">
+Assigns <i>ums</i> (or <i>il</i>) as the new content for the container.<br>
+<br>
+The elements contained in the object before the call are destroyed, and replaced by those in <a href="/unordered_multiset">unordered_multiset</a> <i>ums</i> or <a href="/initializer_list">initializer list</a> <i>il</i>, if any.<br>
+<br>
+The first version (1) performs a copy assignment, which copies all the elements of <i>ums</i> into the container object (with <i>ums</i> preserving its contents).<br>
+<br>
+The second version (2) performs a move assignment, which transfer ownership of the contents of <i>ums</i> to the object. No copies occur: the content is lost by <i>ums</i>.<br>
+<br>
+The third version (3) assigns the contents of the initializer list <i>il</i> as the elements of the container object.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>ums</dt>
+<dd>An <a href="/unordered_multiset">unordered_multiset</a> object of the same type (i.e., with the same template parameters).</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/unordered_multiset">unordered_multiset</a> as an alias of its first template parameter (<tt>Key</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<tt>*this</tt>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_multiset::operator=</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>template</var>&lt;<var>class</var> T&gt;
+T cmerge (T a, T b) {
+  T t(a); t.insert(b.begin(),b.end()); <var>return</var> t;
+}
+
+<var>int</var> main ()
+{
+  std::unordered_multiset&lt;std::string&gt; first, second, third;
+  first = {<kbd>"red"</kbd>,<kbd>"green"</kbd>,<kbd>"blue"</kbd>};      <cite>// init list</cite>
+  second = {<kbd>"red"</kbd>,<kbd>"yellow"</kbd>,<kbd>"blue"</kbd>};    <cite>// init list</cite>
+  third = cmerge (first, second);      <cite>// move</cite>
+  first = third;                       <cite>// copy</cite>
+
+  std::cout &lt;&lt; <kbd>"first contains:"</kbd>;
+  <var>for</var> (<var>const</var> std::string&amp; x: first) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x;
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>first contains: blue blue red red yellow green
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+For the <i>copy assignment (1)</i>: Linear in sizes (destructions, copies).<br>
+For the <i>move assignment (2)</i>: Linear in current container <a href="/unordered_multiset::size">size</a> (destructions).* <br>
+For the <i>initializer list assignment (3)</i>: On average, linear in sizes (destructions, move-assignments) -- worst case: quadratic.<br>
+* <small>Additional complexity for assignments if allocators do not <i><a href="/allocator_traits#types">propagate</a></i></small>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, references and pointers to elements that were in the container before the call are invalidated.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_multiset/unordered_multiset/"><b>unordered_multiset::unordered_multiset</b></a></dt><dd>Construct unordered_multiset <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_multiset/emplace/"><b>unordered_multiset::emplace</b></a></dt><dd>Construct and insert element <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

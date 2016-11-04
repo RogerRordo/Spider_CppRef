@@ -1,0 +1,70 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>isfinite<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<table><tr class="odd"><th>macro</th><td><pre>isfinite(x)</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>function</th><td><pre>bool isfinite (float x);bool isfinite (double x);bool isfinite (long double x);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Is finite value</div>
+<section id="description">
+Returns whether <var>x</var> is a <i>finite value</i>.<br>
+<br>
+A <dfn>finite value</dfn> is any floating-point value that is neither <i>infinite</i> nor <i>NaN</i> (<i>Not-A-Number</i>).<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+In C, this is implemented as a macro that returns an <code>int</code> value. The type of <var>x</var> shall be <code>float</code>, <code>double</code> or <code>long double</code>.<br>
+</div>
+<div title="C++11">
+In C++, it is implemented with function overloads for each <i><a href="/is_floating_point">floating-point type</a></i>, each returning a <code>bool</code> value.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>A floating-point value.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+A non-zero value (<code>true</code>) if <var>x</var> is finite; and zero (<code>false</code>) otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>/* isfinite example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* isfinite, sqrt */</cite><dfn></dfn>
+
+<var>int</var> main()
+{
+  printf (<kbd>"isfinite(0.0)       : %d\n"</kbd>,isfinite(0.0));
+  printf (<kbd>"isfinite(1.0/0.0)   : %d\n"</kbd>,isfinite(1.0/0.0));
+  printf (<kbd>"isfinite(-1.0/0.0)  : %d\n"</kbd>,isfinite(-1.0/0.0));
+  printf (<kbd>"isfinite(sqrt(-1.0)): %d\n"</kbd>,isfinite(sqrt(-1.0)));
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+isfinite(0.0)       : 1
+isfinite(1.0/0.0)   : 0
+isfinite(-1.0/0.0)  : 0
+isfinite(sqrt(-1.0)): 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/isinf/"><b>isinf</b></a></dt><dd>Is infinity <span class="typ">(macro/function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/isnan/"><b>isnan</b></a></dt><dd>Is Not-A-Number <span class="typ">(macro/function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/isnormal/"><b>isnormal</b></a></dt><dd>Is normal <span class="typ">(macro/function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/fpclassify/"><b>fpclassify</b></a></dt><dd>Classify floating-point value <span class="typ">(macro/function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

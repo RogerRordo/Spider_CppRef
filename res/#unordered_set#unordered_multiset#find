@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_multiset/">unordered_multiset</a>::find<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>      iterator find ( const key_type&amp; k );const_iterator find ( const key_type&amp; k ) const;</pre></div><div id="I_description">Get iterator to element</div>
+<section id="description">
+Searches the container for an element with <i>k</i> as key and returns an iterator to it if found, otherwise it returns an iterator to <a href="/unordered_multiset::end">unordered_multiset::end</a> (the element past the end of the container).<br>
+<br>
+To obtain a range with all the elements whose key is <i>k</i> you can use member function <a href="/unordered_multiset::equal_range">equal_range</a>.<br>
+To just check whether a particular key exists, you can use <a href="/unordered_multiset::count">count</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>k</dt>
+<dd>Key to be searched for.<br>
+Member type <tt>key_type</tt> is the type of the keys for the elements in the container, defined in <a href="/unordered_multiset">unordered_multiset</a> as an alias of its first template parameter (<tt>Key</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the element, if the specified key value is found, or <a href="/unordered_multiset::end">unordered_multiset::end</a> if the specified key is not found in the container.<br>
+<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are <a href="/ForwardIterator">forward iterator</a> types.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_multiset::find</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_multiset&lt;std::string&gt; myums =
+    {<kbd>"cow"</kbd>,<kbd>"cow"</kbd>,<kbd>"pig"</kbd>,<kbd>"sheep"</kbd>,<kbd>"pig"</kbd>};
+
+  std::unordered_multiset&lt;std::string&gt;::iterator it = myums.find(<kbd>"pig"</kbd>);
+
+  <var>if</var> ( it != myums.end() )
+    std::cout &lt;&lt; *it &lt;&lt; <kbd>" found"</kbd> &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>pig found
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Average case: constant.<br>
+Worst case: linear in <a href="/unordered_multiset::size">container size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_multiset/equal_range/"><b>unordered_multiset::equal_range</b></a></dt><dd>Get range of elements with specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_multiset/count/"><b>unordered_multiset::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

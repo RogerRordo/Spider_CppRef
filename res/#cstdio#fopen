@@ -1,0 +1,78 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fopen</h1>
+<div class="C_prototype"><pre>FILE * fopen ( const char * filename, const char * mode );</pre></div><div id="I_description">Open file</div>
+<section id="description">
+Opens the file whose name is specified in the parameter <i>filename</i> and associates it with a stream that can be identified in future operations by the <a href="/FILE">FILE</a> pointer returned.<br>
+<br>
+The operations that are allowed on the stream and how these are performed are defined by the <i>mode</i> parameter.<br>
+<br>
+The returned stream is <i>fully buffered</i> by default if it is known to not refer to an interactive device (see <a href="/setbuf">setbuf</a>).<br>
+<br>
+The returned pointer can be disassociated from the file by calling <a href="/fclose">fclose</a> or <a href="/freopen">freopen</a>. All opened files are automatically closed on normal program termination.<br>
+<br>
+The running environment supports at least <a href="/FOPEN_MAX">FOPEN_MAX</a> files open simultaneously.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>filename</dt>
+<dd>C string containing the name of the file to be opened.<br>
+Its value shall follow the file name specifications of the running environment and can include a path (if supported by the system).</dd>
+<dt>mode</dt>
+<dd>C string containing a file access mode. It can be:<br>
+<table class="boxed"><tr><td>"r"</td><td><b>read:</b> Open file for input operations. The file must exist.</td></tr>
+<tr><td>"w"</td><td><b>write:</b> Create an empty file for output operations. If a file with the same name already exists, its contents are discarded and the file is treated as a new empty file. </td></tr>
+<tr><td>"a"</td><td><b>append:</b> Open file for output at the end of a file. Output operations always write data at the end of the file, expanding it. Repositioning operations (<a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a>, <a href="/rewind">rewind</a>) are ignored. The file is created if it does not exist.</td></tr>
+<tr><td>"r+"</td><td><b>read/update:</b> Open a file for update (both for input and output). The file must exist.</td></tr>
+<tr><td>"w+"</td><td><b>write/update:</b> Create an empty file and open it for update (both for input and output). If a file with the same name already exists its contents are discarded and the file is treated as a new empty file.</td></tr>
+<tr><td>"a+"</td><td><b>append/update:</b> Open a file for update (both for input and output) with all output operations writing data at the end of the file. Repositioning operations (<a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a>, <a href="/rewind">rewind</a>) affects the next input operations, but output operations move the position back to the end of file. The file is created if it does not exist.</td></tr>
+</table>
+With the <i>mode</i> specifiers above the file is open as a <i>text file</i>. In order to open a file as a <i>binary file</i>, a <tt>"b"</tt> character has to be included in the <i>mode</i> string. This additional <tt>"b"</tt> character can either be appended at the end of the string (thus making the following compound modes: "rb", "wb", "ab", "r+b", "w+b", "a+b") or be inserted between the letter and the <tt>"+"</tt> sign for the mixed modes ("rb+", "wb+", "ab+").<br>
+<br>
+The new C standard (C2011, which is not part of C++) adds a new standard subspecifier (<tt>"x"</tt>), that can be appended to any <tt>"w"</tt> specifier (to form <tt>"wx"</tt>, <tt>"wbx"</tt>, <tt>"w+x"</tt> or <tt>"w+bx"/"wb+x"</tt>). This subspecifier forces the function to fail if the file exists, instead of overwriting it.<br>
+<br>
+If additional characters follow the sequence, the behavior depends on the library implementation: some implementations may ignore additional characters so that for example an additional <tt>"t"</tt> (sometimes used to explicitly state a <i>text file</i>) is accepted.<br>
+<br>
+On some library implementations, opening or creating a text file with update mode may treat the stream instead as a binary file.<br>
+</dd>
+</dl>
+<br>
+<i>Text files</i> are files containing sequences of lines of text. Depending on the environment where the application runs, some special character conversion may occur in input/output operations in <i>text mode</i> to adapt them to a system-specific text file format. Although on some environments no conversions occur and both <i>text files</i> and <i>binary files</i> are treated the same way, using the appropriate mode improves portability.<br>
+<br>
+For files open for update (those which include a <tt>"+"</tt> sign), on which both input and output operations are allowed, the stream shall be flushed (<a href="/fflush">fflush</a>) or repositioned (<a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a>, <a href="/rewind">rewind</a>) before a reading operation that follows a writing operation. The stream shall be repositioned (<a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a>, <a href="/rewind">rewind</a>) before a writing operation that follows a reading operation (whenever that operation did not reach the end-of-file).<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If the file is successfully opened, the function returns a pointer to a <a href="/FILE">FILE</a> object that can be used to identify the stream on future operations.<br>
+Otherwise, a null pointer is returned.<br>
+On most library implementations, the <a href="/errno">errno</a> variable is also set to a system-specific error code on failure.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fopen example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<var>int</var> main ()
+{
+  FILE * pFile;
+  pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"w"</kbd>);
+  <var>if</var> (pFile!=NULL)
+  {
+    fputs (<kbd>"fopen example"</kbd>,pFile);
+    fclose (pFile);
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fclose/"><b>fclose</b></a></dt><dd>Close file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/freopen/"><b>freopen</b></a></dt><dd>Reopen stream with different file or mode <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/setbuf/"><b>setbuf</b></a></dt><dd>Set stream buffer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/setvbuf/"><b>setvbuf</b></a></dt><dd>Change stream buffering <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/tmpfile/"><b>tmpfile</b></a></dt><dd>Open a temporary file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/tmpnam/"><b>tmpnam</b></a></dt><dd>Generate temporary filename <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

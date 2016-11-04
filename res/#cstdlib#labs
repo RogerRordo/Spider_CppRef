@@ -1,0 +1,66 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>labs</h1>
+<div class="C_prototype"><pre>long int labs (long int n);</pre></div><div id="I_description">Absolute value</div>
+<section id="description">
+Returns the absolute value of parameter <var>n</var> ( <code>/n/</code> ).<br>
+<br>
+This is the <code>long int</code> version of <samp><a href="/abs">abs</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>Integral value.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The absolute value of <i>n</i>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* labs example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* labs */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>long</var> <var>int</var> n,m;
+  n=labs(65537L);
+  m=labs(-100000L);
+  printf (<kbd>"n=%ld\n"</kbd>,n);
+  printf (<kbd>"m=%ld\n"</kbd>,m);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+n=65537
+m=100000
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Concurrently calling this function is safe, causing no data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If the result cannot be represented as a <code>long int</code> (such as <code>labs(<a href="/climits">LONG_MIN</a>)</code> in an implementation with two's complement signed values), it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/abs/"><b>abs</b></a></dt><dd>Absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/fabs/"><b>fabs</b></a></dt><dd>Compute absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/ldiv/"><b>ldiv</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

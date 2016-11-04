@@ -1,0 +1,74 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cctype&gt;</div>
+<h1>isspace</h1>
+<div class="C_prototype"><pre>int isspace ( int c );</pre></div><div id="I_description">Check if character is a white-space</div>
+<section id="description">
+Checks whether <i>c</i> is a <i>white-space character</i>.<br>
+<br>
+For the <tt>"C"</tt> locale, white-space characters are any of:<br>
+<table class="boxed">
+<tr><td><tt>' '</tt></td><td>(0x20)</td><td>space (SPC)</td></tr>
+<tr><td><tt>'\t'</tt></td><td>(0x09)</td><td>horizontal tab (TAB)</td></tr>
+<tr><td><tt>'\n'</tt></td><td>(0x0a)</td><td>newline (LF)</td></tr>
+<tr><td><tt>'\v'</tt></td><td>(0x0b)</td><td>vertical tab (VT)</td></tr>
+<tr><td><tt>'\f'</tt></td><td>(0x0c)</td><td>feed (FF)</td></tr>
+<tr><td><tt>'\r'</tt></td><td>(0x0d)</td><td>carriage return (CR)</td></tr>
+</table>
+<br>
+Other locales may consider a different selection of characters as white-spaces, but never a character that returns true for <a href="/isalnum">isalnum</a>.<br>
+<br>
+For a detailed chart on what the different <tt>ctype</tt> functions return for each character of the standard ASCII character set, see the reference for the &lt;<a href="/cctype">cctype</a>&gt; header.<br>
+<br>
+In C++, a locale-specific template version of this function (<a href="/locale:isspace">isspace</a>) exists in header <a href="/&lt;locale&gt;">&lt;locale&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c</dt>
+<dd>Character to be checked, casted to an <tt>int</tt>, or <tt>EOF</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A value different from zero (i.e., <tt>true</tt>) if indeed <i>c</i> is a white-space character. Zero (i.e., <tt>false</tt>) otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>/* isspace example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;ctype.h&gt;</dfn>
+<var>int</var> main ()
+{
+  <var>char</var> c;
+  <var>int</var> i=0;
+  <var>char</var> str[]=<kbd>"Example sentence to test isspace\n"</kbd>;
+  <var>while</var> (str[i])
+  {
+    c=str[i];
+    <var>if</var> (isspace(c)) c=<kbd>'\n'</kbd>;
+    putchar (c);
+    i++;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This code prints out the C string character by character, replacing any white-space character by a newline character. Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Example
+sentence
+to
+test
+isspace
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cctype/isgraph/"><b>isgraph</b></a></dt><dd>Check if character has graphical representation <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/ispunct/"><b>ispunct</b></a></dt><dd>Check if character is a punctuation character <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isalnum/"><b>isalnum</b></a></dt><dd>Check if character is alphanumeric <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/locale/isspace/"><b>isspace (locale)</b></a></dt><dd>Check if character is a white-space using locale <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

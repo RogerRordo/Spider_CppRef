@@ -1,0 +1,96 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector-bool/">vector&lt;bool&gt;</a>::swap</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>swap containers (1)</th><td><pre>void swap (vector&amp; x);</pre></td></tr><tr class="even"><th>swap elements (2)</th><td><pre>static void swap (reference ref1, reference ref2);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>swap containers (1)</th><td><pre>void swap (vector&amp; x);</pre></td></tr><tr class="even"><th>swap elements (2)</th><td><pre>static void swap (reference ref1, reference ref2) noexcept;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Swap containers or elements</div>
+<section id="description">
+The first signature is the same as described in <a href="/vector::swap">vector::swap</a> (see <a href="/vector::swap">vector::swap</a> for more info).<br>
+<br>
+A static signature to swap individual elements (bits) is added on <a href="/vector&lt;bool&gt;">vector&lt;bool&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Another <a href="/vector&lt;bool&gt;">vector&lt;bool&gt;</a> container. Sizes may differ.</dd>
+<dt>ref1, ref2</dt>
+<dd>References to elements.<br>
+<a href="/vector&lt;bool&gt;::reference">reference</a> is a member type that accesses individual elements while providing an interface that simulates a reference to <tt>bool</tt> (see <a href="/vector&lt;bool&gt;::reference">reference</a> for more info).<br>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector&lt;bool&gt;::swap</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>bool</var>&gt; foo;
+  std::vector&lt;<var>bool</var>&gt; bar;
+
+  foo.push_back(<var>false</var>);
+  foo.push_back(<var>true</var>);
+  foo.push_back(<var>false</var>);
+
+  bar.push_back(<var>true</var>);
+  bar.push_back(<var>false</var>);
+
+  foo.swap (foo[0], foo[1]);
+  bar.swap (bar.front(), bar.back());
+
+  foo.swap(bar);
+
+  std::cout &lt;&lt; std::boolalpha;
+  std::cout &lt;&lt; <kbd>"foo contains:"</kbd>;
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;foo.size(); i++) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; foo[i];
+  std::cout &lt;&lt; <kbd>"\nbar contains:"</kbd>;
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;bar.size(); i++) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; bar[i];
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo contains: false true
+bar contains: true false false
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+For <i>(1)</i>, both containers are modified.<br>
+For <i>(2)</i>, elements are modified: in <tt>bool</tt> vectors there are no guarantees on whether concurrently accessing other elements is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+For <i>(1)</i>, see <a href="/vector::swap">vector::swap</a>.<br>
+For <i>(2)</i>, it never throws exceptions (no-throw guarantee).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector-bool/reference/"><b>vector&lt;bool&gt;::reference</b></a></dt><dd>Reference type <span class="typ">(public member class)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

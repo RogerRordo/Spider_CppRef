@@ -1,0 +1,93 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_set/">unordered_set</a>::begin<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>container iterator (1)</th><td><pre>      iterator begin() noexcept;const_iterator begin() const noexcept;</pre></td></tr><tr class="even"><th>bucket iterator (2)</th><td><pre>      local_iterator begin ( size_type n );const_local_iterator begin ( size_type n ) const;</pre></td></tr></table></div><div id="I_description">Return iterator to beginning</div>
+<section id="description">
+Returns an iterator pointing to the first element in the <a href="/unordered_set">unordered_set</a> container (1) or in one of its buckets (2).<br>
+<br>
+Notice that an <a href="/unordered_set">unordered_set</a> object makes no guarantees on which specific element is considered its <i>first element</i>. But, in any case, the range that goes from its <tt>begin</tt> to its <tt>end</tt> covers all the elements in the container (or the bucket), until invalidated.<br>
+<br>
+All iterators in an <a href="/unordered_set">unordered_set</a> have const access to the elements (even those whose type is not prefixed with <tt>const_</tt>): Elements can be inserted or removed, but not modified while in the container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>Bucket number. This shall be lower than <a href="/unordered_set::bucket_count">bucket_count</a>.<br>
+It is an optional parameter that changes the behavior of this member function: if set, the iterator retrieved points to the first element of a bucket, otherwise it points to the first element of the container.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+An iterator to the first element in the container (1) or the bucket (2).<br>
+<br>
+All return types (<tt>iterator</tt>, <tt>const_iterator</tt>, <tt>local_iterator</tt> and <tt>const_local_iterator</tt>) are member types. In the <a href="/unordered_set">unordered_set</a> class template, these are <a href="/ForwardIterator">forward iterator</a> types.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_set::begin/end example</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_set&lt;std::string&gt; myset =
+  {<kbd>"Mercury"</kbd>,<kbd>"Venus"</kbd>,<kbd>"Earth"</kbd>,<kbd>"Mars"</kbd>,<kbd>"Jupiter"</kbd>,<kbd>"Saturn"</kbd>,<kbd>"Uranus"</kbd>,<kbd>"Neptune"</kbd>};
+
+  std::cout &lt;&lt; <kbd>"myset contains:"</kbd>;
+  <var>for</var> ( <var>auto</var> it = myset.begin(); it != myset.end(); ++it )
+    std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; std::endl;
+
+  std::cout &lt;&lt; <kbd>"myset's buckets contain:\n"</kbd>;
+  <var>for</var> ( <var>unsigned</var> i = 0; i &lt; myset.bucket_count(); ++i) {
+    std::cout &lt;&lt; <kbd>"bucket #"</kbd> &lt;&lt; i &lt;&lt; <kbd>" contains:"</kbd>;
+    <var>for</var> ( <var>auto</var> local_it = myset.begin(i); local_it!= myset.end(i); ++local_it )
+      std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; *local_it;
+    std::cout &lt;&lt; std::endl;
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myset contains: Venus Jupiter Neptune Mercury Earth Uranus Saturn Mars
+myset's buckets contain:
+bucket #0 contains:
+bucket #1 contains: Venus
+bucket #2 contains: Jupiter
+bucket #3 contains: 
+bucket #4 contains: Neptune Mercury
+bucket #5 contains: 
+bucket #6 contains: Earth
+bucket #7 contains: Uranus Saturn
+bucket #8 contains: Mars
+bucket #9 contains: 
+bucket #10 contains: 
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/end/"><b>unordered_set::end</b></a></dt><dd>Return iterator to end <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/cbegin/"><b>unordered_set::cbegin</b></a></dt><dd>Return const_iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/find/"><b>unordered_set::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

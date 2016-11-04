@@ -1,0 +1,70 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>memchr</h1>
+<div class="C_prototype"><pre>const void * memchr ( const void * ptr, int value, size_t num );      void * memchr (       void * ptr, int value, size_t num );</pre></div><div id="I_description">Locate character in block of memory</div>
+<section id="description">
+Searches within the first <i>num</i> bytes of the block of memory pointed by <i>ptr</i> for the first occurrence of <i>value</i> (interpreted as an <tt>unsigned char</tt>), and returns a pointer to it.<br>
+<br>
+Both <i>value</i> and each of the bytes checked on the the <i>ptr</i> array are interpreted as <tt>unsigned char</tt> for the comparison.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>ptr</dt>
+<dd>Pointer to the block of memory where the search is performed.</dd>
+<dt>value</dt>
+<dd>Value to be located. The value is passed as an <tt>int</tt>, but the function performs a byte per byte search using the <i>unsigned char</i> conversion of this value.</dd>
+<dt>num</dt>
+<dd>Number of bytes to be analyzed.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A pointer to the first occurrence of <i>value</i> in the block of memory pointed by <i>ptr</i>.<br>
+If the <i>value</i> is not found, the function returns a null pointer.<br>
+</section>
+<br>
+<section id="portability">
+<h3>Portability</h3>
+In C, this function is only declared as:<br>
+<br>
+<span class="auto"><code class="source"><var>void</var> * memchr ( <var>const</var> <var>void</var> *, <var>int</var>, size_t );</code></span> <br>
+<br>
+instead of the two overloaded versions provided in C++.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* memchr example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> * pch;
+  <var>char</var> str[] = <kbd>"Example string"</kbd>;
+  pch = (<var>char</var>*) memchr (str, <kbd>'p'</kbd>, strlen(str));
+  <var>if</var> (pch!=NULL)
+    printf (<kbd>"'p' found at position %d.\n"</kbd>, pch-str+1);
+  <var>else</var>
+    printf (<kbd>"'p' not found.\n"</kbd>);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+'p' found at position 5.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strchr/"><b>strchr</b></a></dt><dd>Locate first occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strrchr/"><b>strrchr</b></a></dt><dd>Locate last occurrence of character in string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,42 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">protected member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/basic_ios/">basic_ios</a>::move<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>void move (basic_ios&amp;  x);void move (basic_ios&amp;&amp; x);</pre></div><div id="I_description">Move internals</div>
+<section id="description">
+Transfers all internal members of <var>x</var> to <code>*this</code>, except the associated <i><a href="/basic_ios::rdbuf">stream buffer</a></i> (<samp><a href="/basic_ios::rdbuf">rdbuf</a></samp> returns a <i>null pointer</i> after the call).<br>
+<br>
+<var>x</var> is left in an unspecified but valid state, except that it is not <i><a href="/basic_ios::tie">tied</a></i> (<samp><a href="/basic_ios::tie">tie</a></samp> returns always a <i>null pointer</i>) and its associated <i><a href="/basic_ios::rdbuf">stream buffer</a></i> is unchanged (<samp><a href="/basic_ios::rdbuf">rdbuf</a></samp> returns the same as before the call).<br>
+<br>
+Derived classes can call this function to implement <i>move semantics</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Stream object whose members are moved to <samp>*this</samp>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies both stream objects (<code>*this</code> and <var>x</var>).<br>
+Concurrent access to any of these stream objects may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, both streams are in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/basic_ios/swap/"><b>basic_ios::swap</b></a></dt><dd>Swap internals <span class="typ">(protected member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,20 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>EOF</h1>
+<div id="I_description">End-of-File</div>
+<section id="description">
+It is a macro definition of type <tt>int</tt> that expands into a negative integral constant expression (generally, <tt>-1</tt>).<br>
+<br>
+It is used as the value returned by several functions in header <a href="/cstdio">&lt;cstdio&gt;</a> to indicate that the End-of-File has been reached or to signal some other failure conditions.<br>
+<br>
+It is also used as the value to represent an invalid character.<br>
+<br>
+In C++, this macro corresponds to the value of <code><a href="/char_traits">char_traits</a>&lt;char&gt;::<a href="/char_traits::eof">eof()</a></code>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/feof/"><b>feof</b></a></dt><dd>Check end-of-file indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ferror/"><b>ferror</b></a></dt><dd>Check error indicator <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

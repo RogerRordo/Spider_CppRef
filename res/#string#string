@@ -1,0 +1,64 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>string</h1>
+<div class="C_prototype"><pre>typedef basic_string&lt;char&gt; string;</pre></div><div id="I_description">String class</div>
+<section id="description">
+Strings are objects that represent sequences of characters.<br>
+<br>
+The standard <tt>string</tt> class provides support for such objects with an interface similar to that of a <a href="/stl">standard container</a> of bytes, but adding features specifically designed to operate with strings of single-byte characters.<br>
+<br>
+The <tt>string</tt> class is an instantiation of the <a href="/basic_string">basic_string</a> class template that uses <tt>char</tt> (i.e., bytes) as its <i>character type</i>, with its default <a href="/char_traits">char_traits</a> and <a href="/allocator">allocator</a> types (see <a href="/basic_string">basic_string</a> for more info on the template).<br>
+<br>
+Note that this class handles bytes independently of the encoding used: If used to handle sequences of multi-byte or variable-length characters (such as UTF-8), all members of this class (such as <a href="/string::length">length</a> or <a href="/string::size">size</a>), as well as its iterators, will still operate in terms of bytes (not actual encoded characters).<br>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+<table class="boxed">
+<tr><th>member type</th><th>definition</th></tr>
+<tr><td><tt>value_type</tt></td><td><tt>char</tt></td></tr>
+<tr><td><tt>traits_type</tt></td><td><tt><a href="/char_traits">char_traits</a>&lt;char&gt;</tt></td></tr>
+<tr><td><tt>allocator_type</tt></td><td><tt><a href="/allocator">allocator</a>&lt;char&gt;</tt></td></tr>
+<tr><td><tt>reference</tt></td><td><tt>char&</tt></td></tr>
+<tr><td><tt>const_reference</tt></td><td><tt>const char&</tt></td></tr>
+<tr><td><tt>pointer</tt></td><td><tt>char*</tt></td></tr>
+<tr><td><tt>const_pointer</tt></td><td><tt>const char*</tt></td></tr>
+<tr><td><tt>iterator</tt></td><td>a <a href="/RandomAccessIterator">random access iterator</a> to <tt>char</tt> (convertible to <tt>const_iterator</tt>)</td></tr>
+<tr><td><tt>const_iterator</tt></td><td>a <a href="/RandomAccessIterator">random access iterator</a> to <tt>const char</tt></td></tr>
+<tr><td><tt>reverse_iterator</tt></td><td><tt><a href="/reverse_iterator">reverse_iterator</a>&lt;iterator&gt;</tt></td></tr>
+<tr><td><tt>const_reverse_iterator</tt></td><td><tt><a href="/reverse_iterator">reverse_iterator</a>&lt;const_iterator&gt;</tt></td></tr>
+<tr><td><tt>difference_type</tt></td><td><tt><a href="/ptrdiff_t">ptrdiff_t</a></tt></td></tr>
+<tr><td><tt>size_type</tt></td><td><tt><a href="/size_t">size_t</a></tt></td></tr>
+</table>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+<dl class="links"><dt><a href= "/reference/string/string/string/"><b>(constructor)</b></a></dt><dd>Construct string object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/~string/"><b>(destructor)</b></a></dt><dd>String destructor <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/operator=/"><b>operator=</b></a></dt><dd>String assignment <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Iterators</b>:<br>
+<dl class="links"><dt><a href= "/reference/string/string/begin/"><b>begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/end/"><b>end</b></a></dt><dd>Return iterator to end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/rbegin/"><b>rbegin</b></a></dt><dd>Return reverse iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/rend/"><b>rend</b></a></dt><dd>Return reverse iterator to reverse end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/cbegin/"><b>cbegin <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/cend/"><b>cend <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_iterator to end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/crbegin/"><b>crbegin <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_reverse_iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/crend/"><b>crend <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_reverse_iterator to reverse end <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Capacity</b>:<br>
+<dl class="links"><dt><a href= "/reference/string/string/size/"><b>size</b></a></dt><dd>Return length of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/length/"><b>length</b></a></dt><dd>Return length of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/max_size/"><b>max_size</b></a></dt><dd>Return maximum size of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/resize/"><b>resize</b></a></dt><dd>Resize string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/capacity/"><b>capacity</b></a></dt><dd>Return size of allocated storage <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/reserve/"><b>reserve</b></a></dt><dd>Request a change in capacity <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/clear/"><b>clear</b></a></dt><dd>Clear string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/empty/"><b>empty</b></a></dt><dd>Test if string is empty <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/shrink_to_fit/"><b>shrink_to_fit <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Shrink to fit <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Element access</b>:<br>
+<dl class="links"><dt><a href= "/reference/string/string/operator[]/"><b>operator[]</b></a></dt><dd>Get character of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/at/"><b>at</b></a></dt><dd>Get character in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/back/"><b>back <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Access last character <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/front/"><b>front <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Access first character <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Modifiers</b>:<br>
+<dl class="links"><dt><a href= "/reference/string/string/operator+=/"><b>operator+=</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/append/"><b>append</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/push_back/"><b>push_back</b></a></dt><dd>Append character to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/assign/"><b>assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/insert/"><b>insert</b></a></dt><dd>Insert into string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/erase/"><b>erase</b></a></dt><dd>Erase characters from string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/swap/"><b>swap</b></a></dt><dd>Swap string values <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/pop_back/"><b>pop_back <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Delete last character <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>String operations</b>:<br>
+<dl class="links"><dt><a href= "/reference/string/string/c_str/"><b>c_str</b></a></dt><dd>Get C string equivalent <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/data/"><b>data</b></a></dt><dd>Get string data <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/get_allocator/"><b>get_allocator</b></a></dt><dd>Get allocator <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/copy/"><b>copy</b></a></dt><dd>Copy sequence of characters from string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find/"><b>find</b></a></dt><dd>Find content in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/rfind/"><b>rfind</b></a></dt><dd>Find last occurrence of content in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find_first_of/"><b>find_first_of</b></a></dt><dd>Find character in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find_last_of/"><b>find_last_of</b></a></dt><dd>Find character in string from the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find_first_not_of/"><b>find_first_not_of</b></a></dt><dd>Find absence of character in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find_last_not_of/"><b>find_last_not_of</b></a></dt><dd>Find non-matching character in string from the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/substr/"><b>substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/compare/"><b>compare</b></a></dt><dd>Compare strings <span class="typ">(public member function)</span></dd></dl>
+<br>
+<section id="functions">
+<h3>Member constants</h3>
+<dl class="links"><dt><a href= "/reference/string/string/npos/"><b>npos</b></a></dt><dd>Maximum value for size_t <span class="typ">(public static member constant)</span></dd></dl>
+</section>
+<br>
+<h3>Non-member function overloads</h3>
+<dl class="links"><dt><a href= "/reference/string/string/operator+/"><b>operator+</b></a></dt><dd>Concatenate strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/operators/"><b>relational operators</b></a></dt><dd>Relational operators for string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/swap-free/"><b>swap</b></a></dt><dd>Exchanges the values of two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/operator>>/"><b>operator&gt;&gt;</b></a></dt><dd>Extract string from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/operator<</"><b>operator&lt;&lt;</b></a></dt><dd>Insert string into stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/getline/"><b>getline</b></a></dt><dd>Get line from stream into string <span class="typ">(function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

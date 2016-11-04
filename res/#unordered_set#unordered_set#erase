@@ -1,0 +1,94 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_set/">unordered_set</a>::erase<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>by position (1)</th><td><pre>iterator erase ( const_iterator position );</pre></td></tr><tr class="even"><th>by key (2)</th><td><pre>size_type erase ( const key_type&amp; k );</pre></td></tr><tr class="odd"><th>range (3)</th><td><pre>iterator erase ( const_iterator first, const_iterator last );</pre></td></tr></table></div><div id="I_description">Erase elements</div>
+<section id="description">
+Removes from the <a href="/unordered_set">unordered_set</a> container either a single element or a range of elements (<tt>[first,last)</tt>).<br>
+<br>
+This effectively reduces the container <a href="/unordered_set::size">size</a> by the number of elements removed, calling each element's destructor.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>position</dt>
+<dd>Iterator pointing to a single element to be removed from the <a href="/unordered_set">unordered_set</a>.<br>
+Member type <tt>const_iterator</tt> is a <a href="/ForwardIterator">forward iterator</a> type.</dd>
+<dt>k</dt>
+<dd>Value of the element to be erased.<br>
+Member type <tt>key_type</tt> is the type of the elements in the container. In <a href="/unordered_set">unordered_set</a> containers it is the same as <tt>value_type</tt>, defined as an alias of the class's first template parameter (<tt>Key</tt>).</dd>
+<dt>first, last</dt>
+<dd>Iterators specifying a range within the <a href="/unordered_set">unordered_set</a> container to be removed: <tt>[first,last)</tt>. i.e., the range includes all the elements between <i>first</i> and <i>last</i>, including the element pointed by <i>first</i> but not the one pointed by <i>last</i>.<br>
+Notice that <a href="/unordered_set">unordered_set</a> containers do not follow any particular order to organize its elements, therefore the effect of range deletions may not be easily predictable.<br>
+Member type <tt>const_iterator</tt> is a <a href="/ForwardIterator">forward iterator</a> type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+Versions (1) and (3) return an iterator pointing to the position immediately following the last of the elements erased.<br>
+Version (2) returns the number of elements erased, which in <a href="/unordered_set">unordered_set</a> containers (that have unique values), this is <tt>1</tt> if an element with a value of <i>k</i> existed (and thus was subsequently erased), and zero otherwise.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/ForwardIterator">forward iterator</a> type.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+<br>
+All iterators in an <a href="/unordered_set">unordered_set</a> have const access to the elements: Elements can be inserted or removed, but not modified while in the container.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_set::erase</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_set&lt;std::string&gt; myset =
+  {<kbd>"USA"</kbd>,<kbd>"Canada"</kbd>,<kbd>"France"</kbd>,<kbd>"UK"</kbd>,<kbd>"Japan"</kbd>,<kbd>"Germany"</kbd>,<kbd>"Italy"</kbd>};
+
+  myset.erase ( myset.begin() );                    <cite>// erasing by iterator</cite>
+  myset.erase ( <kbd>"France"</kbd> );                         <cite>// erasing by key</cite>
+  myset.erase ( myset.find(<kbd>"Japan"</kbd>), myset.end() ); <cite>// erasing by range</cite>
+
+  std::cout &lt;&lt; <kbd>"myset contains:"</kbd>;
+  <var>for</var> ( <var>const</var> std::string&amp; x: myset ) std::cout &lt;&lt; <kbd>" "</kbd> &lt;&lt; x;
+  std::cout &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myset contains: Canada USA Italy
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Average case: Linear in the number of elements removed (which is constant for versions <i>(1)</i> and <i>(2)</i>).<br>
+Worst case: Linear in the container <a href="/unordered_set::size">size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+<div class="C_SwitchCases">
+<div title="C++11">
+Only the iterators and references to the elements removed are invalidated.<br>
+The rest are unaffected.<br>
+</div>
+<div title="C++14">
+Only the iterators and references to the elements removed are invalidated.<br>
+The rest are unaffected.<br>
+The relative order of iteration of the elements not removed by the operation is preserved.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/clear/"><b>unordered_set::clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/insert/"><b>unordered_set::insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/find/"><b>unordered_set::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,128 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::insert</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>single element (1)</th><td><pre>iterator insert (iterator position, const value_type&amp; val);</pre></td></tr><tr class="even"><th>fill (2)</th><td><pre>    void insert (iterator position, size_type n, const value_type&amp; val);</pre></td></tr><tr class="odd"><th>range (3)</th><td><pre>template &lt;class InputIterator&gt;    void insert (iterator position, InputIterator first, InputIterator last);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>single element (1)</th><td><pre>iterator insert (const_iterator position, const value_type&amp; val);</pre></td></tr><tr class="odd"><th>fill (2)</th><td><pre>iterator insert (const_iterator position, size_type n, const value_type&amp; val);</pre></td></tr><tr class="even"><th>range (3)</th><td><pre>template &lt;class InputIterator&gt;iterator insert (const_iterator position, InputIterator first, InputIterator last);</pre></td></tr><tr class="odd"><th>move (4)</th><td><pre>iterator insert (const_iterator position, value_type&amp;&amp; val);</pre></td></tr><tr class="even"><th>initializer list (5)</th><td><pre>iterator insert (const_iterator position, initializer_list&lt;value_type&gt; il);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Insert elements</div>
+<section id="description">
+The <a href="/vector">vector</a> is extended by inserting new elements before the element at the specified <i>position</i>, effectively increasing the container <a href="/vector::size">size</a> by the number of elements inserted.<br>
+<br>
+This causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a href="/vector::size">size</a> surpasses the current vector <a href="/vector::capacity">capacity</a>.<br>
+<br>
+Because vectors use an array as their underlying storage, inserting elements in positions other than the <a href="/vector::end">vector end</a> causes the container to relocate all the elements that were after <i>position</i> to their new positions. This is generally an inefficient operation compared to the one performed for the same operation by other kinds of sequence containers (such as <a href="/list">list</a> or <a href="/forward_list">forward_list</a>).<br>
+<br>
+The parameters determine how many elements are inserted and to which values they are initialized:<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>position</dt>
+<dd>Position in the <a href="/vector">vector</a> where the new elements are inserted.<br>
+<tt>iterator</tt> is a member type, defined as a <a href="/RandomAccessIterator">random access iterator</a> type that points to elements.</dd>
+<dt>val</dt>
+<dd>Value to be copied (or moved) to the inserted elements.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/deque">deque</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+<dt>n</dt>
+<dd>Number of elements to insert. Each element is initialized to a copy of <i>val</i>.<br>
+Member type <tt>size_type</tt> is an unsigned integral type.</dd>
+<dt>first, last</dt>
+<dd>Iterators specifying a range of elements. Copies of the elements in the range <tt>[first,last)</tt> are inserted at <i>position</i> (in the same order).<br>
+Notice that the range includes all the elements between <i>first</i> and <i>last</i>, including the element pointed by <i>first</i> but not the one pointed by <i>last</i>.<br>
+The function template argument <tt>InputIterator</tt> shall be an <a href="/InputIterator">input iterator</a> type that points to elements of a type from which <tt>value_type</tt> objects can be constructed.</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object. Copies of these elements are inserted at <i>position</i> (in the same order).<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/vector">vector</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator that points to the first of the newly inserted elements.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/RandomAccessIterator">random access iterator</a> type that points to elements.<br>
+<br>
+If reallocations happen, the storage is allocated using the container's <a href="/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="/allocator">allocator</a>, <tt>bad_alloc</tt> is thrown if the allocation request does not succeed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br></code></pre></td>
+<td class="source"><pre><code><cite>// inserting into a vector</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector (3,100);
+  std::vector&lt;<var>int</var>&gt;::iterator it;
+
+  it = myvector.begin();
+  it = myvector.insert ( it , 200 );
+
+  myvector.insert (it,2,300);
+
+  <cite>// "it" no longer valid, get a new one:</cite>
+  it = myvector.begin();
+
+  std::vector&lt;<var>int</var>&gt; anothervector (2,400);
+  myvector.insert (it+2,anothervector.begin(),anothervector.end());
+
+  <var>int</var> myarray [] = { 501,502,503 };
+  myvector.insert (myvector.begin(), myarray, myarray+3);
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (it=myvector.begin(); it&lt;myvector.end(); it++)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 501 502 503 300 300 400 400 200 100 100 100
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear on the number of elements inserted (copy/move construction) plus the number of elements after <i>position</i> (moving).<br>
+<br>
+Additionally, if <tt>InputIterator</tt> in the <i>range insert (3)</i> is not at least of a <a href="/ForwardIterator">forward iterator</a> category (i.e., just an <a href="/InputIterator">input iterator</a>) the new capacity cannot be determined beforehand and the insertion incurs in additional logarithmic complexity in size (reallocations).<br>
+<br>
+If a reallocation happens, the reallocation is itself up to linear in the entire <a href="/vector::size">size</a> at the moment of the reallocation.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+If a reallocation happens, all iterators, pointers and references related to the container are invalidated.<br>
+Otherwise, only those pointing to <i>position</i> and beyond are invalidated, with all iterators, pointers and references to elements before <i>position</i> guaranteed to keep referring to the same elements they were referring to before the call.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+All copied elements are accessed.<br>
+The container is modified.<br>
+If a reallocation happens, all contained elements are modified.<br>
+Otherwise, none of the elements before <i>position</i> is accessed, and concurrently accessing or modifying them is safe (although see <i>iterator validity</i> above).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If the operation inserts a single element at the <a href="/vector::end">end</a>, and no reallocations happen, there are no changes in the container in case of exception (strong guarantee). In case of reallocations, the strong guarantee is also given in this case if the type of the elements is either <i>copyable</i> or <i>no-throw moveable</i>.<br>
+Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>
+If <a href="/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if an invalid <i>position</i> or  range is specified, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/push_back/"><b>vector::push_back</b></a></dt><dd>Add element at the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/erase/"><b>vector::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,73 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>isgreaterequal<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<table><tr class="odd"><th>macro</th><td><pre>isgreaterequal(x,y)</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>function</th><td><pre>bool isgreaterequal (float x      , float y);bool isgreaterequal (double x     , double y);bool isgreaterequal (long double x, long double y);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Is greater or equal</div>
+<section id="description">
+Returns whether <var>x</var> is greater than or equal to <var>y</var>.<br>
+<br>
+If one or both arguments are <i>NaN</i>, the function returns <code>false</code>, but no <samp><a href="/FE_INVALID">FE_INVALID</a></samp> exception is raised (note that the expression <code>x&gt;=y</code> may raise such an exception in this case).<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+In C, this is implemented as a macro that returns an <code>int</code> value. The type of both <var>x</var> and <var>y</var> shall be <code>float</code>, <code>double</code> or <code>long double</code>.<br>
+</div>
+<div title="C++11">
+In C++, it is implemented with function overloads for each <i><a href="/is_floating_point">floating-point type</a></i>, each returning a <code>bool</code> value.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x, y</dt>
+<dd>Values to be compared.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The same as <code>(x)&gt;=(y)</code>:<br>
+<code>true</code> (<code>1</code>) if <var>x</var> is greater than or equal to <var>y</var>.<br>
+<code>false</code> (<code>0</code>) otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>/* isgreaterequal example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* isgreaterequal, log */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> result;
+  result = log (10.0);
+
+  <var>if</var> (isgreaterequal(result,0.0))
+    printf (<kbd>"log(10.0) is not negative"</kbd>);
+  <var>else</var>
+    printf (<kbd>"log(10.0) is negative"</kbd>);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+log(10.0) is not negative
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/isgreater/"><b>isgreater</b></a></dt><dd>Is greater <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/isless/"><b>isless</b></a></dt><dd>Is less <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/islessequal/"><b>islessequal</b></a></dt><dd>Is less or equal <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/islessgreater/"><b>islessgreater</b></a></dt><dd>Is less or greater <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/isunordered/"><b>isunordered</b></a></dt><dd>Is unordered <span class="typ">(macro)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

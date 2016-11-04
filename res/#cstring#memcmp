@@ -1,0 +1,71 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>memcmp</h1>
+<div class="C_prototype"><pre>int memcmp ( const void * ptr1, const void * ptr2, size_t num );</pre></div><div id="I_description">Compare two blocks of memory</div>
+<section id="description">
+Compares the first <i>num</i> bytes of the block of memory pointed by <i>ptr1</i> to the first <i>num</i> bytes pointed by <i>ptr2</i>, returning zero if they all match or a value different from zero representing which is greater if they do not.<br>
+<br>
+Notice that, unlike <a href="/strcmp">strcmp</a>, the function does not stop comparing after finding a null character.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>ptr1</dt>
+<dd>Pointer to block of memory.</dd>
+<dt>ptr2</dt>
+<dd>Pointer to block of memory.</dd>
+<dt>num</dt>
+<dd>Number of bytes to compare.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns an integral value indicating the relationship between the content of the memory blocks:<br>
+<table class="boxed">
+<tr><th>return value</th><th>indicates</th></tr>
+<tr><td><code>&lt;0</code></td><td>the first byte that does not match in both memory blocks has a lower value in <i>ptr1</i> than in <i>ptr2</i> (if evaluated as <i>unsigned char</i> values)</td></tr>
+<tr><td><code>0</code></td><td>the contents of both memory blocks are equal</td></tr>
+<tr><td><code>&gt;0</code></td><td>the first byte that does not match in both memory blocks has a greater value in <i>ptr1</i> than in <i>ptr2</i> (if evaluated as <i>unsigned char</i> values)</td></tr>
+</table>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>/* memcmp example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer1[] = <kbd>"DWgaOtP12df0"</kbd>;
+  <var>char</var> buffer2[] = <kbd>"DWGAOTP12DF0"</kbd>;
+
+  <var>int</var> n;
+
+  n=memcmp ( buffer1, buffer2, <var>sizeof</var>(buffer1) );
+
+  <var>if</var> (n&gt;0) printf (<kbd>"'%s' is greater than '%s'.\n"</kbd>,buffer1,buffer2);
+  <var>else</var> <var>if</var> (n&lt;0) printf (<kbd>"'%s' is less than '%s'.\n"</kbd>,buffer1,buffer2);
+  <var>else</var> printf (<kbd>"'%s' is the same as '%s'.\n"</kbd>,buffer1,buffer2);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+'DWgaOtP12df0' is greater than 'DWGAOTP12DF0'.
+</samp></pre></td></tr></table></div>
+<br>
+<tt>DWgAOtp12Df0</tt> is greater than <tt>DWGAOTP12DF0</tt> because the first non-matching character in both words are <tt>'g'</tt> and <tt>'G'</tt> respectively, and <tt>'g'</tt> (103) evaluates as greater than <tt>'G'</tt> (71).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strcmp/"><b>strcmp</b></a></dt><dd>Compare two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memset/"><b>memset</b></a></dt><dd>Fill block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncmp/"><b>strncmp</b></a></dt><dd>Compare characters of two strings <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

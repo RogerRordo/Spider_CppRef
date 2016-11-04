@@ -1,0 +1,81 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/basic_ios/">basic_ios</a>::operator bool</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>operator void*() const;</pre></div>
+<div title="C++11" class="on">
+<pre>explicit operator bool() const;</pre></div>
+</div>
+</div><div id="I_description">Evaluate stream</div>
+<section id="description">
+Returns whether an error flag is set (either <samp><a href="/ios_base::failbit">failbit</a></samp> or <samp><a href="/ios_base::badbit">badbit</a></samp>).<br>
+<br>
+Notice that this function does not return the same as member <samp><a href="/basic_ios::good">good</a></samp>, but the opposite of member <samp><a href="/basic_ios::fail">fail</a></samp>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+The function returns a <i>null pointer</i> if at least one of these error flags is set, and some other value otherwise.<br>
+</div>
+<div title="C++11">
+The function returns <code>false</code> if at least one of these error flags is set, and <code>true</code> otherwise.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none <br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+A <i>null pointer</i> if at least one of <samp><a href="/ios_base::failbit">failbit</a></samp> or <samp><a href="/ios_base::badbit">badbit</a></samp> is set. Some other value otherwise.<br>
+</div>
+<div title="C++11">
+<code>true</code> if none of <samp><a href="/ios_base::failbit">failbit</a></samp> or <samp><a href="/ios_base::badbit">badbit</a></samp> is set.<br>
+<code>false</code> otherwise.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// evaluating a stream</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cerr</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// std::ifstream</cite>
+
+<var>int</var> main () {
+  std::ifstream is;
+  is.open (<kbd>"test.txt"</kbd>);
+  <var>if</var> (is) {
+    <cite>// read file</cite>
+  }
+  <var>else</var> {
+    std::cerr &lt;&lt; <kbd>"Error opening 'test.txt'\n"</kbd>;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/basic_ios/fail/"><b>basic_ios::fail</b></a></dt><dd>Check whether failbit or badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/operator_not/"><b>basic_ios::operator!</b></a></dt><dd>Evaluate stream (not) <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

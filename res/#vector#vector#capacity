@@ -1,0 +1,87 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::capacity</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>size_type capacity() const;</pre></div>
+<div title="C++11" class="on">
+<pre>size_type capacity() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return size of allocated storage capacity</div>
+<section id="description">
+Returns the size of the storage space currently allocated for the <a href="/vector">vector</a>, expressed in terms of elements.<br>
+<br>
+This <i>capacity</i> is not necessarily equal to the <a href="/vector::size">vector size</a>. It can be equal or greater, with the extra space allowing to accommodate for growth without the need to reallocate on each insertion.<br>
+<br>
+Notice that this <i>capacity</i> does not suppose a limit on the size of the <a href="/vector">vector</a>. When this <i>capacity</i> is exhausted and more is needed, it is automatically expanded by the container (reallocating it storage space). The theoretical limit on the <a href="/vector::size">size</a> of a <a href="/vector">vector</a> is given by member <a href="/vector::max_size">max_size</a>.<br>
+<br>
+The <i>capacity</i> of a <a href="/vector">vector</a> can be explicitly altered by calling member <a href="/vector::reserve">vector::reserve</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The size of the currently allocated storage capacity in the <a href="/vector">vector</a>, measured in terms of the number elements it can hold.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>// comparing size, capacity and max_size</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector;
+
+  <cite>// set some content in the vector:</cite>
+  <var>for</var> (<var>int</var> i=0; i&lt;100; i++) myvector.push_back(i);
+
+  std::cout &lt;&lt; <kbd>"size: "</kbd> &lt;&lt; (<var>int</var>) myvector.size() &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"capacity: "</kbd> &lt;&lt; (<var>int</var>) myvector.capacity() &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"max_size: "</kbd> &lt;&lt; (<var>int</var>) myvector.max_size() &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+A possible output for this program could be:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>size: 100
+capacity: 128
+max_size: 1073741823
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+No contained elements are accessed: concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/reserve/"><b>vector::reserve</b></a></dt><dd>Request a change in capacity <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/size/"><b>vector::size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/max_size/"><b>vector::max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/resize/"><b>vector::resize</b></a></dt><dd>Change size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,129 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::compare</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>int compare (const basic_string&amp; str) const;</pre></td></tr><tr class="even"><th>substrings (2)</th><td><pre>int compare (size_type pos, size_type len, const basic_string&amp; str) const;int compare (size_type pos, size_type len, const basic_string&amp; str,             size_type subpos, size_type sublen) const;</pre></td></tr><tr class="odd"><th>c-string (3)</th><td><pre>int compare (const charT* s) const;int compare (size_type pos, size_type len, const charT* s) const;</pre></td></tr><tr class="even"><th>buffer (4)</th><td><pre>int compare (size_type pos, size_type len, const charT* s, size_type n) const;</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>string (1)</th><td><pre>int compare (const basic_string&amp; str) const noexcept;</pre></td></tr><tr class="even"><th>substrings (2)</th><td><pre>int compare (size_type pos, size_type len, const basic_string&amp; str) const;int compare (size_type pos, size_type len, const basic_string&amp; str,             size_type subpos, size_type sublen) const;</pre></td></tr><tr class="odd"><th>c-string (3)</th><td><pre>int compare (const charT* s) const;int compare (size_type pos, size_type len, const charT* s) const;</pre></td></tr><tr class="even"><th>buffer (4)</th><td><pre>int compare (size_type pos, size_type len, const charT* s, size_type n) const;</pre></td></tr></table></div>
+<div title="C++14" class="on">
+<table><tr class="odd"><th>string (1)</th><td><pre>int compare (const basic_string&amp; str) const noexcept;</pre></td></tr><tr class="even"><th>substrings (2)</th><td><pre>int compare (size_type pos, size_type len, const basic_string&amp; str) const;int compare (size_type pos, size_type len, const basic_string&amp; str,             size_type subpos, size_type sublen = npos) const;</pre></td></tr><tr class="odd"><th>c-string (3)</th><td><pre>int compare (const charT* s) const;int compare (size_type pos, size_type len, const charT* s) const;</pre></td></tr><tr class="even"><th>buffer (4)</th><td><pre>int compare (size_type pos, size_type len, const charT* s, size_type n) const;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Compare strings</div>
+<section id="description">
+Compares the value of the <a href="/basic_string">basic_string</a> object (or a substring) to the sequence of characters specified by its arguments.<br>
+<br>
+The <dfn>compared string</dfn> is the value of the <a href="/basic_string">basic_string</a> object or -if the signature used has a <i>pos</i> and a <i>len</i> parameters- the substring that begins at its character in position <i>pos</i> and spans <i>len</i> characters.<br>
+<br>
+This string is compared to a <dfn>comparing string</dfn>, which is determined by the other arguments passed to the function.<br>
+<br>
+The sequences are compared using <a href="/char_traits::compare">traits_type::compare</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another <a href="/basic_string">basic_string</a> object of the same type (with the same class template arguments <tt>charT</tt>, <tt>traits</tt> and <tt>Alloc</tt>), used entirely (or partially) as the <i>comparing string</i>.<br>
+</dd>
+<dt>pos</dt>
+<dd>Position of the first character in the <i>compared string</i>.<br>
+If this is greater than the <a href="/basic_string::length">string length</a>, it throws <a href="/out_of_range">out_of_range</a>.<br>
+Note: The first character is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>len</dt>
+<dd>Length of <i>compared string</i> (if the string is shorter, as many characters as possible).<br>
+A value of <a href="/basic_string::npos">basic_string::npos</a> indicates all characters until the end of the string.</dd>
+<dt>subpos, sublen</dt>
+<dd>Same as <i>pos</i> and <i>len</i> above, but for the <i>comparing string</i>.<br>
+</dd>
+<dt>s</dt>
+<dd>Pointer to an array of characters.<br>
+If argument <i>n</i> is specified <i>(4)</i>, the first <i>n</i> characters in the array are used as the <i>comparing string</i>.<br>
+Otherwise <i>(3)</i>, a null-terminated sequence is expected: the length of the sequence with the characters to use as <i>comparing string</i> is determined by the first occurrence of a null character.<br>
+</dd>
+<dt>n</dt>
+<dd>Number of characters to compare.</dd>
+</dl>
+<br>
+<tt>charT</tt> is <a href="/basic_string">basic_string</a>'s character type (i.e., its first template parameter).<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns a signed integral indicating the relation between the strings:<br>
+<table class="boxed">
+<tr><th>value</th><th>relation between <i>compared string</i> and <i>comparing string</i></th></tr>
+<tr><td><tt>0</tt></td><td>They compare equal</td></tr>
+<tr><td><tt>&lt;0</tt></td><td>Either the value of the first character that does not match is lower in the <i>compared string</i>, or all compared characters match but the <i>compared string</i> is shorter.</td></tr>
+<tr><td><tt>&gt;0</tt></td><td>Either the value of the first character that does not match is greater in the <i>compared string</i>, or all compared characters match but the <i>compared string</i> is longer.</td></tr>
+</table>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// comparing apples with apples</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str1 (<kbd>"green apple"</kbd>);
+  std::string str2 (<kbd>"red apple"</kbd>);
+
+  <var>if</var> (str1.compare(str2) != 0)
+    std::cout &lt;&lt; str1 &lt;&lt; <kbd>" is not "</kbd> &lt;&lt; str2 &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>if</var> (str1.compare(6,5,<kbd>"apple"</kbd>) == 0)
+    std::cout &lt;&lt; <kbd>"still, "</kbd> &lt;&lt; str1 &lt;&lt; <kbd>" is an apple\n"</kbd>;
+
+  <var>if</var> (str2.compare(str2.size()-5,5,<kbd>"apple"</kbd>) == 0)
+    std::cout &lt;&lt; <kbd>"and "</kbd> &lt;&lt; str2 &lt;&lt; <kbd>" is also an apple\n"</kbd>;
+
+  <var>if</var> (str1.compare(6,5,str2,4,5) == 0)
+    std::cout &lt;&lt; <kbd>"therefore, both are apples\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>green apple is not red apple
+still, green apple is an apple
+and red apple is also an apple
+therefore, both are apples
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in both the <i>compared</i> and <i>comparing string</i>'s <a href="/basic_string::length">lengths</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/basic_string">basic_string</a> (except <i>(1)</i>, which is guaranteed to not throw).<br>
+<br>
+If <tt>s</tt> does not point to an array long enough, it causes <i>undefined behavior</i>.<br>
+<br>
+If <i>pos</i> is greater than the <a href="/basic_string::length">string length</a>, or if <i>subpos</i> is greater than <i>str</i>'s <a href="/basic_string::length">length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/find/"><b>basic_string::find</b></a></dt><dd>Find first occurrence in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/replace/"><b>basic_string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/substr/"><b>basic_string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/operators/"><b>relational operators (basic_string)</b></a></dt><dd>Relational operators for basic_string <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

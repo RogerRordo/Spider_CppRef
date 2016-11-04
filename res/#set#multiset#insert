@@ -1,0 +1,145 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/set/multiset/">multiset</a>::insert</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>single element (1)</th><td><pre>iterator insert (const value_type&amp; val);</pre></td></tr><tr class="even"><th>with hint (2)</th><td><pre>iterator insert (iterator position, const value_type&amp; val);</pre></td></tr><tr class="odd"><th>range (3)</th><td><pre>template &lt;class InputIterator&gt;  void insert (InputIterator first, InputIterator last);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>single element (1)</th><td><pre>iterator insert (const value_type&amp; val);iterator insert (value_type&amp;&amp; val);</pre></td></tr><tr class="odd"><th>with hint (2)</th><td><pre>iterator insert (const_iterator position, const value_type&amp; val);iterator insert (const_iterator position, value_type&amp;&amp; val);</pre></td></tr><tr class="even"><th>range (3)</th><td><pre>template &lt;class InputIterator&gt;  void insert (InputIterator first, InputIterator last);</pre></td></tr><tr class="odd"><th>initializer list (4)</th><td><pre>void insert (initializer_list&lt;value_type&gt; il);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Insert element</div>
+<section id="description">
+Extends the container by inserting new elements, effectively increasing the container <a href="/multiset::size">size</a> by the number of elements inserted.<br>
+<br>
+Internally, <a href="/multiset">multiset</a> containers keep all their elements sorted following the criterion specified by its <a href="/multiset::key_comp">comparison object</a>. The elements are always inserted in its respective position following this ordering.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+There are no guarantees on the relative order of equivalent elements.<br>
+</div>
+<div title="C++11">
+The relative ordering of equivalent elements is preserved, and newly inserted elements follow their equivalents already in the container.<br>
+</div>
+</div>
+<br>
+The parameters determine how many elements are inserted and to which values they are initialized:<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>val</dt>
+<dd>Value to be copied (or moved) to the inserted elements.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/multiset">multiset</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+<dt>position</dt>
+<dd>
+Hint for the position where the element can be inserted.<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+The function optimizes its insertion time if <i>position</i> points to the element that will <b>precede</b> the inserted element.<br>
+</div>
+<div title="C++11">
+The function optimizes its insertion time if <i>position</i> points to the element that will <b>follow</b> the inserted element (or to the <a href="/multiset::end">end</a>, if it would be the last).<br>
+</div>
+</div>
+Notice that this is just a hint and does not force the new element to be inserted at that position within the <a href="/multiset">multiset</a> container (the elements in a <a href="/multiset">multiset</a> always follow a specific order).<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are defined in <a href="/map">map</a> as a <a href="/BidirectionalIterator">bidirectional iterator</a> type that point to elements.</dd>
+<dt>first, last</dt>
+<dd>Iterators specifying a range of elements. Copies of the elements in the range <tt>[first,last)</tt> are inserted in the container.<br>
+Notice that the range includes all the elements between <i>first</i> and <i>last</i>, including the element pointed by <i>first</i> but not the one pointed by <i>last</i>.<br>
+The function template argument <tt>InputIterator</tt> shall be an <a href="/InputIterator">input iterator</a> type that points to elements of a type from which <tt>value_type</tt> objects can be constructed.</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object. Copies of these elements are inserted.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/multiset">multiset</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+In the versions returning a value, this is an iterator pointing to the newly inserted element in the <a href="/multiset">multiset</a>.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/BidirectionalIterator">bidirectional iterator</a> type that points to elements.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// multiset::insert (C++98)</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multiset&lt;<var>int</var>&gt; mymultiset;
+  std::multiset&lt;<var>int</var>&gt;::iterator it;
+
+  <cite>// set some initial values:</cite>
+  <var>for</var> (<var>int</var> i=1; i&lt;=5; i++) mymultiset.insert(i*10);  <cite>// 10 20 30 40 50</cite>
+
+  it=mymultiset.insert(25);
+
+  it=mymultiset.insert (it,27);    <cite>// max efficiency inserting</cite>
+  it=mymultiset.insert (it,29);    <cite>// max efficiency inserting</cite>
+  it=mymultiset.insert (it,24);    <cite>// no max efficiency inserting (24&lt;29)</cite>
+
+  <var>int</var> myints[]= {5,10,15};
+  mymultiset.insert (myints,myints+3);
+
+  std::cout &lt;&lt; <kbd>"mymultiset contains:"</kbd>;
+  <var>for</var> (it=mymultiset.begin(); it!=mymultiset.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myset contains: 5 10 10 15 20 24 25 27 29 30 40 50
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<h3>Complexity</h3>
+For the first version ( <tt>insert(x)</tt> ), logarithmic.<br>
+For the second version ( <tt>insert(position,x)</tt> ), logarithmic in general, but amortized constant if <i>x</i> is inserted right after the element pointed by <i>position</i>.<br>
+For the third version ( <tt>insert (first,last)</tt> ), <tt>Nlog(size+N)</tt> in general (where N is the distance between <i>first</i> and <i>last</i>, and <tt>size</tt> the <a href="/multiset::size">size</a> of the container before the insertion), but linear if the elements between <i>first</i> and <i>last</i> are already sorted according to the same ordering criterion used by the container.<br>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+If a single element is inserted, logarithmic in <a href="/multiset::size">size</a> in general, but amortized constant if a hint is given and the <i>position</i> given is the optimal.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+If N elements are inserted, <tt>Nlog(<a href="/multiset::size">size</a>+N)</tt> in general, but linear in <tt><a href="/multiset::size">size</a>+N</tt> if the elements are already sorted according to the same ordering criterion used by the container.<br>
+</div>
+<div title="C++11">
+If N elements are inserted, <tt>Nlog(<a href="/multiset::size">size</a>+N)</tt>.<br>
+Implementations may optimize if the range is already sorted.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is modified.<br>
+Concurrently accessing existing elements is safe, although iterating ranges in the container is not.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If a single element is to be inserted, there are no changes in the container in case of exception (strong guarantee).<br>
+Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>
+If <a href="/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if an invalid <i>position</i> is specified, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/set/multiset/erase/"><b>multiset::erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/set/multiset/find/"><b>multiset::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

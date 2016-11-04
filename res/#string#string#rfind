@@ -1,0 +1,102 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::rfind</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>size_t rfind (const string&amp; str, size_t pos = npos) const;</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>size_t rfind (const char* s, size_t pos = npos) const;</pre></td></tr><tr class="odd"><th>buffer (3)</th><td><pre>size_t rfind (const char* s, size_t pos, size_t n) const;</pre></td></tr><tr class="even"><th>character (4)</th><td><pre>size_t rfind (char c, size_t pos = npos) const;</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>string (1)</th><td><pre>size_t rfind (const string&amp; str, size_t pos = npos) const noexcept;</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>size_t rfind (const char* s, size_t pos = npos) const;</pre></td></tr><tr class="odd"><th>buffer (3)</th><td><pre>size_t rfind (const char* s, size_t pos, size_t n) const;</pre></td></tr><tr class="even"><th>character (4)</th><td><pre>size_t rfind (char c, size_t pos = npos) const noexcept;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Find last occurrence of content in string</div>
+<section id="description">
+Searches the <a href="/string">string</a> for the last occurrence of the sequence specified by its arguments.<br>
+<br>
+When <i>pos</i> is specified, the search only includes sequences of characters that begin at or before position <i>pos</i>, ignoring any possible match beginning after <i>pos</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another <a href="/string">string</a> with the subject to search for.</dd>
+<dt>pos</dt>
+<dd>Position of the last character in the string to be considered as the beginning of a match.<br>
+Any value greater or equal than the <a href="/string::length">string length</a> (including <a href="/string::npos">string::npos</a>) means that the entire string is searched.<br>
+Note: The first character is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>s</dt>
+<dd>Pointer to an array of characters.<br>
+If argument <i>n</i> is specified <i>(3)</i>, the sequence to match are the first <i>n</i> characters in the array.<br>
+Otherwise <i>(2)</i>, a null-terminated sequence is expected: the length of the sequence to match is determined by the first occurrence of a null character.<br>
+</dd>
+<dt>n</dt>
+<dd>Length of sequence of characters to match.</dd>
+<dt>c</dt>
+<dd>Individual character to be searched for.</dd>
+</dl>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The position of the first character of the last match.<br>
+If no matches were found, the function returns <a href="/string::npos">string::npos</a>.<br>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::rfind</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;cstddef&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"The sixth sick sheik's sixth sheep's sick."</kbd>);
+  std::string key (<kbd>"sixth"</kbd>);
+
+  std::size_t found = str.rfind(key);
+  <var>if</var> (found!=std::string::npos)
+    str.replace (found,key.length(),<kbd>"seventh"</kbd>);
+
+  std::cout &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The sixth sick sheik's seventh sheep's sick.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in the <a href="/string::length">string length</a> (or <i>pos</i>) times the number of characters to match (worst case).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If <tt>s</tt> does not point to an array long enough, it causes <i>undefined behavior</i>.<br>
+Otherwise, the function never throws exceptions (no-throw guarantee).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/find/"><b>string::find</b></a></dt><dd>Find content in string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find_last_of/"><b>string::find_last_of</b></a></dt><dd>Find character in string from the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/find_last_not_of/"><b>string::find_last_not_of</b></a></dt><dd>Find non-matching character in string from the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/substr/"><b>string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

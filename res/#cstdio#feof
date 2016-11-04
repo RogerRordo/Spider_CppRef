@@ -1,0 +1,65 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>feof</h1>
+<div class="C_prototype"><pre>int feof ( FILE * stream );</pre></div><div id="I_description">Check end-of-file indicator</div>
+<section id="description">
+Checks whether the <i>end-of-File indicator</i> associated with <i>stream</i> is set, returning a value different from zero if it is.<br>
+<br>
+This indicator is generally set by a previous operation on the <i>stream</i> that attempted to read at or past the end-of-file.<br>
+<br>
+Notice that <i>stream</i>'s internal position indicator may point to the <i>end-of-file</i> for the next operation, but still, the <i>end-of-file</i> indicator may not be set until an operation attempts to read at that point.<br>
+<br>
+This indicator is cleared by a call to <a href="/clearerr">clearerr</a>, <a href="/rewind">rewind</a>, <a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a> or <a href="/freopen">freopen</a>. Although if the <i>position indicator</i> is not repositioned by such a call, the next i/o operation is likely to set the indicator again.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies the stream.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A non-zero value is returned in the case that the <i>end-of-file indicator</i> associated with the stream is set.<br>
+Otherwise, zero is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>/* feof example: byte counter */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  <var>int</var> n = 0;
+  pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"rb"</kbd>);
+  <var>if</var> (pFile==NULL) perror (<kbd>"Error opening file"</kbd>);
+  <var>else</var>
+  {
+    <var>while</var> (fgetc(pFile) != EOF) {
+      ++n;
+    }
+    <var>if</var> (feof(pFile)) {
+      puts (<kbd>"End-of-File reached."</kbd>);
+      printf (<kbd>"Total number of bytes read: %d\n"</kbd>, n);
+    }
+    <var>else</var> puts (<kbd>"End-of-File was not reached."</kbd>);
+    fclose (pFile);
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This code opens the file called <tt>myfile.txt</tt>, and counts the number of characters that it contains by reading all of them one by one. The program checks whether the end-of-file was reached, and if so, prints the total number of bytes read.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/clearerr/"><b>clearerr</b></a></dt><dd>Clear error indicators <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ferror/"><b>ferror</b></a></dt><dd>Check error indicator <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

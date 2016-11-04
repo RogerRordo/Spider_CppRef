@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>setbuf</h1>
+<div class="C_prototype"><pre>void setbuf ( FILE * stream, char * buffer );</pre></div><div id="I_description">Set stream buffer</div>
+<section id="description">
+Specifies the <i>buffer</i> to be used by the <i>stream</i> for I/O operations, which becomes a <i>fully buffered</i> stream. Or, alternatively, if <i>buffer</i> is a null pointer, buffering is disabled for the <i>stream</i>, which becomes an <i>unbuffered</i> stream.<br>
+<br>
+This function should be called once the <i>stream</i> has been associated with an open file, but before any input or output operation is performed with it.<br>
+<br>
+The buffer is assumed to be at least <a href="/BUFSIZ">BUFSIZ</a> bytes in size (see <a href="/setvbuf">setvbuf</a> to specify a size of the buffer).<br>
+<br>
+A <dfn>stream buffer</dfn> is a block of data that acts as intermediary between the i/o operations and the physical file associated to the stream: For output buffers, data is output to the buffer until its maximum capacity is reached, then it is <a href="/fflush">flushed</a> (i.e.: all data is sent to the physical file at once and the buffer cleared). Likewise, input buffers are filled from the physical file, from which data is sent to the operations until exhausted, at which point new data is acquired from the file to fill the buffer again.<br>
+<br>
+Stream buffers can be explicitly flushed by calling <a href="/fflush">fflush</a>. They are also automatically flushed by <a href="/fclose">fclose</a> and <a href="/freopen">freopen</a>, or when the program terminates normally.<br>
+<br>
+A <i>full buffered stream</i> uses the entire size of the buffer as buffer whenever enough data is available (see <a href="/setvbuf">setvbuf</a> for other buffer modes).<br>
+<br>
+All files are opened with a default allocated buffer (<i>fully buffered</i>) if they are known to not refer to an interactive device. This function can be used to either set a specific memory block to be used as buffer or to disable buffering for the stream.<br>
+<br>
+The default streams <a href="/stdin">stdin</a> and <a href="/stdout">stdout</a> are <i>fully buffered</i> by default if they are known to not refer to an interactive device. Otherwise, they may either be <i>line buffered</i> or <i>unbuffered</i> by default, depending on the system and library implementation. The same is true for <a href="/stderr">stderr</a>, which is  always either <i>line buffered</i> or <i>unbuffered</i> by default.<br>
+<br>
+A call to this function is equivalent to calling <a href="/setvbuf">setvbuf</a> with <tt>_IOFBF</tt> as <i>mode</i> and <a href="/BUFSIZ">BUFSIZ</a> as <i>size</i> (when <i>buffer</i> is not a null pointer), or equivalent to calling it with <tt>_IONBF</tt> as <i>mode</i> (when it is a null pointer).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies an open stream.</dd>
+<dt>buffer</dt>
+<dd>User allocated buffer. Shall be at least <a href="/BUFSIZ">BUFSIZ</a> bytes long.<br>
+Alternatively, a null pointer can be specified to disable buffering.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>/* setbuf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer[BUFSIZ];
+  FILE *pFile1, *pFile2;
+
+  pFile1=fopen (<kbd>"myfile1.txt"</kbd>,<kbd>"w"</kbd>);
+  pFile2=fopen (<kbd>"myfile2.txt"</kbd>,<kbd>"a"</kbd>);
+
+  setbuf ( pFile1 , buffer );
+  fputs (<kbd>"This is sent to a buffered stream"</kbd>,pFile1);
+  fflush (pFile1);
+
+  setbuf ( pFile2 , NULL );
+  fputs (<kbd>"This is sent to an unbuffered stream"</kbd>,pFile2);
+
+  fclose (pFile1);
+  fclose (pFile2);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+In this example, two files are opened for writing. The stream associated with the file <tt>myfile1.txt</tt> is set to a user allocated buffer; a writing operation to it is performed; the data is logically part of the stream, but it has not been writen to the device until the <a href="/fflush">fflush</a> function is called.<br>
+The second buffer in the example, associated with the file <tt>myfile2.txt</tt>, is set to unbuffered, so the subsequent output operation is written to the device as soon as possible.<br>
+The final state, however, is the same for both buffered and unbuffered streams once the files have been closed (closing a file flushes its buffer).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/setvbuf/"><b>setvbuf</b></a></dt><dd>Change stream buffering <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fflush/"><b>fflush</b></a></dt><dd>Flush stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,107 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;istream&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/istream/basic_istream/">basic_istream</a>::read</h1>
+<div class="C_prototype"><pre>basic_istream&amp; read (char_type* s, streamsize n);</pre></div><div id="I_description">Read block of data</div>
+<section id="description">
+Extracts <var>n</var> characters from the stream and stores them in the array pointed by by <var>s</var>.<br>
+<br>
+This function simply copies a block of data, without checking its contents nor appending a <i>null character</i> at the end.<br>
+<br>
+If the input sequence runs out of characters to extract (i.e., the end-of-file is reached) before <var>n</var> characters have been successfully read, the array pointed by <var>s</var> contains all the characters read until that point, and both the <samp><a href="/ios_base::eofbit">eofbit</a></samp> and <samp><a href="/ios_base::failbit">failbit</a></samp> flags are set for the stream.<br>
+<br>
+Internally, the function accesses the input sequence by first constructing a <samp><a href="/basic_istream::sentry">sentry</a></samp> object (with <var>noskipws</var> set to <code>true</code>). Then (if <samp><a href="/basic_ios::good">good</a></samp>), it extracts characters from its associated <i><a href="/basic_streambuf">stream buffer</a></i> object as if calling its member functions <samp><a href="/basic_streambuf::sbumpc">sbumpc</a></samp> or <samp><a href="/basic_streambuf::sgetc">sgetc</a></samp>, and finally destroys the <samp><a href="/basic_istream::sentry">sentry</a></samp> object before returning.<br>
+<br>
+The number of characters successfully read and stored by this function can be accessed by calling member <samp><a href="/basic_istream::gcount">gcount</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>s</dt>
+<dd>Pointer to an array where the extracted characters are stored.<br>
+Member type <samp>char_type</samp> is the type of characters used by the stream (i.e., its first class template parameter, <samp>charT</samp>).<br>
+</dd>
+<dt>n</dt>
+<dd>Number of characters to extract.<br>
+<samp><a href="/streamsize">streamsize</a></samp> is a signed integral type.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The <samp><a href="/basic_istream">basic_istream</a></samp> object (<code>*this</code>).<br>
+<br>
+Errors are signaled by modifying the <i><a href="/basic_ios::rdstate">internal state flags</a></i>:<br>
+<table class="boxed">
+<tr><th>flag</th><th>error</th></tr>
+<tr><td><samp><a href="/ios_base::eofbit">eofbit</a></samp></td><td>The function stopped extracting characters because the input sequence has no more characters available (<i>end-of-file</i> reached).</td></tr>
+<tr><td><samp><a href="/ios_base::failbit">failbit</a></samp></td><td>Either the function could not extract <var>n</var> characters or the construction of <samp><a href="/basic_istream::sentry">sentry</a></samp> failed.</td></tr>
+<tr><td><samp><a href="/ios_base::badbit">badbit</a></samp></td><td>Error on stream (such as when this function catches an exception thrown by an internal operation).<br>
+When set, the integrity of the stream may have been affected.</td></tr>
+</table>
+Multiple flags may be set by a single operation.<br>
+<br>
+If the operation sets an <i><a href="/basic_ios::rdstate">internal state flag</a></i> that was registered with member <samp><a href="/basic_ios::exceptions">exceptions</a></samp>, the function throws an exception of member type <samp><a href="/ios_base::failure">failure</a></samp>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br></code></pre></td>
+<td class="source"><pre><code><cite>// read a file into memory</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// std::ifstream</cite>
+
+<var>int</var> main () {
+
+  std::ifstream is (<kbd>"test.txt"</kbd>, std::ifstream::binary);
+  <var>if</var> (is) {
+    <cite>// get length of file:</cite>
+    is.seekg (0, is.end);
+    <var>int</var> length = is.tellg();
+    is.seekg (0, is.beg);
+
+    <var>char</var> * buffer = <var>new</var> <var>char</var> [length];
+
+    std::cout &lt;&lt; <kbd>"Reading "</kbd> &lt;&lt; length &lt;&lt; <kbd>" characters... "</kbd>;
+    <cite>// read data as a block:</cite>
+    is.read (buffer,length);
+
+    <var>if</var> (is)
+      std::cout &lt;&lt; <kbd>"all characters read successfully."</kbd>;
+    <var>else</var>
+      std::cout &lt;&lt; <kbd>"error: only "</kbd> &lt;&lt; is.gcount() &lt;&lt; <kbd>" could be read"</kbd>;
+    is.close();
+
+    <cite>// ...buffer contains the entire file...</cite>
+
+    <var>delete</var>[] buffer;
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Reading 640 characters... all characters read successfully.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the elements in the array pointed by <var>s</var> and the stream object.<br>
+Concurrent access to the same stream object may cause data races, except for the standard stream objects <samp><a href="/cin">cin</a></samp> and <samp><a href="/wcin">wcin</a></samp> when these are <i><a href="/ios_base::sync_with_stdio">synchronized with stdio</a></i> (in this case, no data races are initiated, although no guarantees are given on the order in which extracted characters are attributed to threads).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the object is in a valid state.<br>
+It throws an exception of member type <samp><a href="/ios_base::failure">failure</a></samp> if the resulting <i>error state flag</i> is not <samp><a href="/ios_base::goodbit">goodbit</a></samp> and member <samp><a href="/basic_ios::exceptions">exceptions</a></samp> was set to throw for that state.<br>
+Any exception thrown by an internal operation is caught and handled by the function, setting <samp><a href="/ios_base::badbit">badbit</a></samp>. If <samp><a href="/ios_base::badbit">badbit</a></samp> was set on the last call to <samp><a href="/basic_ios::exceptions">exceptions</a></samp>, the function rethrows the caught exception.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/istream/basic_istream/get/"><b>basic_istream::get</b></a></dt><dd>Get characters <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/basic_istream/readsome/"><b>basic_istream::readsome</b></a></dt><dd>Read data available in buffer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/basic_istream/operator>>/"><b>basic_istream::operator&gt;&gt;</b></a></dt><dd>Extract formatted input <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

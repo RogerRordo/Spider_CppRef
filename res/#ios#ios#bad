@@ -1,0 +1,52 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::bad</h1>
+<div class="C_prototype"><pre>bool bad() const;</pre></div><div id="I_description">Check whether badbit is set</div>
+<section id="description">
+Returns <code>true</code> if the <samp>badbit</samp> <i>error state flag</i> is set for the stream.<br>
+<br>
+This flag is set by operations performed on the stream when an error occurs while read or writing data, generally causing the loss of integrity of the stream.<br>
+<br>
+Notice that this function is not the exact opposite of <samp><a href="/ios::good">good</a></samp>, which checks whether none of the error flags (<samp>eofbit</samp>, <samp>failbit</samp> and <samp>badbit</samp>) are set, and not only <samp>badbit</samp>:<br>
+<br>
+<table class="boxed">
+<tr><th rowspan="2"><samp><a href="/ios_base::iostate">iostate</a></samp> value<br>
+(member constants)</th><th rowspan="2">indicates</th><th colspan="5"><samp></samp>functions to check state flags</th></tr>
+<tr><th><samp><a href="/ios::good">good()</a></samp></th><th><samp><a href="/ios::eof">eof()</a></samp></th><th><samp><a href="/ios::fail">fail()</a></samp></th><th><samp><a href="/ios::bad">bad()</a></samp></th><th><samp><a href="/ios::rdstate">rdstate()</a></samp></th></tr>
+<tr><th><samp>goodbit</samp></th><td>No errors (zero value <samp><a href="/ios_base::iostate">iostate</a></samp>)</td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td><samp>goodbit</samp></td></tr>
+<tr><th><samp>eofbit</samp></th><td>End-of-File reached on input operation</td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td><samp>eofbit</samp></td></tr>
+<tr><th><samp>failbit</samp></th><td>Logical error on i/o operation</td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td><samp>failbit</samp></td></tr>
+<tr><th><samp>badbit</samp></th><td>Read/writing error on i/o operation</td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="yes"><code>true</code></td><td><samp>badbit</samp></td></tr>
+</table>
+<samp>eofbit</samp>, <samp>failbit</samp> and <samp>badbit</samp> are member constants with implementation-defined values that can be combined (as if with the bitwise OR operator).<br>
+<samp>goodbit</samp> is zero, indicating that none of the other bits is set.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>true</code> if the stream's <samp>badbit</samp> error state flag is set.<br>
+<code>false</code> otherwise. <br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/good/"><b>ios::good</b></a></dt><dd>Check whether state of stream is good <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/fail/"><b>ios::fail</b></a></dt><dd>Check whether either failbit or badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/eof/"><b>ios::eof</b></a></dt><dd>Check whether eofbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/rdstate/"><b>ios::rdstate</b></a></dt><dd>Get error state flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios/clear/"><b>ios::clear</b></a></dt><dd>Set error state flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

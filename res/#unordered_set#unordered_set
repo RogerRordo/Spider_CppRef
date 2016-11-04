@@ -1,0 +1,134 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class template</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>unordered_set<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt; class Key,                        // unordered_set::key_type/value_type           class Hash = hash&lt;Key&gt;,           // unordered_set::hasher           class Pred = equal_to&lt;Key&gt;,       // unordered_set::key_equal           class Alloc = allocator&lt;Key&gt;      // unordered_set::allocator_type           &gt; class unordered_set;</pre></div><div id="I_description">Unordered Set</div>
+<section id="description">
+Unordered sets are containers that store unique elements in no particular order, and which allow for fast retrieval of individual elements based on their value.<br>
+<br>
+In an <tt>unordered_set</tt>, the value of an element is at the same time its <i>key</i>, that identifies it uniquely. Keys are immutable, therefore, the elements in an <tt>unordered_set</tt> cannot be modified once in the container - they can be inserted and removed, though.<br>
+<br>
+Internally, the elements in the <tt>unordered_set</tt> are not sorted in any particular order, but organized into <i>buckets</i> depending on their hash values to allow for fast access to individual elements directly by their <i>values</i> (with a constant average time complexity on average).<br>
+<br>
+<tt>unordered_set</tt> containers are faster than <a href="/set">set</a> containers to access individual elements by their <i>key</i>, although they are generally less efficient for range iteration through a subset of their elements.<br>
+<br>
+Iterators in the container are at least <a href="/ForwardIterator">forward iterators</a>.<br>
+</section>
+<br>
+<section id="properties">
+<h3>Container properties</h3>
+<dl>
+<dt>Associative</dt>
+<dd>Elements in associative containers are referenced by their <i>key</i> and not by their absolute position in the container.</dd>
+<dt>Unordered</dt>
+<dd>Unordered containers organize their elements using hash tables that allow for fast access to elements by their <i>key</i>.</dd>
+<dt>Set</dt>
+<dd>The value of an element is also the <i>key</i> used to identify it.</dd>
+<dt>Unique keys</dt>
+<dd>No two elements in the container can have equivalent <i>keys</i>.</dd>
+<dt>Allocator-aware</dt>
+<dd>The container uses an allocator object to dynamically handle its storage needs.</dd>
+</dl>
+</section>
+<br>
+<section id="parameters">
+<h3>Template parameters</h3>
+<dl>
+<dt>Key</dt>
+<dd>Type of the elements. Each element in an <tt>unordered_set</tt> is also uniquely identified by this value.<br>
+Aliased as member types <tt>unordered_set::key_type</tt> and <tt>unordered_set::value_type</tt>.</dd>
+<dt>Hash</dt>
+<dd>A unary function object type that takes an object of the same type as the elements as argument and returns a unique value of type <a href="/size_t">size_t</a> based on it. This can either be a class implementing a <i>function call operator</i> or a pointer to a function (see <a href="/unordered_set::unordered_set">constructor</a> for an example). This defaults to <tt><a href="/hash">hash</a>&lt;Key&gt;</tt>, which returns a hash value with a probability of collision approaching <tt>1.0/std::numeric_limits&lt;size_t&gt;::max()</tt>.<br>
+The <tt>unordered_set</tt> object uses the hash values returned by this function to organize its elements internally, speeding up the process of locating individual elements.<br>
+Aliased as member type <tt>unordered_set::hasher</tt>.</dd>
+<dt>Pred</dt>
+<dd>A binary predicate that takes two arguments of the same type as the elements and returns a <tt>bool</tt>. The expression <tt>pred(a,b)</tt>, where <i>pred</i> is an object of this type and <i>a</i> and <i>b</i> are key values, shall return <tt>true</tt> if <i>a</i> is to be considered equivalent to <i>b</i>. This can either be a class implementing a <i>function call operator</i> or a pointer to a function (see <a href="/unordered_set::unordered_set">constructor</a> for an example). This defaults to <tt><a href="/equal_to">equal_to</a>&lt;Key&gt;</tt>, which returns the same as applying the <i>equal-to operator</i> (<tt>a==b</tt>).<br>
+The <tt>unordered_set</tt> object uses this expression to determine whether two element keys are equivalent. No two elements in an <tt>unordered_set</tt> container can have keys that yield <tt>true</tt> using this predicate.<br>
+Aliased as member type <tt>unordered_set::key_equal</tt>.</dd>
+<dt>Alloc</dt>
+<dd>Type of the allocator object used to define the storage allocation model. By default, the <a href="/allocator">allocator</a> class template is used, which defines the simplest memory allocation model and is value-independent.<br>
+Aliased as member type <tt>unordered_set::allocator_type</tt>.</dd>
+</dl>
+<br>
+In the reference for the <tt>unordered_set</tt> member functions, these same names (<i>Key</i>, <i>Hash</i>, <i>Pred</i> and <i>Alloc</i>) are assumed for the template parameters.<br>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+The following aliases are member types of <tt>unordered_set</tt>. They are widely used as parameter and return types by member functions:<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++11">
+<table class="boxed">
+<tr><th>member type</th><th>definition</th><th>notes</th></tr>
+<tr><td><tt>key_type</tt></td><td>the first template parameter (<tt>Key</tt>)</td><td></td></tr>
+<tr><td><tt>value_type</tt></td><td>the first template parameter (<tt>Key</tt>)</td><td>The same as <tt>key_type</tt></td></tr>
+<tr><td><tt>hasher</tt></td><td>the second template parameter (<tt>Hash</tt>)</td><td>defaults to: <tt><a href="/hash">hash</a>&lt;key_type&gt;</tt></td></tr>
+<tr><td><tt>key_equal</tt></td><td>the third template parameter (<tt>Pred</tt>)</td><td>defaults to: <tt><a href="/equal_to">equal_to</a>&lt;key_type&gt;</tt></td></tr>
+<tr><td><tt>allocator_type</tt></td><td>the fourth template parameter (<tt>Alloc</tt>)</td><td>defaults to: <tt><a href="/allocator">allocator</a>&lt;value_type&gt;</tt></td></tr>
+<tr><td><tt>reference</tt></td><td><tt>Alloc::reference</tt></td><td></td></tr>
+<tr><td><tt>const_reference</tt></td><td><tt>Alloc::const_reference</tt></td><td></td></tr>
+<tr><td><tt>pointer</tt></td><td><tt>Alloc::pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>value_type*</tt></td></tr>
+<tr><td><tt>const_pointer</tt></td><td><tt>Alloc::const_pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>const value_type*</tt></td></tr>
+<tr><td><tt>iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>* convertible to <tt>const_iterator</tt></td></tr>
+<tr><td><tt>const_iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>*</td></tr>
+<tr><td><tt>local_iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>* convertible to <tt>const_local_iterator</tt></td></tr>
+<tr><td><tt>const_local_iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>*</td></tr>
+<tr><td><tt>size_type</tt></td><td>an unsigned integral type</td><td>usually the same as <a href="/size_t">size_t</a></td></tr>
+<tr><td><tt>difference_type</tt></td><td>a signed integral type</td><td>usually the same as <a href="/ptrdiff_t">ptrdiff_t</a></td></tr>
+</table>
+</div>
+<div title="C++14">
+<table class="boxed">
+<tr><th>member type</th><th>definition</th><th>notes</th></tr>
+<tr><td><tt>key_type</tt></td><td>the first template parameter (<tt>Key</tt>)</td><td></td></tr>
+<tr><td><tt>value_type</tt></td><td>the first template parameter (<tt>Key</tt>)</td><td>The same as <tt>key_type</tt></td></tr>
+<tr><td><tt>hasher</tt></td><td>the second template parameter (<tt>Hash</tt>)</td><td>defaults to: <tt><a href="/hash">hash</a>&lt;key_type&gt;</tt></td></tr>
+<tr><td><tt>key_equal</tt></td><td>the third template parameter (<tt>Pred</tt>)</td><td>defaults to: <tt><a href="/equal_to">equal_to</a>&lt;key_type&gt;</tt></td></tr>
+<tr><td><tt>allocator_type</tt></td><td>the fourth template parameter (<tt>Alloc</tt>)</td><td>defaults to: <tt><a href="/allocator">allocator</a>&lt;value_type&gt;</tt></td></tr>
+<tr><td><tt>reference</tt></td><td><tt>value_type&</tt></td><td></td></tr>
+<tr><td><tt>const_reference</tt></td><td><tt>const value_type&</tt></td><td></td></tr>
+<tr><td><tt>pointer</tt></td><td><tt>allocator_traits&lt;Alloc&gt;::pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>value_type*</tt></td></tr>
+<tr><td><tt>const_pointer</tt></td><td><tt>allocator_traits&lt;Alloc&gt;::const_pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>const value_type*</tt></td></tr>
+<tr><td><tt>iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>* convertible to <tt>const_iterator</tt></td></tr>
+<tr><td><tt>const_iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>*</td></tr>
+<tr><td><tt>local_iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>* convertible to <tt>const_local_iterator</tt></td></tr>
+<tr><td><tt>const_local_iterator</tt></td><td>a <a href="/ForwardIterator">forward iterator</a> to <tt>const value_type</tt></td><td>*</td></tr>
+<tr><td><tt>size_type</tt></td><td>an unsigned integral type</td><td>usually the same as <a href="/size_t">size_t</a></td></tr>
+<tr><td><tt>difference_type</tt></td><td>a signed integral type</td><td>usually the same as <a href="/ptrdiff_t">ptrdiff_t</a></td></tr>
+</table>
+</div>
+</div>
+*Note: All iterators in an <a href="/unordered_set">unordered_set</a> point to const elements. Whether the <tt>const_</tt> member type is the same type as its non-<tt>const_</tt> counterpart depends on the particular library implementation, but programs should not rely on them being different to overload functions: <tt>const_iterator</tt> is more generic, since <tt>iterator</tt> is always convertible to it.<br>
+The same applies to <tt>local_</tt> and non-<tt>local_</tt> iterator types: they may either be the same type or not, but a program should not rely on them being different.<br>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/unordered_set/"><b>(constructor)</b></a></dt><dd>Construct unordered_set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/~unordered_set/"><b>(destructor)</b></a></dt><dd>Destroy unordered set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/operator=/"><b>operator=</b></a></dt><dd>Assign content <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Capacity</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/empty/"><b>empty</b></a></dt><dd>Test whether container is empty <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/size/"><b>size</b></a></dt><dd>Return container size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/max_size/"><b>max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Iterators</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/begin/"><b>begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/end/"><b>end</b></a></dt><dd>Return iterator to end <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/cbegin/"><b>cbegin</b></a></dt><dd>Return const_iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/cend/"><b>cend</b></a></dt><dd>Return const_iterator to end <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Element lookup</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/find/"><b>find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/count/"><b>count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/equal_range/"><b>equal_range</b></a></dt><dd>Get range of elements with a specific key <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Modifiers</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/emplace/"><b>emplace</b></a></dt><dd>Construct and insert element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/emplace_hint/"><b>emplace_hint</b></a></dt><dd>Construct and insert element with hint <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/insert/"><b>insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/erase/"><b>erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/clear/"><b>clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/swap/"><b>swap</b></a></dt><dd>Swap content <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Buckets</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/bucket_count/"><b>bucket_count</b></a></dt><dd>Return number of buckets <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/max_bucket_count/"><b>max_bucket_count</b></a></dt><dd>Return maximum number of buckets <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/bucket_size/"><b>bucket_size</b></a></dt><dd>Return bucket size <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/bucket/"><b>bucket</b></a></dt><dd>Locate element's bucket <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Hash policy</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/load_factor/"><b>load_factor</b></a></dt><dd>Return load factor <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/max_load_factor/"><b>max_load_factor</b></a></dt><dd>Get or set maximum load factor <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/rehash/"><b>rehash</b></a></dt><dd>Set number of buckets <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/reserve/"><b>reserve</b></a></dt><dd>Request a capacity change <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h4>Observers</h4>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/hash_function/"><b>hash_function</b></a></dt><dd>Get hash function <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/key_eq/"><b>key_eq</b></a></dt><dd>Get key equivalence predicate <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/get_allocator/"><b>get_allocator</b></a></dt><dd>Get allocator <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h3>Non-member function overloads</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/operators/"><b>operators (unordered_set)</b></a></dt><dd>Relational operators for unordered_set <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/swap(global)/"><b>swap (unordered_set)</b></a></dt><dd>Exchanges contents of two unordered_set containers <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

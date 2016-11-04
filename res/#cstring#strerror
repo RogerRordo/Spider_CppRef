@@ -1,0 +1,53 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strerror</h1>
+<div class="C_prototype"><pre>char * strerror ( int errnum );</pre></div><div id="I_description">Get pointer to error message string</div>
+<section id="description">
+Interprets the value of <i>errnum</i>, generating a string with a message that describes the error condition as if set to <a href="/errno">errno</a> by a function of the library.<br>
+<br>
+The returned pointer points to a statically allocated string, which shall not be modified by the program. Further calls to this function may overwrite its content (particular library implementations are not required to avoid data races).<br>
+<br>
+The error strings produced by <tt>strerror</tt> may be specific to each system and library implementation.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>errnum</dt>
+<dd>Error number.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A pointer to the error string describing error errnum. <br>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strerror example : error list */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+<dfn>#include &lt;errno.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  pFile = fopen (<kbd>"unexist.ent"</kbd>,<kbd>"r"</kbd>);
+  <var>if</var> (pFile == NULL)
+    printf (<kbd>"Error opening file unexist.ent: %s\n"</kbd>,strerror(errno));
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Error opening file unexist.ent: No such file or directory
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cerrno/errno/"><b>errno</b></a></dt><dd>Last error number <span class="typ">(macro)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/perror/"><b>perror</b></a></dt><dd>Print error message <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

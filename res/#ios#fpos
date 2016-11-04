@@ -1,0 +1,29 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class template</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>fpos</h1>
+<div class="C_prototype"><pre>template &lt;class stateT&gt; class fpos;</pre></div><div id="I_description">Stream position class template</div>
+<section id="description">
+Class template used as a template for types to indicate positions in streams. The template depends on the state type <samp>stateT</samp>.<br>
+<br>
+The details of this class are implementation-defined, but has at least two members:<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code>stateT state() <var>const</var>;
+<var>void</var> state(stateT);</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Each either getting or setting the value of the state type (<samp>stateT</samp>) kept internally by the object.<br>
+<br>
+Objects of any <samp>fpos</samp> instanced type support construction and conversion from <code>int</code>, and allow consistent conversions to/from values of type <samp><a href="/streamoff">streamoff</a></samp> (as well as being added or subtracted values of this type).<br>
+<br>
+Two objects of this type can be compared with operators <samp>==</samp> and <samp>!=</samp>. They can also be subtracted, which yields a value of type <samp><a href="/streamoff">streamoff</a></samp>.<br>
+<br>
+The synonym types <samp><a href="/streampos">streampos</a></samp> and <samp><a href="/wstreampos">wstreampos</a></samp> are instantiations of this template with <samp><a href="/mbstate_t">mbstate_t</a></samp> as <samp>stateT</samp>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/streampos/"><b>streampos</b></a></dt><dd>Stream position type <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/wstreampos/"><b>wstreampos</b></a></dt><dd>Wide stream position type <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

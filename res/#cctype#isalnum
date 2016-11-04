@@ -1,0 +1,57 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cctype&gt;</div>
+<h1>isalnum</h1>
+<div class="C_prototype"><pre>int isalnum ( int c );</pre></div><div id="I_description">Check if character is alphanumeric</div>
+<section id="description">
+Checks whether <i>c</i> is either a decimal digit or an uppercase or lowercase letter.<br>
+<br>
+The result is true if either <a href="/isalpha">isalpha</a> or <a href="/isdigit">isdigit</a> would also return true.<br>
+<br>
+Notice that what is considered a letter may depend on the locale being used; In the default <tt>"C"</tt> locale, what constitutes a letter is what returns true by either <a href="/isupper">isupper</a> or <a href="/islower">islower</a>.<br>
+<br>
+For a detailed chart on what the different <tt>ctype</tt> functions return for each character of the standard ANSII character set, see the reference for the &lt;<a href="/cctype">cctype</a>&gt; header.<br>
+<br>
+In C++, a locale-specific template version of this function (<a href="/locale:isalnum">isalnum</a>) exists in header <a href="/&lt;locale&gt;">&lt;locale&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c</dt>
+<dd>Character to be checked, casted as an <tt>int</tt>, or <tt>EOF</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A value different from zero (i.e., <tt>true</tt>) if indeed <i>c</i> is either a digit or a letter. Zero (i.e., <tt>false</tt>) otherwise.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>/* isalnum example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;ctype.h&gt;</dfn>
+<var>int</var> main ()
+{
+  <var>int</var> i;
+  <var>char</var> str[]=<kbd>"c3po..."</kbd>;
+  i=0;
+  <var>while</var> (isalnum(str[i])) i++;
+  printf (<kbd>"The first %d characters are alphanumeric.\n"</kbd>,i);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The first 4 characters are alphanumeric.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cctype/isalpha/"><b>isalpha</b></a></dt><dd>Check if character is alphabetic <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cctype/isdigit/"><b>isdigit</b></a></dt><dd>Check if character is decimal digit <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

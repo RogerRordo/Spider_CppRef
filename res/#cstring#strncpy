@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strncpy</h1>
+<div class="C_prototype"><pre>char * strncpy ( char * destination, const char * source, size_t num );</pre></div><div id="I_description">Copy characters from string</div>
+<section id="description">
+Copies the first <i>num</i> characters of <i>source</i> to <i>destination</i>. If the end of the <i>source</i> C string (which is signaled by a null-character) is found before <i>num</i> characters have been copied, <i>destination</i> is padded with zeros until a total of <i>num</i> characters have been written to it.<br>
+<br>
+No null-character is implicitly appended at the end of <i>destination</i> if <i>source</i> is longer than <i>num</i>. Thus, in this case, <i>destination</i> shall not be considered a null terminated C string (reading it as such would overflow).<br>
+<br>
+<i>destination</i> and <i>source</i> shall not overlap (see <a href="/memmove">memmove</a> for a safer alternative when overlapping).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>destination</dt>
+<dd>Pointer to the destination array where the content is to be copied.</dd>
+<dt>source</dt>
+<dd>C string to be copied.</dd>
+<dt>num</dt>
+<dd>Maximum number of characters to be copied from <i>source</i>.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>destination</i> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strncpy example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str1[]= <kbd>"To be or not to be"</kbd>;
+  <var>char</var> str2[40];
+  <var>char</var> str3[40];
+
+  <cite>/* copy to sized buffer (overflow safe): */</cite>
+  strncpy ( str2, str1, <var>sizeof</var>(str2) );
+
+  <cite>/* partial copy (only 5 chars): */</cite>
+  strncpy ( str3, str2, 5 );
+  str3[5] = <kbd>'\0'</kbd>;   <cite>/* null character manually added */</cite>
+
+  puts (str1);
+  puts (str2);
+  puts (str3);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+To be or not to be
+To be or not to be
+To be 
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strcpy/"><b>strcpy</b></a></dt><dd>Copy string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memmove/"><b>memmove</b></a></dt><dd>Move block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memset/"><b>memset</b></a></dt><dd>Fill block of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

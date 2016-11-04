@@ -1,0 +1,38 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/map/">map</a>::~map</h1>
+<div class="C_prototype"><pre>~map();</pre></div><div id="I_description">Map destructor</div>
+<section id="description">
+Destroys the container object.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+This destroys all container elements, and deallocates all the storage capacity allocated by the <a href="/map">map</a> container using its <a href="/map::get_allocator">allocator</a>.<br>
+</div>
+<div title="C++11">
+This calls <a href="/allocator_traits::destroy">allocator_traits::destroy</a> on each of the contained elements, and deallocates all the storage capacity allocated by the <a href="/map">map</a> container using its <a href="/map::get_allocator">allocator</a>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in <a href="/map::size">map::size</a> (destructors).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references are invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container and all its elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> never throws exceptions.<br>
+<div id="CH_bb"></div></div></div>

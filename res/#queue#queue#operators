@@ -1,0 +1,45 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;queue&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>relational operators (queue)</h1>
+<div class="C_prototype"><table><tr class="odd"><th>(1)</th><td><pre>template &lt;class T, class Container&gt;  bool operator== (const queue&lt;T,Container&gt;&amp; lhs, const queue&lt;T,Container&gt;&amp; rhs);</pre></td></tr><tr class="even"><th>(2)</th><td><pre>template &lt;class T, class Container&gt;  bool operator!= (const queue&lt;T,Container&gt;&amp; lhs, const queue&lt;T,Container&gt;&amp; rhs);</pre></td></tr><tr class="odd"><th>(3)</th><td><pre>template &lt;class T, class Container&gt;  bool operator&lt;  (const queue&lt;T,Container&gt;&amp; lhs, const queue&lt;T,Container&gt;&amp; rhs);</pre></td></tr><tr class="even"><th>(4)</th><td><pre>template &lt;class T, class Container&gt;  bool operator&lt;= (const queue&lt;T,Container&gt;&amp; lhs, const queue&lt;T,Container&gt;&amp; rhs);</pre></td></tr><tr class="odd"><th>(5)</th><td><pre>template &lt;class T, class Container&gt;  bool operator&gt;  (const queue&lt;T,Container&gt;&amp; lhs, const queue&lt;T,Container&gt;&amp; rhs);</pre></td></tr><tr class="even"><th>(6)</th><td><pre>template &lt;class T, class Container&gt;  bool operator&gt;= (const queue&lt;T,Container&gt;&amp; lhs, const queue&lt;T,Container&gt;&amp; rhs);</pre></td></tr></table></div><div id="I_description">Relational operators for queue</div>
+<section id="description">
+Performs the appropriate comparison operation between <var>lhs</var> and <var>rhs</var>.<br>
+<br>
+Each of these operator overloads calls the same operator on the <i>underlying container</i> objects.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>lhs, rhs</dt>
+<dd><samp><a href="/queue">queue</a></samp> objects (to the left- and right-hand side of the operator, respectively).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>true</code> if the condition holds, and <code>false</code> otherwise.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant (a single call to the comparison operator on the <i>underlying containers</i>). Although notice that this operation on the <i>underlying containers</i> is itself up to linear in the <i><a href="/queue::size">size</a></i> of the smaller object for standard containers.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both containers, <var>lhs</var> and <var>rhs</var>, are accessed.<br>
+Up to all of their contained elements may be accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Provides the same level of guarantees as the operation performed on the container.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/queue/queue/queue/"><b>queue::queue</b></a></dt><dd>Construct queue <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/queue/queue/swap/"><b>queue::swap</b></a></dt><dd>Swap contents <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

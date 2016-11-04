@@ -1,0 +1,39 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strxfrm</h1>
+<div class="C_prototype"><pre>size_t strxfrm ( char * destination, const char * source, size_t num );</pre></div><div id="I_description">Transform string using locale</div>
+<section id="description">
+Transforms the C string pointed by <i>source</i> according to the current locale and copies the first <i>num</i> characters of the transformed string to <i>destination</i>, returning its length.<br>
+Alternativelly, the function can be used to only retrieve the length, by specifying a null pointer for <i>destination</i> and zero for <i>num</i>.<br>
+<br>
+<i>destination</i> and <i>source</i> shall not overlap.<br>
+<br>
+The behavior of this function depends on the <tt>LC_COLLATE</tt> category of the selected <a href="/setlocale">C locale</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>destination</dt>
+<dd>Pointer to the destination array where the content is to be copied.<br>
+It can be a null pointer if the argument for <i>num</i> is zero.</dd>
+<dt>source</dt>
+<dd>C string to be transformed.</dd>
+<dt>num</dt>
+<dd>Maximum number of characters to be copied to <i>destination</i>.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The length of the transformed string, not including the terminating null-character.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncmp/"><b>strncmp</b></a></dt><dd>Compare characters of two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strcoll/"><b>strcoll</b></a></dt><dd>Compare two strings using locale <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

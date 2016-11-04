@@ -1,0 +1,97 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>stable_sort</h1>
+<div class="C_prototype"><pre>template &lt;class RandomAccessIterator&gt;  void stable_sort ( RandomAccessIterator first, RandomAccessIterator last );template &lt;class RandomAccessIterator, class Compare&gt;  void stable_sort ( RandomAccessIterator first, RandomAccessIterator last,                     Compare comp );</pre></div><div id="I_description">Sort elements preserving order of equivalents</div>
+<section id="description">
+Sorts the elements in the range <code>[first,last)</code> into ascending order, like <a href="/sort">sort</a>, but <a href="/stable_sort">stable_sort</a> preserves the relative order of the elements with equivalent values.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> for the first version, and <var>comp</var> for the second.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/RandomAccessIterator">Random-access iterators</a> to the initial and final positions of the sequence to be sorted. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+<samp>RandomAccessIterator</samp> shall point to a type for which <samp><a href="/swap">swap</a></samp> is properly defined and which is both <i><a href="/is_move_constructible">move-constructible</a></i> and <i><a href="/is_move_assignable">move-assignable</a></i>.<br>
+</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two elements in the range as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered to go before the second in the specific <i>strict weak ordering</i> it defines.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br></code></pre></td>
+<td class="source"><pre><code><cite>// stable_sort example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::stable_sort</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> compare_as_ints (<var>double</var> i,<var>double</var> j)
+{
+  <var>return</var> (<var>int</var>(i)&lt;<var>int</var>(j));
+}
+
+<var>int</var> main () {
+  <var>double</var> mydoubles[] = {3.14, 1.41, 2.72, 4.67, 1.73, 1.32, 1.62, 2.58};
+
+  std::vector&lt;<var>double</var>&gt; myvector;
+
+  myvector.assign(mydoubles,mydoubles+8);
+
+  std::cout &lt;&lt; <kbd>"using default comparison:"</kbd>;
+  std::stable_sort (myvector.begin(), myvector.end());
+  <var>for</var> (std::vector&lt;<var>double</var>&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  myvector.assign(mydoubles,mydoubles+8);
+
+  std::cout &lt;&lt; <kbd>"using 'compare_as_ints' :"</kbd>;
+  std::stable_sort (myvector.begin(), myvector.end(), compare_as_ints);
+  <var>for</var> (std::vector&lt;<var>double</var>&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<samp>compare_as_ints</samp> is a function that compares only the integral part of the elements, therefore, elements with the same integral part are considered equivalent. <samp>stable_sort</samp> preserves the relative order these had before the call.<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>using default comparison: 1.32 1.41 1.62 1.73 2.58 2.72 3.14 4.67
+using 'compare_as_ints' : 1.41 1.73 1.32 1.62 2.72 2.58 3.14 4.67
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+If enough extra memory is available, linearithmic in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Performs up to <code>N*log<sub>2</sub>(N)</code> element comparisons (where <var>N</var> is this distance), and up to that many element moves.<br>
+Otherwise, polyloglinear in that distance: Performs up to <code>N*log<sub>2</sub><sup>2</sup>(N)</code> element comparisons, and up to that many element swaps.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of the element comparisons, the element swaps (or moves) or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<h3>See also</h3>
+<div id="CH_bb"></div></div></div>

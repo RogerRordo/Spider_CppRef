@@ -1,0 +1,113 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">class template</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>vector</h1>
+<div class="C_prototype"><pre>template &lt; class T, class Alloc = allocator&lt;T&gt; &gt; class vector; // generic template</pre></div><div id="I_description">Vector</div>
+<section id="description">
+Vectors are sequence containers representing arrays that can change in size.<br>
+<br>
+Just like arrays, vectors use contiguous storage locations for their elements, which means that their elements can also be accessed using offsets on regular pointers to its elements, and just as efficiently as in arrays. But unlike arrays, their  size can change dynamically, with their storage being handled automatically by the container.<br>
+<br>
+Internally, vectors use a dynamically allocated array to store their elements. This array may need to be reallocated in order to grow in size when new elements are inserted, which implies allocating a new array and moving all elements to it. This is a relatively expensive task in terms of processing time, and thus, vectors do not reallocate each time an element is added to the container.<br>
+<br>
+Instead, vector containers may allocate some extra storage to accommodate for possible growth, and thus the container may have an actual <a href="/vector::capacity">capacity</a> greater than the storage strictly needed to contain its elements (i.e., its <a href="/vector::size">size</a>). Libraries can implement different strategies for growth to balance between memory usage and reallocations, but in any case, reallocations should only happen at logarithmically growing intervals of <a href="/vector::size">size</a> so that the insertion of individual elements at the end of the vector can be provided with <i>amortized constant time</i> complexity (see <a href="/vector::push_back">push_back</a>).<br>
+<br>
+Therefore, compared to arrays, vectors consume more memory in exchange for the ability to manage storage and grow dynamically in an efficient way.<br>
+<br>
+Compared to the other dynamic sequence containers (<a href="/deque">deques</a>, <a href="/list">lists</a> and <a href="/forward_list">forward_lists</a>), vectors are very efficient accessing its elements (just like arrays) and relatively efficient adding or removing elements from its <a href="/vector::end">end</a>. For operations that involve inserting or removing elements at positions other than the end, they perform worse than the others, and have less consistent iterators and references than <a href="/list">lists</a> and <a href="/forward_list">forward_lists</a>.<br>
+</section>
+<br>
+<section id="properties">
+<h3>Container properties</h3>
+<dl>
+<dt>Sequence</dt>
+<dd>Elements in sequence containers are ordered in a strict linear sequence. Individual elements are accessed by their position in this sequence.</dd>
+<dt>Dynamic array</dt>
+<dd>Allows direct access to any element in the sequence, even through pointer arithmetics, and provides relatively fast addition/removal of elements at the end of the sequence.</dd>
+<dt>Allocator-aware</dt>
+<dd>The container uses an allocator object to dynamically handle its storage needs.</dd>
+</dl>
+</section>
+<br>
+<section id="parameters">
+<h3>Template parameters</h3>
+<dl>
+<dt>T</dt>
+<dd>Type of the elements.<br>
+Only if <tt>T</tt> <a href="/is_nothrow_move_constructible">is guaranteed to not throw while moving</a>, implementations can optimize to move elements instead of copying them during reallocations.<br>
+Aliased as member type <tt>vector::value_type</tt>.</dd>
+<dt>Alloc</dt>
+<dd>Type of the allocator object used to define the storage allocation model. By default, the <a href="/allocator">allocator</a> class template is used, which defines the simplest memory allocation model and is value-independent.<br>
+Aliased as member type <tt>vector::allocator_type</tt>.</dd>
+</dl>
+</section>
+<br>
+<section id="types">
+<h3>Member types</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+<table class="boxed">
+<tr><th>member type</th><th>definition</th><th>notes</th></tr>
+<tr><td><tt>value_type</tt></td><td>The first template parameter (<tt>T</tt>)</td><td></td></tr>
+<tr><td><tt>allocator_type</tt></td><td>The second template parameter (<tt>Alloc</tt>)</td><td>defaults to: <tt><a href="/allocator">allocator</a>&lt;value_type&gt;</tt></td></tr>
+<tr><td><tt>reference</tt></td><td><tt>allocator_type::reference</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>value_type&</tt></td></tr>
+<tr><td><tt>const_reference</tt></td><td><tt>allocator_type::const_reference</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>const value_type&</tt></td></tr>
+<tr><td><tt>pointer</tt></td><td><tt>allocator_type::pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>value_type*</tt></td></tr>
+<tr><td><tt>const_pointer</tt></td><td><tt>allocator_type::const_pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>const value_type*</tt></td></tr>
+<tr><td><tt>iterator</tt></td><td>a <a href="/RandomAccessIterator">random access iterator</a> to <tt>value_type</tt></td><td>convertible to <tt>const_iterator</tt></td></tr>
+<tr><td><tt>const_iterator</tt></td><td>a <a href="/RandomAccessIterator">random access iterator</a> to <tt>const value_type</tt></td><td></td></tr>
+<tr><td><tt>reverse_iterator</tt></td><td><tt><a href="/reverse_iterator">reverse_iterator</a>&lt;iterator&gt;</tt></td><td></td></tr>
+<tr><td><tt>const_reverse_iterator</tt></td><td><tt><a href="/reverse_iterator">reverse_iterator</a>&lt;const_iterator&gt;</tt></td><td></td></tr>
+<tr><td><tt>difference_type</tt></td><td>a signed integral type, identical to: <tt>iterator_traits&lt;iterator&gt;::difference_type</tt></td><td>usually the same as <a href="/ptrdiff_t">ptrdiff_t</a></td></tr>
+<tr><td><tt>size_type</tt></td><td>an unsigned integral type that can represent any non-negative value of <tt>difference_type</tt></td><td>usually the same as <a href="/size_t">size_t</a></td></tr>
+</table>
+</div>
+<div title="C++11">
+<table class="boxed">
+<tr><th>member type</th><th>definition</th><th>notes</th></tr>
+<tr><td><tt>value_type</tt></td><td>The first template parameter (<tt>T</tt>)</td><td></td></tr>
+<tr><td><tt>allocator_type</tt></td><td>The second template parameter (<tt>Alloc</tt>)</td><td>defaults to: <tt><a href="/allocator">allocator</a>&lt;value_type&gt;</tt></td></tr>
+<tr><td><tt>reference</tt></td><td><tt>value_type&</tt></td><td></td></tr>
+<tr><td><tt>const_reference</tt></td><td><tt>const value_type&</tt></td><td></td></tr>
+<tr><td><tt>pointer</tt></td><td><tt><a href="/allocator_traits">allocator_traits</a>&lt;allocator_type&gt;::pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>value_type*</tt></td></tr>
+<tr><td><tt>const_pointer</tt></td><td><tt><a href="/allocator_traits">allocator_traits</a>&lt;allocator_type&gt;::const_pointer</tt></td><td>for the default <a href="/allocator">allocator</a>: <tt>const value_type*</tt></td></tr>
+<tr><td><tt>iterator</tt></td><td>a <a href="/RandomAccessIterator">random access iterator</a> to <tt>value_type</tt></td><td>convertible to <tt>const_iterator</tt></td></tr>
+<tr><td><tt>const_iterator</tt></td><td>a <a href="/RandomAccessIterator">random access iterator</a> to <tt>const value_type</tt></td><td></td></tr>
+<tr><td><tt>reverse_iterator</tt></td><td><tt><a href="/reverse_iterator">reverse_iterator</a>&lt;iterator&gt;</tt></td><td></td></tr>
+<tr><td><tt>const_reverse_iterator</tt></td><td><tt><a href="/reverse_iterator">reverse_iterator</a>&lt;const_iterator&gt;</tt></td><td></td></tr>
+<tr><td><tt>difference_type</tt></td><td>a signed integral type, identical to:<br>
+<tt>iterator_traits&lt;iterator&gt;::difference_type</tt></td><td>usually the same as <a href="/ptrdiff_t">ptrdiff_t</a></td></tr>
+<tr><td><tt>size_type</tt></td><td>an unsigned integral type that can represent any non-negative value of <tt>difference_type</tt></td><td>usually the same as <a href="/size_t">size_t</a></td></tr>
+</table>
+</div>
+</div>
+</section>
+<br>
+<section id="functions">
+<h3>Member functions</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/vector/"><b>(constructor)</b></a></dt><dd>Construct vector <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/~vector/"><b>(destructor)</b></a></dt><dd>Vector destructor <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/operator=/"><b>operator=</b></a></dt><dd>Assign content <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Iterators</b>:<br>
+<dl class="links"><dt><a href= "/reference/vector/vector/begin/"><b>begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/end/"><b>end</b></a></dt><dd>Return iterator to end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/rbegin/"><b>rbegin</b></a></dt><dd>Return reverse iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/rend/"><b>rend</b></a></dt><dd>Return reverse iterator to reverse end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/cbegin/"><b>cbegin <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/cend/"><b>cend <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_iterator to end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/crbegin/"><b>crbegin <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_reverse_iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/crend/"><b>crend <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Return const_reverse_iterator to reverse end <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Capacity</b>:<br>
+<dl class="links"><dt><a href= "/reference/vector/vector/size/"><b>size</b></a></dt><dd>Return size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/max_size/"><b>max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/resize/"><b>resize</b></a></dt><dd>Change size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/capacity/"><b>capacity</b></a></dt><dd>Return size of allocated storage capacity <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/empty/"><b>empty</b></a></dt><dd>Test whether vector is empty <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/reserve/"><b>reserve</b></a></dt><dd>Request a change in capacity <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/shrink_to_fit/"><b>shrink_to_fit <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Shrink to fit <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Element access</b>:<br>
+<dl class="links"><dt><a href= "/reference/vector/vector/operator[]/"><b>operator[]</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/at/"><b>at</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/front/"><b>front</b></a></dt><dd>Access first element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/back/"><b>back</b></a></dt><dd>Access last element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/data/"><b>data <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Access data <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Modifiers</b>:<br>
+<dl class="links"><dt><a href= "/reference/vector/vector/assign/"><b>assign</b></a></dt><dd>Assign vector content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/push_back/"><b>push_back</b></a></dt><dd>Add element at the end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/pop_back/"><b>pop_back</b></a></dt><dd>Delete last element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/insert/"><b>insert</b></a></dt><dd>Insert elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/erase/"><b>erase</b></a></dt><dd>Erase elements <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/swap/"><b>swap</b></a></dt><dd>Swap content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/clear/"><b>clear</b></a></dt><dd>Clear content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/emplace/"><b>emplace <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Construct and insert element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/emplace_back/"><b>emplace_back <b class="C_cpp11" title="C++11 only"></b></b></a></dt><dd>Construct and insert element at the end <span class="typ">(public member function)</span></dd></dl>
+<br>
+<b>Allocator</b>:<br>
+<dl class="links"><dt><a href= "/reference/vector/vector/get_allocator/"><b>get_allocator</b></a></dt><dd>Get allocator <span class="typ">(public member function)</span></dd></dl>
+<br>
+<h3>Non-member function overloads</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/operators/"><b>relational operators</b></a></dt><dd>Relational operators for vector <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/swap-free/"><b>swap</b></a></dt><dd>Exchange contents of vectors <span class="typ">(function template)</span></dd></dl>
+</section>
+<br>
+<section id="instantiation">
+<h3>Template specializations</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector-bool/"><b>vector&lt;bool&gt;</b></a></dt><dd>Vector of bool <span class="typ">(class template specialization)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

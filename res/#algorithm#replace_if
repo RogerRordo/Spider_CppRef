@@ -1,0 +1,94 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>replace_if</h1>
+<div class="C_prototype"><pre>template &lt;class ForwardIterator, class UnaryPredicate, class T&gt;  void replace_if (ForwardIterator first, ForwardIterator last,                   UnaryPredicate pred, const T&amp; new_value );</pre></div><div id="I_description">Replace values in range</div>
+<section id="description">
+Assigns <var>new_value</var> to all the elements in the range <var>[first,last)</var> for which <var>pred</var> returns <code>true</code>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt; <var>class</var> ForwardIterator, <var>class</var> UnaryPredicate, <var>class</var> T &gt;
+  <var>void</var> replace_if (ForwardIterator first, ForwardIterator last,
+                   UnaryPredicate pred, <var>const</var> T&amp; new_value)
+{
+  <var>while</var> (first!=last) {
+    <var>if</var> (pred(*first)) *first=new_value;
+    ++first;
+  }
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions in a sequence of elements that support being assigned a value of type <samp>T</samp>. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is to be replaced (if <code>true</code>, it is replaced).<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+<dt>new_value</dt>
+<dd>Value to assign to replaced elements.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// replace_if example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::replace_if</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) { <var>return</var> ((i%2)==1); }
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; myvector;
+
+  <cite>// set some values:</cite>
+  <var>for</var> (<var>int</var> i=1; i&lt;10; i++) myvector.push_back(i);               <cite>// 1 2 3 4 5 6 7 8 9</cite>
+
+  std::replace_if (myvector.begin(), myvector.end(), IsOdd, 0); <cite>// 0 2 0 4 0 6 0 8 0</cite>
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (std::vector&lt;<var>int</var>&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 0 2 0 4 0 6 0 8 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Applies <var>pred</var> to each element and assigns to those matching.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed and potentially modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of <var>pred</var>, the element assignments or the operations on iterators throws.<br>
+Note that invalid arguments cause <var>undefined behavior</var>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/replace/"><b>replace</b></a></dt><dd>Replace value in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/remove_if/"><b>remove_if</b></a></dt><dd>Remove elements from range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/transform/"><b>transform</b></a></dt><dd>Transform range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/for_each/"><b>for_each</b></a></dt><dd>Apply function to range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/find_if/"><b>find_if</b></a></dt><dd>Find element in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,84 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector-bool/">vector&lt;bool&gt;</a>::flip</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>void flip();</pre></div>
+<div title="C++11" class="on">
+<pre>void flip() noexcept;</pre></div>
+</div>
+</div><div id="I_description">Flip bits</div>
+<section id="description">
+Flips all values in the container: All instances of <tt>true</tt> become <tt>false</tt>, and all instances of <tt>false</tt> become <tt>true</tt>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector&lt;bool&gt;::flip</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>bool</var>&gt; mask;
+
+  mask.push_back(<var>true</var>);
+  mask.push_back(<var>false</var>);
+  mask.push_back(<var>false</var>);
+  mask.push_back(<var>true</var>);
+
+  mask.flip();
+
+  std::cout &lt;&lt; std::boolalpha;
+  std::cout &lt;&lt; <kbd>"mask contains:"</kbd>;
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;mask.size(); i++)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; mask.at(i);
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mask contains: false true true false
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in <a href="/vector::size">size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+All elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector-bool/reference/"><b>vector&lt;bool&gt;::reference</b></a></dt><dd>Reference type <span class="typ">(public member class)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

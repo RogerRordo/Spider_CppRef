@@ -1,0 +1,25 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>streamoff</h1>
+<div id="I_description">Stream offset type</div>
+<section id="description">
+Type to represent position offsets in a stream.<br>
+<br>
+It is the type returned by subtracting two stream position of an <samp><a href="/fpos">fpos</a></samp> type, and can be converted to and from this type.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+The underlying type depends on the particular library implementation.<br>
+</div>
+<div title="C++11">
+It is a <i>typdef</i> of one the fundamental signed <a href="/is_integral">integral types</a> large enough to represent the maximum possible file size supported by the system.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/streamsize/"><b>streamsize</b></a></dt><dd>Stream size type <span class="typ">(type)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/fpos/"><b>fpos</b></a></dt><dd>Stream position class template <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/streampos/"><b>streampos</b></a></dt><dd>Stream position type <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

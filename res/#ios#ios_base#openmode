@@ -1,0 +1,23 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::openmode</h1>
+<div id="I_description">Type for stream opening mode flags</div>
+<section id="description">
+Bitmask type to represent stream <i>opening mode flags</i>.<br>
+<br>
+A value of this type can be any valid combination of the following member constants: <br>
+<br>
+<table class="boxed">
+<tr><th>member constant</th><th>opening mode</th></tr>
+<tr><td><samp>app</samp></td><td>(<b>app</b>end) Set the stream's position indicator to the end of the stream before each output operation.</td></tr>
+<tr><td><samp>ate</samp></td><td>(<b>at e</b>nd) Set the stream's position indicator to the end of the stream on opening.</td></tr>
+<tr><td><samp>binary</samp></td><td>(<b>binary</b>) Consider stream as binary rather than text. </td></tr>
+<tr><td><samp>in</samp></td><td>(<b>in</b>put) Allow input operations on the stream.</td></tr>
+<tr><td><samp>out</samp></td><td>(<b>out</b>put) Allow output operations on the stream.</td></tr>
+<tr><td><samp>trunc</samp></td><td>(<b>trunc</b>ate) Any current content is discarded, assuming a length of zero on opening.</td></tr>
+</table>
+<br>
+These constants are defined in the <samp><a href="/ios_base">ios_base</a></samp> class as public members. Therefore, they can be referred to either directly by their name as members of <samp><a href="/ios_base">ios_base</a></samp> (like <samp>ios_base::in</samp>) or by using any of their inherited classes or instantiated objects, like for example <code>ios::ate</code> or <code>cout.out</code>.<br>
+<div id="CH_bb"></div></div></div>

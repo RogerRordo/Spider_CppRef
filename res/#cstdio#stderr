@@ -1,0 +1,23 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">object</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>stderr</h1>
+<div class="C_prototype"><pre>FILE * stderr;</pre></div><div id="I_description">Standard error stream</div>
+<section id="description">
+The standard error stream is the default destination for error messages and other diagnostic warnings. Like <a href="/stdout">stdout</a>, it is usually also directed by default to the text console (generally, on the screen).<br>
+<br>
+<tt>stderr</tt> can be used as an argument for any function that takes an argument of type <tt>FILE*</tt> expecting an output stream, like <a href="/fputs">fputs</a> or <a href="/fprintf">fprintf</a>.<br>
+<br>
+Although in many cases both <a href="/stdout">stdout</a> and <tt>stderr</tt> are associated with the same output device (like the console), applications may differentiate between what is sent to <a href="/stdout">stdout</a> and what to <tt>stderr</tt> for the case that one of them is redirected. For example, it is frequent to redirect the regular output of a console program (<a href="/stdout">stdout</a>) to a file while expecting the error messages to keep appearing in the console.<br>
+<br>
+It is also possible to redirect <tt>stderr</tt> to some other destination from within a program using the <a href="/freopen">freopen</a> function.<br>
+<br>
+<tt>stderr</tt> is is never <i>fully buffered</i> on startup. It is library-dependent whether the stream is <i>line buffered</i> or <i>not buffered</i> by default (see <a href="/setvbuf">setvbuf</a>).<br>
+<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/stdin/"><b>stdin</b></a></dt><dd>Standard input stream <span class="typ">(object)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/stdout/"><b>stdout</b></a></dt><dd>Standard output stream <span class="typ">(object)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

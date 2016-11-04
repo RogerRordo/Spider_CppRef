@@ -1,0 +1,14 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>FILENAME_MAX</h1>
+<div id="I_description">Maximum length of file names</div>
+<section id="description">
+This macro constant expands to an integral expression corresponding to the size needed for an array of <tt>char</tt> elements to hold the longest file name string allowed by the library. Or, if the library imposes no such restriction, it is set to the recommended size for character arrays intended to hold a file name.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/L_tmpnam/"><b>L_tmpnam</b></a></dt><dd>Minimum length for temporary file name <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/FOPEN_MAX/"><b>FOPEN_MAX</b></a></dt><dd>Potential limit of simultaneous open streams <span class="typ">(constant)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/TMP_MAX/"><b>TMP_MAX</b></a></dt><dd>Number of temporary files <span class="typ">(constant)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

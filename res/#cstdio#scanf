@@ -1,0 +1,136 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>scanf</h1>
+<div class="C_prototype"><pre>int scanf ( const char * format, ... );</pre></div><div id="I_description">Read formatted data from stdin</div>
+<section id="description">
+Reads data from <a href="/stdin">stdin</a> and stores them according to the parameter <i>format</i> into the locations pointed by the additional arguments.<br>
+<br>
+The additional arguments should point to already allocated objects of the type specified by their corresponding format specifier within the <i>format</i> string.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>format</dt>
+<dd>C string that contains a sequence of characters that control how characters extracted from the stream are treated:<br>
+<ul>
+<li><b>Whitespace character:</b> the function will read and ignore any whitespace characters encountered before the next non-whitespace character (whitespace characters include spaces, newline and tab characters -- see <a href="/isspace">isspace</a>). A single whitespace in the <i>format</i> string validates any quantity of whitespace characters extracted from the <i>stream</i> (including none).</li>
+<li><b>Non-whitespace character, except format specifier (%):</b> Any character that is not either a whitespace character (blank, newline or tab) or part of a <i>format specifier</i> (which begin with a <tt>%</tt> character) causes the function to read the next character from the stream, compare it to this non-whitespace character and if it matches, it is discarded and the function continues with the next character of <i>format</i>. If the character does not match, the function fails, returning and leaving subsequent characters of the stream unread.</li>
+<li><b>Format specifiers:</b> A sequence formed by an initial percentage sign (<tt>%</tt>) indicates a format specifier, which is used to specify the type and format of the data to be retrieved from the <i>stream</i> and stored into the locations pointed by the additional arguments.</li>
+</ul>
+<br>
+A <i>format specifier</i> for <tt>scanf</tt> follows this prototype:<br>
+ <br>
+<tt>%[*][width][length]specifier</tt> <br>
+ <br>
+Where the <i>specifier</i> character at the end is the most significant component, since it defines which characters are extracted, their interpretation and the type of its corresponding argument:<br>
+<table class="boxed"><tr><th><i>specifier</i></th><th>Description</th><th>Characters extracted</th></tr>
+<tr><td><tt>i</tt></td><td>Integer</td><td>Any number of digits, optionally preceded by a sign (<tt>+</tt> or <tt>-</tt>).<br>
+<a href="/isdigit">Decimal digits</a> assumed by default (<tt>0-9</tt>), but a <tt>0</tt> prefix introduces octal digits (<tt>0-7</tt>), and <tt>0x</tt> <a href="/isxdigit">hexadecimal digits</a> (<tt>0-f</tt>).<br>
+<i>Signed</i> argument.</td></tr>
+<tr><td><tt>d</tt> <i>or</i> <tt>u</tt></td><td>Decimal integer</td><td>Any number of <a href="/isdigit">decimal digits</a> (<tt>0-9</tt>), optionally preceded by a sign (<tt>+</tt> or <tt>-</tt>).<br>
+<tt>d</tt> is for a <i>signed</i> argument, and <tt>u</tt> for an <i>unsigned</i>.</td></tr>
+<tr><td><tt>o</tt></td><td>Octal integer</td><td>Any number of octal digits (<tt>0-7</tt>), optionally preceded by a sign (<tt>+</tt> or <tt>-</tt>).<br>
+<i>Unsigned</i> argument.</td></tr>
+<tr><td><tt>x</tt></td><td>Hexadecimal integer</td><td>Any number of <a href="/isxdigit">hexadecimal digits</a> (<tt>0-9</tt>, <tt>a-f</tt>, <tt>A-F</tt>), optionally preceded by <tt>0x</tt> or <tt>0X</tt>, and all optionally preceded by a sign (<tt>+</tt> or <tt>-</tt>).<br>
+<i>Unsigned</i> argument.</td></tr>
+<tr><td><tt>f</tt>, <tt>e</tt>, <tt>g</tt></td><td rowspan="2">Floating point number</td><td rowspan="2">A series of <a href="/isdigit">decimal</a> digits, optionally containing a decimal point, optionally preceeded by a sign (<tt>+</tt> or <tt>-</tt>) and optionally followed by the <tt>e</tt> or <tt>E</tt> character and a decimal integer (or some of the other sequences supported by <samp><a href="/strtod">strtod</a></samp>).<br>
+Implementations complying with C99 also support hexadecimal floating-point format when preceded by <code>0x</code> or <code>0X</code>.</td></tr>
+<tr class="cpp11"><td><tt>a</tt></td></tr>
+<tr><td><tt>c</tt></td><td>Character</td><td>The next character. If a <i>width</i> other than <tt>1</tt> is specified, the function reads exactly <i>width</i> characters and stores them in the successive locations of the array passed as argument. No null character is appended at the end.</td></tr>
+<tr><td><tt>s</tt></td><td>String of characters</td><td>Any number of non-whitespace characters, stopping at the first <a href="/isspace">whitespace</a> character found. A terminating null character is automatically added at the end of the stored sequence.</td></tr>
+<tr><td><tt>p</tt></td><td>Pointer address</td><td>A sequence of characters representing a pointer. The particular format used depends on the system and library implementation, but it is the same as the one used to format <tt>%p</tt> in <a href="/fprintf">fprintf</a>.</td></tr>
+<tr><td><tt>[</tt><i>characters</i><tt>]</tt></td><td>Scanset</td><td>Any number of the characters specified between the brackets.<br>
+A dash (<tt>-</tt>) that is not the first character may produce non-portable behavior in some library implementations. </td></tr>
+<tr><td><tt>[^</tt><i>characters</i><tt>]</tt></td><td>Negated scanset</td><td>Any number of characters none of them specified as <i>characters</i> between the brackets.</td></tr>
+<tr><td><tt>n</tt></td><td>Count</td><td>No input is consumed.<br>
+The number of characters read so far from <samp><a href="/stdin">stdin</a></samp> is stored in the pointed location.</td></tr>
+<tr><td><tt>%</tt></td><td><tt>%</tt></td><td>A <tt>%</tt> followed by another <tt>%</tt> matches a single <tt>%</tt>.</td></tr>
+</table>
+Except for <tt>n</tt>, at least one character shall be consumed by any specifier. Otherwise the match fails, and the scan ends there.<br>
+<br>
+The <i>format specifier</i> can also contain sub-specifiers: <i>asterisk</i> (<tt>*</tt>), <i>width</i> and <i>length</i> (in that order), which are optional and follow these specifications:<br>
+<table class="boxed"><tr><th><i>sub-specifier</i></th><th>description</th></tr>
+<tr><td><tt>*</tt></td><td>An optional starting asterisk indicates that the data is to be read from the stream but ignored (i.e. it is not stored in the location pointed by an argument).</td></tr>
+<tr><td><i>width</i></td><td>Specifies the maximum number of characters to be read in the current reading operation (optional).</td></tr>
+<tr><td><i>length</i></td><td>One of <tt>hh</tt>, <tt>h</tt>, <tt>l</tt>, <tt>ll</tt>, <tt>j</tt>, <tt>z</tt>, <tt>t</tt>, <tt>L</tt> (optional).<br>
+This alters the expected type of the storage pointed by the corresponding argument (see below).</td></tr>
+</table>
+<br>
+This is a chart showing the types expected for the corresponding arguments where input is stored (both with and without a <i>length</i> sub-specifier):<br>
+<table class="boxed">
+<tr><th></th><th colspan="7">specifiers</th></tr>
+<tr><th><i>length</i></th><th><tt>d i</tt></th><th><tt>u o x</tt></th><th><tt>f e g a</tt></th><th><tt>c s [] [^]</tt></th><th><tt>p</tt></th><th><tt>n</tt></th></tr>
+<tr><td><i>(none)</i></td><td class="yes"><tt>int*</tt></td><td class="yes"><tt>unsigned int*</tt></td><td class="yes"><tt>float*</tt></td><td class="yes"><tt>char*</tt></td><td class="yes"><tt>void**</tt></td><td class="yes"><tt>int*</tt></td></tr>
+<tr class="cpp11"><td><tt>hh</tt></td><td class="yes"><tt>signed char*</tt></td><td class="yes"><tt>unsigned char*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td><td class="yes"><tt>signed char*</tt></td></tr>
+<tr><td><tt>h</tt></td><td class="yes"><tt>short int*</tt></td><td class="yes"><tt>unsigned short int*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td><td class="yes"><tt>short int*</tt></td></tr>
+<tr><td><tt>l</tt></td><td class="yes"><tt>long int*</tt></td><td class="yes"><tt>unsigned long int*</tt></td><td class="yes"><tt>double*</tt></td><td class="yes"><tt>wchar_t*</tt></td><td class="no"></td><td class="yes"><tt>long int*</tt></td></tr>
+<tr class="cpp11"><td><tt>ll</tt></td><td class="yes"><tt>long long int*</tt></td><td class="yes"><tt>unsigned long long int*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td><td class="yes"><tt>long long int*</tt></td></tr>
+<tr class="cpp11"><td><tt>j</tt></td><td class="yes"><tt><a href="/intmax_t">intmax_t</a>*</tt></td><td class="yes"><tt><a href="/uintmax_t">uintmax_t</a>*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td><td class="yes"><tt><a href="/intmax_t">intmax_t</a>*</tt></td></tr>
+<tr class="cpp11"><td><tt>z</tt></td><td class="yes"><tt><a href="/size_t">size_t</a>*</tt></td><td class="yes"><tt><a href="/size_t">size_t</a>*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td><td class="yes"><tt><a href="/size_t">size_t</a>*</tt></td></tr>
+<tr class="cpp11"><td><tt>t</tt></td><td class="yes"><tt><a href="/ptrdiff_t">ptrdiff_t</a>*</tt></td><td class="yes"><tt><a href="/ptrdiff_t">ptrdiff_t</a>*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td><td class="yes"><tt><a href="/ptrdiff_t">ptrdiff_t</a>*</tt></td></tr>
+<tr><td><tt>L</tt></td><td class="no"></td><td class="no"></td><td class="yes"><tt>long double*</tt></td><td class="no"></td><td class="no"></td><td class="no"></td></tr>
+</table>
+<b>Note:</b> Yellow rows indicate specifiers and sub-specifiers introduced by C99.<br>
+</dd>
+<dt>... <i>(additional arguments)</i></dt>
+<dd>Depending on the <i>format</i> string, the function may expect a sequence of additional arguments, each containing a pointer to allocated storage where the interpretation of the extracted characters is stored with the appropriate type.<br>
+There should be at least as many of these arguments as the number of values stored by the <i>format specifiers</i>. Additional arguments are ignored by the function.<br>
+These arguments are expected to be pointers: to store the result of a <tt>scanf</tt> operation on a regular variable, its name should be preceded by the <i>reference operator</i> (<tt>&</tt>) (see <a href="#example">example</a>).<br>
+</dd></dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the number of items of the argument list successfully filled. This count can match the expected number of items or be less (even zero) due to a matching failure, a reading error, or the reach of the <i>end-of-file</i>.<br>
+<br>
+If a reading error happens or the <i>end-of-file</i> is reached while reading, the proper indicator is set (<a href="/feof">feof</a> or <a href="/ferror">ferror</a>). And, if either happens before any data could be successfully read, <a href="/EOF">EOF</a> is returned.<br>
+<br>
+If an encoding error happens interpreting wide characters, the function sets <a href="/errno">errno</a> to <tt>EILSEQ</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>/* scanf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str [80];
+  <var>int</var> i;
+
+  printf (<kbd>"Enter your family name: "</kbd>);
+  scanf (<kbd>"%79s"</kbd>,str);  
+  printf (<kbd>"Enter your age: "</kbd>);
+  scanf (<kbd>"%d"</kbd>,&amp;i);
+  printf (<kbd>"Mr. %s , %d years old.\n"</kbd>,str,i);
+  printf (<kbd>"Enter a hexadecimal number: "</kbd>);
+  scanf (<kbd>"%x"</kbd>,&amp;i);
+  printf (<kbd>"You have entered %#x (%d).\n"</kbd>,i,i);
+  
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This example demonstrates some of the types that can be read with <tt>scanf</tt>:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Enter your family name: Soulie
+Enter your age: 29
+Mr. Soulie , 29 years old.
+Enter a hexadecimal number: ff
+You have entered 0xff (255).
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="compatibility">
+<h3>Compatibility</h3>
+Particular library implementations may support additional specifiers and sub-specifiers.<br>
+Those listed here are supported by the latest C and C++ standards (both published in 2011), but those in yellow were introduced by C99 (only required for C++ implementations since C++11), and may not be supported by libraries that comply with older standards.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fscanf/"><b>fscanf</b></a></dt><dd>Read formatted data from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/printf/"><b>printf</b></a></dt><dd>Print formatted data to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/gets/"><b>gets</b></a></dt><dd>Get string from stdin <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

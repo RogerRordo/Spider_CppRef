@@ -1,0 +1,130 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_map/unordered_map/">unordered_map</a>::insert<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>(1)</th><td><pre>pair&lt;iterator,bool&gt; insert ( const value_type&amp; val );</pre></td></tr><tr class="even"><th>(2)</th><td><pre>template &lt;class P&gt;    pair&lt;iterator,bool&gt; insert ( P&amp;&amp; val );</pre></td></tr><tr class="odd"><th>(3)</th><td><pre>iterator insert ( const_iterator hint, const value_type&amp; val );</pre></td></tr><tr class="even"><th>(4)</th><td><pre>template &lt;class P&gt;    iterator insert ( const_iterator hint, P&amp;&amp; val );</pre></td></tr><tr class="odd"><th>(5)</th><td><pre>template &lt;class InputIterator&gt;    void insert ( InputIterator first, InputIterator last );</pre></td></tr><tr class="even"><th>(6)</th><td><pre>void insert ( initializer_list&lt;value_type&gt; il );</pre></td></tr></table></div><div id="I_description">Insert elements</div>
+<section id="description">
+Inserts new elements in the <a href="/unordered_map">unordered_map</a>.<br>
+<br>
+Each element is inserted only if its key is not equivalent to the key of any other element already in the container (keys in an <a href="/unordered_map">unordered_map</a> are unique).<br>
+<br>
+This effectively increases the container <a href="/unordered_map::size">size</a> by the number of elements inserted.<br>
+<br>
+The parameters determine how many elements are inserted and to which values they are initialized:<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>val</dt>
+<dd>Object to be copied to (or moved as) the value of the new element.<br>
+Versions (1) and (3) copy the element (i.e., <tt>val</tt> preserves its contents, the container keeps a copy).<br>
+Versions (2) and (4) move the element (i.e., <tt>val</tt> loses its content, which is acquired by the new element in the container).<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/unordered_map">unordered_map</a> as <tt>pair&lt;const key_type,mapped_type&gt;</tt>, where member type <tt>key_type</tt> is an alias of the first template parameter (the key type), and <tt>mapped_type</tt> is an alias of the second template parameter (the mapped type, <tt>T</tt>).<br>
+<div class="C_SwitchCases">
+<div title="C++11">
+The signatures taking an argument of type <code>P&&</code> are only called if <tt>P</tt> is a type implicitly convertible to <tt>value_type</tt>.<br>
+</div>
+<div title="C++14">
+The signatures taking an argument of type <code>P&&</code> are only called if <code><a href="/is_constructible">std::is_constructible</a>&lt;value_type,P&&&gt;</code> is <code>true</code>.<br>
+</div>
+</div>
+</dd>
+<dt>hint</dt>
+<dd>Iterator to a position suggested as a hint on where to start the search for the proper insertion point. This value may or may not be used by the container to optimize the operation. The element will be stored in its corresponding bucket, no matter what is passed as <tt>hint</tt>.<br>
+Member type <tt>const_iterator</tt> is a <a href="/ForwardIterator">forward iterator</a> type.</dd>
+<dt>first, last</dt>
+<dd>Iterators specifying a range of elements. Copies of the elements in the range <tt>[first,last)</tt> are inserted in the <a href="/unordered_map">unordered_map</a> container.<br>
+Notice that the range includes all the elements between <i>first</i> and <i>last</i>, including the element pointed by <i>first</i> but not the one pointed by <i>last</i>.<br>
+Neither <tt>first</tt> nor <tt>last</tt> shall be iterators in the destination container.<br>
+The template type can be any type of <a href="/InputIterator">input iterator</a>.</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <i>initializer list</i> declarators.<br>
+Member type <tt>value_type</tt> is the type of the elements contained in the container, defined in <a href="/unordered_map">unordered_map</a> as <tt>pair&lt;const key_type,mapped_type&gt;</tt>, where member type <tt>key_type</tt> is an alias of the first template parameter (the key type), and <tt>mapped_type</tt> is an alias of the second template parameter (the mapped type, <tt>T</tt>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+In versions (1) and (2), the function returns a <a href="/pair">pair</a> object whose first element is an iterator pointing either to the newly inserted element in the container or to the element whose key is equivalent, and a <tt>bool</tt> value indicating whether the element was successfully inserted or not.<br>
+<br>
+In versions (3) and (4), the function returns an iterator pointing either to the newly inserted element in the container or to the element whose key is equivalent.<br>
+<br>
+Versions (5) and (6) return no value.<br>
+<br>
+Member type <tt>iterator</tt> is a <a href="/ForwardIterator">forward iterator</a> type.<br>
+<br>
+The storage for the new element is allocated using <tt>allocator_traits&lt;allocator_type&gt;::construct()</tt>, which may throw exceptions on failure (for the default <a href="/allocator">allocator</a>, <tt>bad_alloc</tt> is thrown if the allocation request does not succeed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_map::insert</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_map&lt;std::string,<var>double</var>&gt;
+              myrecipe,
+              mypantry = {{<kbd>"milk"</kbd>,2.0},{<kbd>"flour"</kbd>,1.5}};
+
+  std::pair&lt;std::string,<var>double</var>&gt; myshopping (<kbd>"baking powder"</kbd>,0.3);
+
+  myrecipe.insert (myshopping);                        <cite>// copy insertion</cite>
+  myrecipe.insert (std::make_pair&lt;std::string,<var>double</var>&gt;(<kbd>"eggs"</kbd>,6.0)); <cite>// move insertion</cite>
+  myrecipe.insert (mypantry.begin(), mypantry.end());  <cite>// range insertion</cite>
+  myrecipe.insert ( {{<kbd>"sugar"</kbd>,0.8},{<kbd>"salt"</kbd>,0.1}} );    <cite>// initializer list insertion</cite>
+
+  std::cout &lt;&lt; <kbd>"myrecipe contains:"</kbd> &lt;&lt; std::endl;
+  <var>for</var> (<var>auto</var>&amp; x: myrecipe)
+    std::cout &lt;&lt; x.first &lt;&lt; <kbd>": "</kbd> &lt;&lt; x.second &lt;&lt; std::endl;
+
+  std::cout &lt;&lt; std::endl;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myrecipe contains:
+salt: 0.1
+eggs: 6
+sugar: 0.8
+baking powder: 0.3
+flour: 1.5
+milk: 2
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+<dl>
+<dt>Single element insertions:</dt>
+<dd>Average case: constant.<br>
+Worst case: linear in container size.<br>
+</dd>
+<dt>Multiple elements insertion:</dt>
+<dd>Average case: linear in the number of elements inserted.<br>
+Worst case: <tt>N*(size+1)</tt>: number of elements inserted times the container size plus one.</dd>
+</dl>
+May trigger a <a href="/unordered_map::rehash">rehash</a> (not included in the complexity above).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+On most cases, all iterators in the container remain valid after the insertion. The only exception being when the growth of the container forces a rehash. In this case, all iterators in the container are invalidated.<br>
+<br>
+A rehash is forced if the new container <a href="/unordered_map::size">size</a> after the insertion operation would increase above its capacity threshold (calculated as the container's <a href="/unordered_map::bucket_count">bucket_count</a> multiplied by its <a href="/unordered_map::max_load_factor">max_load_factor</a>).<br>
+<br>
+References to elements in the <a href="/unordered_map">unordered_map</a> container remain valid in all cases, even after a rehash.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/emplace/"><b>unordered_map::emplace</b></a></dt><dd>Construct and insert element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/emplace_hint/"><b>unordered_map::emplace_hint</b></a></dt><dd>Construct and insert element with hint <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/operator[]/"><b>unordered_map::operator[]</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_map/unordered_map/at/"><b>unordered_map::at</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,74 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::move</h1>
+<div class="C_prototype"><pre>static char_type* move (char_type* dest, const char_type* src, size_t n);</pre></div><div id="I_description">Move character sequence</div>
+<section id="description">
+Copies the sequence of <i>n</i> characters pointed by <i>src</i> to the array pointed by <i>dest</i>, even if the ranges overlap.<br>
+<br>
+All <i>character traits</i> types shall implement the function as if the individual characters were assigned using <a href="/char_traits::assign">member assign</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>dest</dt>
+<dd>Pointer to an array where the copied characters are written.</dd>
+<dt>src</dt>
+<dd>Pointer to an array with the <i>n</i> characters to copy.</dd>
+<dt>n</dt>
+<dd>Number of characters to copy.</dd>
+</dl>
+<br>
+Notice that the function will consider that the length of both <i>dest</i> and <i>src</i> sequences is <i>n</i> characters, independently on whether any of them contains null-characters.<br>
+Member type <tt>char_type</tt> is the <i>character type</i> (i.e., the class template parameter in <a href="/char_traits">char_traits</a>).<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns <i>dest</i>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// char_traits::move</cite>
+<dfn>#include &lt;iostream&gt;   </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;     </dfn><cite>// std::char_traits</cite>
+
+<var>int</var> main ()
+{
+  <var>char</var> foo[] = <kbd>"---o............"</kbd>;
+  std::cout &lt;&lt; foo &lt;&lt; <kbd>'\n'</kbd>;
+  std::char_traits&lt;<var>char</var>&gt;::move (foo+3,foo,4);
+  std::cout &lt;&lt; foo &lt;&lt; <kbd>'\n'</kbd>;
+  std::char_traits&lt;<var>char</var>&gt;::move (foo+6,foo,7);
+  std::cout &lt;&lt; foo &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>---o............
+------o.........
+------------o...
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in <i>n</i>.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Unless either <i>dest</i> or <i>src</i> does not point to an array long enough, this member function never throws exceptions (no-throw guarantee) in any of the standard specializations.<br>
+Otherwise, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/copy/"><b>char_traits::copy</b></a></dt><dd>Copy character sequence <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/assign/"><b>char_traits::assign</b></a></dt><dd>Assign character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memmove/"><b>memmove</b></a></dt><dd>Move block of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

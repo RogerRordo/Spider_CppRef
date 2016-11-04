@@ -1,0 +1,94 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::operator+=</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>string (1)</th><td><pre>basic_string&amp; operator+= (const basic_string&amp; str);</pre></td></tr><tr class="even"><th>c-string (2)</th><td><pre>basic_string&amp; operator+= (const charT* s);</pre></td></tr><tr class="odd"><th>character (3)</th><td><pre>basic_string&amp; operator+= (charT c);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>string (1)</th><td><pre>basic_string&amp; operator+= (const basic_string&amp; str);</pre></td></tr><tr class="odd"><th>c-string (2)</th><td><pre>basic_string&amp; operator+= (const charT* s);</pre></td></tr><tr class="even"><th>character (3)</th><td><pre>basic_string&amp; operator+= (charT c);</pre></td></tr><tr class="odd"><th>initializer list (4)</th><td><pre>basic_string&amp; operator+= (initializer_list&lt;charT&gt; il);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Append to string</div>
+<section id="description">
+Extends the <a href="/basic_string">basic_string</a> by appending additional characters at the end of its current value:<br>
+<br>
+(See member function <a href="/basic_string::append">append</a> for additional appending options).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>A <a href="/basic_string">basic_string</a> object of the same type (with the same class template arguments <tt>charT</tt>, <tt>traits</tt> and <tt>Alloc</tt>), whose value is copied at the end.<br>
+</dd>
+<dt>s</dt>
+<dd>Pointer to a null-terminated sequence of characters.<br>
+The sequence is copied at the end of the string.<br>
+The <a href="/string::length">length</a> is determined by calling <tt><a href="/char_traits::length">traits_type::length</a>(s)</tt>.</dd>
+<dt>c</dt>
+<dd>A character, which is appended to the current value of the string.</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.<br>
+The characters are appended to the string, in the same order.</dd>
+</dl>
+<br>
+<tt>charT</tt> is <a href="/basic_string">basic_string</a>'s character type (i.e., its first template parameter).<br>
+</section>
+<br>
+<section id="example">
+<h3>Return Value</h3>
+<tt>*this</tt>
+<br>
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::operator+=</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string name (<kbd>"John"</kbd>);
+  std::string family (<kbd>"Smith"</kbd>);
+  name += <kbd>" K. "</kbd>;         <cite>// c-string</cite>
+  name += family;         <cite>// string</cite>
+  name += <kbd>'\n'</kbd>;           <cite>// character</cite>
+
+  std::cout &lt;&lt; name;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>John K. Smith
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally up to linear in the new <a href="/basic_string::length">string length</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to this object may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/basic_string">basic_string</a>.<br>
+<br>
+If the resulting <a href="/basic_string::length">string length</a> would exceed the <a href="/basic_string::max_size">max_size</a>, a <a href="/length_error">length_error</a> exception is thrown.<br>
+If the type uses the <a href="/allocator">default allocator</a>, a <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function needs to allocate storage and fails.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/basic_string/append/"><b>basic_string::append</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/assign/"><b>basic_string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/operator=/"><b>basic_string::operator=</b></a></dt><dd>String assignment <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/insert/"><b>basic_string::insert</b></a></dt><dd>Insert into string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/replace/"><b>basic_string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

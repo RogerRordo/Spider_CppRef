@@ -1,0 +1,14 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>BUFSIZ</h1>
+<div id="I_description">Buffer size</div>
+<section id="description">
+This macro constant expands to an integral expression with the size of the buffer used by the <a href="/setbuf">setbuf</a> function.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/setbuf/"><b>setbuf</b></a></dt><dd>Set stream buffer <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

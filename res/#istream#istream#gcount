@@ -1,0 +1,63 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;istream&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/istream/istream/">istream</a>::gcount</h1>
+<div class="C_prototype"><pre>streamsize gcount() const;</pre></div><div id="I_description">Get character count</div>
+<section id="description">
+Returns the number of characters extracted by the last <i>unformatted input operation</i> performed on the object.<br>
+<br>
+The <i>unformatted input operations</i> that modify the value returned by this function are: <samp><a href="/istream::get">get</a></samp>, <samp><a href="/istream::getline">getline</a></samp>, <samp><a href="/istream::ignore">ignore</a></samp>, <samp><a href="/istream::peek">peek</a></samp>, <samp><a href="/istream::read">read</a></samp>, <samp><a href="/istream::readsome">readsome</a></samp>, <samp><a href="/istream::putback">putback</a></samp> and <samp><a href="/istream::unget">unget</a></samp>.<br>
+<br>
+Notice though, that <samp><a href="/istream::peek">peek</a></samp>, <samp><a href="/istream::putback">putback</a></samp> and <samp><a href="/istream::unget">unget</a></samp> do not actually extract any characters, and thus <samp>gcount</samp> will always return zero after calling any of them.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none <br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The number of characters extracted by the last unformatted input operation.<br>
+<samp><a href="/streamsize">streamsize</a></samp> is a signed integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>// cin.gcount example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cin, std::cout</cite>
+
+<var>int</var> main () {
+  <var>char</var> str[20];
+
+  std::cout &lt;&lt; <kbd>"Please, enter a word: "</kbd>;
+  std::cin.getline(str,20);
+  std::cout &lt;&lt; std::cin.gcount() &lt;&lt; <kbd>" characters read: "</kbd> &lt;&lt; str &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Please, enter a word: simplify
+9 characters read: simplify
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Accesses the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/istream/istream/get/"><b>istream::get</b></a></dt><dd>Get characters <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/istream/getline/"><b>istream::getline</b></a></dt><dd>Get line <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/istream/ignore/"><b>istream::ignore</b></a></dt><dd>Extract and discard characters <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/istream/read/"><b>istream::read</b></a></dt><dd>Read block of data <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/istream/istream/readsome/"><b>istream::readsome</b></a></dt><dd>Read data available in buffer <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,67 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>ldiv</h1>
+<div class="C_prototype"><pre>ldiv_t ldiv (long int numer, long int denom);</pre></div><div id="I_description">Integral division</div>
+<section id="description">
+Returns the integral quotient and remainder of the division of <var>numer</var> by <var>denom</var> ( <code>numer/denom</code> ) as a structure of type <samp><a href="/ldiv_t">ldiv_t</a></samp>, which has two members: <var>quot</var> and <var>rem</var>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>numer</dt>
+<dd>Numerator.</dd>
+<dt>denom</dt>
+<dd>Denominator.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The result is returned by value in a <samp><a href="/ldiv_t">ldiv_t</a></samp> structure, which has two members (in either order):<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code><var>long</var> <var>int</var> quot;   <cite>// quotient</cite>
+<var>long</var> <var>int</var> rem;    <cite>// remainder </cite></code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* ldiv example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* ldiv, ldiv_t */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  ldiv_t ldivresult;
+  ldivresult = ldiv (1000000L,132L);
+  printf (<kbd>"1000000 div 132 =&gt; %ld, remainder %ld.\n"</kbd>, ldivresult.quot, ldivresult.rem);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+1000000 div 132 =&gt; 7575, remainder 100.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Concurrently calling this function is safe, causing no data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If either part of the result cannot be represented, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/div/"><b>div</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/lldiv/"><b>lldiv</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/ldiv_t/"><b>ldiv_t</b></a></dt><dd>Structure returned by ldiv <span class="typ">(type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

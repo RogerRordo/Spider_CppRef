@@ -1,0 +1,104 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>pow</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double pow (double base, double exponent);</pre></div>
+<div title="C99" class="on">
+<pre>     double pow  (double base     , double exponent);      float powf (float base      , float exponent);long double powl (long double base, long double exponent);</pre></div>
+<div title="C++98" class="on">
+<pre>     double pow (double base     , double exponent);      float pow (float base      , float exponent);long double pow (long double base, long double exponent);     double pow (double base     , int exponent);long double pow (long double base, int exponent);</pre></div>
+<div title="C++11" class="on">
+<pre>     double pow (double base     , double exponent);      float pow (float base      , float exponent);long double pow (long double base, long double exponent);     double pow (Type1 base      , Type2 exponent);        // additional overloads</pre></div>
+</div>
+</div><div id="I_description">Raise to power</div>
+<section id="description">
+Returns <i>base</i> raised to the power <i>exponent</i>:<br>
+<br>
+base<sup>exponent</sup> <br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++98">
+This function is overloaded in <code><a href="/&lt;complex&gt;">&lt;complex&gt;</a></code> and <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/complex:pow">complex pow</a> and <a href="/valarray:pow">valarray pow</a>).<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for other combinations of <a href="/is_arithmetic">arithmetic types</a> (<samp>Type1</samp> and <samp>Type2</samp>): These overloads effectively cast its arguments to <code>double</code> before calculations, except if at least one of the arguments is of type <code>long double</code> (in which case both are casted to <code>long double</code> instead).<br>
+<br>
+This function is also overloaded in <code><a href="/&lt;complex&gt;">&lt;complex&gt;</a></code> and <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/complex:pow">complex pow</a> and <a href="/valarray:pow">valarray pow</a>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>base</dt>
+<dd>Base value.</dd>
+<dt>exponent</dt>
+<dd>Exponent value.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The result of raising <var>base</var> to the power <var>exponent</var>.<br>
+<br>
+If the <var>base</var> <a href="/isfinite">is finite</a> negative and the <var>exponent</var> <a href="/isfinite">is finite</a> but not an integer value, it causes a <i>domain error</i>.<br>
+If both <var>base</var> and <var>exponent</var> are zero, it may also cause a <i>domain error</i> on certain implementations.<br>
+If <var>base</var> is zero and <var>exponent</var> is negative, it may cause a <i>domain error</i> or a <i>pole error</i> (or none, depending on the library implementation).<br>
+The function may also cause a <i>range error</i> if the result is too great or too small to be represented by a value of the return type.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C90 (C++98)">
+If a <i>domain error</i> occurs, the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/EDOM">EDOM</a></samp>.<br>
+If a <i>pole</i> or <i>range error</i> occurs, the global variable <samp><a href="/errno">errno</a></samp> is set <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+</div>
+<div title="C99 (C++11)">
+If a <i>domain error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/EDOM">EDOM</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_INVALID">FE_INVALID</a></samp> is raised.<br>
+<br>
+If a <i>pole error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_DIVBYZERO">FE_DIVBYZERO</a></samp> is raised.<br>
+<br>
+If a <i>range error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: either <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> or <samp><a href="/FE_UNDERFLOW">FE_UNDERFLOW</a></samp> is raised.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* pow example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* pow */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  printf (<kbd>"7 ^ 3 = %f\n"</kbd>, pow (7.0, 3.0) );
+  printf (<kbd>"4.73 ^ 12 = %f\n"</kbd>, pow (4.73, 12.0) );
+  printf (<kbd>"32.01 ^ 1.54 = %f\n"</kbd>, pow (32.01, 1.54) );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+7 ^ 3 = 343.000000
+4.73 ^ 12 = 125410439.217423
+32.01 ^ 1.54 = 208.036691
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/log/"><b>log</b></a></dt><dd>Compute natural logarithm <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/exp/"><b>exp</b></a></dt><dd>Compute exponential function <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/sqrt/"><b>sqrt</b></a></dt><dd>Compute square root <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

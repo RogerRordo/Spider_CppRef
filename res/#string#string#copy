@@ -1,0 +1,85 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::copy</h1>
+<div class="C_prototype"><pre>size_t copy (char* s, size_t len, size_t pos = 0) const;</pre></div><div id="I_description">Copy sequence of characters from string</div>
+<section id="description">
+Copies a substring of the current value of the <a href="/string">string</a> object into the array pointed by <i>s</i>. This substring contains the <i>len</i> characters that start at position <i>pos</i>.<br>
+<br>
+The function does not append a null character at the end of the copied content.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>s</dt>
+<dd>Pointer to an array of characters.<br>
+The array shall contain enough storage for the copied characters.</dd>
+<dt>len</dt>
+<dd>Number of characters to copy (if the string is shorter, as many characters as possible are copied).</dd>
+<dt>pos</dt>
+<dd>Position of the first character to be copied.<br>
+If this is greater than the <a href="/string::length">string length</a>, it throws <a href="/out_of_range">out_of_range</a>.<br>
+Note: The first character in the <a href="/string">string</a> is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The number of characters copied to the array pointed by <i>s</i>. This may be equal to <i>len</i> or to <tt><a href="/string::length">length()</a>-pos</tt> (if the string value is shorter than <tt>pos+len</tt>).<br>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::copy</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer[20];
+  std::string str (<kbd>"Test string..."</kbd>);
+  std::size_t length = str.copy(buffer,6,5);
+  buffer[length]=<kbd>'\0'</kbd>;
+  std::cout &lt;&lt; <kbd>"buffer contains: "</kbd> &lt;&lt; buffer &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>buffer contains: string
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the number of characters copied.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <a href="/string">string</a>.<br>
+<br>
+If <i>s</i> does not point to an array long enough, it causes <i>undefined behavior</i>.<br>
+<br>
+If <i>pos</i> is greater than the <a href="/string::length">string length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/substr/"><b>string::substr</b></a></dt><dd>Generate substring <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/assign/"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/c_str/"><b>string::c_str</b></a></dt><dd>Get C string equivalent <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/replace/"><b>string::replace</b></a></dt><dd>Replace portion of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/insert/"><b>string::insert</b></a></dt><dd>Insert into string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/append/"><b>string::append</b></a></dt><dd>Append to string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

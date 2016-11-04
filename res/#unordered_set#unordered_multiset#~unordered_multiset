@@ -1,0 +1,19 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_multiset/">unordered_multiset</a>::~unordered_multiset<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>~unordered_multiset();</pre></div><div id="I_description">Destroy unordered multiset</div>
+<section id="description">
+Destructs the container object. This calls each of the contained element's destructors, and dealocates all the storage capacity allocated by the <a href="/unordered_multiset">unordered_multiset</a> container.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear on <a href="/unordered_multiset::size">unordered_multiset::size</a> (destructors).<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references are invalidated.<br>
+<div id="CH_bb"></div></div></div>

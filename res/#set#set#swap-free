@@ -1,0 +1,89 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>swap (set)</h1>
+<div class="C_prototype"><pre>template &lt;class T, class Compare, class Alloc&gt;  void swap (set&lt;T,Compare,Alloc&gt;&amp; x, set&lt;T,Compare,Alloc&gt;&amp; y);</pre></div><div id="I_description">Exchanges the contents of two sets</div>
+<section id="description">
+The contents of container <i>x</i> are exchanged with those of <i>y</i>. Both container objects must be of the same type (same template parameters), although sizes may differ.<br>
+<br>
+After the call to this member function, the elements in <i>x</i> are those which were in <i>y</i> before the call, and the elements of <i>y</i> are those which were in <i>x</i>. All iterators, references and pointers remain valid for the swapped objects.<br>
+<br>
+This is an overload of the generic algorithm <a href="/swap">swap</a> that improves its performance by mutually transferring ownership over their assets to the other container (i.e., the containers exchange references to their data, without actually performing any element copy or movement): It behaves as if <tt>x.<a href="/set::swap">swap</a>(y)</tt> was called.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x,y</dt>
+<dd><a href="/set">set</a> containers of the same type (i.e., having both the same template parameters, <tt>T</tt>, <tt>Compare</tt> and <tt>Alloc</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// swap (set overload)</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+
+main ()
+{
+  <var>int</var> myints[]={12,75,10,32,20,25};
+  std::set&lt;<var>int</var>&gt; first (myints,myints+3);     <cite>// 10,12,75</cite>
+  std::set&lt;<var>int</var>&gt; second (myints+3,myints+6);  <cite>// 20,25,32</cite>
+
+  swap(first,second);
+
+  std::cout &lt;&lt; <kbd>"first contains:"</kbd>;
+  <var>for</var> (std::set&lt;<var>int</var>&gt;::iterator it=first.begin(); it!=first.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"second contains:"</kbd>;
+  <var>for</var> (std::set&lt;<var>int</var>&gt;::iterator it=second.begin(); it!=second.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>first contains: 20 25 32
+second contains: 10 12 75
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references referring to elements in both containers remain valid, and are now referring to the same elements they referred to before the call, but in the other container, where they now iterate.<br>
+Note that the <i>end iterators</i> do not refer to elements and may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both containers, <i>x</i> and <i>y</i>, are modified.<br>
+No contained elements are accessed by the call (although see <i>iterator validity</i> above).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If the allocators in both <a href="/set">sets</a> compare equal, or if their <a href="/allocator_traits">allocator traits</a> indicate that the allocators shall <a href="/allocator_traits#types">propagate</a>, the function never throws exceptions (no-throw guarantee).<br>
+Otherwise, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/set/set/swap/"><b>set::swap</b></a></dt><dd>Swap content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/utility/swap/"><b>swap</b></a></dt><dd>Exchange values of two objects <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/swap_ranges/"><b>swap_ranges</b></a></dt><dd>Exchange values of two ranges <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

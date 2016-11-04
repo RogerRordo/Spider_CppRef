@@ -1,0 +1,61 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>perror</h1>
+<div class="C_prototype"><pre>void perror ( const char * str );</pre></div><div id="I_description">Print error message</div>
+<section id="description">
+Interprets the value of <a href="/errno">errno</a> as an error message, and prints it to <a href="/stderr">stderr</a> (the standard error output stream, usually the console), optionally preceding it with the custom message specified in <i>str</i>.<br>
+<br>
+<a href="/errno">errno</a> is an integral variable whose value describes the error condition or diagnostic information produced by a call to a library function (any function of the C standard library may set a value for <a href="/errno">errno</a>, even if not explicitly specified in this reference, and even if no error happened), see <a href="/errno">errno</a> for more info.<br>
+<br>
+The error message produced by <tt>perror</tt> is platform-depend.<br>
+<br>
+If the parameter <i>str</i> is not a null pointer, <i>str</i> is printed followed by a colon (:) and a space. Then, whether <i>str</i> was a null pointer or not, the generated error description is printed followed by a newline character (<tt>'\n'</tt>).<br>
+<br>
+<tt>perror</tt> should be called right after the error was produced, otherwise it can be overwritten by calls to other functions.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters.</h3>
+<dl>
+<dt>str</dt>
+<dd>C string containing a custom message to be printed before the error message itself.<br>
+If it is a null pointer, no preceding custom message is printed, but the error message is still printed.<br>
+By convention, the name of the application itself is generally used as parameter.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none <br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* perror example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  pFile=fopen (<kbd>"unexist.ent"</kbd>,<kbd>"rb"</kbd>);
+  <var>if</var> (pFile==NULL)
+    perror (<kbd>"The following error occurred"</kbd>);
+  <var>else</var>
+    fclose (pFile);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+If the file <tt>unexist.ent</tt> does not exist, something similar to this may be expected as program output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The following error occurred: No such file or directory
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/clearerr/"><b>clearerr</b></a></dt><dd>Clear error indicators <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/ferror/"><b>ferror</b></a></dt><dd>Check error indicator <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

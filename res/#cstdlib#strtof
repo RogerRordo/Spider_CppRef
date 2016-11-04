@@ -1,0 +1,82 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>strtof<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>float strtof (const char* str, char** endptr);</pre></div><div id="I_description">Convert string to float</div>
+<section id="description">
+Parses the C-string <var>str</var> interpreting its content as a floating point number (according to the current locale) and returns its value as a <code>float</code>. If <var>endptr</var> is not a <i>null pointer</i>, the function also sets the value of <var>endptr</var> to point to the first character after the number.<br>
+<br>
+The function first discards as many whitespace characters (as in <samp><a href="/isspace">isspace</a></samp>) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals (see below), and interprets them as a numerical value. A pointer to the rest of the string after the last valid character is stored in the object pointed by <var>endptr</var>.<br>
+<br>
+A valid floating point number for <samp>strtof</samp> using the <code>"C"</code> locale is formed by an optional sign character (<code>+</code> or <code>-</code>), followed by one of:<br>
+<ul>
+<li>A sequence of digits, optionally containing a decimal-point character (<code>.</code>), optionally followed by an exponent part (an <code>e</code> or <code>E</code> character followed by an optional sign and a sequence of digits).</li>
+<li>A <code>0x</code> or <code>0X</code> prefix, then a sequence of hexadecimal digits (as in <samp><a href="/isxdigit">isxdigit</a></samp>) optionally containing a period which separates the whole and fractional number parts. Optionally followed by a power of 2 exponent (a <code>p</code> or <code>P</code> character followed by an optional sign and a sequence of hexadecimal digits).</li>
+<li><code>INF</code> or <code>INFINITY</code> (ignoring case).</li>
+<li><code>NAN</code> or <code>NAN</code><i>sequence</i> (ignoring case), where <i>sequence</i> is a sequence of characters, where each character is either an alphanumeric character (as in <samp><a href="/isalnum">isalnum</a></samp>) or the underscore character (<code>_</code>).</li>
+</ul>
+<br>
+If the first sequence of non-whitespace characters in <var>str</var> does not form a valid floating-point number as just described, or if no such sequence exists because either <var>str</var> is empty or contains only whitespace characters, no conversion is performed and the function returns <code>0.0F</code>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C-string beginning with the representation of a floating-point number.</dd>
+<dt>endptr</dt>
+<dd>Reference to an already allocated object of type <code>char*</code>, whose value is set by the function to the next character in <var>str</var> after the numerical value.<br>
+This parameter can also be a <i>null pointer</i>, in which case it is not used.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted floating point number as a value of type <code>float</code>.<br>
+If no valid conversion could be performed, the function returns zero (<code>0.0F</code>).<br>
+If the correct value is out of the range of representable values for the type, a positive or negative <samp><a href="/HUGE_VALF">HUGE_VALF</a></samp> is returned, and <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+If the correct value would cause underflow, the function returns a value whose magnitude is no greater than the smallest normalized positive number (some library implementations may also set <samp><a href="/errno">errno</a></samp> to <samp><a href="/ERANGE">ERANGE</a></samp> in this case).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strtof example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf, NULL */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* strtof */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> szOrbits[] = <kbd>"686.97 365.24"</kbd>;
+  <var>char</var>* pEnd;
+  <var>float</var> f1, f2;
+  f1 = strtof (szOrbits, &amp;pEnd);
+  f2 = strtof (pEnd, NULL);
+  printf (<kbd>"One martian year takes %.2f Earth years.\n"</kbd>, f1/f2);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>One martian year takes 1.88 Earth years.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The array pointed by <var>str</var> is accessed, and the pointer pointed by <var>endptr</var> is modified (if not null).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+<br>
+If <var>str</var> does not point to a valid C-string, or if <var>endptr</var> does not point to a valid pointer object, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/atof/"><b>atof</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtod/"><b>strtod</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtol/"><b>strtol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

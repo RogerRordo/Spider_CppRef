@@ -1,0 +1,100 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>swap_ranges</h1>
+<div class="C_prototype"><pre>template &lt;class ForwardIterator1, class ForwardIterator2&gt;  ForwardIterator2 swap_ranges (ForwardIterator1 first1, ForwardIterator1 last1,                                ForwardIterator2 first2);</pre></div><div id="I_description">Exchange values of two ranges</div>
+<section id="description">
+Exchanges the values of each of the elements in the range <code>[first1,last1)</code> with those of their respective elements in the range beginning at <var>first2</var>.<br>
+<br>
+The function calls <samp><a href="/swap">swap</a></samp> (unqualified) to exchange the elements.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><var>template</var>&lt;<var>class</var> ForwardIterator1, <var>class</var> ForwardIterator2&gt;
+  ForwardIterator2 swap_ranges (ForwardIterator1 first1, ForwardIterator1 last1,
+                                ForwardIterator2 first2)
+{
+  <var>while</var> (first1!=last1) {
+    swap (*first1, *first2);
+    ++first1; ++first2;
+  }
+  <var>return</var> first2;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first1, last1</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions in one of the sequences to be swapped. The range used is <var>[first1,last1)</var>, which contains all the elements between <var>first1</var> and <var>last1</var>, including the element pointed by <var>first1</var> but not the element pointed by <var>last1</var>.</dd>
+<dt>first2</dt>
+<dd><a href="/ForwardIterator">Forward iterator</a> to the initial position in the other sequence to be swapped. The range used includes the same number of elements as the range <var>[first1,last1)</var>.<br>
+The two ranges shall not overlap.</dd>
+</dl>
+<br>
+The ranges shall not overlap.<br>
+<samp><a href="/swap">swap</a></samp> shall be defined to exchange the types pointed by both iterator types symmetrically (in both orders).<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the last element swapped in the second sequence.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// swap_ranges example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::swap_ranges</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; foo (5,10);        <cite>// foo: 10 10 10 10 10</cite>
+  std::vector&lt;<var>int</var>&gt; bar (5,33);        <cite>// bar: 33 33 33 33 33</cite>
+
+  std::swap_ranges(foo.begin()+1, foo.end()-1, bar.begin());
+
+  <cite>// print out results of swap:</cite>
+  std::cout &lt;&lt; <kbd>"foo contains:"</kbd>;
+  <var>for</var> (std::vector&lt;<var>int</var>&gt;::iterator it=foo.begin(); it!=foo.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"bar contains:"</kbd>;
+  <var>for</var> (std::vector&lt;<var>int</var>&gt;::iterator it=bar.begin(); it!=bar.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo contains: 10 33 33 33 10
+bar contains: 10 10 10 33 33
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Performs a swap operation for each element in the range.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in both ranges are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either an element assignment or an operation on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/utility/swap/"><b>swap</b></a></dt><dd>Exchange values of two objects <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/iter_swap/"><b>iter_swap</b></a></dt><dd>Exchange values of objects pointed to by two iterators <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/replace/"><b>replace</b></a></dt><dd>Replace value in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

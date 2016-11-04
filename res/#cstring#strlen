@@ -1,0 +1,61 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strlen</h1>
+<div class="C_prototype"><pre>size_t strlen ( const char * str );</pre></div><div id="I_description">Get string length</div>
+<section id="description">
+Returns the length of the C string <i>str</i>.<br>
+<br>
+The length of a C string is determined by the terminating null-character: A <i>C string</i> is as long as the number of characters between the beginning of the string and the terminating null character (without including the terminating null character itself).<br>
+<br>
+This should not be confused with the size of the array that holds the string. For example:<br>
+<br>
+<span class="auto"><code class="source"><var>char</var> mystr[100]=<kbd>"test string"</kbd>;</code></span> <br>
+<br>
+defines an array of characters with a size of 100 <tt>char</tt>s, but the C string with which <i>mystr</i> has been initialized has a length of only 11 characters. Therefore, while <tt>sizeof(mystr)</tt> evaluates to <tt>100</tt>, <tt>strlen(mystr)</tt> returns <tt>11</tt>.<br>
+<br>
+In C++, <a href="/char_traits::length">char_traits::length</a> implements the same behavior.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C string.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The length of string. <br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strlen example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> szInput[256];
+  printf (<kbd>"Enter a sentence: "</kbd>);
+  gets (szInput);
+  printf (<kbd>"The sentence entered is %u characters long.\n"</kbd>,(<var>unsigned</var>)strlen(szInput));
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Enter sentence: just testing
+The sentence entered is 12 characters long.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strcmp/"><b>strcmp</b></a></dt><dd>Compare two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strchr/"><b>strchr</b></a></dt><dd>Locate first occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strrchr/"><b>strrchr</b></a></dt><dd>Locate last occurrence of character in string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

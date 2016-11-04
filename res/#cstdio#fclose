@@ -1,0 +1,50 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fclose</h1>
+<div class="C_prototype"><pre>int fclose ( FILE * stream );</pre></div><div id="I_description">Close file</div>
+<section id="description">
+Closes the file associated with the <i>stream</i> and disassociates it.<br>
+<br>
+All internal buffers associated with the stream are disassociated from it and flushed: the content of any unwritten output buffer is written and the content of any unread input buffer is discarded.<br>
+<br>
+Even if the call fails, the stream passed as parameter will no longer be associated with the file nor its buffers.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that specifies the stream to be closed. </dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If the stream is successfully closed, a zero value is returned.<br>
+On failure, <a href="/EOF">EOF</a> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fclose example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<var>int</var> main ()
+{
+  FILE * pFile;
+  pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"wt"</kbd>);
+  fprintf (pFile, <kbd>"fclose example"</kbd>);
+  fclose (pFile);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This simple code creates a new text file, then writes a sentence to it, and then closes it.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fflush/"><b>fflush</b></a></dt><dd>Flush stream <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,57 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>ferror</h1>
+<div class="C_prototype"><pre>int ferror ( FILE * stream );</pre></div><div id="I_description">Check error indicator</div>
+<section id="description">
+Checks if the <i>error indicator</i> associated with <i>stream</i> is set, returning a value different from zero if it is.<br>
+<br>
+This indicator is generally set by a previous operation on the <i>stream</i> that failed, and is cleared by a call to <a href="/clearerr">clearerr</a>, <a href="/rewind">rewind</a> or <a href="/freopen">freopen</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies the stream. </dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A non-zero value is returned in the case that the <i>error indicator</i> associated with the stream is set.<br>
+Otherwise, zero is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* ferror example: writing error */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<var>int</var> main ()
+{
+  FILE * pFile;
+  pFile=fopen(<kbd>"myfile.txt"</kbd>,<kbd>"r"</kbd>);
+  <var>if</var> (pFile==NULL) perror (<kbd>"Error opening file"</kbd>);
+  <var>else</var> {
+    fputc (<kbd>'x'</kbd>,pFile);
+    <var>if</var> (ferror (pFile))
+      printf (<kbd>"Error Writing to myfile.txt\n"</kbd>);
+    fclose (pFile);
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This program opens an existing file called <tt>myfile.txt</tt> in read-only mode but tries to write a character to it, generating an error that is detected by <tt>ferror</tt>.<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Error Writing to myfile.txt
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/feof/"><b>feof</b></a></dt><dd>Check end-of-file indicator <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/clearerr/"><b>clearerr</b></a></dt><dd>Clear error indicators <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/perror/"><b>perror</b></a></dt><dd>Print error message <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

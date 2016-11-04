@@ -1,0 +1,93 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::to_string</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>template &lt;class charT, class traits, class Alloc&gt;  basic_string&lt;charT,traits,Alloc&gt; to_string() const;</pre></div>
+<div title="C++11" class="on">
+<pre>template &lt;class charT = char,          class traits = char_traits&lt;charT&gt;,          class Alloc = allocator&lt;charT&gt;&gt;  basic_string&lt;charT,traits,Alloc&gt; to_string (charT zero = charT('0'),                                              charT one  = charT('1')) const;</pre></div>
+</div>
+</div><div id="I_description">Convert to string</div>
+<div class="C_SwitchCases">
+<div title="C++98">
+<section id="description">
+Constructs a <samp><a href="/basic_string">basic_string</a></samp> object that represents the bits in the <samp><a href="/bitset">bitset</a></samp> as a succession of <i>zeros</i> and/or <i>ones</i>.<br>
+<br>
+The string returned by this function has the same representation as the output produced by inserting the <samp><a href="/bitset">bitset</a></samp> directly into an output stream with <samp><a href="/bitset::operator">operator&lt;&lt;</a></samp>.<br>
+<br>
+Notice that this function template uses the template parameters to define the return type. Therefore, these are not implicitly deduced.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+</div>
+<div title="C++11">
+<section id="description">
+Constructs a <samp><a href="/basic_string">basic_string</a></samp> object that represents the bits in the <samp><a href="/bitset">bitset</a></samp> as a succession of <i>zeros</i> and/or <i>ones</i>.<br>
+<br>
+The string returned by this function has the same representation as the output produced by inserting the <samp><a href="/bitset">bitset</a></samp> directly into an output stream with <samp><a href="/bitset::operator">operator&lt;&lt;</a></samp>.<br>
+<br>
+Notice that this function template uses the template parameters to define the return type. The default types for these template parameters select <samp><a href="/string">string</a></samp> as the return type.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>zero, one</dt>
+<dd>Character values to represent <i>zero</i> and <i>one</i>.</dd>
+</dl>
+</section>
+</div>
+</div>
+<br>
+<section id="return">
+<h3>Return value</h3>
+A string representing the bits in the <samp><a href="/bitset">bitset</a></samp>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// bitset::to_string</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;         </dfn><cite>// std::string</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;4&gt; mybits;     <cite>// mybits: 0000</cite>
+  mybits.set();              <cite>// mybits: 1111</cite>
+
+  std::string mystring =
+    mybits.to_string&lt;<var>char</var>,std::string::traits_type,std::string::allocator_type&gt;();
+
+  std::cout &lt;&lt; <kbd>"mystring: "</kbd> &lt;&lt; mystring &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+mystring: 1111
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The <samp><a href="/bitset">bitset</a></samp> is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <samp><a href="/bitset">bitset</a></samp>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/to_ulong/"><b>bitset::to_ulong</b></a></dt><dd>Convert to unsigned long integer <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/bitset/"><b>bitset::bitset</b></a></dt><dd>Construct bitset <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

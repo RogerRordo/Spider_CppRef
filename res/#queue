@@ -1,0 +1,14 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;queue&gt;</h1>
+<div id="I_description">Queue header</div>
+<section id="description">
+Header that defines the <a href="/queue">queue</a> and <a href="/priority_queue">priority_queue</a> container adaptor classes:<br>
+</section>
+<br>
+<section id="types">
+<h3>Classes</h3>
+<dl class="links"><dt><a href= "/reference/queue/queue/"><b>queue</b></a></dt><dd>FIFO queue <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/queue/priority_queue/"><b>priority_queue</b></a></dt><dd>Priority queue <span class="typ">(class template)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

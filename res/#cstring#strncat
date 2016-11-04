@@ -1,0 +1,59 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strncat</h1>
+<div class="C_prototype"><pre>char * strncat ( char * destination, const char * source, size_t num );</pre></div><div id="I_description">Append characters from string</div>
+<section id="description">
+Appends the first <i>num</i> characters of <i>source</i> to <i>destination</i>, plus a terminating null-character.<br>
+<br>
+If the length of the C string in <i>source</i> is less than <i>num</i>, only the content up to the terminating null-character is copied.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>destination</dt>
+<dd>Pointer to the destination array, which should contain a C string, and be large enough to contain the concatenated resulting string, including the additional null-character.</dd>
+<dt>source</dt>
+<dd>C string to be appended.</dd>
+<dt>num</dt>
+<dd>Maximum number of characters to be appended.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>destination</i> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strncat example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str1[20];
+  <var>char</var> str2[20];
+  strcpy (str1,<kbd>"To be "</kbd>);
+  strcpy (str2,<kbd>"or not to be"</kbd>);
+  strncat (str1, str2, 6);
+  puts (str1);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+To be or not
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strcat/"><b>strcat</b></a></dt><dd>Concatenate strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

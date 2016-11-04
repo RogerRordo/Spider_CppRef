@@ -1,0 +1,70 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member type</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_set/">unordered_set</a>::hash_function<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>hasher hash_function() const;</pre></div><div id="I_description">Get hash function</div>
+<section id="description">
+Returns the hash function object used by the <a href="/unordered_set">unordered_set</a> container.<br>
+<br>
+The hash function is a unary function that takes an object of type <tt>key_type</tt> as argument and returns a unique value of type <a href="/size_t">size_t</a> based on it. It is adopted by the container on construction (see <a href="/unordered_set::unordered_set">unordered_set's constructor</a> for more info). By default, it is the default hashing function for the corresponding key type: <a href="/hash">hash&lt;key_type&gt;</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The hash function.<br>
+<br>
+Member type <tt>hasher</tt> is the type of the hash function used by the container, defined in <a href="/unordered_set">unordered_set</a> as an alias of its second template parameter (<tt>Hash</tt>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_set::hash_function</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>typedef</var> std::unordered_set&lt;std::string&gt; stringset;
+
+<var>int</var> main ()
+{
+  stringset myset;
+
+  stringset::hasher fn = myset.hash_function();
+
+  std::cout &lt;&lt; <kbd>"that: "</kbd> &lt;&lt; fn (<kbd>"that"</kbd>) &lt;&lt; std::endl;
+  std::cout &lt;&lt; <kbd>"than: "</kbd> &lt;&lt; fn (<kbd>"than"</kbd>) &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>that: 1046150783
+than: 929786026
+</samp></pre></td></tr></table></div>
+<br>
+Notice how two similar strings yield quite different hash values.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/key_eq/"><b>unordered_set::key_eq</b></a></dt><dd>Get key equivalence predicate <span class="typ">(public member type)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/get_allocator/"><b>unordered_set::get_allocator</b></a></dt><dd>Get allocator <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

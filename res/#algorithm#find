@@ -1,0 +1,101 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>find</h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class T&gt;   InputIterator find (InputIterator first, InputIterator last, const T&amp; val);</pre></div><div id="I_description">Find value in range</div>
+<section id="description">
+Returns an iterator to the first element in the range <code>[first,last)</code> that compares equal to <var>val</var>. If no such element is found, the function returns <var>last</var>.<br>
+<br>
+The function uses <code>operator==</code> to compare the individual elements to <var>val</var>.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></code></pre></td>
+<td class="source"><pre><code><var>template</var>&lt;<var>class</var> InputIterator, <var>class</var> T&gt;
+  InputIterator find (InputIterator first, InputIterator last, <var>const</var> T&amp; val)
+{
+  <var>while</var> (first!=last) {
+    <var>if</var> (*first==val) <var>return</var> first;
+    ++first;
+  }
+  <var>return</var> last;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions in a sequence. The range searched is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>val</dt>
+<dd>Value to search for in the range.<br>
+<samp>T</samp> shall be a type supporting comparisons with the elements pointed by <samp>InputIterator</samp> using <code>operator==</code> (with the elements as left-hand side operands, and <var>val</var> as right-hand side).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to the first element in the range that compares equal to <var>val</var>.<br>
+If no elements match, the function returns <var>last</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// find example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::find</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  <cite>// using std::find with array and pointer:</cite>
+  <var>int</var> myints[] = { 10, 20, 30, 40 };
+  <var>int</var> * p;
+
+  p = std::find (myints, myints+4, 30);
+  <var>if</var> (p != myints+4)
+    std::cout &lt;&lt; <kbd>"Element found in myints: "</kbd> &lt;&lt; *p &lt;&lt; <kbd>'\n'</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; <kbd>"Element not found in myints\n"</kbd>;
+
+  <cite>// using std::find with vector and iterator:</cite>
+  std::vector&lt;<var>int</var>&gt; myvector (myints,myints+4);
+  std::vector&lt;<var>int</var>&gt;::iterator it;
+
+  it = find (myvector.begin(), myvector.end(), 30);
+  <var>if</var> (it != myvector.end())
+    std::cout &lt;&lt; <kbd>"Element found in myvector: "</kbd> &lt;&lt; *it &lt;&lt; <kbd>'\n'</kbd>;
+  <var>else</var>
+    std::cout &lt;&lt; <kbd>"Element not found in myvector\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Element found in myints: 30
+Element found in myvector: 30
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Compares elements until a match is found.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Some (or all) of the objects in the range <code>[first,last)</code> are accessed (once at most).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either an element comparison or an operation on an iterator throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/search/"><b>search</b></a></dt><dd>Search range for subsequence <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/binary_search/"><b>binary_search</b></a></dt><dd>Test if value exists in sorted sequence <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/for_each/"><b>for_each</b></a></dt><dd>Apply function to range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

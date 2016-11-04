@@ -1,0 +1,88 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::size</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>size_type size() const;</pre></div>
+<div title="C++11" class="on">
+<pre>size_type size() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return size</div>
+<section id="description">
+Returns the number of elements in the <a href="/vector">vector</a>.<br>
+<br>
+This is the number of actual objects held in the <a href="/vector">vector</a>, which is not necessarily equal to its storage <a href="/vector::capacity">capacity</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The number of elements in the container.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector::size</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myints;
+  std::cout &lt;&lt; <kbd>"0. size: "</kbd> &lt;&lt; myints.size() &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>for</var> (<var>int</var> i=0; i&lt;10; i++) myints.push_back(i);
+  std::cout &lt;&lt; <kbd>"1. size: "</kbd> &lt;&lt; myints.size() &lt;&lt; <kbd>'\n'</kbd>;
+
+  myints.insert (myints.end(),10,100);
+  std::cout &lt;&lt; <kbd>"2. size: "</kbd> &lt;&lt; myints.size() &lt;&lt; <kbd>'\n'</kbd>;
+
+  myints.pop_back();
+  std::cout &lt;&lt; <kbd>"3. size: "</kbd> &lt;&lt; myints.size() &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>0. size: 0
+1. size: 10
+2. size: 20
+3. size: 19
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+No contained elements are accessed: concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/capacity/"><b>vector::capacity</b></a></dt><dd>Return size of allocated storage capacity <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/resize/"><b>vector::resize</b></a></dt><dd>Change size <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/max_size/"><b>vector::max_size</b></a></dt><dd>Return maximum size <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

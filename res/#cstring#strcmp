@@ -1,0 +1,67 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strcmp</h1>
+<div class="C_prototype"><pre>int strcmp ( const char * str1, const char * str2 );</pre></div><div id="I_description">Compare two strings</div>
+<section id="description">
+Compares the C string <i>str1</i> to the C string <i>str2</i>.<br>
+<br>
+This function starts comparing the first character of each string. If they are equal to each other, it continues with the following pairs until the characters differ or until a terminating null-character is reached.<br>
+<br>
+This function performs a binary comparison of the characters. For a function that takes into account locale-specific rules, see <a href="/strcoll">strcoll</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str1</dt>
+<dd>C string to be compared.</dd>
+<dt>str2</dt>
+<dd>C string to be compared.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns an integral value indicating the relationship between the strings:<br>
+<table class="boxed">
+<tr><th>return value</th><th>indicates</th></tr>
+<tr><td><code>&lt;0</code></td><td>the first character that does not match has a lower value in <i>ptr1</i> than in <i>ptr2</i></td></tr>
+<tr><td><code>0</code></td><td>the contents of both strings are equal</td></tr>
+<tr><td><code>&gt;0</code></td><td>the first character that does not match has a greater value in <i>ptr1</i> than in <i>ptr2</i></td></tr>
+</table>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> key[] = <kbd>"apple"</kbd>;
+  <var>char</var> buffer[80];
+  <var>do</var> {
+     printf (<kbd>"Guess my favorite fruit? "</kbd>);
+     fflush (stdout);
+     scanf (<kbd>"%79s"</kbd>,buffer);
+  } <var>while</var> (strcmp (key,buffer) != 0);
+  puts (<kbd>"Correct answer!"</kbd>);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Guess my favourite fruit? orange
+Guess my favourite fruit? apple
+Correct answer!
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strncmp/"><b>strncmp</b></a></dt><dd>Compare characters of two strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strrchr/"><b>strrchr</b></a></dt><dd>Locate last occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strspn/"><b>strspn</b></a></dt><dd>Get span of character set in string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

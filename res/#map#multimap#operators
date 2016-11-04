@@ -1,0 +1,111 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>relational operators (multimap)</h1>
+<div class="C_prototype"><table><tr class="odd"><th>(1)</th><td><pre>template &lt;class Key, class T, class Compare, class Alloc&gt;  bool operator== ( const multimap&lt;Key,T,Compare,Alloc&gt;&amp; lhs,                    const multimap&lt;Key,T,Compare,Alloc&gt;&amp; rhs );</pre></td></tr><tr class="even"><th>(2)</th><td><pre>template &lt;class Key, class T, class Compare, class Alloc&gt;  bool operator!= ( const multimap&lt;Key,T,Compare,Alloc&gt;&amp; lhs,                    const multimap&lt;Key,T,Compare,Alloc&gt;&amp; rhs );</pre></td></tr><tr class="odd"><th>(3)</th><td><pre>template &lt;class Key, class T, class Compare, class Alloc&gt;  bool operator&lt;  ( const multimap&lt;Key,T,Compare,Alloc&gt;&amp; lhs,                    const multimap&lt;Key,T,Compare,Alloc&gt;&amp; rhs );</pre></td></tr><tr class="even"><th>(4)</th><td><pre>template &lt;class Key, class T, class Compare, class Alloc&gt;  bool operator&lt;= ( const multimap&lt;Key,T,Compare,Alloc&gt;&amp; lhs,                    const multimap&lt;Key,T,Compare,Alloc&gt;&amp; rhs );</pre></td></tr><tr class="odd"><th>(5)</th><td><pre>template &lt;class Key, class T, class Compare, class Alloc&gt;  bool operator&gt;  ( const multimap&lt;Key,T,Compare,Alloc&gt;&amp; lhs,                    const multimap&lt;Key,T,Compare,Alloc&gt;&amp; rhs );</pre></td></tr><tr class="even"><th>(6)</th><td><pre>template &lt;class Key, class T, class Compare, class Alloc&gt;  bool operator&gt;= ( const multimap&lt;Key,T,Compare,Alloc&gt;&amp; lhs,                    const multimap&lt;Key,T,Compare,Alloc&gt;&amp; rhs );</pre></td></tr></table></div><div id="I_description">Relational operators for multimap</div>
+<section id="description">
+Performs the appropriate comparison operation between the <a href="/multimap">multimap</a> containers <i>lhs</i> and <i>rhs</i>.<br>
+<br>
+The <i>equality comparison</i> (<code>operator==</code>) is performed by first comparing <i><a href="/multimap::size">sizes</a></i>, and if they match, the elements are compared sequentially using <code>operator==</code>, stopping at the first mismatch (as if using algorithm <samp><a href="/equal">equal</a></samp>).<br>
+<br>
+The <i>less-than comparison</i> (<code>operator&lt;</code>) behaves as if using algorithm <code><a href="/lexicographical_compare">lexicographical_compare</a></code>, which compares the elements sequentially using <code>operator&lt;</code> in a reciprocal manner (i.e., checking both <code>a&lt;b</code> and <code>b&lt;a</code>) and stopping at the first occurrence.<br>
+<br>
+The other operations also use the operators <code>==</code> and <code>&lt;</code> internally to compare the elements, behaving as if the following equivalent operations were performed:<br>
+<table class="boxed">
+<tr><th>operation</th><th>equivalent operation</th></tr>
+<tr><td><code>a!=b</code></td><td><code>!(a==b)</code></td></tr>
+<tr><td><code>a&gt;b</code></td><td><code>b&lt;a</code></td></tr>
+<tr><td><code>a&lt;=b</code></td><td><code>!(b&lt;a)</code></td></tr>
+<tr><td><code>a&gt;=b</code></td><td><code>!(a&lt;b)</code></td></tr>
+</table>
+<br>
+Notice that none of these operations take into consideration the <a href="/multimap::key_comp">internal comparison object</a> of neither container, but compare the elements (of type <tt>value_type</tt>) directly.<br>
+<br>
+<tt>value_type</tt> is a <a href="/pair">pair</a> type, and as such, by default, two elements will compare equal only if both their <i>key</i> and <i>mapped value</i> compare equal, and one compare lower than the other only if the first <i>key</i> is lower, or if the <i>keys</i> are equivalent and the <i>mapped value</i> is lower.<br>
+<br>
+These operators are overloaded in header <a href="/<map>"><map></a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>lhs, rhs</dt>
+<dd><a href="/multimap">multimap</a> containers (to the left- and right-hand side of the operator, respectively), having both the same template parameters (<tt>Key</tt>, <tt>T</tt>, <tt>Compare</tt> and <tt>Alloc</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// multimap comparisons</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt; foo,bar;
+
+  foo.insert (std::make_pair(<kbd>'a'</kbd>,100));
+  foo.insert (std::make_pair(<kbd>'z'</kbd>,900));
+  bar.insert (std::make_pair(<kbd>'b'</kbd>,250));
+  bar.insert (std::make_pair(<kbd>'b'</kbd>,350));
+
+  <cite>// foo ({{a,100},{z,900}}) vs bar ({b,250},{b,350}}):</cite>
+  <var>if</var> (foo==bar) std::cout &lt;&lt; <kbd>"foo and bar are equal\n"</kbd>;
+  <var>if</var> (foo!=bar) std::cout &lt;&lt; <kbd>"foo and bar are not equal\n"</kbd>;
+  <var>if</var> (foo&lt; bar) std::cout &lt;&lt; <kbd>"foo is less than bar\n"</kbd>;
+  <var>if</var> (foo&gt; bar) std::cout &lt;&lt; <kbd>"foo is greater than bar\n"</kbd>;
+  <var>if</var> (foo&lt;=bar) std::cout &lt;&lt; <kbd>"foo is less than or equal to bar\n"</kbd>;
+  <var>if</var> (foo&gt;=bar) std::cout &lt;&lt; <kbd>"foo is greater than or equal to bar\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo and bar are not equal
+foo is less than bar
+foo is less than or equal to bar
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if the condition holds, and <tt>false</tt> otherwise.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+Up to linear in the <i><a href="/multimap::size">size</a></i> of <var>lhs</var> and <var>rhs</var>.<br>
+</div>
+<div title="C++14">
+For <i>(1)</i> and <i>(2)</i>, constant if the <i><a href="/multimap::size">sizes</a></i> of <var>lhs</var> and <var>rhs</var> differ, and up to linear in that <i><a href="/multimap::size">size</a></i> (equality comparisons) otherwise.<br>
+For the others, up to linear in the smaller <i><a href="/multimap::size">size</a></i> (each representing two comparisons with <code>operator&lt;</code>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both containers, <i>lhs</i> and <i>rhs</i>, are accessed.<br>
+Up to all of their contained elements may be accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If the type of the elements supports the appropriate operation with no-throw guarantee, the function never throws exceptions (no-throw guarantee).<br>
+In any case, the function cannot modify its arguments.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/multimap/key_comp/"><b>multimap::key_comp</b></a></dt><dd>Return key comparison object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/value_comp/"><b>multimap::value_comp</b></a></dt><dd>Return value comparison object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/operator=/"><b>multimap::operator=</b></a></dt><dd>Copy container content <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/swap/"><b>multimap::swap</b></a></dt><dd>Swap content <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

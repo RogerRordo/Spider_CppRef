@@ -1,0 +1,110 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/multimap/">multimap</a>::value_comp</h1>
+<div class="C_prototype"><pre>value_compare value_comp() const;</pre></div><div id="I_description">Return value comparison object</div>
+<section id="description">
+Returns a comparison object that can be used to compare two elements to get whether the <i>key</i> of the first one goes before the second.<br>
+<br>
+The arguments taken by this function object are of member type <tt>value_type</tt> (defined in <a href="/multimap">multimap</a> as an alias of <tt><a href="/pair">pair</a>&lt;const key_type,mapped_type&gt;</tt>), but the <tt>mapped_type</tt> part of the value is not taken into consideration in this comparison.<br>
+<br>
+The comparison object returned is an object of the member type <tt>multimap::value_compare</tt>, which is a nested class that uses the internal <a href="/multimap::key_comp">comparison object</a> to generate the appropriate comparison functional class. It is defined with the same behavior as:<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> Key, <var>class</var> T, <var>class</var> Compare, <var>class</var> Alloc&gt;
+<var>class</var> multimap&lt;Key,T,Compare,Alloc&gt;::value_compare
+{   <cite>// in C++98, it is required to inherit binary_function&lt;value_type,value_type,bool&gt;</cite>
+  <var>friend</var> <var>class</var> multimap;
+<var>protected</var>:
+  Compare comp;
+  value_compare (Compare c) : comp(c) {}  <cite>// constructed with multimap's comparison object</cite>
+<var>public</var>:
+  <var>typedef</var> <var>bool</var> result_type;
+  <var>typedef</var> value_type first_argument_type;
+  <var>typedef</var> value_type second_argument_type;
+  <var>bool</var> <var>operator</var>() (<var>const</var> value_type&amp; x, <var>const</var> value_type&amp; y) <var>const</var>
+  {
+    <var>return</var> comp(x.first, y.first);
+  }
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+The public member of this comparison class returns <tt>true</tt> if the key of the first argument is considered to go before that of the second (according to the <i>strict weak ordering</i> specified by the container's <a href="/multimap::key_comp">comparison object</a>, <a href="/multimap::key_comp">key_comp</a>), and <tt>false</tt> otherwise.<br>
+<br>
+Notice that <tt>value_compare</tt> has no public constructor, therefore no objects can be directly created from this nested class outside <a href="/multimap">multimap</a> members.<br>
+</section>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The comparison object for element values.<br>
+Member type <tt>value_compare</tt> is a nested class type (described above).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// multimap::value_comp</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt; mymultimap;
+
+  mymultimap.insert(std::make_pair(<kbd>'x'</kbd>,101));
+  mymultimap.insert(std::make_pair(<kbd>'y'</kbd>,202));
+  mymultimap.insert(std::make_pair(<kbd>'y'</kbd>,252));
+  mymultimap.insert(std::make_pair(<kbd>'z'</kbd>,303));
+
+  std::cout &lt;&lt; <kbd>"mymultimap contains:\n"</kbd>;
+
+  std::pair&lt;<var>char</var>,<var>int</var>&gt; highest = *mymultimap.rbegin();          <cite>// last element</cite>
+
+  std::multimap&lt;<var>char</var>,<var>int</var>&gt;::iterator it = mymultimap.begin();
+  <var>do</var> {
+    std::cout &lt;&lt; (*it).first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; (*it).second &lt;&lt; <kbd>'\n'</kbd>;
+  } <var>while</var> ( mymultimap.value_comp()(*it++, highest) );
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mymultimap contains:
+x =&gt; 101
+y =&gt; 202
+y =&gt; 252
+z =&gt; 303
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+No contained elements are accessed: concurrently accessing or modifying them is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the container.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/multimap/key_comp/"><b>multimap::key_comp</b></a></dt><dd>Return key comparison object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/find/"><b>multimap::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/count/"><b>multimap::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/lower_bound/"><b>multimap::lower_bound</b></a></dt><dd>Return iterator to lower bound <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/multimap/upper_bound/"><b>multimap::upper_bound</b></a></dt><dd>Return iterator to upper bound <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,91 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>lrint<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C99">
+<pre>long int lrint  (double x);long int lrintf (float x);long int lrintl (long double x);</pre></div>
+<div title="C++11" class="on">
+<pre>long int lrint (double x);long int lrint (float x);long int lrint (long double x);long int lrint (T x);           // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Round and cast to long integer</div>
+<section id="description">
+Rounds <var>x</var> to an integral value, using the rounding direction specified by <samp><a href="/fegetround">fegetround</a></samp>, and returns it as a value of type <code>long int</code>.<br>
+<br>
+See <samp><a href="/llrint">llrint</a></samp> for an equivalent function that returns a <code>long long int</code>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Value to round.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The value of <var>x</var> rounded to a nearby integral, casted to a value of type <code>long int</code>.<br>
+If the rounded value is outside the range of the return type, the value returned is unspecified, and a <i>domain error</i> or an overflow <i>range error</i> may occur (or none, depending on implementation).<br>
+<br>
+If a <i>domain error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/EDOM">EDOM</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_INVALID">FE_INVALID</a></samp> is raised.<br>
+<br>
+If an overflow <i>range error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_OVERFLOW">FE_OVERFLOW</a></samp> is raised.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>/* lrint example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;fenv.h&gt;       </dfn><cite>/* fegetround, FE_* */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* lrint */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  printf (<kbd>"rounding using "</kbd>);
+  <var>switch</var> (fegetround()) {
+    <var>case</var> FE_DOWNWARD: printf (<kbd>"downward"</kbd>); <var>break</var>;
+    <var>case</var> FE_TONEAREST: printf (<kbd>"to-nearest"</kbd>); <var>break</var>;
+    <var>case</var> FE_TOWARDZERO: printf (<kbd>"toward-zero"</kbd>); <var>break</var>;
+    <var>case</var> FE_UPWARD: printf (<kbd>"upward"</kbd>); <var>break</var>;
+    <var>default</var>: printf (<kbd>"unknown"</kbd>);
+  }
+  printf (<kbd>" rounding:\n"</kbd>);
+
+  printf ( <kbd>"lrint (2.3) = %ld\n"</kbd>, lrint(2.3) );
+  printf ( <kbd>"lrint (3.8) = %ld\n"</kbd>, lrint(3.8) );
+  printf ( <kbd>"lrint (-2.3) = %ld\n"</kbd>, lrint(-2.3) );
+  printf ( <kbd>"lrint (-3.8) = %ld\n"</kbd>, lrint(-3.8) );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Rounding using to-nearest rounding:
+lrint (2.3) = 2
+lrint (3.8) = 4
+lrint (-2.3) = -2
+lrint (-3.8) = -4
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/nearbyint/"><b>nearbyint</b></a></dt><dd>Round to nearby integral value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/rint/"><b>rint</b></a></dt><dd>Round to integral value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/llrint/"><b>llrint</b></a></dt><dd>Round and cast to long long integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/round/"><b>round</b></a></dt><dd>Round to nearest <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/floor/"><b>floor</b></a></dt><dd>Round down value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/ceil/"><b>ceil</b></a></dt><dd>Round up value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/trunc/"><b>trunc</b></a></dt><dd>Truncate value <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

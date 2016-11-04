@@ -1,0 +1,65 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;unordered_set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/unordered_set/unordered_set/">unordered_set</a>::max_size<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>size_type max_size() const noexcept;</pre></div><div id="I_description">Return maximum size</div>
+<section id="description">
+Returns the maximum number of elements that the <a href="/unordered_set">unordered_set</a> container can hold.<br>
+<br>
+This is the maximum potential number of elements the container can hold due to system constraints or limitations on its library implementation.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The maximum number of elements the object can hold as content.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// unordered_set limits</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;unordered_set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::unordered_set&lt;<var>int</var>&gt; myset;
+
+  std::cout &lt;&lt; <kbd>"max_size = "</kbd> &lt;&lt; myset.max_size() &lt;&lt; std::endl;
+  std::cout &lt;&lt; <kbd>"max_bucket_count = "</kbd> &lt;&lt; myset.max_bucket_count() &lt;&lt; std::endl;
+  std::cout &lt;&lt; <kbd>"max_load_factor = "</kbd> &lt;&lt; myset.max_load_factor() &lt;&lt; std::endl;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>max_size = 536870911
+max_bucket_count = 536870911
+max_load_factor = 1
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/empty/"><b>unordered_set::empty</b></a></dt><dd>Test whether container is empty <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/max_bucket_count/"><b>unordered_set::max_bucket_count</b></a></dt><dd>Return maximum number of buckets <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/unordered_set/unordered_set/max_load_factor/"><b>unordered_set::max_load_factor</b></a></dt><dd>Get or set maximum load factor <span class="typ">(public member function)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

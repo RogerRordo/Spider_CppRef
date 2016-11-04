@@ -1,0 +1,31 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/basic_string/">basic_string</a>::~basic_string</h1>
+<div class="C_prototype"><pre>~basic_string();</pre></div><div id="I_description">String destructor</div>
+<section id="description">
+Destroys the <a href="/basic_string">basic_string</a> object.<br>
+<br>
+This deallocates all the storage <a href="/basic_string::capacity">capacity</a> allocated by the <a href="/basic_string">basic_string</a> using its <a href="/basic_string::get_allocator">allocator</a>.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references are invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> never throws exceptions.<br>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,74 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>vfscanf<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>int vfscanf ( FILE * stream, const char * format, va_list arg );</pre></div><div id="I_description">Read formatted data from stream into variable argument list</div>
+<section id="description">
+Reads data from the <i>stream</i> and stores them according to parameter <i>format</i> into the locations pointed by the elements in the variable argument list identified by <i>arg</i>.<br>
+<br>
+Internally, the function retrieves arguments from the list identified by <i>arg</i> as if <a href="/va_arg">va_arg</a> was used on it, and thus the state of <i>arg</i> is likely to be altered by the call.<br>
+<br>
+In any case, <i>arg</i> should have been initialized by <a href="/va_start">va_start</a> at some point before the call, and it is expected to be released by <a href="/va_end">va_end</a> at some point after the call.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies an input stream.</dd>
+<dt>format</dt>
+<dd>C string that contains a format string that follows the same specifications as <i>format</i> in <a href="/scanf">scanf</a> (see <a href="/scanf">scanf</a> for details).</dd>
+<dt>arg</dt>
+<dd>A value identifying a variable arguments list initialized with <a href="/va_start">va_start</a>.<br>
+<a href="/va_list">va_list</a> is a special type defined in <a href="/cstdarg">&lt;cstdarg&gt;</a>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the number of items of the argument list successfully filled. This count can match the expected number of items or be less (even zero) due to a matching failure, a reading error, or the reach of the <i>end-of-file</i>.<br>
+<br>
+If a reading error happens or the <i>end-of-file</i> is reached while reading, the proper indicator is set (<a href="/feof">feof</a> or <a href="/ferror">ferror</a>). And, if either happens before any data could be successfully read, <a href="/EOF">EOF</a> is returned.<br>
+<br>
+If an encoding error happens interpreting wide characters, the function sets <a href="/errno">errno</a> to <tt>EILSEQ</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>/* vfscanf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;stdarg.h&gt;</dfn>
+
+<var>void</var> ReadStuff (FILE * stream, <var>const</var> <var>char</var> * format, ...)
+{
+  va_list args;
+  va_start (args, format);
+  vfscanf (stream, format, args);
+  va_end (args);
+}
+
+<var>int</var> main ()
+{
+  FILE * pFile;
+  <var>int</var> val;
+  <var>char</var> str[100];
+
+  pFile = fopen (<kbd>"myfile.txt"</kbd>,<kbd>"r"</kbd>);
+
+  <var>if</var> (pFile!=NULL) {
+    ReadStuff ( pFile, <kbd>" %s %d "</kbd>, str, &amp;val );
+    printf (<kbd>"I have read %s and %d"</kbd>, str, val);
+    fclose (pFile);
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/vscanf/"><b>vscanf</b></a></dt><dd>Read formatted data into variable argument list <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/vsscanf/"><b>vsscanf</b></a></dt><dd>Read formatted data from string into variable argument list <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fscanf/"><b>fscanf</b></a></dt><dd>Read formatted data from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/scanf/"><b>scanf</b></a></dt><dd>Read formatted data from stdin <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

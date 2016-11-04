@@ -1,0 +1,18 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;set&gt;</h1>
+<div id="I_description">Set header</div>
+<section id="description">
+Header that defines the <a href="/set">set</a> and <a href="/multiset">multiset</a> container classes:<br>
+</section>
+<br>
+<section id="types">
+<h3>Classes</h3>
+<dl class="links"><dt><a href= "/reference/set/set/"><b>set</b></a></dt><dd>Set <span class="typ">(class template)</span></dd></dl><dl class="links"><dt><a href= "/reference/set/multiset/"><b>multiset</b></a></dt><dd>Multiple-key set <span class="typ">(class template)</span></dd></dl>
+</section>
+<br>
+<section id="functions">
+<h3>Functions</h3>
+<dl class="links"><dt><a href= "/reference/iterator/begin/"><b>begin</b></a></dt><dd>Iterator to beginning <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/iterator/end/"><b>end</b></a></dt><dd>Iterator to end <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

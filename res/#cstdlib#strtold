@@ -1,0 +1,72 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>strtold<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>long double strtold (const char* str, char** endptr);</pre></div><div id="I_description">Convert string to long double</div>
+<section id="description">
+Parses the C string <var>str</var> interpreting its content as a floating point number (according to the current locale) and returns its value as a <code>long double</code>. If <samp>endptr</samp> is not a <i>null pointer</i>, the function also sets the value of <samp>endptr</samp> to point to the first character after the number.<br>
+<br>
+This function operates like <samp><a href="/strtod">strtod</a></samp> to interpret the string, but produces numbers of type <code>long double</code> (see <samp><a href="/strtod">strtod</a></samp> for details on the interpretation process).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C string beginning with the representation of a floating-point number.</dd>
+<dt>endptr</dt>
+<dd>Reference to an already allocated object of type <code>char*</code>, whose value is set by the function to the next character in <var>str</var> after the numerical value.<br>
+This parameter can also be a <i>null pointer</i>, in which case it is not used.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted floating point number as a value of type <code>long double</code>.<br>
+If no valid conversion could be performed, the function returns zero (<code>0.0L</code>).<br>
+If the correct value is out of the range of representable values for the type, a positive or negative <samp><a href="/HUGE_VALL">HUGE_VALL</a></samp> is returned, and <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/ERANGE">ERANGE</a></samp>.<br>
+If the correct value would cause underflow, the function returns a value whose magnitude is no greater than the smallest normalized positive number (some library implementations may also set <samp><a href="/errno">errno</a></samp> to <samp><a href="/ERANGE">ERANGE</a></samp> in this case).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strtold example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf, NULL */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* strtold */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> szOrbits[] = <kbd>"90613.305 365.24"</kbd>;
+  <var>char</var> * pEnd;
+  <var>long</var> <var>double</var> f1, f2;
+  f1 = strtold (szOrbits, &amp;pEnd);
+  f2 = strtold (pEnd, NULL);
+  printf (<kbd>"Pluto takes %.2Lf years to complete an orbit.\n"</kbd>, f1/f2);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Pluto takes 248.09 years to complete an orbit.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The array pointed by <var>str</var> is accessed, and the pointer pointed by <var>endptr</var> is modified (if not null).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+<br>
+If <var>str</var> does not point to a valid C-string, or if <var>endptr</var> does not point to a valid pointer object, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/atof/"><b>atof</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtod/"><b>strtod</b></a></dt><dd>Convert string to double <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtol/"><b>strtol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

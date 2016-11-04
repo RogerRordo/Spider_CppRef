@@ -1,0 +1,64 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>fgets</h1>
+<div class="C_prototype"><pre>char * fgets ( char * str, int num, FILE * stream );</pre></div><div id="I_description">Get string from stream</div>
+<section id="description">
+Reads characters from <i>stream</i> and stores them as a C string into <i>str</i> until (<i>num</i>-1) characters have been read or either a newline or the <i>end-of-file</i> is reached, whichever happens first.<br>
+<br>
+A newline character makes <tt>fgets</tt> stop reading, but it is considered a valid character by the function and included in the string copied to <i>str</i>.<br>
+<br>
+A terminating null character is automatically appended after the characters copied to <i>str</i>.<br>
+<br>
+Notice that <tt>fgets</tt> is quite different from <a href="/gets">gets</a>: not only <tt>fgets</tt> accepts a <i>stream</i> argument, but also allows to specify the maximum size of <i>str</i> and includes in the string any ending newline character.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Pointer to an array of <tt>char</tt>s where the string read is copied.</dd>
+<dt>num</dt>
+<dd>Maximum number of characters to be copied into <i>str</i> (including the terminating null-character).</dd>
+<dt>stream</dt>
+<dd>Pointer to a <a href="/FILE">FILE</a> object that identifies an input stream.<br>
+<a href="/stdin">stdin</a> can be used as argument to read from the <i>standard input</i>.</dd></dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns <i>str</i>.<br>
+If the <i>end-of-file</i> is encountered while attempting to read a character, the <i>eof indicator</i> is set (<a href="/feof">feof</a>). If this happens before any characters could be read, the pointer returned is a null pointer (and the contents of <i>str</i> remain unchanged).<br>
+If a read error occurs, the <i>error indicator</i> (<a href="/ferror">ferror</a>) is set and a null pointer is also returned (but the contents pointed by <i>str</i> may have changed).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>/* fgets example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main()
+{
+   FILE * pFile;
+   <var>char</var> mystring [100];
+
+   pFile = fopen (<kbd>"myfile.txt"</kbd> , <kbd>"r"</kbd>);
+   <var>if</var> (pFile == NULL) perror (<kbd>"Error opening file"</kbd>);
+   <var>else</var> {
+     <var>if</var> ( fgets (mystring , 100 , pFile) != NULL )
+       puts (mystring);
+     fclose (pFile);
+   }
+   <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This example reads the first line of <tt>myfile.txt</tt> or the first 99 characters, whichever comes first, and prints them on the screen. <br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fputs/"><b>fputs</b></a></dt><dd>Write string to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fgetc/"><b>fgetc</b></a></dt><dd>Get character from stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/gets/"><b>gets</b></a></dt><dd>Get string from stdin <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

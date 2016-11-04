@@ -1,0 +1,91 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/basic_ios/">basic_ios</a>::copyfmt</h1>
+<div class="C_prototype"><pre>basic_ios&amp; copyfmt (const basic_ios&amp; rhs);</pre></div><div id="I_description">Copy formatting information</div>
+<section id="description">
+Copies the values of all the internal members of <var>rhs</var> (except the <i><a href="/basic_ios::rdstate">state flags</a></i> and the associated <i><a href="/basic_ios::rdbuf">stream buffer</a></i>) to the corresponding members of <code>*this</code>.<br>
+<br>
+After the call, the following member functions return the same for <var>rhs</var> and <code>*this</code>:<br>
+<table class="boxed">
+<tr><th>element</th><th>description</th></tr>
+<tr><td><samp><a href="/ios_base::flags">flags</a></samp></td><td>format flags</td></tr>
+<tr><td><samp><a href="/ios_base::width">width</a></samp></td><td>field width</td></tr>
+<tr><td><samp><a href="/ios_base::precision">precision</a></samp></td><td>precision</td></tr>
+<tr><td><samp><a href="/ios_base::getloc">getloc</a></samp></td><td>selected locale</td></tr>
+<tr><td><samp><a href="/ios_base::iarray">iarray</a></samp></td><td>internal extensible array *</td></tr>
+<tr><td><samp><a href="/ios_base::parray">parray</a></samp></td><td>internal extensible array *</td></tr>
+<tr><td><samp><a href="/basic_ios::fill">fill</a></samp></td><td>fill character</td></tr>
+<tr><td><samp><a href="/basic_ios::tie">tie</a></samp></td><td>tied stream</td></tr>
+<tr><td><samp><a href="/basic_ios::exceptions">exceptions</a></samp></td><td>exceptions mask (last to be copied, <i>see below</i>)</td></tr>
+</table>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+* Each stream object keeps its own copy of the <i>internal extensible array</i> (<samp><a href="/ios_base::iword">iword</a></samp>, <samp><a href="/ios_base::pword">pword</a></samp>): Its contents are copied, not just a pointer to it.<br>
+</div>
+<div title="C++11">
+* Each stream object keeps its own copy of the <i>internal extensible array</i> (<samp><a href="/ios_base::iword">iword</a></samp>, <samp><a href="/ios_base::pword">pword</a></samp>): Its contents are copied, not just a pointer to it.<br>
+<br>
+If any of the pointer values to be copied points to objects stored outside <var>rhs</var> and those objects are destroyed when <var>rhs</var> is destroyed, <code>*this</code> stores instead pointers to newly constructed copies of these objects.<br>
+</div>
+</div>
+<br>
+Calling this function invokes all functions registered through member <samp><a href="/ios_base::register_callback">register_callback</a></samp> twice: First, before the copying process starts, the function calls each registered callback <var>fn</var> using <code>(*fn)(erase_event,*this,index)</code>. Then, at the end, right before the <i><a href="/basic_ios::exceptions">exceptions mask</a></i> is copied, the function calls each registered callback <var>fn</var> wirh <code>(*fn)(copyfmt_event,*this,index)</code> (this second round can be used, for example, to access and modify the copied <i>internal extensible array</i>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>rhs</dt>
+<dd>Stream object whose members are copied to <samp>*this</samp>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<code>*this</code>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// copying formatting information</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// std::ofstream</cite>
+
+<var>int</var> main () {
+  std::ofstream filestr;
+  filestr.open (<kbd>"test.txt"</kbd>);
+
+  std::cout.fill (<kbd>'*'</kbd>);
+  std::cout.width (10);
+  filestr.copyfmt (std::cout);
+
+  std::cout &lt;&lt; 40;
+  filestr &lt;&lt; 40;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This example outputs a number formatted in the same way to both <samp><a href="/cout">cout</a></samp> and a file called <code>"test.txt"</code>:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>********40</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the stream object (<code>*this</code>), and accesses <var>rhs</var>.<br>
+Concurrent access to any of the objects may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/basic_ios/tie/"><b>basic_ios::tie</b></a></dt><dd>Get/set tied stream <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/fill/"><b>basic_ios::fill</b></a></dt><dd>Get/set fill character <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/width/"><b>ios_base::width</b></a></dt><dd>Get/set field width <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/fmtflags/"><b>ios_base::fmtflags</b></a></dt><dd>Type for stream format flags <span class="typ">(public member type)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

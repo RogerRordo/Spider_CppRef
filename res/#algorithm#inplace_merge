@@ -1,0 +1,95 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>inplace_merge</h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class BidirectionalIterator&gt;  void inplace_merge (BidirectionalIterator first, BidirectionalIterator middle,                      BidirectionalIterator last);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class BidirectionalIterator, class Compare&gt;  void inplace_merge (BidirectionalIterator first, BidirectionalIterator middle,                      BidirectionalIterator last, Compare comp);</pre></td></tr></table></div><div id="I_description">Merge consecutive sorted ranges</div>
+<section id="description">
+Merges two consecutive sorted ranges: <code>[first,middle)</code> and <code>[middle,last)</code>, putting the result into the combined sorted range <code>[first,last)</code>.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> for the first version, and <var>comp</var> for the second. The elements in both ranges shall already be ordered according to this same criterion (<code>operator&lt;</code> or <var>comp</var>). The resulting range is also sorted according to this.<br>
+<br>
+The function preserves the relative order of elements with equivalent values, with the elements in the first range preceding those equivalent in the second.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first</dt>
+<dd><a href="/BidirectionalIterator">Bidirectional iterator</a> to the initial position in the first sorted sequence to merge. This is also the initial position where the resulting merged range is stored.</dd>
+<dt>middle</dt>
+<dd><a href="/BidirectionalIterator">Bidirectional iterator</a> to the initial position of the second sorted sequence, which because both sequences must be consecutive, matches the <i>past-the-end</i> position of the first sequence.</dd>
+<dt>last</dt>
+<dd><a href="/BidirectionalIterator">Bidirectional iterator</a> to the <i>past-the-end</i> position of the second sorted sequence. This is also the <i>past-the-end</i> position of the range where the resulting merged range is stored.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two arguments of the types pointed by the iterators, and returns a value convertible to <code>bool</code>. The value returned indicates whether the first argument is considered to go before the second in the specific <i>strict weak ordering</i> it defines.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+<br>
+<samp>BidirectionalIterator</samp> shall point to a type for which <samp><a href="/swap">swap</a></samp> is properly defined and which is both <i><a href="/is_move_constructible">move-constructible</a></i> and <i><a href="/is_move_assignable">move-assignable</a></i>.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br></code></pre></td>
+<td class="source"><pre><code><cite>// inplace_merge example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::inplace_merge, std::sort, std::copy</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  <var>int</var> first[] = {5,10,15,20,25};
+  <var>int</var> second[] = {50,40,30,20,10};
+  std::vector&lt;<var>int</var>&gt; v(10);
+  std::vector&lt;<var>int</var>&gt;::iterator it;
+
+  std::sort (first,first+5);
+  std::sort (second,second+5);
+
+  it=std::copy (first, first+5, v.begin());
+     std::copy (second,second+5,it);
+
+  std::inplace_merge (v.begin(),v.begin()+5,v.end());
+
+  std::cout &lt;&lt; <kbd>"The resulting vector contains:"</kbd>;
+  <var>for</var> (it=v.begin(); it!=v.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The resulting vector contains: 5 10 10 15 20 20 25 30 40 50
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+If enough extra memory is available, linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Performs <code>N-1</code> comparisons and up to twice that many element moves.<br>
+Otherwise, up to linearithmic: Performs up to <code>N*log(N)</code> element comparisons (where <var>N</var> is the distance above), and up to that many element swaps.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of the element comparisons, the element swaps (or moves) or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/merge/"><b>merge</b></a></dt><dd>Merge sorted ranges <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/partition/"><b>partition</b></a></dt><dd>Partition range in two <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/includes/"><b>includes</b></a></dt><dd>Test whether sorted range includes another sorted range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

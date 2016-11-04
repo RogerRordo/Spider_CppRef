@@ -1,0 +1,54 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::lt</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>static bool lt (const char_type&amp; c, const char_type&amp; d);</pre></div>
+<div title="C++11" class="on">
+<pre>static constexpr bool lt (char_type c, char_type d) noexcept;</pre></div>
+</div>
+</div><div id="I_description">Compare characters for inequality</div>
+<section id="description">
+Returns whether character <i>c</i> is considered less than character <i>d</i> (i.e., whether <i>c</i> goes before <i>d</i> when ordered).<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+In the standard specializations of <a href="/char_traits">char_traits</a>, this function behaves as the built-in <tt>operator&lt;</tt>.<br>
+</div>
+<div title="C++11">
+In the standard specializations of <a href="/char_traits">char_traits</a>, this function behaves as the built-in <tt>operator&lt;</tt> for type <tt>unsigned char</tt>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>c, d</dt>
+<dd>Character values.<br>
+Member type <tt>char_type</tt> is the <i>character type</i> (i.e., the class template parameter in <a href="/char_traits">char_traits</a>).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<tt>true</tt> if <i>c</i> is considered less than <i>d</i>.<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions in any of the standard specializations.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/eq/"><b>char_traits::eq</b></a></dt><dd>Compare characters for equality <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/char_traits/compare/"><b>char_traits::compare</b></a></dt><dd>Compare sequences of characters <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/functional/less/"><b>less</b></a></dt><dd>Function object class for less-than inequality comparison <span class="typ">(class template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

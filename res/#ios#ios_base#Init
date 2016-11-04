@@ -1,0 +1,36 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member class</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::Init</h1>
+<div class="C_prototype"><pre>class Init;</pre></div><div id="I_description">Initialize standard stream objects</div>
+<section id="description">
+The construction of an object of this member type, ensures that the standard stream objects (<samp><a href="/cin">cin</a></samp>, <samp><a href="/cout">cout</a></samp>, <samp><a href="/cerr">cerr</a></samp>, <samp><a href="/clog">clog</a></samp>, <samp><a href="/wcin">wcin</a></samp>, <samp><a href="/wcout">wcout</a></samp>, <samp><a href="/wcerr">wcerr</a></samp> and <samp><a href="/wclog">wclog</a></samp>) are constructed and properly initialized.<br>
+<br>
+The class maintains an internal static counter with the number of existing objects.<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br></code></pre></td>
+<td class="source"><pre><code><var>class</var> ios_base::Init {
+  <var>static</var> <var>int</var> init_cnt;  <cite>// internal static counter (for exposition only)</cite>
+<var>public</var>:
+  Init();
+  ~Init();
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="functions">
+<h3>Member functionss</h3>
+<dl>
+<dt><tt>Init();</tt> <i>(constructor)</i></dt>
+<dd>Increases the internal static counter by one. If the value of the internal counter was zero, the standard iostream objects are constructed and initialized, if they have not yet been constructed and initialized.</dd>
+<dt><tt>~Init();</tt> <i>(destructor)</i></dt>
+<dd>Decreases the internal static counter by one. If the value of the internal counter reaches zero, the standard output streams are <i>flushed</i> (as if their respective <samp><a href="/ostream::flush">flush</a></samp> members were called).<br>
+Notice that this does not destroy any of the standard objects, whose duration lasts until program termination.</dd>
+</dl>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/iostream/"><b>&lt;iostream&gt;</b></a></dt><dd>Standard Input / Output Streams Library <span class="typ">(header)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

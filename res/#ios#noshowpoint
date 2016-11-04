@@ -1,0 +1,75 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>noshowpoint</h1>
+<div class="C_prototype"><pre>ios_base&amp; noshowpoint (ios_base&amp; str);</pre></div><div id="I_description">Do not show decimal point</div>
+<section id="description">
+Clears the <samp>showpoint</samp> format flag for the <i>str</i> stream.<br>
+<br>
+When the <samp>showpoint</samp> format flag is not set, the decimal point is only written when necessary for floating-point values inserted into the stream: when their decimal part is not zero.<br>
+<br>
+This flag can be set with the <samp><a href="/showpoint">showpoint</a></samp> manipulator. When the flag is set, the decimal point is always written for floating point values inserted into the stream, even for those whose decimal part is zero.<br>
+<br>
+For standard streams, the <samp>showpoint</samp> flag is <strong>not set</strong> on initialization.<br>
+</section>
+<br>
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Stream object where to apply.<br>
+Because this function is a manipulator, it is designed to be used alone with no arguments in conjunction with the insertion (<tt>&lt;&lt;</tt>) and extraction (<tt>&gt;&gt;</tt>) operations on streams (see example below).<br>
+</dd>
+</dl>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Stream object whose <i>format flag</i> is affected.<br>
+Because this function is a manipulator, it is designed to be used alone with no arguments in conjunction with the <i>insertion</i> (<code>&lt;&lt;</code>) and <i>extraction</i> (<code>&gt;&gt;</code>) operations on streams (see example below).<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Argument <var>str</var>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><cite>// modify showpoint flag</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout, std::showpoint, std::noshowpoint</cite>
+
+<var>int</var> main () {
+  <var>double</var> a = 30;
+  <var>double</var> b = 10000.0;
+  <var>double</var> pi = 3.1416;
+  std::cout.precision (5);
+  std::cout &lt;&lt; std::showpoint   &lt;&lt; a &lt;&lt; <kbd>'\t'</kbd> &lt;&lt; b &lt;&lt; <kbd>'\t'</kbd> &lt;&lt; pi &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; std::noshowpoint &lt;&lt; a &lt;&lt; <kbd>'\t'</kbd> &lt;&lt; b &lt;&lt; <kbd>'\t'</kbd> &lt;&lt; pi &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>30.000  10000.  3.1416
+30      10000   3.1416</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies <var>str</var>. Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, <var>str</var> is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/showpoint/"><b>showpoint</b></a></dt><dd>Show decimal point <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/flags/"><b>ios_base::flags</b></a></dt><dd>Get/set format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/setf/"><b>ios_base::setf</b></a></dt><dd>Set specific format flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/unsetf/"><b>ios_base::unsetf</b></a></dt><dd>Clear specific format flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

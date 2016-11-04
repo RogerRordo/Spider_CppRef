@@ -1,0 +1,60 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>memmove</h1>
+<div class="C_prototype"><pre>void * memmove ( void * destination, const void * source, size_t num );</pre></div><div id="I_description">Move block of memory</div>
+<section id="description">
+Copies the values of <i>num</i> bytes from the location pointed by <i>source</i> to the memory block pointed by <i>destination</i>. Copying takes place as if an intermediate buffer were used, allowing the <i>destination</i> and <i>source</i> to overlap.<br>
+<br>
+The underlying type of the objects pointed by both the <i>source</i> and <i>destination</i> pointers are irrelevant for this function; The result is a binary copy of the data.<br>
+<br>
+The function does not check for any terminating null character in <i>source</i> - it always copies exactly <i>num</i> bytes.<br>
+<br>
+To avoid overflows, the size of the arrays pointed by both the <i>destination</i> and <i>source</i> parameters, shall be at least <i>num</i> bytes.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>destination</dt>
+<dd>Pointer to the destination array where the content is to be copied, type-casted to a pointer of type <tt>void*</tt>.</dd>
+<dt>source</dt>
+<dd>Pointer to the source of data to be copied, type-casted to a pointer of type <tt>const void*</tt>.</dd>
+<dt>num</dt>
+<dd>Number of bytes to copy.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>destination</i> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* memmove example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str[] = <kbd>"memmove can be very useful......"</kbd>;
+  memmove (str+20,str+15,11);
+  puts (str);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+memmove can be very very useful.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memset/"><b>memset</b></a></dt><dd>Fill block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

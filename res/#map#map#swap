@@ -1,0 +1,108 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/map/">map</a>::swap</h1>
+<div class="C_prototype"><pre>void swap (map&amp; x);</pre></div><div id="I_description">Swap content</div>
+<section id="description">
+Exchanges the content of the container by the content of <i>x</i>, which is another <a href="/map">map</a> of the same type. Sizes may differ.<br>
+<br>
+After the call to this member function, the elements in this container are those which were in <i>x</i> before the call, and the elements of <i>x</i> are those which were in <tt>this</tt>. All iterators, references and pointers remain valid for the swapped objects.<br>
+<br>
+Notice that a non-member function exists with the same name, <a href="/map:swap">swap</a>, overloading that algorithm with an optimization that behaves like this member function.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+Whether the internal container <a href="/map::get_allocator">allocators</a> and <a href="/map::key_comp">comparison objects</a> are swapped is undefined.<br>
+</div>
+<div title="C++11">
+Whether the internal container <a href="/map::get_allocator">allocators</a> are swapped is not defined, unless in the case the appropriate <a href="/allocator_trait">allocator trait</a> indicates explicitly that they shall <a href="/allocator_traits#types">propagate</a>.<br>
+<br>
+The internal <a href="/map::key_comp">comparison objects</a> are always exchanged, using  <a href="/swap">swap</a>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Another <a href="/map">map</a> container of the same type as this (i.e., with the same template parameters, <tt>Key</tt>, <tt>T</tt>, <tt>Compare</tt> and <tt>Alloc</tt>) whose content is swapped with that of this container.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br></code></pre></td>
+<td class="source"><pre><code><cite>// swap maps</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::map&lt;<var>char</var>,<var>int</var>&gt; foo,bar;
+
+  foo[<kbd>'x'</kbd>]=100;
+  foo[<kbd>'y'</kbd>]=200;
+
+  bar[<kbd>'a'</kbd>]=11;
+  bar[<kbd>'b'</kbd>]=22;
+  bar[<kbd>'c'</kbd>]=33;
+
+  foo.swap(bar);
+
+  std::cout &lt;&lt; <kbd>"foo contains:\n"</kbd>;
+  <var>for</var> (std::map&lt;<var>char</var>,<var>int</var>&gt;::iterator it=foo.begin(); it!=foo.end(); ++it)
+    std::cout &lt;&lt; it-&gt;first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; it-&gt;second &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"bar contains:\n"</kbd>;
+  <var>for</var> (std::map&lt;<var>char</var>,<var>int</var>&gt;::iterator it=bar.begin(); it!=bar.end(); ++it)
+    std::cout &lt;&lt; it-&gt;first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; it-&gt;second &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo contains:
+a =&gt; 11
+b =&gt; 22
+c =&gt; 33
+bar contains:
+x =&gt; 100
+y =&gt; 200
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+All iterators, pointers and references referring to elements in both containers remain valid, but now are referring to elements in the other container, and iterate in it.<br>
+Note that the <i>end iterators</i> do not refer to elements and may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both the container and <i>x</i> are modified.<br>
+No contained elements are accessed by the call (although see <i>iterator validity</i> above).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If the allocators in both containers compare equal, or if their <a href="/allocator_traits">allocator traits</a> indicate that the allocators shall <a href="/allocator_traits#types">propagate</a>, the function never throws exceptions (no-throw guarantee).<br>
+Otherwise, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/map/swap-free/"><b>swap (map)</b></a></dt><dd>Exchanges the contents of two maps <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/swap_ranges/"><b>swap_ranges</b></a></dt><dd>Exchange values of two ranges <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,108 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::bitset</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>default (1)</th><td><pre>bitset();</pre></td></tr><tr class="even"><th>integer value (2)</th><td><pre>bitset (unsigned long val);</pre></td></tr><tr class="odd"><th>string (3)</th><td><pre>template&lt;class charT, class traits, class Alloc&gt;  explicit bitset (const basic_string&lt;charT,traits,Alloc&gt;&amp; str,    typename basic_string&lt;charT,traits,Alloc&gt;::size_type pos = 0,    typename basic_string&lt;charT,traits,Alloc&gt;::size_type n =      basic_string&lt;charT,traits,Alloc&gt;::npos);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>default (1)</th><td><pre>constexpr bitset() noexcept;</pre></td></tr><tr class="odd"><th>integer value (2)</th><td><pre>constexpr bitset (unsigned long long val) noexcept;</pre></td></tr><tr class="even"><th>string (3)</th><td><pre>template &lt;class charT, class traits, class Alloc&gt;  explicit bitset (const basic_string&lt;charT,traits,Alloc&gt;&amp; str,    typename basic_string&lt;charT,traits,Alloc&gt;::size_type pos = 0,    typename basic_string&lt;charT,traits,Alloc&gt;::size_type n =      basic_string&lt;charT,traits,Alloc&gt;::npos,    charT zero = charT('0'), charT one = charT('1'));</pre></td></tr><tr class="odd"><th>C-string (4)</th><td><pre>template &lt;class charT&gt;  explicit bitset (const charT* str,    typename basic_string&lt;charT&gt;::size_type n = basic_string&lt;charT&gt;::npos,    charT zero = charT('0'), charT one = charT('1'));</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Construct bitset</div>
+<section id="description">
+Constructs a <samp><a href="/bitset">bitset</a></samp> container object:<br>
+<dl>
+<dt>(1) default constructor</dt>
+<dd>The object is initialized with zeros.</dd>
+<dt>(2) initialization from integer value</dt>
+<dd>Initializes the object with the bit values of <var>val</var>:<br>
+</dd>
+<dt>(3) initialization from string or (4) C-string</dt>
+<dd>Uses the sequence of <i>zeros</i> and/or <i>ones</i> in <var>str</var> to initialize the first <var>n</var> bit positions of the constructed <samp>bitset</samp> object.<br>
+</dl>
+<br>
+Note that <samp>bitset</samp> objects have a <i><a href="/bitset::size">fixed size</a></i> (determined by their class template argument) no matter the constructor used: Those bit positions not explicitly set by the constructor are initialized with a value of zero.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>val</dt>
+<dd>Integral value whose bits are copied to the bitset positions.<br>
+- If the value representation of <var>val</var> is greater than the <i><a href="/bitset::size">bitset size</a></i>, only the least significant bits of <var>val</var> are taken into consideration.<br>
+- If the value representation of <var>val</var> is less than the <i><a href="/bitset::size">bitset size</a></i>, the remaining bit positions are initialized to zero.<br>
+</dd>
+<dt>str</dt>
+<dd>
+<div class="C_SwitchCases">
+<div title="C++98">
+A <samp><a href="/basic_string">basic_string</a></samp> whose contents are used to initialize the <samp><a href="/bitset">bitset</a></samp>:<br>
+The constructor parses the string reading at most <var>n</var> characters beginning at <var>pos</var>, interpreting the character values <code>'0'</code> and <code>'1'</code> as zero and one, respectively.<br>
+Note that the least significant bit is represented by the last character read (not the first); Thus, the first bit position is read from the right-most character, and the following bits use the characters preceding this, from right to left.<br>
+If this sequence is shorter than the <i><a href="/bitset::size">bitset size</a></i>, the remaining bit positions are initialized to zero.<br>
+</div>
+<div title="C++11">
+A <samp><a href="/basic_string">basic_string</a></samp> or <i>C-string</i> whose contents are used to initialize the <samp><a href="/bitset">bitset</a></samp>:<br>
+The constructor parses the string reading at most <var>n</var> characters (beginning at <var>pos</var> for <i>(3)</i>), interpreting the character values specified as arguments <var>zero</var> and <var>one</var> as zeros and ones, respectively.<br>
+Note that the least significant bit is represented by the last character read (not the first); Thus, the first bit position is read from the right-most character, and the following bits use the characters preceding this, from right to left.<br>
+If this sequence is shorter than the <i><a href="/bitset::size">bitset size</a></i>, the remaining bit positions are initialized to zero.<br>
+</div>
+</div>
+</dd>
+<dt>pos</dt>
+<dd>First character in the <samp><a href="/basic_string">basic_string</a></samp> to be read and interpreted.<br>
+If this is greater than the <i><a href="/basic_string::length">length</a></i> of <var>str</var>, an <samp><a href="/out_of_range">out_of_range</a></samp> exception is thrown.<br>
+<dt>n</dt>
+<dd>Number of characters to read. Any value greater than the <i><a href="/bitset::size">bitset size</a></i> (including <samp><a href="/basic_string::npos">npos</a></samp>) is equivalent to specifying exactly the <i><a href="/bitset::size">bitset size</a></i>.</dd>
+<dt>zero, one</dt>
+<dd>Character values to represent <i>zero</i> and <i>one</i>.</dd>
+</dl>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br></code></pre></td>
+<td class="source"><pre><code><cite>// constructing bitsets</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;         </dfn><cite>// std::string</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;16&gt; foo;
+  std::bitset&lt;16&gt; bar (0xfa2);
+  std::bitset&lt;16&gt; baz (std::string(<kbd>"0101111001"</kbd>));
+
+  std::cout &lt;&lt; <kbd>"foo: "</kbd> &lt;&lt; foo &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"bar: "</kbd> &lt;&lt; bar &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"baz: "</kbd> &lt;&lt; baz &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+foo: 0000000000000000
+bar: 0000111110100010
+baz: 0000000101111001
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Constructors <i>(3)</i> and <i>(4)</i> access the characters in <var>str</var>.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Neither the <i>default constructor (1)</i> nor the <i>constructor from integer value (2)</i> throw exceptions.<br>
+The other constructors cause no side effects in case an exception is thrown (strong guarantee).<br>
+Throws <samp><a href="/out_of_range">out_of_range</a></samp> if <code>pos &gt; str.size()</code>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/set/"><b>bitset::set</b></a></dt><dd>Set bits <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/reset/"><b>bitset::reset</b></a></dt><dd>Reset bits <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/operator[]/"><b>bitset::operator[]</b></a></dt><dd>Access bit <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/operators/"><b>bitset operators</b></a></dt><dd>Bitset operators <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

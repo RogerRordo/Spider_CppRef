@@ -1,0 +1,16 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;cstddef&gt; &lt;cstdio&gt; &lt;cstdlib&gt; &lt;cstring&gt; &lt;ctime&gt; &lt;cwchar&gt;</div>
+<h1>size_t</h1>
+<div id="I_description">Unsigned integral type</div>
+<section id="description">
+Alias of one of the fundamental unsigned integer types.<br>
+<br>
+It is a type able to represent the size of any object in bytes: <samp>size_t</samp> is the type returned by the <code>sizeof</code> operator and is widely used in the standard library to represent sizes and counts.<br>
+<br>
+In <tt>&lt;cstring&gt;</tt>, it is used as the type of the parameter <i>num</i> in the functions <a href="/memchr">memchr</a>, <a href="/memcmp">memcmp</a>, <a href="/memcpy">memcpy</a>, <a href="/memmove">memmove</a>, <a href="/memset">memset</a>, <a href="/strncat">strncat</a>, <a href="/strncmp">strncmp</a>, <a href="/strncpy">strncpy</a> and <a href="/strxfrm">strxfrm</a>, which in all cases it is used to specify the maximum number of bytes or characters the function has to affect.<br>
+<br>
+It is also used as the return type for <a href="/strcspn">strcspn</a>, <a href="/strlen">strlen</a>, <a href="/strspn">strspn</a> and <a href="/strxfrm">strxfrm</a> to return sizes and lengths.<br>
+</section>
+<div id="CH_bb"></div></div></div>

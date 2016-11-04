@@ -1,0 +1,57 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">protected member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios/">ios</a>::init</h1>
+<div class="C_prototype"><pre>protected:void init (streambuf* sb);</pre></div><div id="I_description">Initialize object</div>
+<section id="description">
+Initializes the values of the stream's internal flags and member variables.<br>
+<br>
+Derived classes are expected to call this protected member function at some point before its first use or before its destruction (generally, during construction).<br>
+<br>
+The internal state is initialized in such a way that each of these members return the following values:<br>
+<br>
+<table class="boxed">
+<tr><th>member function</th><th>return value</th></tr>
+<tr><td><samp><a href="/ios::rdbuf">rdbuf</a></samp></td><td><var>sb</var></td></tr>
+<tr><td><samp><a href="/ios::tie">tie</a></samp></td><td><code>0</code></td></tr>
+<tr><td><samp><a href="/ios::rdstate">rdstate</a></samp></td><td><samp>goodbit</samp> if <var>sb</var> is not a null pointer, <samp>badbit</samp> otherwise</td></tr>
+<tr><td><samp><a href="/ios::exceptions">exceptions</a></samp></td><td><samp>goodbit</samp></td></tr>
+<tr><td><samp><a href="/ios_base::flags">flags</a></samp></td><td><code>skipws | dec</code></td></tr>
+<tr><td><samp><a href="/ios_base::width">width</a></samp></td><td><code>0</code></td></tr>
+<tr><td><samp><a href="/ios_base::precision">precision</a></samp></td><td><code>6</code></td></tr>
+<tr><td><samp><a href="/ios::fill">fill</a></samp></td><td><code>' '</code> <i>(whitespace)</i></td></tr>
+<tr><td><samp><a href="/ios_base::getloc">getloc</a></samp></td><td>a copy of <code><a href="/locale">locale</a>()</code></td></tr>
+</table>
+<br>
+On initialization, the <i>internal extensible array</i> (<samp><a href="/ios_base::iword">iword</a></samp>, <samp><a href="/ios_base::pword">pword</a></samp>) is empty.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>sb</dt>
+<dd>Pointer to a <samp><a href="/streambuf">streambuf</a></samp> object.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the stream object. The object pointed by <var>sb</var> may be accessed and/or modified.<br>
+Concurrent access to the same stream object or stream buffer may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/ios/"><b>ios::ios</b></a></dt><dd>Construct object <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

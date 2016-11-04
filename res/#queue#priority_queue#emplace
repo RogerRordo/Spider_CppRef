@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;queue&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/queue/priority_queue/">priority_queue</a>::emplace<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>template &lt;class... Args&gt; void emplace (Args&amp;&amp;... args);</pre></div><div id="I_description">Construct and insert element</div>
+<section id="description">
+Adds a new element to the <samp><a href="/priority_queue">priority_queue</a></samp>. This new element is constructed in place passing <var>args</var> as the arguments for its constructor.<br>
+<br>
+This member function effectively calls the member function <samp><a href="/vector::emplace_back">emplace_back</a></samp> of the <i>underlying container</i>, <i><a href="/forward">forwarding</a></i> <var>args</var>, and then reorders it to its location in the <i>heap</i> by calling the <samp><a href="/push_heap">push_heap</a></samp> algorithm on the range that includes all the elements of the container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>args</dt>
+<dd>Arguments forwarded to construct the new element.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// priority_queue::emplace</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;queue&gt;          </dfn><cite>// std::priority_queue</cite>
+<dfn>#include &lt;string&gt;         </dfn><cite>// std::string</cite>
+
+<var>int</var> main ()
+{
+  std::priority_queue&lt;std::string&gt; mypq;
+
+  mypq.emplace(<kbd>"orange"</kbd>);
+  mypq.emplace(<kbd>"strawberry"</kbd>);
+  mypq.emplace(<kbd>"apple"</kbd>);
+  mypq.emplace(<kbd>"pear"</kbd>);
+
+  std::cout &lt;&lt; <kbd>"mypq contains:"</kbd>;
+  <var>while</var> (!mypq.empty())
+  {
+     std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; mypq.top();
+     mypq.pop();
+  }
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+mypq contains: strawberry pear orange apple
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+One call to <samp><a href="/vector::emplace_back">emplace_back</a></samp> on the <i>underlying container</i> and one call to <samp><a href="/push_heap">push_heap</a></samp> on the range that includes all the elements of the <i>underlying container</i>.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container and up to all its contained elements are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+Provides the same level of guarantees as the operations performed on the <i>underlying container</i> object.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/queue/priority_queue/push/"><b>priority_queue::push</b></a></dt><dd>Insert element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/queue/priority_queue/pop/"><b>priority_queue::pop</b></a></dt><dd>Remove top element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

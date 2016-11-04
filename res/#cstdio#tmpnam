@@ -1,0 +1,68 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>tmpnam</h1>
+<div class="C_prototype"><pre>char * tmpnam ( char * str );</pre></div><div id="I_description">Generate temporary filename</div>
+<section id="description">
+Returns a string containing a <i>file name</i> different from the name of any existing file, and thus suitable to safely create a temporary file without risking to overwrite an existing file.<br>
+<br>
+If <i>str</i> is a null pointer, the resulting string is stored in an internal static array that can be accessed by the return value. The content of this string is preserved at least until a subsequent call to this same function, which may overwrite it.<br>
+<br>
+If <i>str</i> is not a null pointer, it shall point to an array of at least <a href="/L_tmpnam">L_tmpnam</a> characters that will be filled with the proposed temporary file name.<br>
+<br>
+The file name returned by this function can be used to create a regular file using <a href="/fopen">fopen</a> to be used as a temporary file. The file created this way, unlike those created with <a href="/tmpfile">tmpfile</a> is not automatically deleted when closed; A program shall call <a href="/remove(cstdio)">remove</a> to delete this file once closed.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Pointer to an array of characters where the proposed temporary name will be stored as a C string. The suggested size of this array is at least <tt><a href="/L_tmpnam">L_tmpnam</a></tt> characters.<br>
+Alternativelly, a null pointer can be specified to use an internal static array to store the proposed temporary name, whose pointer is returned by the function.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, a pointer to the C string containing the proposed name for a temporary file:<br>
+<ul>
+<li>If <i>str</i> was a null pointer, this points to an internal buffer (whose content is preserved at least until the next call to this function).</li>
+<li>If <i>str</i> was not a null pointer, <i>str</i> is returned.</li>
+</ul>
+If the function fails to create a suitable filename, it returns a null pointer.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>/* tmpnam example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer [L_tmpnam];
+  <var>char</var> * pointer;
+
+  tmpnam (buffer);
+  printf (<kbd>"Tempname #1: %s\n"</kbd>,buffer);
+
+  pointer = tmpnam (NULL);
+  printf (<kbd>"Tempname #2: %s\n"</kbd>,pointer);
+
+  <var>return</var> 0;  
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This program will generate two different names for temporary files. Each one has been created by one of the two methods in which <tt>tmpnam</tt> can be used.<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Tempname #1: /s4s4.
+Tempname #2: /s4s4.1
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/tmpfile/"><b>tmpfile</b></a></dt><dd>Open a temporary file <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,15 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">type</div>
+<div id="I_file">&lt;cstddef&gt; &lt;cstdio&gt; &lt;cstdlib&gt; &lt;cstring&gt; &lt;ctime&gt; &lt;cwchar&gt;</div>
+<h1>size_t</h1>
+<div id="I_description">Unsigned integral type</div>
+<section id="description">
+Alias of one of the fundamental unsigned integer types.<br>
+<br>
+It is a type able to represent the size of any object in bytes: <samp>size_t</samp> is the type returned by the <code>sizeof</code> operator and is widely used in the standard library to represent sizes and counts.<br>
+<br>
+In <code><a href="/&lt;cstdlib&gt;">&lt;cstdlib&gt;</a></code>, it is used as the type of some parameters in the functions <samp><a href="/bsearch">bsearch</a></samp>, <samp><a href="/qsort">qsort</a></samp>, <samp><a href="/calloc">calloc</a></samp>, <samp><a href="/malloc">malloc</a></samp>, <samp><a href="/realloc">realloc</a></samp>, <samp><a href="/mblen">mblen</a></samp>, <samp><a href="/mbtowc">mbtowc</a></samp>, <samp><a href="/mbstowcs">mbstowcs</a></samp> and <samp><a href="/wcstombs">wcstombs</a></samp>, and in the case of <samp><a href="/mbstowcs">mbstowcs</a></samp> and <samp><a href="/wcstombs">wcstombs</a></samp> also as its returning type.<br>
+In all cases it is used as a type to represent the length or count in bytes of a specific buffer or string.<br>
+</section>
+<div id="CH_bb"></div></div></div>

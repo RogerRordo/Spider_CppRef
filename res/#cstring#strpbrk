@@ -1,0 +1,71 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>strpbrk</h1>
+<div class="C_prototype"><pre>const char * strpbrk ( const char * str1, const char * str2 );      char * strpbrk (       char * str1, const char * str2 );</pre></div><div id="I_description">Locate characters in string</div>
+<section id="description">
+Returns a pointer to the first occurrence in <i>str1</i> of any of the characters that are part of <i>str2</i>, or a null pointer if there are no matches.<br>
+<br>
+The search does not include the terminating null-characters of either strings, but ends there.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str1</dt>
+<dd>C string to be scanned.</dd>
+<dt>str2</dt>
+<dd>C string containing the characters to match.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A pointer to the first occurrence in <i>str1</i> of any of the characters that are part of <i>str2</i>, or a null pointer if none of the characters of <i>str2</i> is found in <i>str1</i> before the terminating null-character.<br>
+If none of the characters of <i>str2</i> is present in <i>str1</i>, a null pointer is returned.<br>
+</section>
+<br>
+<section id="portability">
+<h3>Portability</h3>
+In C, this function is only declared as:<br>
+<br>
+<span class="auto"><code class="source"><var>char</var> * strpbrk ( <var>const</var> <var>char</var> *, <var>const</var> <var>char</var> * );</code></span> <br>
+<br>
+instead of the two overloaded versions provided in C++.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>/* strpbrk example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str[] = <kbd>"This is a sample string"</kbd>;
+  <var>char</var> key[] = <kbd>"aeiou"</kbd>;
+  <var>char</var> * pch;
+  printf (<kbd>"Vowels in '%s': "</kbd>,str);
+  pch = strpbrk (str, key);
+  <var>while</var> (pch != NULL)
+  {
+    printf (<kbd>"%c "</kbd> , *pch);
+    pch = strpbrk (pch+1,key);
+  }
+  printf (<kbd>"\n"</kbd>);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+Vowels in 'This is a sample string': i i a a e i 
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/strcspn/"><b>strcspn</b></a></dt><dd>Get span until character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strchr/"><b>strchr</b></a></dt><dd>Locate first occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strrchr/"><b>strrchr</b></a></dt><dd>Locate last occurrence of character in string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memchr/"><b>memchr</b></a></dt><dd>Locate character in block of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

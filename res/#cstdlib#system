@@ -1,0 +1,68 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>system</h1>
+<div class="C_prototype"><pre>int system (const char* command);</pre></div><div id="I_description">Execute system command</div>
+<section id="description">
+Invokes the command processor to execute a <var>command</var>.<br>
+<br>
+If <var>command</var> is a <i>null pointer</i>, the function only checks whether a <i>command processor</i> is available through this function, without invoking any command.<br>
+<br>
+The effects of invoking a command depend on the system and library implementation, and may cause a program to behave in a non-standard manner or to terminate.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>command</dt>
+<dd>C-string containing the system command to be executed.<br>
+Or, alternatively, a <i>null pointer</i>, to check for a command processor.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If <var>command</var> is a null pointer, the function returns a non-zero value in case a <i>command processor</i> is available and a zero value if it is not.<br>
+<br>
+If <var>command</var> is not a null pointer, the value returned depends on the system and library implementations, but it is generally expected to be the status code returned by the called command, if supported.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>/* system example : DIR */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* system, NULL, EXIT_FAILURE */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> i;
+  printf (<kbd>"Checking if processor is available..."</kbd>);
+  <var>if</var> (system(NULL)) puts (<kbd>"Ok"</kbd>);
+    <var>else</var> exit (EXIT_FAILURE);
+  printf (<kbd>"Executing command DIR...\n"</kbd>);
+  i=system (<kbd>"dir"</kbd>);
+  printf (<kbd>"The value returned was: %d.\n"</kbd>,i);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The function accesses the array pointed by <var>command</var>.<br>
+Concurrently calling this function with a <i>null pointer</i> as argument is safe. Otherwise, it depends on the system and library implementation.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function does not throw exceptions.<br>
+<br>
+If <var>command</var> is not a <i>null pointer</i>, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/exit/"><b>exit</b></a></dt><dd>Terminate calling process <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/getenv/"><b>getenv</b></a></dt><dd>Get environment string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

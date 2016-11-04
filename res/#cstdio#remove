@@ -1,0 +1,59 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>remove</h1>
+<div class="C_prototype"><pre>int remove ( const char * filename );</pre></div><div id="I_description">Remove file</div>
+<section id="description">
+Deletes the file whose name is specified in <i>filename</i>.<br>
+<br>
+This is an operation performed directly on a file identified by its <i>filename</i>; No streams are involved in the operation.<br>
+<br>
+Proper file access shall be available.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>filename</dt>
+<dd>C string containing the name of the file to be deleted.<br>
+Its value shall follow the file name specifications of the running environment and can include a path (if supported by the system).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+If the file is successfully deleted, a zero value is returned.<br>
+On failure, a nonzero value is returned.<br>
+On most library implementations, the <a href="/errno">errno</a> variable is also set to a system-specific error code on failure.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* remove example: remove myfile.txt */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>if</var>( remove( <kbd>"myfile.txt"</kbd> ) != 0 )
+    perror( <kbd>"Error deleting file"</kbd> );
+  <var>else</var>
+    puts( <kbd>"File successfully deleted"</kbd> );
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+If the file <tt>myfile.txt</tt> exists before the execution and the program has write access to it, the file would be deleted and this message would be written to <tt>stdout</tt>:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>File successfully deleted
+</samp></pre></td></tr></table></div>
+<br>
+Otherwise, a message similar to this would be written to <tt>stderr</tt>:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Error deleting file: No such file or directory
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/rename/"><b>rename</b></a></dt><dd>Rename file <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

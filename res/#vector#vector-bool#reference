@@ -1,0 +1,42 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member class</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector-bool/">vector&lt;bool&gt;</a>::reference</h1>
+<div class="C_prototype"><pre>class reference;</pre></div><div id="I_description">Reference type</div>
+<section id="description">
+This embedded class is the type returned by members of non-const <a href="/vector&lt;bool&gt;">vector&lt;bool&gt;</a> when directly accessing its elements. It accesses individual bits with an interface that emulates a reference to a <tt>bool</tt>.<br>
+<br>
+Its prototype is:<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><var>class</var> vector&lt;<var>bool</var>&gt;::reference {
+  <var>friend</var> <var>class</var> vector;
+  reference();                                          <cite>// no public constructor</cite>
+<var>public</var>:
+  ~reference();
+  <var>operator</var> <var>bool</var> () <var>const</var>;                               <cite>// convert to bool</cite>
+  reference&amp; <var>operator</var>= (<var>const</var> <var>bool</var> x);                  <cite>// assign from bool</cite>
+  reference&amp; <var>operator</var>= (<var>const</var> reference&amp; x);            <cite>// assign from bit</cite>
+  <var>void</var> flip();                                          <cite>// flip bit value.</cite>
+};</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</div>
+<div title="C++11">
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><var>class</var> vector&lt;<var>bool</var>&gt;::reference {
+  <var>friend</var> <var>class</var> vector;
+  reference() <var>noexcept</var>;                                 <cite>// no public constructor</cite>
+<var>public</var>:
+  ~reference();
+  <var>operator</var> <var>bool</var> () <var>const</var> <var>noexcept</var>;                      <cite>// convert to bool</cite>
+  reference&amp; <var>operator</var>= (<var>const</var> <var>bool</var> x) <var>noexcept</var>;         <cite>// assign from bool</cite>
+  reference&amp; <var>operator</var>= (<var>const</var> reference&amp; x) <var>noexcept</var>;   <cite>// assign from bit</cite>
+  <var>void</var> flip();                                          <cite>// flip bit value.</cite>
+};</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</div>
+</div>
+</section>
+<div id="CH_bb"></div></div></div>

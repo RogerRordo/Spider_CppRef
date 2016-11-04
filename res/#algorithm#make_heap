@@ -1,0 +1,99 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>make_heap</h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class RandomAccessIterator&gt;  void make_heap (RandomAccessIterator first, RandomAccessIterator last);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class RandomAccessIterator, class Compare&gt;  void make_heap (RandomAccessIterator first, RandomAccessIterator last,                  Compare comp );</pre></td></tr></table></div><div id="I_description">Make heap from range</div>
+<section id="description">
+Rearranges the elements in the range <code>[first,last)</code> in such a way that they form a <i>heap</i>.<br>
+<br>
+A <dfn>heap</dfn> is a way to organize the elements of a range that allows for fast retrieval of the element with the highest value at any moment (with <a href="/pop_heap">pop_heap</a>), even repeatedly, while allowing for fast insertion of new elements (with <a href="/push_heap">push_heap</a>).<br>
+<br>
+The element with the highest value is always pointed by <var>first</var>. The order of the other elements depends on the particular implementation, but it is consistent throughout all heap-related functions of this header.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> (for the first version), or <var>comp</var> (for the second): The element with the highest value is an element for which this would return <code>false</code> when compared to every other element in the range.<br>
+<br>
+The standard container adaptor <samp><a href="/priority_queue">priority_queue</a></samp> calls <samp>make_heap</samp>, <samp><a href="/push_heap">push_heap</a></samp> and <samp><a href="/pop_heap">pop_heap</a></samp> automatically to maintain <i>heap properties</i> for a container.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/RandomAccessIterator">Random-access iterators</a> to the initial and final positions of the sequence to be transformed into a heap. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+<samp>RandomAccessIterator</samp> shall point to a type for which <samp><a href="/swap">swap</a></samp> is properly defined and which is both <i><a href="/is_move_constructible">move-constructible</a></i> and <i><a href="/is_move_assignable">move-assignable</a></i>.<br>
+</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two elements in the range as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered to be less than the second in the specific <i>strict weak ordering</i> it defines.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br></code></pre></td>
+<td class="source"><pre><code><cite>// range heap example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::make_heap, std::pop_heap, std::push_heap, std::sort_heap</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>int</var> main () {
+  <var>int</var> myints[] = {10,20,30,5,15};
+  std::vector&lt;<var>int</var>&gt; v(myints,myints+5);
+
+  std::make_heap (v.begin(),v.end());
+  std::cout &lt;&lt; <kbd>"initial max heap   : "</kbd> &lt;&lt; v.front() &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::pop_heap (v.begin(),v.end()); v.pop_back();
+  std::cout &lt;&lt; <kbd>"max heap after pop : "</kbd> &lt;&lt; v.front() &lt;&lt; <kbd>'\n'</kbd>;
+
+  v.push_back(99); std::push_heap (v.begin(),v.end());
+  std::cout &lt;&lt; <kbd>"max heap after push: "</kbd> &lt;&lt; v.front() &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::sort_heap (v.begin(),v.end());
+
+  std::cout &lt;&lt; <kbd>"final sorted range :"</kbd>;
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;v.size(); i++)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; v[i];
+
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>initial max heap   : 30
+max heap after pop : 20
+max heap after push: 99
+final sorted range : 5 10 15 20 99
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in three times the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Compares elements and potentially swaps (or moves) them until rearranged as a heap.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of the element comparisons, the element swaps (or moves) or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/push_heap/"><b>push_heap</b></a></dt><dd>Push element into heap range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/pop_heap/"><b>pop_heap</b></a></dt><dd>Pop element from heap range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/sort_heap/"><b>sort_heap</b></a></dt><dd>Sort elements of heap <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/reverse/"><b>reverse</b></a></dt><dd>Reverse range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

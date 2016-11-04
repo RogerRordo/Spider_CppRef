@@ -1,0 +1,104 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::rbegin</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>      reverse_iterator rbegin();const_reverse_iterator rbegin() const;</pre></div>
+<div title="C++11" class="on">
+<pre>      reverse_iterator rbegin() noexcept;const_reverse_iterator rbegin() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return reverse iterator to reverse beginning</div>
+<section id="description">
+Returns a <i>reverse iterator</i> pointing to the last character of the string (i.e., its <i>reverse beginning</i>).<br>
+<br>
+<dfn>Reverse iterators</dfn> iterate backwards: increasing them moves them towards the beginning of the string.<br>
+<br>
+<tt>rbegin</tt> points to the character right before the one that would be pointed to by member <a href="/string::end">end</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A reverse iterator to the <i>reverse beginning</i> of the string.<br>
+<br>
+If the <a href="/string">string</a> object is const-qualified, the function returns a <tt>const_iterator</tt>. Otherwise, it returns an <tt>iterator</tt>.<br>
+<br>
+Member types <tt>reverse_iterator</tt> and <tt>const_reverse_iterator</tt> are reverse <a href="/RandomAccessIterator">random access iterator</a> types (pointing to a character and to a const character, respectively).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// string::rbegin/rend</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"now step live..."</kbd>);
+  <var>for</var> (std::string::reverse_iterator rit=str.rbegin(); rit!=str.rend(); ++rit)
+    std::cout &lt;&lt; *rit;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This code prints out the reversed content of a string character by character using a reverse iterator that iterates between <tt>rbegin</tt> and <tt>rend</tt>. Notice how even though the reverse iterator is increased, the iteration goes backwards through the string (this is a feature of reverse iterators).<br>
+The actual output is:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>...evil pets won
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Generally, no changes.<br>
+On some implementations, the non-const version may invalidate all iterators, pointers and references on the first access to string characters after the object has been constructed or modified.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed, and in some implementations, the non-const version modifies it on the first access to string characters after the object has been constructed or modified.<br>
+The iterator returned can be used to access or modify characters.<br>
+</section>
+</div>
+<div title="C++11">
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed (neither the const nor the non-const versions modify it).<br>
+The iterator returned can be used to access or modify characters. Concurrently accessing or modifying different characters is safe.<br>
+</section>
+</div>
+</div>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+The copy construction or assignment of the returned iterator is also guaranteed to never throw.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/rend/"><b>string::rend</b></a></dt><dd>Return reverse iterator to reverse end <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/begin/"><b>string::begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/end/"><b>string::end</b></a></dt><dd>Return iterator to end <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

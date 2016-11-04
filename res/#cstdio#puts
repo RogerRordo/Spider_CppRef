@@ -1,0 +1,46 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>puts</h1>
+<div class="C_prototype"><pre>int puts ( const char * str );</pre></div><div id="I_description">Write string to stdout</div>
+<section id="description">
+Writes the <i>C string</i> pointed by <i>str</i> to the <i>standard output</i> (<a href="/stdout">stdout</a>) and appends a newline character (<tt>'\n'</tt>).<br>
+<br>
+The function begins copying from the address specified (<i>str</i>) until it reaches the terminating null character (<tt>'\0'</tt>). This terminating null-character is not copied to the stream.<br>
+<br>
+Notice that <tt>puts</tt> not only differs from <a href="/fputs">fputs</a> in that it uses <a href="/stdout">stdout</a> as destination, but it also appends a newline character at the end automatically (which <a href="/fputs">fputs</a> does not).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>C string to be printed.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, a non-negative value is returned.<br>
+On error, the function returns <a href="/EOF">EOF</a> and sets the <i>error indicator</i> (<a href="/ferror">ferror</a>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><cite>/* puts example : hello world! */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> string [] = <kbd>"Hello world!"</kbd>;
+  puts (string);
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fputs/"><b>fputs</b></a></dt><dd>Write string to stream <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/printf/"><b>printf</b></a></dt><dd>Print formatted data to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/putchar/"><b>putchar</b></a></dt><dd>Write character to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/gets/"><b>gets</b></a></dt><dd>Get string from stdin <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,38 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public static member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::xalloc</h1>
+<div class="C_prototype"><pre>static int xalloc();</pre></div><div id="I_description">Get new index for extensible array [static]</div>
+<section id="description">
+Returns a new index value to be used with member functions in the internal extensible array.<br>
+<br>
+The <dfn>internal extensible array</dfn> is a general-purpose array of objects of type <code>long</code> (if accessed with member <samp><a href="/ios_base::iword">iword</a></samp>) or <code>void*</code> (if accessed with member <samp><a href="/ios_base::pword">pword</a></samp>).<br>
+<br>
+This is a static member function.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none <br>
+</section>
+ <br>
+<section id="return">
+<h3>Return Value</h3>
+A new index that can be used with either member <samp><a href="/ios_base::iword">iword</a></samp> or member <samp><a href="/ios_base::pword">pword</a></samp>. <br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Concurrently calling this function may introduce data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in any stream.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios_base/iword/"><b>ios_base::iword</b></a></dt><dd>Get integer element of extensible array <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/ios_base/pword/"><b>ios_base::pword</b></a></dt><dd>Get pointer element of extensible array <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

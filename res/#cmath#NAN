@@ -1,0 +1,14 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">constant</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>NAN</h1>
+<div class="C_prototype"><pre>float</pre></div><div id="I_description">Not-A-Number</div>
+<section id="description">
+Macro constant that expands to an expression of type <code>float</code> that represents a NaN if the implementation supports quiet NaNs (otherwise, it is not defined).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/nan-function/"><b>nan</b></a></dt><dd>Generate quiet NaN <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/nanf/"><b>nanf</b></a></dt><dd>Generate quiet NaN (float) <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/isnan/"><b>isnan</b></a></dt><dd>Is Not-A-Number <span class="typ">(macro/function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

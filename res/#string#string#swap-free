@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>swap (string)</h1>
+<div class="C_prototype"><pre>void swap (string&amp; x, string&amp; y);</pre></div><div id="I_description">Exchanges the values of two strings</div>
+<section id="description">
+Exchanges the values of <a href="/string">string</a> objects <i>x</i> and <i>y</i>, such that after the call to this function, the value of <i>x</i> is the one which was on <i>y</i> before the call, and the value of <i>y</i> is that of <i>x</i>.<br>
+<br>
+This is an overload of the generic algorithm <a href="/swap">swap</a> that improves its performance by mutually transferring ownership over their internal data to the other object (i.e., the strings exchange references to their data, without actually copying the characters): It behaves as if <tt>x.<a href="/string::swap">swap</a>(y)</tt> was called.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x,y</dt>
+<dd><a href="/string">string</a> objects to swap.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>// swap strings</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+main ()
+{
+  std::string buyer (<kbd>"money"</kbd>);
+  std::string seller (<kbd>"goods"</kbd>);
+
+  std::cout &lt;&lt; <kbd>"Before the swap, buyer has "</kbd> &lt;&lt; buyer;
+  std::cout &lt;&lt; <kbd>" and seller has "</kbd> &lt;&lt; seller &lt;&lt; <kbd>'\n'</kbd>;
+
+  swap (buyer,seller);
+
+  std::cout &lt;&lt; <kbd>" After the swap, buyer has "</kbd> &lt;&lt; buyer;
+  std::cout &lt;&lt; <kbd>" and seller has "</kbd> &lt;&lt; seller &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Before the swap, buyer has money and seller has goods
+ After the swap, buyer has goods and seller has money
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to both <i>x</i> and <i>y</i> may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both objects, <i>x</i> and <i>y</i>, are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/swap/"><b>string::swap</b></a></dt><dd>Swap string values <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/utility/swap/"><b>swap</b></a></dt><dd>Exchange values of two objects <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/swap_ranges/"><b>swap_ranges</b></a></dt><dd>Exchange values of two ranges <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

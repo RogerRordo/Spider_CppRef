@@ -1,0 +1,11 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">macro</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>RAND_MAX</h1>
+<div id="I_description">Maximum value returned by rand</div>
+<section id="description">
+This macro expands to an integral constant expression whose value is the maximum value returned by the <samp><a href="/rand">rand</a></samp> function.<br>
+<br>
+This value is library-dependent, but is guaranteed to be at least <code>32767</code> on any standard library implementation.<br>
+<div id="CH_bb"></div></div></div>

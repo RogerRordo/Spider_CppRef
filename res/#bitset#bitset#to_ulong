@@ -1,0 +1,61 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::to_ulong</h1>
+<div class="C_prototype"><pre>unsigned long to_ulong() const;</pre></div><div id="I_description">Convert to unsigned long integer</div>
+<section id="description">
+Returns an <code>unsigned long</code> with the integer value that has the same bits set as the bitset.<br>
+<br>
+If the <i><a href="/bitset::size">bitset size</a></i> is too big to be represented in a value of type <code>unsigned long</code>, the function throws an exception of type <samp><a href="/overflow_error">overflow_error</a></samp>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+Integer value with the same bit representation as the <samp><a href="/bitset">bitset</a></samp> object.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// bitset::to_ulong</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;4&gt; foo;     <cite>// foo: 0000</cite>
+  foo.set();              <cite>// foo: 1111</cite>
+
+  std::cout &lt;&lt; foo &lt;&lt; <kbd>" as an integer is: "</kbd> &lt;&lt; foo.to_ulong() &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+1111 as an integer is: 15
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The <samp><a href="/bitset">bitset</a></samp> is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the <samp><a href="/bitset">bitset</a></samp>.<br>
+If the <i><a href="/bitset::size">bitset size</a></i> is too big to be represented by the return type, <samp><a href="/overflow_error">overflow_error</a></samp> is thrown.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/to_string/"><b>bitset::to_string</b></a></dt><dd>Convert to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/bitset/"><b>bitset::bitset</b></a></dt><dd>Construct bitset <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

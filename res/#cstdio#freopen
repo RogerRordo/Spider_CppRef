@@ -1,0 +1,79 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>freopen</h1>
+<div class="C_prototype"><pre>FILE * freopen ( const char * filename, const char * mode, FILE * stream );</pre></div><div id="I_description">Reopen stream with different file or mode</div>
+<section id="description">
+Reuses <i>stream</i> to either open the file specified by <i>filename</i> or to change its access <i>mode</i>.<br>
+<br>
+If a new <i>filename</i> is specified, the function first attempts to close any file already associated with <i>stream</i> (third parameter) and disassociates it. Then, independently of whether that stream was successfuly closed or not, <tt>freopen</tt> opens the file specified by <i>filename</i> and associates it with the <i>stream</i> just as <a href="/fopen">fopen</a> would do using the specified <i>mode</i>.<br>
+<br>
+If <i>filename</i> is a null pointer, the function attempts to change the <i>mode</i> of the stream. Although a particular library implementation is allowed to restrict the changes permitted, and under which circumstances.<br>
+<br>
+The <i>error indicator</i> and <i>eof indicator</i> are automatically cleared (as if <a href="/clearerr">clearerr</a> was called).<br>
+<br>
+This function is especially useful for redirecting predefined streams like <tt>stdin</tt>, <tt>stdout</tt> and <tt>stderr</tt> to specific files (see the example below).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>filename</dt>
+<dd>C string containing the name of the file to be opened.<br>
+Its value shall follow the file name specifications of the running environment and can include a path (if supported by the system).<br>
+If this parameter is a null pointer, the function attempts to change the mode of the <i>stream</i>, as if the file name currently associated with that stream had been used.<br>
+</dd>
+<dt>mode</dt>
+<dd>C string containing a file access mode. It can be:<br>
+<table class="boxed"><tr><td>"r"</td><td><b>read:</b> Open file for input operations. The file must exist.</td></tr>
+<tr><td>"w"</td><td><b>write:</b> Create an empty file for output operations. If a file with the same name already exists, its contents are discarded and the file is treated as a new empty file. </td></tr>
+<tr><td>"a"</td><td><b>append:</b> Open file for output at the end of a file. Output operations always write data at the end of the file, expanding it. Repositioning operations (<a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a>, <a href="/rewind">rewind</a>) are ignored. The file is created if it does not exist.</td></tr>
+<tr><td>"r+"</td><td><b>read/update:</b> Open a file for update (both for input and output). The file must exist.</td></tr>
+<tr><td>"w+"</td><td><b>write/update:</b> Create an empty file and open it for update (both for input and output). If a file with the same name already exists its contents are discarded and the file is treated as a new empty file.</td></tr>
+<tr><td>"a+"</td><td><b>append/update:</b> Open a file for update (both for input and output) with all output operations writing data at the end of the file. Repositioning operations (<a href="/fseek">fseek</a>, <a href="/fsetpos">fsetpos</a>, <a href="/rewind">rewind</a>) affects the next input operations, but output operations move the position back to the end of file. The file is created if it does not exist.</td></tr>
+</table>
+With the <i>mode</i> specifiers above the file is open as a <i>text file</i>. In order to open a file as a <i>binary file</i>, a <tt>"b"</tt> character has to be included in the <i>mode</i> string. This additional <tt>"b"</tt> character can either be appended at the end of the string (thus making the following compound modes: "rb", "wb", "ab", "r+b", "w+b", "a+b") or be inserted between the letter and the <tt>"+"</tt> sign for the mixed modes ("rb+", "wb+", "ab+").<br>
+<br>
+The new C standard (C2011, which is not part of C++) adds a new standard subspecifier (<tt>"x"</tt>), that can be appended to any <tt>"w"</tt> specifier (to form <tt>"wx"</tt>, <tt>"wbx"</tt>, <tt>"w+x"</tt> or <tt>"w+bx"/"wb+x"</tt>). This subspecifier forces the function to fail if the file exists, instead of overwriting it.<br>
+<br>
+If additional characters follow the sequence, the behavior depends on the library implementation: some implementations may ignore additional characters so that for example an additional <tt>"t"</tt> (sometimes used to explicitly state a <i>text file</i>) is accepted.<br>
+<br>
+On some library implementations, opening or creating a text file with update mode may treat the stream instead as a binary file.<br>
+</dd>
+<dt>stream</dt>
+<dd>pointer to a <a href="/FILE">FILE</a> object that identifies the stream to be reopened.</dd> <br>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+If the file is successfully reopened, the function returns the pointer passed as parameter <i>stream</i>, which can be used to identify the reopened stream.<br>
+Otherwise, a null pointer is returned.<br>
+On most library implementations, the <a href="/errno">errno</a> variable is also set to a system-specific error code on failure.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>/* freopen example: redirecting stdout */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  freopen (<kbd>"myfile.txt"</kbd>,<kbd>"w"</kbd>,stdout);
+  printf (<kbd>"This sentence is redirected to a file."</kbd>);
+  fclose (stdout);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This sample code redirects the output that would normally go to the standard output to a file called <tt>myfile.txt</tt>, that after this program is executed contains:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>This sentence is redirected to a file.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/fopen/"><b>fopen</b></a></dt><dd>Open file <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/fclose/"><b>fclose</b></a></dt><dd>Close file <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

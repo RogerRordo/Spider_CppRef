@@ -1,0 +1,83 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;vector&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/vector/vector/">vector</a>::data<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>      value_type* data() noexcept;const value_type* data() const noexcept;</pre></div><div id="I_description">Access data</div>
+<section id="description">
+Returns a direct pointer to the memory array used internally by the <a href="/vector">vector</a> to store its owned elements.<br>
+<br>
+Because elements in the <a href="/vector">vector</a> are guaranteed to be stored in contiguous storage locations in the same order as represented by the <a href="/vector">vector</a>, the pointer retrieved can be offset to access any element in the array.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+A pointer to the first element in the array used internally by the <a href="/vector">vector</a>.<br>
+<br>
+If the <a href="/vector">vector</a> object is const-qualified, the function returns a pointer to  <tt>const value_type</tt>. Otherwise, it returns a pointer to <tt>value_type</tt>.<br>
+<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/vector">vector</a> as an alias of the first class template parameter (<tt>T</tt>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br></code></pre></td>
+<td class="source"><pre><code><cite>// vector::data</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::vector&lt;<var>int</var>&gt; myvector (5);
+
+  <var>int</var>* p = myvector.data();
+
+  *p = 10;
+  ++p;
+  *p = 20;
+  p[2] = 100;
+
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (<var>unsigned</var> i=0; i&lt;myvector.size(); ++i)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; myvector[i];
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 10 20 0 100 0
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="thread">
+<h3>Data races</h3>
+The container is accessed (neither the const nor the non-const versions modify the container).<br>
+No contained elements are directly accessed by the call, but the pointer returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/vector/vector/begin/"><b>vector::begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/vector/vector/front/"><b>vector::front</b></a></dt><dd>Access first element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,87 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>minmax<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++11">
+<table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class T&gt;  pair &lt;const T&amp;,const T&amp;&gt; minmax (const T&amp; a, const T&amp; b);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class T, class Compare&gt;  pair &lt;const T&amp;,const T&amp;&gt; minmax (const T&amp; a, const T&amp; b, Compare comp);</pre></td></tr><tr class="odd"><th>initializer list (3)</th><td><pre>template &lt;class T&gt;  pair&lt;T,T&gt; minmax (initializer_list&lt;T&gt; il);template &lt;class T, class Compare&gt;  pair&lt;T,T&gt; minmax (initializer_list&lt;T&gt; il, Compare comp);</pre></td></tr></table></div>
+<div title="C++14" class="on">
+<table><tr class="even"><th>default (1)</th><td><pre>template &lt;class T&gt;  constexpr pair &lt;const T&amp;,const T&amp;&gt; minmax (const T&amp; a, const T&amp; b);</pre></td></tr><tr class="odd"><th>custom (2)</th><td><pre>template &lt;class T, class Compare&gt;  constexpr pair &lt;const T&amp;,const T&amp;&gt; minmax (const T&amp; a, const T&amp; b, Compare comp);</pre></td></tr><tr class="even"><th>initializer list (3)</th><td><pre>template &lt;class T&gt;  constexpr pair&lt;T,T&gt; minmax (initializer_list&lt;T&gt; il);template &lt;class T, class Compare&gt;  constexpr pair&lt;T,T&gt; minmax (initializer_list&lt;T&gt; il, Compare comp);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Return smallest and largest elements</div>
+<section id="description">
+Returns a <samp><a href="/pair">pair</a></samp> with the smallest of <var>a</var> and <var>b</var> as first element, and the largest as second. If both are equivalent, the function returns <code><a href="/make_pair">make_pair</a>(a,b)</code>.<br>
+<br>
+The versions for <i>initializer lists (3)</i> return a <samp><a href="/pair">pair</a></samp> with the smallest of all the elements in the list as first element (the first of them, if there are more than one), and the largest as second (the last of them, if there are more than one).<br>
+<br>
+The function uses <code>operator&lt;</code> (or <var>comp</var>, if provided) to compare the values.<br>
+<br>
+The behavior of this function template (version <i>(1)</i>) is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> T&gt; pair &lt;<var>const</var> T&amp;,<var>const</var> T&amp;&gt; minmax (<var>const</var> T&amp; a, <var>const</var> T&amp; b) {
+  <var>return</var> (b&lt;a) ? std::make_pair(b,a) : std::make_pair(a,b);
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>a, b</dt>
+<dd>Values to compare.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two values of type <samp>T</samp> as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered less than the second.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.</dd>
+</dl>
+<br>
+<samp>T</samp> shall support being compared with <code>operator&lt;</code>.<br>
+For <i>(3)</i>, <samp>T</samp> shall be <i><a href="/is_copy_constructible">copy constructible</a></i>.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The lesser of the values passed as arguments.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// minmax example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::minmax</cite>
+
+<var>int</var> main () {
+  <var>auto</var> result = std::minmax({1,2,3,4,5});
+
+  std::cout &lt;&lt; <kbd>"minmax({1,2,3,4,5}): "</kbd>;
+  std::cout &lt;&lt; result.first &lt;&lt; <kbd>' '</kbd> &lt;&lt; result.second &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>minmax({1,2,3,4,5}): 1 5
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in one and half times the number of elements compared (constant for <i>(1)</i> and <i>(2)</i>).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any comparison throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/minmax_element/"><b>minmax_element</b></a></dt><dd>Return smallest and largest elements in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/min/"><b>min</b></a></dt><dd>Return the smallest <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/max/"><b>max</b></a></dt><dd>Return the largest <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

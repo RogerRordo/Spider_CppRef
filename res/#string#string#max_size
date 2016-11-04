@@ -1,0 +1,87 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::max_size</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>size_t max_size() const;</pre></div>
+<div title="C++11" class="on">
+<pre>size_t max_size() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return maximum size of string</div>
+<section id="description">
+Returns the maximum length the <a href="/string">string</a> can reach.<br>
+<br>
+This is the maximum potential <a href="/string::length">length</a> the string can reach due to known system or library implementation limitations, but the object is not guaranteed to be able to reach that length: it can still fail to allocate storage at any point before that length is reached.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The maximum length the <a href="/string">string</a> can reach.<br>
+<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type (the same as member type <samp><a href="/string#types">string::size_type</a></samp>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// comparing size, length, capacity and max_size</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string str (<kbd>"Test string"</kbd>);
+  std::cout &lt;&lt; <kbd>"size: "</kbd> &lt;&lt; str.size() &lt;&lt; <kbd>"\n"</kbd>;
+  std::cout &lt;&lt; <kbd>"length: "</kbd> &lt;&lt; str.length() &lt;&lt; <kbd>"\n"</kbd>;
+  std::cout &lt;&lt; <kbd>"capacity: "</kbd> &lt;&lt; str.capacity() &lt;&lt; <kbd>"\n"</kbd>;
+  std::cout &lt;&lt; <kbd>"max_size: "</kbd> &lt;&lt; str.max_size() &lt;&lt; <kbd>"\n"</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+A possible output for this program could be:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>size: 11
+length: 11
+capacity: 15
+max_size: 4294967291
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+Unspecified, but generally constant.<br>
+</div>
+<div title="C++11">
+Constant.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object is accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/capacity/"><b>string::capacity</b></a></dt><dd>Return size of allocated storage <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/size/"><b>string::size</b></a></dt><dd>Return length of string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/resize/"><b>string::resize</b></a></dt><dd>Resize string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

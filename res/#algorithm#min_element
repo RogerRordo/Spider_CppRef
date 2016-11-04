@@ -1,0 +1,106 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>min_element</h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class ForwardIterator&gt;  ForwardIterator min_element (ForwardIterator first, ForwardIterator last);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class ForwardIterator, class Compare&gt;  ForwardIterator min_element (ForwardIterator first, ForwardIterator last,                               Compare comp);</pre></td></tr></table></div><div id="I_description">Return smallest element in range</div>
+<section id="description">
+Returns an iterator pointing to the element with the smallest value in the range <code>[first,last)</code>.<br>
+<br>
+The comparisons are performed using either <code>operator&lt;</code> for the first version, or <var>comp</var> for the second; An element is the smallest if no other element compares less than it. If more than one element fulfills this condition, the iterator returned points to the first of such elements.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> ForwardIterator&gt;
+  ForwardIterator min_element ( ForwardIterator first, ForwardIterator last )
+{
+  <var>if</var> (first==last) <var>return</var> last;
+  ForwardIterator smallest = first;
+
+  <var>while</var> (++first!=last)
+    <var>if</var> (*first&lt;*smallest)    <cite>// or: if (comp(*first,*smallest)) for version (2)</cite>
+      smallest=first;
+  <var>return</var> smallest;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions of the sequence to compare. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two elements in the range as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered less than the second.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator to smallest value in the range, or <var>last</var> if the range is empty.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br></code></pre></td>
+<td class="source"><pre><code><cite>// min_element/max_element example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::min_element, std::max_element</cite>
+
+<var>bool</var> myfn(<var>int</var> i, <var>int</var> j) { <var>return</var> i&lt;j; }
+
+<var>struct</var> myclass {
+  <var>bool</var> <var>operator</var>() (<var>int</var> i,<var>int</var> j) { <var>return</var> i&lt;j; }
+} myobj;
+
+<var>int</var> main () {
+  <var>int</var> myints[] = {3,7,2,5,6,4,9};
+
+  <cite>// using default comparison:</cite>
+  std::cout &lt;&lt; <kbd>"The smallest element is "</kbd> &lt;&lt; *std::min_element(myints,myints+7) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"The largest element is "</kbd>  &lt;&lt; *std::max_element(myints,myints+7) &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// using function myfn as comp:</cite>
+  std::cout &lt;&lt; <kbd>"The smallest element is "</kbd> &lt;&lt; *std::min_element(myints,myints+7,myfn) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"The largest element is "</kbd>  &lt;&lt; *std::max_element(myints,myints+7,myfn) &lt;&lt; <kbd>'\n'</kbd>;
+
+  <cite>// using object myobj as comp:</cite>
+  std::cout &lt;&lt; <kbd>"The smallest element is "</kbd> &lt;&lt; *std::min_element(myints,myints+7,myobj) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"The largest element is "</kbd>  &lt;&lt; *std::max_element(myints,myints+7,myobj) &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The smallest element is 2
+The largest element is 9
+The smallest element is 2
+The largest element is 9
+The smallest element is 2
+The largest element is 9
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in one less than the number of elements compared.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any comparison throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/max_element/"><b>max_element</b></a></dt><dd>Return largest element in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/lower_bound/"><b>lower_bound</b></a></dt><dd>Return iterator to lower bound <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/min/"><b>min</b></a></dt><dd>Return the smallest <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

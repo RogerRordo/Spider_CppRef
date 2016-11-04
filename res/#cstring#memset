@@ -1,0 +1,54 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstring&gt;</div>
+<h1>memset</h1>
+<div class="C_prototype"><pre>void * memset ( void * ptr, int value, size_t num );</pre></div><div id="I_description">Fill block of memory</div>
+<section id="description">
+Sets the first <i>num</i> bytes of the block of memory pointed by <i>ptr</i> to the specified <i>value</i> (interpreted as an <tt>unsigned char</tt>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>ptr</dt>
+<dd>Pointer to the block of memory to fill.</dd>
+<dt>value</dt>
+<dd>Value to be set. The value is passed as an <tt>int</tt>, but the function fills the block of memory using the <i>unsigned char</i> conversion of this <i>value</i>.</dd>
+<dt>num</dt>
+<dd>Number of bytes to be set to the <i>value</i>.<br>
+<a href="/cstring:size_t">size_t</a> is an unsigned integral type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+<i>ptr</i> is returned.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>/* memset example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;string.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> str[] = <kbd>"almost every programmer should know memset!"</kbd>;
+  memset (str,<kbd>'-'</kbd>,6);
+  puts (str);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+------ every programmer should know memset!
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstring/memcpy/"><b>memcpy</b></a></dt><dd>Copy block of memory <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strncpy/"><b>strncpy</b></a></dt><dd>Copy characters from string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/memcmp/"><b>memcmp</b></a></dt><dd>Compare two blocks of memory <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

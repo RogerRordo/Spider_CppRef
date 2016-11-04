@@ -1,0 +1,81 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;bitset&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/bitset/bitset/">bitset</a>::reset</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>all bits (1)</th><td><pre>bitset&amp; reset();</pre></td></tr><tr class="even"><th>single bit (2)</th><td><pre>bitset&amp; reset (size_t pos);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>all bits (1)</th><td><pre>bitset&amp; reset() noexcept;</pre></td></tr><tr class="even"><th>single bit (2)</th><td><pre>bitset&amp; reset (size_t pos);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Reset bits</div>
+<section id="description">
+Resets bits to zero:<br>
+<dl>
+<dt>(1) all bits</dt>
+<dd>Resets (to <i>zero</i>) all bits in the <samp><a href="/bitset">bitset</a></samp>.</dd>
+<dt>(2) single bit</dt>
+<dd>Resets (to <i>zero</i>) the bit at position <var>pos</var>.</dd>
+</dl>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>pos</dt>
+<dd>Order position of the bit whose value is modified.<br>
+Order positions are counted from the rightmost bit, which is order position <code>0</code>.<br>
+If <var>pos</var> is equal or greater than the <i><a href="/bitset::size">bitset size</a></i>, an <samp><a href="/out_of_range">out_of_range</a></samp> exception is thrown.<br>
+<samp><a href="/size_t">size_t</a></samp> is an unsigned integral type.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<code>*this</code>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// bitset::reset</cite>
+<dfn>#include &lt;iostream&gt;       </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;         </dfn><cite>// std::string</cite>
+<dfn>#include &lt;bitset&gt;         </dfn><cite>// std::bitset</cite>
+
+<var>int</var> main ()
+{
+  std::bitset&lt;4&gt; foo (std::string(<kbd>"1011"</kbd>));
+
+  std::cout &lt;&lt; foo.reset(1) &lt;&lt; <kbd>'\n'</kbd>;    <cite>// 1001</cite>
+  std::cout &lt;&lt; foo.reset() &lt;&lt; <kbd>'\n'</kbd>;     <cite>// 0000</cite>
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+1001
+0000
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both the <samp><a href="/bitset">bitset</a></samp> and its bits are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+For <i>(1)</i>: it never throws exceptions (no-throw guarantee).<br>
+For <i>(2)</i>: in case of exception, the object is in a valid state (basic guarantee).<br>
+If <var>pos</var> is equal or greater than the <i><a href="/bitset::size">bitset size</a></i>, the function throws an <samp><a href="/out_of_range">out_of_range</a></samp> exception.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/set/"><b>bitset::set</b></a></dt><dd>Set bits <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/bitset/bitset/flip/"><b>bitset::flip</b></a></dt><dd>Flip bits <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

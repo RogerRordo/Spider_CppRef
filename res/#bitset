@@ -1,0 +1,14 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">header</div>
+<h1>&lt;bitset&gt;</h1>
+<div id="I_description">Bitset header</div>
+<section id="description">
+Header that defines the <a href="/bitset">bitset</a> class:<br>
+</section>
+<br>
+<section id="types">
+<h3>Classes</h3>
+<dl class="links"><dt><a href= "/reference/bitset/bitset/"><b>bitset</b></a></dt><dd>Bitset <span class="typ">(class template)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

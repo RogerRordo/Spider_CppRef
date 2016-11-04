@@ -1,0 +1,67 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>free</h1>
+<div class="C_prototype"><pre>void free (void* ptr);</pre></div><div id="I_description">Deallocate memory block</div>
+<section id="description">
+A block of memory previously allocated by a call to <samp><a href="/malloc">malloc</a></samp>, <samp><a href="/calloc">calloc</a></samp> or <samp><a href="/realloc">realloc</a></samp> is deallocated, making it available again for further allocations.<br>
+<br>
+If <var>ptr</var> does not point to a block of memory allocated with the above functions, it causes <i>undefined behavior</i>.<br>
+<br>
+If <var>ptr</var> is a <i>null pointer</i>, the function does nothing.<br>
+<br>
+Notice that this function does not change the value of <var>ptr</var> itself, hence it still points to the same (now invalid) location.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>ptr</dt>
+<dd>Pointer to a memory block previously allocated with <samp><a href="/malloc">malloc</a></samp>, <samp><a href="/calloc">calloc</a></samp> or <samp><a href="/realloc">realloc</a></samp>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* free example */</cite>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* malloc, calloc, realloc, free */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> * buffer1, * buffer2, * buffer3;
+  buffer1 = (<var>int</var>*) malloc (100*<var>sizeof</var>(<var>int</var>));
+  buffer2 = (<var>int</var>*) calloc (100,<var>sizeof</var>(<var>int</var>));
+  buffer3 = (<var>int</var>*) realloc (buffer2,500*<var>sizeof</var>(<var>int</var>));
+  free (buffer1);
+  free (buffer3);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This program has no output. It just demonstrates some ways to allocate and free dynamic memory using the <a href="/cstdlib">C stdlib</a> functions.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Only the storage referenced by <var>ptr</var> is modified. No other storage locations are accessed by the call.<br>
+If the function releases a unit of storage that is reused by a call to <i>allocation functions</i> (such as <samp><a href="/calloc">calloc</a></samp> or <samp><a href="/malloc">malloc</a></samp>), the functions are synchronized in such a way that the deallocation happens entirely before the next allocation.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function never throws exceptions.<br>
+<br>
+If <var>ptr</var> does not point to a memory block previously allocated with <samp><a href="/malloc">malloc</a></samp>, <samp><a href="/calloc">calloc</a></samp> or <samp><a href="/realloc">realloc</a></samp>, and is not a <i>null pointer</i>, it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/malloc/"><b>malloc</b></a></dt><dd>Allocate memory block <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/calloc/"><b>calloc</b></a></dt><dd>Allocate and zero-initialize array <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/realloc/"><b>realloc</b></a></dt><dd>Reallocate memory block <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

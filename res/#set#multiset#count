@@ -1,0 +1,74 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/set/multiset/">multiset</a>::count</h1>
+<div class="C_prototype"><pre>size_type count (const value_type&amp; val) const;</pre></div><div id="I_description">Count elements with a specific key</div>
+<section id="description">
+Searches the container for elements equivalent to <i>val</i> and returns the number of matches.<br>
+<br>
+Two elements of a <a href="/multiset">multiset</a> are considered equivalent if the container's <a href="/multiset::key_comp">comparison object</a> returns <tt>false</tt> reflexively (i.e., no matter the order in which the elements are passed as arguments).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>val</dt>
+<dd>Value to search for.<br>
+Member type <tt>value_type</tt> is the type of the elements in the container, defined in <a href="/multiset">multiset</a> as an alias of its first template parameter (<tt>T</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The number of elements in the container that are equivalent to <i>val</i>.<br>
+<br>
+Member type <tt>size_type</tt> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// multiset::count</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> myints[]={10,73,12,22,73,73,12};
+  std::multiset&lt;<var>int</var>&gt; mymultiset (myints,myints+7);
+
+  std::cout &lt;&lt; <kbd>"73 appears "</kbd> &lt;&lt; mymultiset.count(73) &lt;&lt; <kbd>" times in mymultiset.\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>73 appears 3 times in mymultiset.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Logarithmic in <a href="/multiset::size">size</a> and linear in the number of matches.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+Concurrently accessing the elements of a <a href="/multiset">multiset</a> is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the container.<br>
+</section>
+<br>
+<section id="see"><h3>See also</h3>
+<div id="CH_bb"></div></div></div>

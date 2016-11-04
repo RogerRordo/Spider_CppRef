@@ -1,0 +1,89 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;deque&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/deque/deque/">deque</a>::rend</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>      reverse_iterator rend();const_reverse_iterator rend() const;</pre></div>
+<div title="C++11" class="on">
+<pre>      reverse_iterator rend() noexcept;const_reverse_iterator rend() const noexcept;</pre></div>
+</div>
+</div><div id="I_description">Return reverse iterator to reverse end</div>
+<section id="description">
+Returns a <i>reverse iterator</i> pointing to the theoretical element preceding the first element in the <a href="/deque">deque</a> container (which is considered its <i>reverse end</i>).<br>
+<br>
+The range between <a href="/deque::rbegin">deque::rbegin</a> and <tt>deque::rend</tt> contains all the elements of the <a href="/deque">deque</a> container (in reverse order).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A reverse iterator to the <i>reverse end</i> of the sequence container.<br>
+<br>
+If the <a href="/deque">deque</a> object is const-qualified, the function returns a <tt>const_reverse_iterator</tt>. Otherwise, it returns a <tt>reverse_iterator</tt>.<br>
+<br>
+Member types <tt>reverse_iterator</tt> and <tt>const_reverse_iterator</tt> are reverse <a href="/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively). See <a href="/deque#types">deque member types</a>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br></code></pre></td>
+<td class="source"><pre><code><cite>// deque::rbegin/rend</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;deque&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::deque&lt;<var>int</var>&gt; mydeque (5);  <cite>// 5 default-constructed ints</cite>
+
+  std::deque&lt;<var>int</var>&gt;::reverse_iterator rit = mydeque.rbegin();
+
+  <var>int</var> i=0;
+  <var>for</var> (rit = mydeque.rbegin(); rit!= mydeque.rend(); ++rit)
+    *rit = ++i;
+
+  std::cout &lt;&lt; <kbd>"mydeque contains:"</kbd>;
+  <var>for</var> (std::deque&lt;<var>int</var>&gt;::iterator it = mydeque.begin(); it != mydeque.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>5 4 3 2 1 
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed (neither the const nor the non-const versions modify the container).<br>
+No contained elements are accessed by the call, but the iterator returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+The copy construction or assignment of the returned iterator is also guaranteed to never throw.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/deque/deque/rbegin/"><b>deque::rbegin</b></a></dt><dd>Return reverse iterator to reverse beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/front/"><b>deque::front</b></a></dt><dd>Access first element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/begin/"><b>deque::begin</b></a></dt><dd>Return iterator to beginning <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/deque/deque/end/"><b>deque::end</b></a></dt><dd>Return iterator to end <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,75 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;istream&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/istream/istream/">istream</a>::istream</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>initialization (1)</th><td><pre>explicit istream (streambuf* sb);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>initialization (1)</th><td><pre>explicit istream (streambuf* sb);</pre></td></tr><tr class="odd"><th>copy (2)</th><td><pre>istream&amp; (const istream&amp;) = delete;</pre></td></tr><tr class="even"><th>move (3)</th><td><pre>protected: istream&amp; (istream&amp;&amp; x);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Construct object</div>
+<section id="description">
+Constructs an <samp><a href="/istream">istream</a></samp> object.<br>
+<br>
+<dl>
+<dt>(1) inititalization constructor</dt>
+<dd>Assigns initial values to the components of its base classes by calling the inherited member <samp><a href="/ios::init">ios::init</a></samp> with <var>sb</var> as argument.</dd>
+<dt>(2) copy constructor (deleted)</dt>
+<dd>Deleted: no copy constructor.</dd>
+<dt>(3) move constructor (protected)</dt>
+<dd>Acquires the contents of <var>x</var>, except its associated <i><a href="/ios::rdbuf">stream buffer</a></i>: It copies <var>x</var>'s <samp><a href="/istream::gcount">gcount</a></samp> value and then calls <samp><a href="/ios::move">ios::move</a></samp> to transfer <var>x</var>'s <samp><a href="/ios">ios</a></samp> components. <var>x</var> is left with a <samp><a href="/istream::gcount">gcount</a></samp> value of zero, not <i><a href="/ios::tie">tied</a></i>, and with its associated <i><a href="/ios::rdbuf">stream buffer</a></i> unchanged (all other components of <var>x</var> are in an unspecified but valid state after the call).<br>
+</dd>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>sb</dt>
+<dd>pointer to a <samp><a href="/streambuf">streambuf</a></samp> object.</dd>
+<dt>x</dt>
+<dd>Another <samp><a href="/istream">istream</a></samp> object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// istream constructor</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::ios, std::istream, std::cout</cite>
+<dfn>#include &lt;fstream&gt;      </dfn><cite>// std::filebuf</cite>
+
+<var>int</var> main () {
+  std::filebuf fb;
+  <var>if</var> (fb.open (<kbd>"test.txt"</kbd>,std::ios::in))
+  {
+    std::istream is(&amp;fb);
+    <var>while</var> (is)
+      std::cout &lt;&lt; <var>char</var>(is.get());
+    fb.close();
+  }
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+This example code uses a <samp><a href="/filebuf">filebuf</a></samp> object (derived from <samp><a href="/streambuf">streambuf</a></samp>) to open a file called <code>test.txt</code>. The buffer is passed as parameter to the constructor of the <samp><a href="/istream">istream</a></samp> object <i>is</i>, associating it to the stream. Then, the program uses the input stream to print its contents to <samp><a href="/cout">cout</a></samp>.<br>
+<br>
+Objects of <samp><a href="/istream">istream</a></samp> classes are seldom constructed directly. Generally some derived class is used (like the standard <samp><a href="/ifstream">ifstream</a></samp> or <samp><a href="/istringstream">istringstream</a></samp>).<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The object pointed by <var>sb</var> may be accessed and/or modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+If an exception is thrown, the only side effects may come from accessing/modifying <var>sb</var>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/ios/init/"><b>ios::init</b></a></dt><dd>Initialize object <span class="typ">(protected member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

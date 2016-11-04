@@ -1,0 +1,75 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type"> public static member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/char_traits/">char_traits</a>::eof</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<pre>static int_type eof();</pre></div>
+<div title="C++11" class="on">
+<pre>static constexpr int_type eof() noexcept;</pre></div>
+</div>
+</div><div id="I_description">End-of-File character</div>
+<section id="description">
+Returns the <i>End-of-File</i> value.<br>
+<br>
+The <dfn>End-of-File value</dfn> is a special value used by many standard functions to represent an invalid character; Its value shall not compare equal to any of the values representable with <tt>char_type</tt> (as if transformed with <a href="/char_traits::int_type">member int_type</a> and compared with <a href="/char_traits:::eq_int_type">member eq_int_type</a>).<br>
+<br>
+For the standard specializations of <a href="/char_traits">char_traits</a> it returns:<br>
+<table class="boxed"><tr><th>specialization</th><th>value returned by <tt>eof()</tt></th></tr>
+<tr class="cpp98"><td><tt>char</tt></td><td><a href="/EOF">EOF</a></td></tr>
+<tr class="cpp98"><td><tt>wchar_t</tt></td><td><a href="/WEOF">WEOF</a></td></tr>
+<tr class="cpp11"><td><tt>char16_t</tt></td><td>A value that is not a valid UTF-16 code unit.</td></tr>
+<tr class="cpp11"><td><tt>char32_t</tt></td><td>A value that is not a valid Unicode code point.</td></tr>
+</table>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The <i>End-of-File</i> value.<br>
+Member type <tt>int_type</tt> is an integral type that can represent this value or any valid character value.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>// char_traits::eof</cite>
+<dfn>#include &lt;iostream&gt;   </dfn><cite>// std::wcin, std::wcout</cite>
+<dfn>#include &lt;string&gt;     </dfn><cite>// std::wstring, std::char_traits</cite>
+
+<var>int</var> main () {
+  std::wcout &lt;&lt; <kbd>"Please enter some text: "</kbd>;
+
+  <var>if</var> (std::wcin.peek() == std::char_traits&lt;<var>wchar_t</var>&gt;::eof()) {
+    std::wcout &lt;&lt; <kbd>"Reading error"</kbd>;
+  }
+  <var>else</var> {
+    std::wstring ws;
+    std::getline (std::wcin,ws);
+    std::wcout &lt;&lt; <kbd>"You entered a word: "</kbd> &lt;&lt; ws &lt;&lt; <kbd>'\n'</kbd>;
+  }
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/char_traits/not_eof/"><b>char_traits::not_eof</b></a></dt><dd>Not End-of-File character <span class="typ">( public static member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/EOF/"><b>EOF</b></a></dt><dd>End-of-File <span class="typ">(constant)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

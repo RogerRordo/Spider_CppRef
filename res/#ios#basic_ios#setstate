@@ -1,0 +1,67 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/basic_ios/">basic_ios</a>::setstate</h1>
+<div class="C_prototype"><pre>void setstate (iostate state);</pre></div><div id="I_description">Set error state flag</div>
+<section id="description">
+Modifies the current internal <i>error state flags</i> by combining the current flags with those in argument <var>state</var> (as if performing a bitwise OR operation).<br>
+<br>
+Any error bitflag already set is not cleared. See member <a href="/basic_ios::clear">clear</a> for a similar function that does.<br>
+<br>
+In the case that no <i><a href="/basic_ios::rdbuf">stream buffer</a></i> is associated with the stream when this function is called, the <samp>badbit</samp> flag is automatically set (no matter the value for that bit passed in argument <var>state</var>).<br>
+<br>
+Note that changing the <var>state</var> may throw an exception, depending on the latest settings passed to member <samp><a href="/basic_ios::exceptions">exceptions</a></samp>.<br>
+<br>
+The current state can be obtained with member function <a href="/basic_ios::rdstate">rdstate</a>.<br>
+<br>
+This function behaves as if defined as:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br></code></pre></td>
+<td class="source"><pre><code><var>void</var> basic_ios::setstate (iostate state) {
+  clear(rdstate()|state);
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>state</dt>
+<dd>An object of type <samp><a href="/ios_base::iostate">ios_base::iostate</a></samp> that can take as value any combination of the following member constants:<br>
+<br>
+<table class="boxed">
+<tr><th rowspan="2"><samp><a href="/ios_base::iostate">iostate</a></samp> value<br>
+(member constants)</th><th rowspan="2">indicates</th><th colspan="5"><samp></samp>functions to check state flags</th></tr>
+<tr><th><samp><a href="/basic_ios::good">good()</a></samp></th><th><samp><a href="/basic_ios::eof">eof()</a></samp></th><th><samp><a href="/basic_ios::fail">fail()</a></samp></th><th><samp><a href="/basic_ios::bad">bad()</a></samp></th><th><samp><a href="/basic_ios::rdstate">rdstate()</a></samp></th></tr>
+<tr><th><samp>goodbit</samp></th><td>No errors (zero value <samp><a href="/ios_base::iostate">iostate</a></samp>)</td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td><samp>goodbit</samp></td></tr>
+<tr><th><samp>eofbit</samp></th><td>End-of-File reached on input operation</td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td><samp>eofbit</samp></td></tr>
+<tr><th><samp>failbit</samp></th><td>Logical error on i/o operation</td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="no"><code>false</code></td><td><samp>failbit</samp></td></tr>
+<tr><th><samp>badbit</samp></th><td>Read/writing error on i/o operation</td><td class="no"><code>false</code></td><td class="no"><code>false</code></td><td class="yes"><code>true</code></td><td class="yes"><code>true</code></td><td><samp>badbit</samp></td></tr>
+</table>
+<samp>eofbit</samp>, <samp>failbit</samp> and <samp>badbit</samp> are member constants with implementation-defined values that can be combined (as if with the bitwise OR operator).<br>
+<samp>goodbit</samp> is zero, indicating that none of the other bits is set.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+It throws an exception of member type <samp><a href="/ios_base::failure">failure</a></samp> if the resulting <i>error state flag</i> is not <samp>goodbit</samp> and member <samp><a href="/basic_ios::exceptions">exceptions</a></samp> was set throw for that state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/ios/basic_ios/fail/"><b>basic_ios::fail</b></a></dt><dd>Check whether failbit or badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/good/"><b>basic_ios::good</b></a></dt><dd>Check whether state of stream is good <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/bad/"><b>basic_ios::bad</b></a></dt><dd>Check whether badbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/eof/"><b>basic_ios::eof</b></a></dt><dd>Check whether eofbit is set <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/rdstate/"><b>basic_ios::rdstate</b></a></dt><dd>Get error state flags <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/ios/basic_ios/clear/"><b>basic_ios::clear</b></a></dt><dd>Set error state flags <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,76 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>snprintf<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>int snprintf ( char * s, size_t n, const char * format, ... );</pre></div><div id="I_description">Write formatted output to sized buffer</div>
+<section id="description">
+Composes a string with the same text that would be printed if <i>format</i> was used on <a href="/printf">printf</a>, but instead of being printed, the content is stored as a <i>C string</i> in the buffer pointed by <i>s</i> (taking <i>n</i> as the maximum buffer capacity to fill).<br>
+<br>
+If the resulting string would be longer than <i>n-1</i> characters, the remaining characters are discarded and not stored, but counted for the value returned by the function.<br>
+<br>
+A terminating null character is automatically appended after the content written.<br>
+<br>
+After the <i>format</i> parameter, the function expects at least as many additional arguments as needed for <i>format</i>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>s</dt>
+<dd>Pointer to a buffer where the resulting C-string is stored.<br>
+The buffer should have a size of at least <i>n</i> characters.</dd>
+<dt>n</dt>
+<dd>Maximum number of bytes to be used in the buffer.<br>
+The generated string has a length of at most <tt>n-1</tt>, leaving space for the additional terminating null character.<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.</dd>
+<dt>format</dt>
+<dd>C string that contains a format string that follows the same specifications as <i>format</i> in <a href="/printf">printf</a> (see <a href="/printf">printf</a> for details).</dd>
+<dt>... <i>(additional arguments)</i></dt>
+<dd>Depending on the <i>format</i> string, the function may expect a sequence of additional arguments, each containing a value to be used to replace a <i>format specifier</i> in the <i>format</i> string (or a pointer to a storage location, for <tt>n</tt>).<br>
+There should be at least as many of these arguments as the number of values specified in the <i>format specifiers</i>. Additional arguments are ignored by the function.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The number of characters that would have been written if <var>n</var> had been sufficiently large, not counting the terminating <i>null character</i>.<br>
+If an encoding error occurs, a negative number is returned.<br>
+Notice that only when this returned value is non-negative and less than <var>n</var>, the string has been completely written.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>/* snprintf example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>char</var> buffer [100];
+  <var>int</var> cx;
+
+  cx = snprintf ( buffer, 100, <kbd>"The half of %d is %d"</kbd>, 60, 60/2 );
+
+  <var>if</var> (cx&gt;=0 &amp;&amp; cx&lt;100)      <cite>// check returned value</cite>
+
+    snprintf ( buffer+cx, 100-cx, <kbd>", and the half of that is %d."</kbd>, 60/2/2 );
+
+  puts (buffer);
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The half of 60 is 30, and the half of that is 15.
+</samp></pre></td></tr></table></div>
+<br>
+For more examples on formatting see <a href="/printf">printf</a>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/printf/"><b>printf</b></a></dt><dd>Print formatted data to stdout <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/sprintf/"><b>sprintf</b></a></dt><dd>Write formatted data to string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstring/strcat/"><b>strcat</b></a></dt><dd>Concatenate strings <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/sscanf/"><b>sscanf</b></a></dt><dd>Read formatted data from string <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

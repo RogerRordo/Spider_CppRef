@@ -1,0 +1,81 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cstdlib&gt;</div>
+<h1>abs</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C">
+<pre>int abs (int n);</pre></div>
+<div title="C++98" class="on">
+<pre>     int abs (     int n);long int abs (long int n);</pre></div>
+<div title="C++11" class="on">
+<pre>          int abs (          int n);     long int abs (     long int n);long long int abs (long long int n);</pre></div>
+</div>
+</div><div id="I_description">Absolute value</div>
+<section id="description">
+Returns the absolute value of parameter <var>n</var> ( <code>/n/</code> ).<br>
+<br>
+In C++, this function is also overloaded in header <samp><a href="/cmath">&lt;cmath&gt;</a></samp> for floating-point types (see <a href="/cmath:abs">cmath abs</a>), in header <samp><a href="/complex">&lt;complex&gt;</a></samp> for complex numbers (see <a href="/complex:abs">complex abs</a>), and in header <samp><a href="/valarray">&lt;valarray&gt;</a></samp> for valarrays (see <a href="/valarray:abs">valarray abs</a>).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>n</dt>
+<dd>Integral value.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The absolute value of n.<br>
+</section>
+<br>
+<section id="portability">
+<h3>Portability</h3>
+In C, only the <code>int</code> version exists.<br>
+For the <code>long int</code> equivalent see <samp><a href="/labs">labs</a></samp>.<br>
+For the <code>long long int</code> equivalent see <samp><a href="/llabs">llabs</a></samp>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>/* abs example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;stdlib.h&gt;     </dfn><cite>/* abs */</cite><dfn></dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> n,m;
+  n=abs(23);
+  m=abs(-11);
+  printf (<kbd>"n=%d\n"</kbd>,n);
+  printf (<kbd>"m=%d\n"</kbd>,m);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+n=23
+m=11
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Concurrently calling this function is safe, causing no data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions (C++)</h3>
+<b>No-throw guarantee:</b> this function throws no exceptions.<br>
+<br>
+If the result cannot be represented by the returned type (such as <code>abs(<a href="/climits">INT_MIN</a>)</code> in an implementation with two's complement signed values), it causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdlib/labs/"><b>labs</b></a></dt><dd>Absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/fabs/"><b>fabs</b></a></dt><dd>Compute absolute value <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/div/"><b>div</b></a></dt><dd>Integral division <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

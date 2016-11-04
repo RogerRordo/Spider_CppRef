@@ -1,0 +1,26 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">object</div>
+<div id="I_file">&lt;cstdio&gt;</div>
+<h1>stdin</h1>
+<div class="C_prototype"><pre>FILE * stdin;</pre></div><div id="I_description">Standard input stream</div>
+<section id="description">
+The standard input stream is the default source of data for applications. In most systems, it is usually directed by default to the keyboard.<br>
+<br>
+<tt>stdin</tt> can be used as an argument for any function that expects an input stream (<tt>FILE*</tt>) as one of its parameters, like <a href="/fgets">fgets</a> or <a href="/fscanf">fscanf</a>.<br>
+<br>
+Although it is commonly assumed that the source of data for <tt>stdin</tt> is going to be a keyboard, this may not be the case even in regular console systems, since <tt>stdin</tt> can generally be redirected on most operating systems at the time of invoking the application. For example, many systems, among them DOS/Windows and most UNIX shells, support the following command syntax:<br>
+<br>
+<tt>myapplication &lt; example.txt</tt> <br>
+<br>
+to use the content of the file <tt>example.txt</tt> as the primary source of data for <tt>myapplication</tt> instead of the console keyboard.<br>
+<br>
+It is also possible to redirect <tt>stdin</tt> to some other source of data from within a program by using the <a href="/freopen">freopen</a> function.<br>
+<br>
+If <tt>stdin</tt> is known to not refer to an interactive device, the stream is <i>fully buffered</i>. Otherwise, it is library-dependent whether the stream is <i>line buffered</i> or <i>not buffered</i> by default (see <a href="/setvbuf">setvbuf</a>).<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/stdout/"><b>stdout</b></a></dt><dd>Standard output stream <span class="typ">(object)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdio/stderr/"><b>stderr</b></a></dt><dd>Standard error stream <span class="typ">(object)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

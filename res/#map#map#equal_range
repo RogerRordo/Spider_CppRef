@@ -1,0 +1,93 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;map&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/map/map/">map</a>::equal_range</h1>
+<div class="C_prototype"><pre>pair&lt;const_iterator,const_iterator&gt; equal_range (const key_type&amp; k) const;pair&lt;iterator,iterator&gt;             equal_range (const key_type&amp; k);</pre></div><div id="I_description">Get range of equal elements</div>
+<section id="description">
+Returns the bounds of a range that includes all the elements in the container which have a <i>key</i> equivalent to <i>k</i>.<br>
+<br>
+Because the elements in a <a href="/map">map</a> container have unique keys, the range returned will contain a single element at most.<br>
+<br>
+If no matches are found, the range returned has a length of zero, with both iterators pointing to the first element that has a key considered to go after <i>k</i> according to the container's <a href="/map::key_comp">internal comparison object</a> (<a href="/map::key_comp">key_comp</a>).<br>
+<br>
+Two <i>keys</i> are considered equivalent if the container's <a href="/map::key_comp">comparison object</a> returns <tt>false</tt> reflexively (i.e., no matter the order in which the keys are passed as arguments).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>k</dt>
+<dd>Key to search for.<br>
+Member type <tt>key_type</tt> is the type of the elements in the container, defined in <a href="/map">map</a> as an alias of its first template parameter (<tt>Key</tt>).</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The function returns a <a href="/pair">pair</a>, whose member <tt>pair::first</tt> is the lower bound of the range (the same as <a href="/map::lower_bound">lower_bound</a>), and <tt>pair::second</tt> is the upper bound (the same as <a href="/map::upper_bound">upper_bound</a>).<br>
+<br>
+If the <a href="/map">map</a> object is const-qualified, the function returns a <a href="/pair">pair</a> of <tt>const_iterator</tt>. Otherwise, it returns a <a href="/pair">pair</a> of <tt>iterator</tt>.<br>
+<br>
+Member types <tt>iterator</tt> and <tt>const_iterator</tt> are <a href="/BidirectionalIterator">bidirectional iterator</a> types pointing to elements (of type <tt>value_type</tt>).<br>
+Notice that <tt>value_type</tt> in <a href="/map">map</a> containers is itself also a <a href="/pair">pair</a> type: <tt><a href="/pair">pair</a>&lt;const key_type, mapped_type&gt;</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// map::equal_range</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;map&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::map&lt;<var>char</var>,<var>int</var>&gt; mymap;
+
+  mymap[<kbd>'a'</kbd>]=10;
+  mymap[<kbd>'b'</kbd>]=20;
+  mymap[<kbd>'c'</kbd>]=30;
+
+  std::pair&lt;std::map&lt;<var>char</var>,<var>int</var>&gt;::iterator,std::map&lt;<var>char</var>,<var>int</var>&gt;::iterator&gt; ret;
+  ret = mymap.equal_range(<kbd>'b'</kbd>);
+
+  std::cout &lt;&lt; <kbd>"lower bound points to: "</kbd>;
+  std::cout &lt;&lt; ret.first-&gt;first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; ret.first-&gt;second &lt;&lt; <kbd>'\n'</kbd>;
+
+  std::cout &lt;&lt; <kbd>"upper bound points to: "</kbd>;
+  std::cout &lt;&lt; ret.second-&gt;first &lt;&lt; <kbd>" =&gt; "</kbd> &lt;&lt; ret.second-&gt;second &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>lower bound points to: 'b' =&gt; 20
+upper bound points to: 'c' =&gt; 30
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Logarithmic in <a href="/map::size">size</a>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed (neither the const nor the non-const versions modify the container).<br>
+No mapped values are accessed: concurrently accessing or modifying elements is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the container.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/map/map/count/"><b>map::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/lower_bound/"><b>map::lower_bound</b></a></dt><dd>Return iterator to lower bound <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/upper_bound/"><b>map::upper_bound</b></a></dt><dd>Return iterator to upper bound <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/operator[]/"><b>map::operator[]</b></a></dt><dd>Access element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/map/map/find/"><b>map::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

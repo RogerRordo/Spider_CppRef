@@ -1,0 +1,151 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/string/string/">string</a>::string</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>default (1)</th><td><pre>string();</pre></td></tr><tr class="even"><th>copy (2)</th><td><pre>string (const string&amp; str);</pre></td></tr><tr class="odd"><th>substring (3)</th><td><pre>string (const string&amp; str, size_t pos, size_t len = npos);</pre></td></tr><tr class="even"><th>from c-string (4)</th><td><pre>string (const char* s);</pre></td></tr><tr class="odd"><th>from sequence (5)</th><td><pre>string (const char* s, size_t n);</pre></td></tr><tr class="even"><th>fill (6)</th><td><pre>string (size_t n, char c);</pre></td></tr><tr class="odd"><th>range (7)</th><td><pre>template &lt;class InputIterator&gt;  string  (InputIterator first, InputIterator last);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="even"><th>default (1)</th><td><pre>string();</pre></td></tr><tr class="odd"><th>copy (2)</th><td><pre>string (const string&amp; str);</pre></td></tr><tr class="even"><th>substring (3)</th><td><pre>string (const string&amp; str, size_t pos, size_t len = npos);</pre></td></tr><tr class="odd"><th>from c-string (4)</th><td><pre>string (const char* s);</pre></td></tr><tr class="even"><th>from buffer (5)</th><td><pre>string (const char* s, size_t n);</pre></td></tr><tr class="odd"><th>fill (6)</th><td><pre>string (size_t n, char c);</pre></td></tr><tr class="even"><th>range (7)</th><td><pre>template &lt;class InputIterator&gt;  string  (InputIterator first, InputIterator last);</pre></td></tr><tr class="odd"><th>initializer list (8)</th><td><pre>string (initializer_list&lt;char&gt; il);</pre></td></tr><tr class="even"><th>move (9)</th><td><pre>string (string&amp;&amp; str) noexcept;</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Construct string object</div>
+<section id="description">
+Constructs a <a href="/string">string</a> object, initializing its value depending on the constructor version used:<br>
+<br>
+<dl>
+<dt>(1) empty string constructor (default constructor)</dt>
+<dd>Constructs an <a href="/string::empty">empty</a> string, with a <a href="/string::length">length</a> of zero characters.</dd>
+<dt>(2) copy constructor</dt>
+<dd>Constructs a copy of <i>str</i>.</dd>
+<dt>(3) substring constructor</dt>
+<dd>Copies the portion of <i>str</i> that begins at the character position <i>pos</i> and spans <i>len</i> characters (or until the end of <i>str</i>, if either <i>str</i> is too short or if <i>len</i> is <a href="/string::npos">string::npos</a>).</dd>
+<dt>(4) from c-string</dt>
+<dd>Copies the null-terminated character sequence (C-string) pointed by <i>s</i>.</dd>
+<dt>(5) from buffer</dt>
+<dd>Copies the first <i>n</i> characters from the array of characters pointed by <i>s</i>.</dd>
+<dt>(6) fill constructor</dt>
+<dd>Fills the string with <i>n</i> consecutive copies of character <i>c</i>.</dd>
+<dt>(7) range constructor</dt>
+<dd>Copies the sequence of characters in the range <tt>[first,last)</tt>, in the same order.</dd>
+<dt>(8) initializer list</dt>
+<dd>Copies each of the characters in <i>il</i>, in the same order.</dd>
+<dt>(9) move constructor</dt>
+<dd>Acquires the contents of <i>str</i>.<br>
+<i>str</i> is left in an unspecified but valid state.</dd>
+</dl>
+<br>
+All constructors above support an object of member type <tt>allocator_type</tt> as additional optional argument at the end, which for <a href="/string">string</a> is not relevant (not shown above, see <a href="/basic_string::basic_string">basic_string's constructor</a> for full signatures).<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>Another <a href="/string">string</a> object, whose value is either copied or acquired.<br>
+</dd>
+<dt>pos</dt>
+<dd>Position of the first character in <i>str</i> that is copied to the object as a substring.<br>
+If this is greater than <i>str</i>'s <a href="/string::length">length</a>, it throws <a href="/out_of_range">out_of_range</a>.<br>
+Note: The first character in <i>str</i> is denoted by a value of <tt>0</tt> (not <tt>1</tt>).<br>
+</dd>
+<dt>len</dt>
+<dd>Length of the substring to be copied (if the string is shorter, as many characters as possible are copied).<br>
+A value of <a href="/string::npos">string::npos</a> indicates all characters until the end of <i>str</i>.</dd>
+<dt>s</dt>
+<dd>Pointer to an array of characters (such as a <i>c-string</i>).</dd>
+<dt>n</dt>
+<dd>Number of characters to copy.</dd>
+<dt>c</dt>
+<dd>Character to fill the string with. Each of the <i>n</i> characters in the string will be initialized to a copy of this value.</dd>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions in a range. The range used is <tt>[first,last)</tt>, which includes all the characters between <i>first</i> and <i>last</i>, including the character pointed by <i>first</i> but not the character pointed by <i>last</i>.<br>
+The function template argument <tt>InputIterator</tt> shall be an <a href="/InputIterator">input iterator</a> type that points to elements of a type convertible to <tt>char</tt>.<br>
+If <tt>InputIterator</tt> is an integral type, the arguments are casted to the proper types so that signature (5) is used instead.</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.</dd>
+</dl>
+<br>
+<a href="/size_t">size_t</a> is an unsigned integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// string constructor</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::string s0 (<kbd>"Initial string"</kbd>);
+
+  <cite>// constructors used in the same order as described above:</cite>
+  std::string s1;
+  std::string s2 (s0);
+  std::string s3 (s0, 8, 3);
+  std::string s4 (<kbd>"A character sequence"</kbd>);
+  std::string s5 (<kbd>"Another character sequence"</kbd>, 12);
+  std::string s6a (10, <kbd>'x'</kbd>);
+  std::string s6b (10, 42);      <cite>// 42 is the ASCII code for '*'</cite>
+  std::string s7 (s0.begin(), s0.begin()+7);
+
+  std::cout &lt;&lt; <kbd>"s1: "</kbd> &lt;&lt; s1 &lt;&lt; <kbd>"\ns2: "</kbd> &lt;&lt; s2 &lt;&lt; <kbd>"\ns3: "</kbd> &lt;&lt; s3;
+  std::cout &lt;&lt; <kbd>"\ns4: "</kbd> &lt;&lt; s4 &lt;&lt; <kbd>"\ns5: "</kbd> &lt;&lt; s5 &lt;&lt; <kbd>"\ns6a: "</kbd> &lt;&lt; s6a;
+  std::cout &lt;&lt; <kbd>"\ns6b: "</kbd> &lt;&lt; s6b &lt;&lt; <kbd>"\ns7: "</kbd> &lt;&lt; s7 &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>s1: 
+s2: Initial string
+s3: str
+s4: A character sequence
+s5: Another char
+s6a: xxxxxxxxxx
+s6b: **********
+s7: Initial
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+<div class="C_SwitchCases">
+<div title="C++98">
+Unspecified.<br>
+</div>
+<div title="C++11">
+Unspecified, but generally linear in the resulting <a href="/string::length">string length</a> (and constant for <i>move constructors</i>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+The <i>move constructors (9)</i> may invalidate iterators, pointers and references related to <i>str</i>.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The <i>move constructors (9)</i> modify <i>str</i>.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+The <i>move constructor</i> with no allocator argument <i>(9, first)</i> never throws exceptions (no-throw guarantee).<br>
+In all other cases, there are no effects in case an exception is thrown (strong guarantee).<br>
+<br>
+If <tt>s</tt> is a null pointer, if <tt>n == npos</tt>, or if the range specified by <tt>[first,last)</tt> is not valid, it causes <i>undefined behavior</i>.<br>
+<br>
+If <i>pos</i> is greater then <i>str</i>'s  <a href="/string::length">length</a>, an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+If <i>n</i> is greater than the array pointed by <i>s</i>, it causes <i>undefined behavior</i>.<br>
+If the resulting <a href="/string::length">string length</a> would exceed the <a href="/string::max_size">max_size</a>, a <a href="/length_error">length_error</a> exception is thrown.<br>
+A <a href="/bad_alloc">bad_alloc</a> exception is thrown if the function fails when attempting to allocate storage.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/string/operator=/"><b>string::operator=</b></a></dt><dd>String assignment <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/assign/"><b>string::assign</b></a></dt><dd>Assign content to string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/resize/"><b>string::resize</b></a></dt><dd>Resize string <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/string/clear/"><b>string::clear</b></a></dt><dd>Clear string <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

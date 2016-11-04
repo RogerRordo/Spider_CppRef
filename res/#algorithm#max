@@ -1,0 +1,99 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>max</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C++98">
+<table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class T&gt; const T&amp; max (const T&amp; a, const T&amp; b);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class T, class Compare&gt;  const T&amp; max (const T&amp; a, const T&amp; b, Compare comp);</pre></td></tr></table></div>
+<div title="C++11" class="on">
+<table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class T&gt; const T&amp; max (const T&amp; a, const T&amp; b);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class T, class Compare&gt;  const T&amp; max (const T&amp; a, const T&amp; b, Compare comp);</pre></td></tr><tr class="odd"><th>initializer list (3)</th><td><pre>template &lt;class T&gt; T max (initializer_list&lt;T&gt; il);template &lt;class T, class Compare&gt;  T max (initializer_list&lt;T&gt; il, Compare comp);</pre></td></tr></table></div>
+<div title="C++14" class="on">
+<table><tr class="even"><th>default (1)</th><td><pre>template &lt;class T&gt; constexpr const T&amp; max (const T&amp; a, const T&amp; b);</pre></td></tr><tr class="odd"><th>custom (2)</th><td><pre>template &lt;class T, class Compare&gt;  constexpr const T&amp; max (const T&amp; a, const T&amp; b, Compare comp);</pre></td></tr><tr class="even"><th>initializer list (3)</th><td><pre>template &lt;class T&gt; constexpr T max (initializer_list&lt;T&gt; il);template &lt;class T, class Compare&gt;  constexpr T max (initializer_list&lt;T&gt; il, Compare comp);</pre></td></tr></table></div>
+</div>
+</div><div id="I_description">Return the largest</div>
+<section id="description">
+Returns the largest of <var>a</var> and <var>b</var>. If both are equivalent, <var>a</var> is returned.<br>
+<br>
+The versions for <i>initializer lists (3)</i> return the largest of all the elements in the list. Returning the first of them if these are more than one.<br>
+<br>
+The function uses <code>operator&lt;</code> (or <var>comp</var>, if provided) to compare the values.<br>
+<br>
+The behavior of this function template (C++98) is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> T&gt; <var>const</var> T&amp; max (<var>const</var> T&amp; a, <var>const</var> T&amp; b) {
+  <var>return</var> (a&lt;b)?b:a;     <cite>// or: return comp(a,b)?b:a; for version (2)</cite>
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>a, b</dt>
+<dd>Values to compare.</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two values of type <samp>T</samp> as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered less than the second.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+<dt>il</dt>
+<dd>An <a href="/initializer_list">initializer_list</a> object.<br>
+These objects are automatically constructed from <i>initializer list</i> declarators.</dd>
+</dl>
+<br>
+<samp>T</samp> shall support being compared with <code>operator&lt;</code>.<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+<samp>T</samp> shall be <i><a href="/is_copy_constructible">copy constructible</a></i>.<br>
+</div>
+<div title="C++11">
+For <i>(3)</i>, <samp>T</samp> shall be <i><a href="/is_copy_constructible">copy constructible</a></i>.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The largest of the values passed as arguments.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// max example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::max</cite>
+
+<var>int</var> main () {
+  std::cout &lt;&lt; <kbd>"max(1,2)=="</kbd> &lt;&lt; std::max(1,2) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"max(2,1)=="</kbd> &lt;&lt; std::max(2,1) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"max('a','z')=="</kbd> &lt;&lt; std::max(<kbd>'a'</kbd>,<kbd>'z'</kbd>) &lt;&lt; <kbd>'\n'</kbd>;
+  std::cout &lt;&lt; <kbd>"max(3.14,2.73)=="</kbd> &lt;&lt; std::max(3.14,2.73) &lt;&lt; <kbd>'\n'</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>max(1,2)==2
+max(2,1)==2
+max('a','z')==z
+max(3.14,2.73)==3.14
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in one less than the number of elements compared (constant for <i>(1)</i> and <i>(2)</i>).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any comparison throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/min/"><b>min</b></a></dt><dd>Return the smallest <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/max_element/"><b>max_element</b></a></dt><dd>Return largest element in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

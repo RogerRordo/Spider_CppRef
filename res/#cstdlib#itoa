@@ -1,0 +1,78 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;stdlib.h&gt;</div>
+<h1>itoa</h1>
+<div class="C_prototype"><pre>char *  itoa ( int value, char * str, int base );</pre></div><div id="I_description">Convert integer to string (non-standard function)</div>
+<section id="description">
+Converts an integer <i>value</i> to a null-terminated string using the specified <i>base</i> and stores the result in the array given by <i>str</i> parameter.<br>
+<br>
+If <i>base</i> is 10 and <i>value</i> is negative, the resulting string is preceded with a minus sign (<tt>-</tt>). With any other <i>base</i>, <i>value</i> is always considered unsigned.<br>
+<br>
+<i>str</i> should be an array long enough to contain any possible value: <tt>(sizeof(int)*8+1)</tt> for <tt>radix=2</tt>, i.e. 17 bytes in 16-bits platforms and 33 in 32-bits platforms.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>value</dt>
+<dd>Value to be converted to a string.</dd>
+<dt>str</dt>
+<dd>Array in memory where to store the resulting null-terminated string.</dd>
+<dt>base</dt>
+<dd>Numerical base used to represent the <i>value</i> as a string, between <tt>2</tt> and <tt>36</tt>, where <tt>10</tt> means decimal base, <tt>16</tt> hexadecimal, <tt>8</tt> octal, and <tt>2</tt> binary.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+A pointer to the resulting null-terminated string, same as parameter <tt>str</tt>.<br>
+</section>
+<br>
+<section id="portability">
+<h3>Portability</h3>
+This function is <strong>not</strong> defined in ANSI-C and is <strong>not</strong> part of C++, but is supported by some compilers.<br>
+<br>
+A standard-compliant alternative for some cases may be <a href="/sprintf">sprintf</a>:<br>
+<ul>
+<li><a href="/sprintf">sprintf</a>(str,"%d",value)  converts to decimal base.</li>
+<li><a href="/sprintf">sprintf</a>(str,"%x",value)  converts to hexadecimal base.</li>
+<li><a href="/sprintf">sprintf</a>(str,"%o",value)  converts to octal base.</li>
+</ul>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br></code></pre></td>
+<td class="source"><pre><code><cite>/* itoa example */</cite>
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;stdlib.h&gt;</dfn>
+
+<var>int</var> main ()
+{
+  <var>int</var> i;
+  <var>char</var> buffer [33];
+  printf (<kbd>"Enter a number: "</kbd>);
+  scanf (<kbd>"%d"</kbd>,&amp;i);
+  itoa (i,buffer,10);
+  printf (<kbd>"decimal: %s\n"</kbd>,buffer);
+  itoa (i,buffer,16);
+  printf (<kbd>"hexadecimal: %s\n"</kbd>,buffer);
+  itoa (i,buffer,2);
+  printf (<kbd>"binary: %s\n"</kbd>,buffer);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>Enter a number: 1750
+decimal: 1750
+hexadecimal: 6d6
+binary: 11011010110
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cstdio/sprintf/"><b>sprintf</b></a></dt><dd>Write formatted data to string <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atoi/"><b>atoi</b></a></dt><dd>Convert string to integer <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/atol/"><b>atol</b></a></dt><dd>Convert string to long integer <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

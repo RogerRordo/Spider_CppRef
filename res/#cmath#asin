@@ -1,0 +1,91 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function</div>
+<div id="I_file">&lt;cmath&gt; &lt;ctgmath&gt;</div>
+<h1>asin</h1>
+<div class="C_prototype"><div class="C_SwitchCases">
+<div title="C90">
+<pre>double asin(double x);</pre></div>
+<div title="C99" class="on">
+<pre>     double asin  (double x);      float asinf (float x);long double asinl (long double x);</pre></div>
+<div title="C++98" class="on">
+<pre>     double asin (double x);      float asin (float x);long double asin (long double x);</pre></div>
+<div title="C++11" class="on">
+<pre>     double asin (double x);      float asin (float x);long double asin (long double x);     double asin (T x);           // additional overloads for integral types</pre></div>
+</div>
+</div><div id="I_description">Compute arc sine</div>
+<section id="description">
+Returns the principal value of the arc sine of <var>x</var>, expressed in radians.<br>
+<br>
+In trigonometrics, <i>arc sine</i> is the inverse operation of <i><a href="/sin">sine</a></i>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C99">
+Header <samp><a href="/&lt;ctgmath&gt;">&lt;tgmath.h&gt;</a></samp> provides a type-generic macro version of this function.<br>
+</div>
+<div title="C++98">
+This function is overloaded in <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/valarray:asin">valarray asin</a>).<br>
+</div>
+<div title="C++11">
+<i>Additional overloads</i> are provided in this header (<code><a href="/&lt;cmath&gt;">&lt;cmath&gt;</a></code>) for the <a href="/is_integral">integral types</a>: These overloads effectively cast <var>x</var> to a <code>double</code> before calculations (defined for <samp>T</samp> being any <i><a href="/is_integral">integral type</a></i>).<br>
+<br>
+This function is also overloaded in <code><a href="/&lt;complex&gt;">&lt;complex&gt;</a></code> and <code><a href="/&lt;valarray&gt;">&lt;valarray&gt;</a></code> (see <a href="/complex:asin">complex asin</a> and <a href="/valarray:asin">valarray asin</a>).<br>
+</div>
+</div>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Value whose arc sine is computed, in the interval <code>[-1,+1]</code>.<br>
+If the argument is out of this interval, a <i>domain error</i> occurs.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Principal arc sine of <var>x</var>, in the interval [-pi/2,+pi/2] radians.<br>
+One <i>radian</i> is equivalent to <code>180/PI</code> <i>degrees</i>.<br>
+<br>
+<div class="C_SwitchCases">
+<div title="C90 (C++98)">
+If a <i>domain error</i> occurs, the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/EDOM">EDOM</a></samp>.<br>
+</div>
+<div title="C99 (C+11)">
+If a <i>domain error</i> occurs:<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERRNO">MATH_ERRNO</a></samp> set: the global variable <samp><a href="/errno">errno</a></samp> is set to <samp><a href="/EDOM">EDOM</a></samp>.<br>
+- And <samp><a href="/math_errhandling">math_errhandling</a></samp> has <samp><a href="/MATH_ERREXCEPT">MATH_ERREXCEPT</a></samp> set: <samp><a href="/FE_INVALID">FE_INVALID</a></samp> is raised.<br>
+</div>
+</div>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>/* asin example */</cite>
+<dfn>#include &lt;stdio.h&gt;      </dfn><cite>/* printf */</cite><dfn></dfn>
+<dfn>#include &lt;math.h&gt;       </dfn><cite>/* asin */</cite><dfn></dfn>
+
+<dfn>#define PI 3.14159265</dfn>
+
+<var>int</var> main ()
+{
+  <var>double</var> param, result;
+  param = 0.5;
+  result = asin (param) * 180.0 / PI;
+  printf (<kbd>"The arc sine of %f is %f degrees\n"</kbd>, param, result);
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>
+The arc sine of 0.500000 is 30.000000 degrees.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/cmath/sin/"><b>sin</b></a></dt><dd>Compute sine <span class="typ">(function)</span></dd></dl><dl class="links"><dt><a href= "/reference/cmath/acos/"><b>acos</b></a></dt><dd>Compute arc cosine <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,112 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>is_sorted<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><table><tr class="odd"><th>default (1)</th><td><pre>template &lt;class ForwardIterator&gt;  bool is_sorted (ForwardIterator first, ForwardIterator last);</pre></td></tr><tr class="even"><th>custom (2)</th><td><pre>template &lt;class ForwardIterator, class Compare&gt;  bool is_sorted (ForwardIterator first, ForwardIterator last, Compare comp);</pre></td></tr></table></div><div id="I_description">Check whether range is sorted</div>
+<section id="description">
+Returns <code>true</code> if the range <code>[first,last)</code> is sorted into ascending order.<br>
+<br>
+The elements are compared using <code>operator&lt;</code> for the first version, and <var>comp</var> for the second.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> ForwardIterator&gt;
+  <var>bool</var> is_sorted (ForwardIterator first, ForwardIterator last)
+{
+  <var>if</var> (first==last) <var>return</var> <var>true</var>;
+  ForwardIterator next = first;
+  <var>while</var> (++next!=last) {
+    <var>if</var> (*next&lt;*first)     <cite>// or, if (comp(*next,*first)) for version (2)</cite>
+      <var>return</var> <var>false</var>;
+    ++first;
+  }
+  <var>return</var> <var>true</var>;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions of the sequence. The range checked is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+</dd>
+<dt>comp</dt>
+<dd>Binary function that accepts two elements in the range as arguments, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element passed as first argument is considered to go before the second in the specific <i>strict weak ordering</i> it defines.<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.<br>
+</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+<code>true</code> if the range <code>[first,last)</code> is sorted into ascending order, <code>false</code> otherwise.<br>
+<br>
+If the range <code>[first,last)</code> contains less than two elements, the function always returns <code>true</code>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br></code></pre></td>
+<td class="source"><pre><code><cite>// is_sorted example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::is_sorted, std::prev_permutation</cite>
+<dfn>#include &lt;array&gt;        </dfn><cite>// std::array</cite>
+
+<var>int</var> main () {
+  std::array&lt;<var>int</var>,4&gt; foo {2,4,1,3};
+
+  <var>do</var> {
+    <cite>// try a new permutation:</cite>
+    std::prev_permutation(foo.begin(),foo.end());
+
+    <cite>// print range:</cite>
+    std::cout &lt;&lt; <kbd>"foo:"</kbd>;
+    <var>for</var> (<var>int</var>&amp; x:foo) std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; x;
+    std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  } <var>while</var> (!std::is_sorted(foo.begin(),foo.end()));
+
+  std::cout &lt;&lt; <kbd>"the range is sorted!\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>foo: 2 3 4 1
+foo: 2 3 1 4
+foo: 2 1 4 3
+foo: 2 1 3 4
+foo: 1 4 3 2
+foo: 1 4 2 3
+foo: 1 3 4 2
+foo: 1 3 2 4
+foo: 1 2 4 3
+foo: 1 2 3 4
+the range is sorted!
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in one less than the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Compares pairs of elements until a mismatch is found.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if either an element comparison or an operation on an iterator throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/is_sorted_until/"><b>is_sorted_until</b></a></dt><dd>Find first unsorted element in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/sort/"><b>sort</b></a></dt><dd>Sort elements in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/partial_sort/"><b>partial_sort</b></a></dt><dd>Partially sort elements in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

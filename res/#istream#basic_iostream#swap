@@ -1,0 +1,41 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">protected member function</div>
+<div id="I_file">&lt;istream&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/istream/basic_iostream/">basic_iostream</a>::swap<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>void swap (basic_iostream&amp; x);</pre></div><div id="I_description">Swap internals</div>
+<section id="description">
+Exchanges all internal members between <var>x</var> and <code>*this</code>, except the pointer to the associated <i><a href="/basic_ios::rdbuf">stream buffers</a></i>: <samp><a href="/basic_ios::rdbuf">rdbuf</a></samp> shall return the same in both objects as before the call.<br>
+<br>
+Internally, the function calls <samp><a href="/basic_istream::swap">basic_istream::swap</a></samp>.<br>
+<br>
+Derived classes can call this function to implement custom <samp><a href="/swap">swap</a></samp> functions.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>x</dt>
+<dd>Another stream object of the same type.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+none<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies both stream objects (<code>*this</code> and <var>x</var>).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>No-throw guarantee:</b> this member function never throws exceptions.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/istream/basic_istream/swap/"><b>basic_istream::swap</b></a></dt><dd>Swap internals <span class="typ">(protected member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

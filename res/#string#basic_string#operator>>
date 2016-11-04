@@ -1,0 +1,90 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>operator&gt;&gt; (basic_string)</h1>
+<div class="C_prototype"><pre>template &lt;class charT, class traits, class Alloc&gt;  basic_istream&lt;charT,traits&gt;&amp; operator&gt;&gt; (basic_istream&lt;charT,traits&gt;&amp; is,                                           basic_string&lt;charT,traits,Alloc&gt;&amp; str);</pre></div><div id="I_description">Extract string from stream</div>
+<section id="description">
+Extracts a string from the input stream <i>is</i>, storing the sequence in <i>str</i>, which is overwritten (the previous value of <i>str</i> is replaced).<br>
+<br>
+This function overloads <tt>operator&gt;&gt;</tt> to behave as described in <a href="/basic_istream::operator&gt;&gt;">basic_istream::operator&gt;&gt;</a> for c-strings, but applied to <a href="/basic_string">basic_string</a> objects.<br>
+<br>
+Each extracted character is appended to the <a href="/basic_string">basic_string</a> as if its member <a href="/basic_string::push_back">push_back</a> was called.<br>
+<br>
+Notice that the <a href="/basic_istream">basic_istream</a> extraction operations use whitespaces as separators; Therefore, this operation will only extract what can be considered a word from the stream. To extract entire lines of text, see the <a href="/basic_string">basic_string</a> overload of global function <a href="/basic_string:getline">getline</a>.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>is</dt>
+<dd><a href="/basic_istream">basic_istream</a> object from which characters are extracted.</dd>
+<dt>str</dt>
+<dd><a href="/basic_string">basic_string</a> object where the extracted content is stored.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+The same as parameter <i>is</i>.<br>
+<br>
+A call to this function may set any of the internal state flags of <i>is</i> if:<br>
+<br>
+<table class="boxed">
+<tr><th>flag</th><th>error</th></tr>
+<tr><td><tt>eofbit</tt></td><td>The end of the source of characters is reached during its operations.</td></tr>
+<tr><td><tt>failbit</tt></td><td>The input obtained could not be interpreted as a valid textual representation of an object of this type.<br>
+In this case, <i>distr</i> preserves the parameters and internal data it had before the call.<br>
+Notice that some <tt>eofbit</tt> cases will also set <tt>failbit</tt>.</td></tr>
+<tr><td><tt>badbit</tt></td><td>An error other than the above happened.</td></tr>
+</table>
+(see <a href="/ios_base::iostate">ios_base::iostate</a> for more info on these)<br>
+<br>
+Additionally, in any of these cases, if the appropriate flag has been set with <i>is</i>'s member function <a href="/basic_ios::exceptions">basic_ios::exceptions</a>, an exception of type <a href="/ios_base::failure">ios_base::failure</a> is thrown.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// extract to string</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;string&gt;</dfn>
+
+main ()
+{
+  std::string name;
+
+  std::cout &lt;&lt; <kbd>"Please, enter your name: "</kbd>;
+  std::cin &gt;&gt; name;
+  std::cout &lt;&lt; <kbd>"Hello, "</kbd> &lt;&lt; name &lt;&lt; <kbd>"!\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally linear in the resulting <a href="/basic_string::length">length</a> of <i>str</i>.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+Any iterators, pointers and references related to <i>str</i> may be invalidated.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Both objects, <i>is</i> and <i>str</i>, are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, both <i>is</i> and <i>str</i> end up in a valid state.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/istream/istream/operator>>/"><b>istream::operator&gt;&gt;</b></a></dt><dd>Extract formatted input <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/getline/"><b>getline (basic_string)</b></a></dt><dd>Get line from stream into string <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/basic_string/operator<</"><b>operator&lt;&lt; (basic_string)</b></a></dt><dd>Insert string into stream <span class="typ">(function template)</span></dd></dl>
+</section>
+<div id="CH_bb"></div></div></div>

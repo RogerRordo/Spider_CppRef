@@ -1,0 +1,122 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>unique_copy</h1>
+<div class="C_prototype"><table><tr class="odd"><th>equality (1)</th><td><pre>template &lt;class InputIterator, class OutputIterator&gt;  OutputIterator unique_copy (InputIterator first, InputIterator last,                              OutputIterator result);</pre></td></tr><tr class="even"><th>predicate (2)</th><td><pre>template &lt;class InputIterator, class OutputIterator, class BinaryPredicate&gt;  OutputIterator unique_copy (InputIterator first, InputIterator last,                              OutputIterator result, BinaryPredicate pred);</pre></td></tr></table></div><div id="I_description">Copy range removing duplicates</div>
+<section id="description">
+Copies the elements in the range <code>[first,last)</code> to the range beginning at <var>result</var>, except consecutive duplicates (elements that compare equal to the element preceding).<br>
+<br>
+Only the first element from every consecutive group of equivalent elements in the range <code>[first,last)</code> is copied.<br>
+<br>
+The comparison between elements is performed by either applying <code>operator==</code>, or the template parameter <var>pred</var> (for the second version) between them.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator, <var>class</var> OutputIterator&gt;
+  OutputIterator unique_copy (InputIterator first, InputIterator last,
+                              OutputIterator result)
+{
+  <var>if</var> (first==last) <var>return</var> result;
+
+  *result = *first;
+  <var>while</var> (++first != last) {
+    <var>typename</var> iterator_traits&lt;InputIterator&gt;::value_type val = *first;
+    <var>if</var> (!(*result == val))   <cite>// or: if (!pred(*result,val)) for version (2)</cite>
+      *(++result)=val;
+  }
+  <var>return</var> ++result;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/ForwardIterator">Forward iterators</a> to the initial and final positions in a sequence. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.<br>
+If <samp>InputIterator</samp> is a <i>single-pass iterator</i>, the type it points to shall be <i><a href="/is_copy_constructible">copy-constructible</a></i> and <i><a href="/is_copy_assignable">copy-assignable</a></i>.</dd>
+<dt>result</dt>
+<dd>Output iterator to the initial position of the range where the resulting range of values is stored.<br>
+The pointed type shall support being assigned the value of an element in the range <code>[first,last)</code>.</dd>
+<dt>pred</dt>
+<dd>Binary function that accepts two elements in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether both arguments are considered equivalent (if <code>true</code>, they are equivalent and one of them is removed).<br>
+The function shall not modify any of its arguments.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+<br>
+The ranges shall not overlap.<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+An iterator pointing to the end of the copied range, which contains no consecutive duplicates.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br></code></pre></td>
+<td class="source"><pre><code><cite>// unique_copy example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::unique_copy, std::sort, std::distance</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> myfunction (<var>int</var> i, <var>int</var> j) {
+  <var>return</var> (i==j);
+}
+
+<var>int</var> main () {
+  <var>int</var> myints[] = {10,20,20,20,30,30,20,20,10};
+  std::vector&lt;<var>int</var>&gt; myvector (9);                            <cite>// 0  0  0  0  0  0  0  0  0</cite>
+
+  <cite>// using default comparison:</cite>
+  std::vector&lt;<var>int</var>&gt;::iterator it;
+  it=std::unique_copy (myints,myints+9,myvector.begin());   <cite>// 10 20 30 20 10 0  0  0  0</cite>
+                                                            <cite>//                ^</cite>
+
+  std::sort (myvector.begin(),it);                          <cite>// 10 10 20 20 30 0  0  0  0</cite>
+                                                            <cite>//                ^</cite>
+
+  <cite>// using predicate comparison:</cite>
+  it=std::unique_copy (myvector.begin(), it, myvector.begin(), myfunction);
+                                                            <cite>// 10 20 30 20 30 0  0  0  0</cite>
+                                                            <cite>//          ^</cite>
+
+  myvector.resize( std::distance(myvector.begin(),it) );    <cite>// 10 20 30</cite>
+
+  <cite>// print out content:</cite>
+  std::cout &lt;&lt; <kbd>"myvector contains:"</kbd>;
+  <var>for</var> (it=myvector.begin(); it!=myvector.end(); ++it)
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains: 10 20 30
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Up to linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Compares each pair of elements, and performs an assignment operation for those elements not matching.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed.<br>
+The objects in the range between <var>result</var> and the returned value are modified.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if any of <var>pred</var>, the element comparisons, the element assignments or the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/unique/"><b>unique</b></a></dt><dd>Remove consecutive duplicates in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/adjacent_find/"><b>adjacent_find</b></a></dt><dd>Find equal adjacent elements in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/remove/"><b>remove</b></a></dt><dd>Remove value from range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/remove_if/"><b>remove_if</b></a></dt><dd>Remove elements from range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

@@ -1,0 +1,66 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public static member function</div>
+<div id="I_file">&lt;ios&gt; &lt;iostream&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/ios/ios_base/">ios_base</a>::sync_with_stdio</h1>
+<div class="C_prototype"><pre>bool sync_with_stdio (bool sync = true);</pre></div><div id="I_description">Toggle synchronization with cstdio streams [static]</div>
+<section id="description">
+Toggles on or off synchronization of all the iostream standard streams with their corresponding standard C streams if it is called before the program performs its first input or output operation.<br>
+<br>
+If called once an input or output operation has occurred, its effects are <i>implementation-defined</i>.<br>
+<br>
+By default, <samp><a href="/&lt;iostream&gt;">iostream</a></samp> objects and <samp><a href="/cstdio">cstdio</a></samp> streams are synchronized (as if this function was called with <code>true</code> as argument).<br>
+<br>
+The stream correspondences are:<br>
+<table class="boxed">
+<tr><th>C stream</th><th>iostream object</th></tr>
+<tr><td rowspan="2"><samp><a href="/stdin">stdin</a></samp></td><td><samp><a href="/cin">cin</a></samp></td></tr>
+<tr><td><samp><a href="/wcin">wcin</a></samp></td></tr>
+<tr><td rowspan="2"><samp><a href="/stdout">stdout</a></samp></td><td><samp><a href="/cout">cout</a></samp></td></tr>
+<tr><td><samp><a href="/wcout">wcout</a></samp></td></tr>
+<tr><td rowspan="4"><samp><a href="/stderr">stderr</a></samp></td><td><samp><a href="/cerr">cerr</a></samp></td></tr>
+<tr><td><samp><a href="/wcerr">wcerr</a></samp></td></tr>
+<tr><td><samp><a href="/clog">clog</a></samp></td></tr>
+<tr><td><samp><a href="/wclog">wclog</a></samp></td></tr>
+</table>
+<br>
+<div class="C_SwitchCases">
+<div title="C++98">
+If the streams are synchronized, a program can mix iostream operations with stdio operations, and their observable effects are guaranteed to follow the same order as used in the program.<br>
+</div>
+<div title="C++11">
+If the streams are synchronized, a program can mix iostream operations with stdio operations, and their observable effects are guaranteed to follow the same order as used in the thread.<br>
+<br>
+Concurrently accessing <i>synchronized streams</i> (i.e., streams for which this function returns <code>true</code>) never introduces data races: characters are read/written individually, although with no further guarantees on its order between threads. This may result in interleaved characters between threads unless proper synchronization of entire operations is enforced by the program.<br>
+</div>
+</div>
+<br>
+With stdio synchronization turned off, iostream standard stream objects may operate independently of the standard C streams (although they are not required to), and mixing operations may result in unexpectedly interleaved characters.<br>
+<br>
+Notice that this is a static member function, and a call to this function using this member of <i>any</i> stream object toggles on or off synchronization for <em>all</em> standard iostream objects.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>sync</dt>
+<dd>Boolean parameter indicating whether synchronization is to be turned on or off: A value of <code>true</code> requests synchronization to be turned <i>on</i>, while a value of <code>false</code> requests it to be turned <i>off</i>.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+Returns the synchronization state before the call.<br>
+It always returns <samp>true</samp> the first time it is called.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+May modify the stream object.<br>
+Concurrent access to the same stream object may cause data races.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Basic guarantee:</b> if an exception is thrown, the stream is in a valid state.<br>
+<div id="CH_bb"></div></div></div>

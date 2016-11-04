@@ -1,0 +1,89 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;algorithm&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>count_if</h1>
+<div class="C_prototype"><pre>template &lt;class InputIterator, class UnaryPredicate&gt;  typename iterator_traits&lt;InputIterator&gt;::difference_type    count_if (InputIterator first, InputIterator last, UnaryPredicate pred);</pre></div><div id="I_description">Return number of elements in range satisfying condition</div>
+<section id="description">
+Returns the number of elements in the range <code>[first,last)</code> for which <var>pred</var> is true.<br>
+<br>
+The behavior of this function template is equivalent to:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>class</var> InputIterator, <var>class</var> UnaryPredicate&gt;
+  <var>typename</var> iterator_traits&lt;InputIterator&gt;::difference_type
+    count_if (InputIterator first, InputIterator last, UnaryPredicate pred)
+{
+  <var>typename</var> iterator_traits&lt;InputIterator&gt;::difference_type ret = 0;
+  <var>while</var> (first!=last) {
+    <var>if</var> (pred(*first)) ++ret;
+    ++first;
+  }
+  <var>return</var> ret;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>first, last</dt>
+<dd><a href="/InputIterator">Input iterators</a> to the initial and final positions of the sequence of elements. The range used is <code>[first,last)</code>, which contains all the elements between <var>first</var> and <var>last</var>, including the element pointed by <var>first</var> but not the element pointed by <var>last</var>.</dd>
+<dt>pred</dt>
+<dd>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is counted by this function.<br>
+The function shall not modify its argument.<br>
+This can either be a function pointer or a function object.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The number of elements in the range <code>[first,last)</code> for which <var>pred</var> does not return <code>false</code>.<br>
+The return type (<samp><a href="/iterator_traits">iterator_traits</a>&lt;InputIterator&gt;::difference_type</samp>) is a signed integral type.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br></code></pre></td>
+<td class="source"><pre><code><cite>// count_if example</cite>
+<dfn>#include &lt;iostream&gt;     </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;algorithm&gt;    </dfn><cite>// std::count_if</cite>
+<dfn>#include &lt;vector&gt;       </dfn><cite>// std::vector</cite>
+
+<var>bool</var> IsOdd (<var>int</var> i) { <var>return</var> ((i%2)==1); }
+
+<var>int</var> main () {
+  std::vector&lt;<var>int</var>&gt; myvector;
+  <var>for</var> (<var>int</var> i=1; i&lt;10; i++) myvector.push_back(i); <cite>// myvector: 1 2 3 4 5 6 7 8 9</cite>
+
+  <var>int</var> mycount = count_if (myvector.begin(), myvector.end(), IsOdd);
+  std::cout &lt;&lt; <kbd>"myvector contains "</kbd> &lt;&lt; mycount  &lt;&lt; <kbd>" odd values.\n"</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>myvector contains 5 odd values.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Linear in the <a href="/distance">distance</a> between <var>first</var> and <var>last</var>: Calls <var>pred</var> once for each element.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+Throws if <var>pred</var> throws or if any of the operations on iterators throws.<br>
+Note that invalid arguments cause <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/algorithm/count/"><b>count</b></a></dt><dd>Count appearances of value in range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/for_each/"><b>for_each</b></a></dt><dd>Apply function to range <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/algorithm/find/"><b>find</b></a></dt><dd>Find value in range <span class="typ">(function template)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

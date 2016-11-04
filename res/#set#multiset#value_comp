@@ -1,0 +1,88 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">public member function</div>
+<div id="I_file">&lt;set&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span><a href="/reference/set/multiset/">multiset</a>::value_comp</h1>
+<div class="C_prototype"><pre>value_compare value_comp() const;</pre></div><div id="I_description">Return comparison object</div>
+<section id="description">
+Returns a copy of the <i>comparison object</i> used by the container.<br>
+<br>
+By default, this is a <a href="/less">less</a> object, which returns the same as <tt>operator&lt;</tt>.<br>
+<br>
+This object determines the order of the elements in the container: it is a function pointer or a function object that takes two arguments of the same type as the container elements, and returns <tt>true</tt> if the first argument is considered to go before the second in the <i>strict weak ordering</i> it defines, and <tt>false</tt> otherwise.<br>
+<br>
+Two elements of a <a href="/multiset">multiset</a> are considered equivalent if <tt>value_comp</tt> returns <tt>false</tt> reflexively (i.e., no matter the order in which the elements are passed as arguments).<br>
+<br>
+In <a href="/multiset">multiset</a> containers, the keys to sort the elements are the values themselves, therefore <tt>value_comp</tt> and its sibling member function <a href="/key_comp">key_comp</a> are equivalent.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+none<br>
+</section>
+<br>
+<section id="return">
+<h3>Return value</h3>
+The comparison object.<br>
+Member type <tt>value_compare</tt> is the type of the <i>comparison object</i> associated to the container, defined in <a href="/multiset">multiset</a> as an alias of its second template parameter (<tt>Compare</tt>).<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br></code></pre></td>
+<td class="source"><pre><code><cite>// multiset::value_comp</cite>
+<dfn>#include &lt;iostream&gt;</dfn>
+<dfn>#include &lt;set&gt;</dfn>
+
+<var>int</var> main ()
+{
+  std::multiset&lt;<var>int</var>&gt; mymultiset;
+
+  std::multiset&lt;<var>int</var>&gt;::value_compare mycomp = mymultiset.value_comp();
+
+  <var>for</var> (<var>int</var> i=0; i&lt;7; i++) mymultiset.insert(i);
+
+  std::cout &lt;&lt; <kbd>"mymultiset contains:"</kbd>;
+
+  <var>int</var> highest = *mymultiset.rbegin();
+  std::multiset&lt;<var>int</var>&gt;::iterator it = mymultiset.begin();
+  <var>do</var> {
+    std::cout &lt;&lt; <kbd>' '</kbd> &lt;&lt; *it;
+  } <var>while</var> ( mycomp(*it++,highest) );
+
+  std::cout &lt;&lt; <kbd>'\n'</kbd>;
+
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>mymultiset contains: 0 1 2 3 4 5 6
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Constant.<br>
+</section>
+<br>
+<section id="validity">
+<h3>Iterator validity</h3>
+No changes.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+The container is accessed.<br>
+Concurrently accessing the elements of a <a href="/multiset">multiset</a> is safe.<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exception safety</h3>
+<b>Strong guarantee:</b> if an exception is thrown, there are no changes in the container.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/set/multiset/key_comp/"><b>multiset::key_comp</b></a></dt><dd>Return comparison object <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/set/multiset/find/"><b>multiset::find</b></a></dt><dd>Get iterator to element <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/set/multiset/count/"><b>multiset::count</b></a></dt><dd>Count elements with a specific key <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/set/multiset/lower_bound/"><b>multiset::lower_bound</b></a></dt><dd>Return iterator to lower bound <span class="typ">(public member function)</span></dd></dl><dl class="links"><dt><a href= "/reference/set/multiset/upper_bound/"><b>multiset::upper_bound</b></a></dt><dd>Return iterator to upper bound <span class="typ">(public member function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>

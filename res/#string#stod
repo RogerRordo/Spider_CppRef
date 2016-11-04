@@ -1,0 +1,76 @@
+<div id="I_content">
+<div class="C_doc">
+<div id="I_type">function template</div>
+<div id="I_file">&lt;string&gt;</div>
+<h1><span class="namespace" title="namespace std">std::</span>stod<span class="C_ico cpp11warning" title="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it." alt="This page describes a feature introduced by the latest revision of the C++ standard (2011). Older compilers may not support it."></span></h1>
+<div class="C_prototype"><pre>double stod (const string&amp;  str, size_t* idx = 0);double stod (const wstring&amp; str, size_t* idx = 0);</pre></div><div id="I_description">Convert string to double</div>
+<section id="description">
+Parses <i>str</i> interpreting its content as a floating-point number, which is returned as a value of type <tt>double</tt>.<br>
+<br>
+If <i>idx</i> is not a null pointer, the function also sets the value of <i>idx</i> to the position of the first character in <i>str</i> after the number.<br>
+<br>
+The function uses <a href="/strtod">strtod</a> (or <a href="/wcstod">wcstod</a>) to perform the conversion (see <a href="/strtod">strtod</a> for more details on the process). Note that the format accepted by these functions depends on the current locale.<br>
+</section>
+<br>
+<section id="parameters">
+<h3>Parameters</h3>
+<dl>
+<dt>str</dt>
+<dd>String object with the representation of a floating-point number.</dd>
+<dt>idx</dt>
+<dd>Pointer to an object of type <a href="/size_t">size_t</a>, whose value is set by the function to position of the next character in <i>str</i> after the numerical value.<br>
+This parameter can also be a null pointer, in which case it is not used.</dd>
+</dl>
+</section>
+<br>
+<section id="return">
+<h3>Return Value</h3>
+On success, the function returns the converted floating-point number as a value of type <tt>double</tt>.<br>
+</section>
+<br>
+<section id="example">
+<h3>Example</h3>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br></code></pre></td>
+<td class="source"><pre><code><cite>// stod example</cite>
+<dfn>#include &lt;iostream&gt;   </dfn><cite>// std::cout</cite>
+<dfn>#include &lt;string&gt;     </dfn><cite>// std::string, std::stod</cite>
+
+<var>int</var> main ()
+{
+  std::string orbits (<kbd>"365.24 29.53"</kbd>);
+  std::string::size_type sz;     <cite>// alias of size_t</cite>
+
+  <var>double</var> earth = std::stod (orbits,&amp;sz);
+  <var>double</var> moon = std::stod (orbits.substr(sz));
+  std::cout &lt;&lt; <kbd>"The moon completes "</kbd> &lt;&lt; (earth/moon) &lt;&lt; <kbd>" orbits per Earth year.\n"</kbd>;
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"></td></tr></table></div>
+<br>
+<br>
+Possible output:<br>
+<div class="auto"><table class="snippet"><tr><td class="output"><pre><samp>The moon completes 12.3684 orbits per Earth year.
+</samp></pre></td></tr></table></div>
+</section>
+<br>
+<section id="complexity">
+<h3>Complexity</h3>
+Unspecified, but generally linear in the number of characters interpreted.<br>
+</section>
+<br>
+<section id="access">
+<h3>Data races</h3>
+Modifies the value pointed by <i>idx</i> (if not zero).<br>
+</section>
+<br>
+<section id="exceptions">
+<h3>Exceptions</h3>
+If no conversion could be performed, an <a href="/invalid_argument">invalid_argument</a> exception is thrown.<br>
+If the value read is out of the range of representable values by a <tt>double</tt> (in some library implementations, this includes underflows), an <a href="/out_of_range">out_of_range</a> exception is thrown.<br>
+<br>
+An invalid <i>idx</i> causes <i>undefined behavior</i>.<br>
+</section>
+<br>
+<section id="see">
+<h3>See also</h3>
+<dl class="links"><dt><a href= "/reference/string/stof/"><b>stof</b></a></dt><dd>Convert string to float <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/stold/"><b>stold</b></a></dt><dd>Convert string to long double <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/string/stoi/"><b>stoi</b></a></dt><dd>Convert string to integer <span class="typ">(function template)</span></dd></dl><dl class="links"><dt><a href= "/reference/cstdlib/strtof/"><b>strtof</b></a></dt><dd>Convert string to float <span class="typ">(function)</span></dd></dl>
+<div id="CH_bb"></div></div></div>
